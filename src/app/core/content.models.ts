@@ -160,6 +160,30 @@ export interface AboutPage {
   contactLink: Text;
 }
 
+/** content/pages/visual-stories.json: Sara's collective of women directors and photographers. */
+export interface VisualStoriesPage {
+  seo: Seo;
+  heading: Text;
+  opening: Text;
+  intro: Paragraphs;
+  image?: ImageRef;
+  servicesHeading: Text;
+  services: { title: Text; text: Text }[];
+  /** Work samples; each image may carry a caption. */
+  gallery?: ImageRef[];
+  /** One recent project, told as a short case study. */
+  case: { label: Text; title: Text; meta?: Localized<string[]>; rows: { label: Text; text: Text }[] };
+  teamHeading: Text;
+  /** Who is in the collective; a "[à compléter …]" marker until Sara supplies it. */
+  team?: Text;
+  methodHeading: Text;
+  method: { label: Text; text: Text }[];
+  /** Short practical facts: languages, base. */
+  practical?: Localized<string[]>;
+  contactLink: Text;
+  filmsLink: Text;
+}
+
 export interface ContactPage {
   seo: Seo;
   heading: Text;
@@ -214,6 +238,7 @@ export interface Pages {
   films: FilmsPage;
   press: PressPage;
   about: AboutPage;
+  'visual-stories': VisualStoriesPage;
   contact: ContactPage;
   'not-found': NotFoundPage;
   legal: LegalPage;

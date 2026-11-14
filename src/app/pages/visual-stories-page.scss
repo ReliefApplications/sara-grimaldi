@@ -1,0 +1,132 @@
+@use '../../styles/breakpoints' as *;
+
+.head {
+  padding-top: var(--space-7);
+
+  @include lg {
+    padding-top: var(--space-9);
+  }
+}
+
+.opening {
+  margin-top: var(--space-5);
+
+  @include lg {
+    grid-column: 1 / 12;
+  }
+}
+
+.intro {
+  row-gap: var(--space-6);
+  margin-top: var(--space-7);
+
+  @include lg {
+    margin-top: var(--space-8);
+  }
+}
+
+.lead-image {
+  aspect-ratio: 3 / 4;
+}
+
+@include md {
+  .lead-image {
+    grid-column: 1 / 5;
+  }
+
+  .text {
+    grid-column: 5 / 9;
+
+    &.alone {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+@include lg {
+  .lead-image {
+    grid-column: 1 / 6;
+  }
+
+  .text {
+    grid-column: 7 / 13;
+  }
+}
+
+.practical {
+  margin-top: var(--space-6);
+}
+
+.block {
+  margin-top: var(--section-pad);
+}
+
+.section-label {
+  margin-bottom: var(--space-6);
+}
+
+.head .section-label {
+  margin-bottom: 0;
+}
+
+// Services: rows on small screens, two columns from md.
+.services {
+  display: grid;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+
+  li {
+    padding-block: var(--space-5);
+    border-top: var(--rule-minor);
+
+    > * + * {
+      margin-top: var(--space-2);
+    }
+  }
+}
+
+.gallery {
+  display: grid;
+  gap: var(--space-6) var(--gutter);
+  margin-top: var(--space-8);
+
+  @include md {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .frame {
+    aspect-ratio: 4 / 5;
+  }
+
+  figcaption {
+    margin-top: var(--space-2);
+  }
+}
+
+.case {
+  margin-top: var(--section-pad);
+}
+
+.case-title {
+  max-width: 22ch;
+}
+
+.case-meta {
+  margin-block: var(--space-5) var(--space-6);
+}
+
+.actions {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--section-pad);
+  padding-bottom: var(--section-pad);
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gutter);
+  }
+}

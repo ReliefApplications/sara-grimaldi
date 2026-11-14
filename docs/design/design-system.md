@@ -39,29 +39,32 @@ Contents: 1 Principles, 2 Colour, 3 Typography, 4 Spacing and grid,
 
 ## 2. Colour
 
+Palette A "brun + terracotta" chosen by Sara on 2026-11-14 (softer than the
+first black + orange); the home Films section now sits on ground.
+
 | Token | Value | Use |
 |---|---|---|
-| `--color-ground` | `#F2F1ED` | Default page background; text on ink and on images |
-| `--color-ink` | `#0E0E0E` | Text; dark sections; rules; borders |
-| `--color-accent` | `#FF4B1F` | Record dot, highlight, accent sections (footer, press band) |
-| `--color-muted` | `#5C5B57` | Secondary text on ground |
-| `--color-muted-on-ink` | `#A9A8A3` | Secondary text on ink |
-| `--color-rule-on-ink` | `#3A3A38` | Hairlines on ink |
+| `--color-ground` | `#F4F0E8` | Default page background; text on ink and on images |
+| `--color-ink` | `#2A2623` | Text; dark sections; rules; borders |
+| `--color-accent` | `#D97A55` | Record dot, highlight, accent sections (footer, press band) |
+| `--color-muted` | `#5F5952` | Secondary text on ground |
+| `--color-muted-on-ink` | `#B3ACA3` | Secondary text on ink |
+| `--color-rule-on-ink` | `#4A443F` | Hairlines on ink |
 | `--color-placeholder` | `#D9D7D0` | Image placeholder; `<mark>` background |
 
 Contrast (WCAG 2.1, calculated):
 
 | Foreground | Background | Ratio | Use allowed |
 |---|---|---|---|
-| ink | ground | 17.1:1 | All text |
-| ground | ink | 17.1:1 | All text |
-| ink | accent | 5.8:1 | All text |
-| accent | ink | 5.8:1 | All text |
-| muted | ground | 6.0:1 | All text |
-| muted-on-ink | ink | 8.1:1 | All text |
-| ink | placeholder | 13.5:1 | All text |
-| accent | ground | 3.0:1 | **Not for text or control boundaries.** Decoration only (dots, bars) |
-| ground | accent | 3.0:1 | **Not allowed for text** |
+| ink | ground | 13.2:1 | All text |
+| ground | ink | 13.2:1 | All text |
+| ink | accent | 4.9:1 | All text |
+| accent | ink | 4.9:1 | All text |
+| muted | ground | 6.1:1 | All text |
+| muted-on-ink | ink | 6.7:1 | All text |
+| ink | placeholder | 10.4:1 | All text |
+| accent | ground | 2.7:1 | **Not for text or control boundaries.** Decoration only (dots, bars) |
+| ground | accent | 2.7:1 | **Not allowed for text** |
 
 Rules:
 - On accent, text is always ink. On ground, accent is never text.
@@ -907,14 +910,14 @@ Meta descriptions from content. Open Graph and Twitter card on every page
 French) and canonical from one configurable base URL. Default Open Graph
 image: a still from *Immunity*; tag omitted until the file exists.
 
-Theme colour: `#0E0E0E`.
+Theme colour: `#2A2623`.
 
 Favicon: the record dot. One SVG, exactly:
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#0E0E0E"/>
-  <circle cx="16" cy="16" r="8" fill="#FF4B1F"/>
+  <rect width="32" height="32" fill="#2A2623"/>
+  <circle cx="16" cy="16" r="8" fill="#D97A55"/>
 </svg>
 ```
 

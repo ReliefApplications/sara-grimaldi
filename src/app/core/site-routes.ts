@@ -6,6 +6,7 @@ import { DEFAULT_LANG, Lang, LANGS, NavPageId, PageId, RoutedPageId } from './co
 export const PAGE_PATHS: Record<RoutedPageId, Record<Lang, string>> = {
   home: { fr: '', en: '' },
   films: { fr: 'films', en: 'films' },
+  'visual-stories': { fr: 'visual-stories', en: 'visual-stories' },
   press: { fr: 'presse', en: 'press' },
   about: { fr: 'a-propos', en: 'about' },
   contact: { fr: 'contact', en: 'contact' },
@@ -49,6 +50,12 @@ function langRoute(lang: Lang): Route {
         path: `${path('films')}/:slug`,
         data: info('films'),
         loadComponent: () => import('../pages/film-page').then((m) => m.FilmPage),
+      },
+      {
+        path: path('visual-stories'),
+        data: info('visual-stories'),
+        loadComponent: () =>
+          import('../pages/visual-stories-page').then((m) => m.VisualStoriesPage),
       },
       {
         path: path('press'),

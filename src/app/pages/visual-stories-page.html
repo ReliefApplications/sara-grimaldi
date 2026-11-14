@@ -1,0 +1,83 @@
+@if (page(); as page) {
+  <!-- 1. Head: the name as a label, then the promise. -->
+  <div class="container grid head">
+    <h1 class="section-label t-label" appPageHeading>{{ page.heading }}</h1>
+    <p class="opening t-display">{{ page.opening }}</p>
+  </div>
+
+  <!-- 2. Lead image and what the collective is -->
+  <div class="container grid intro">
+    @if (page.image; as image) {
+      <div class="lead-image">
+        <app-content-image [image]="image" [sizes]="imageSizes" [priority]="true" />
+      </div>
+    }
+    <div class="prose text" [class.alone]="!page.image">
+      @for (paragraph of page.intro; track $index) {
+        <p [class.t-lead]="$first"><app-inline-text [text]="paragraph" /></p>
+      }
+      @if (page.practical?.length) {
+        <p class="t-label t-muted practical"><app-dot-line [items]="page.practical!" /></p>
+      }
+    </div>
+  </div>
+
+  <!-- 3. What we do -->
+  <section class="container block" aria-labelledby="services-label">
+    <h2 class="section-label t-label" id="services-label">{{ page.servicesHeading }}</h2>
+    <ul class="services">
+      @for (service of page.services; track $index) {
+        <li>
+          <h3 class="t-title">{{ service.title }}</h3>
+          <p class="t-body">{{ service.text }}</p>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- 4. Work samples -->
+  @if (page.gallery?.length) {
+    <div class="container gallery">
+      @for (image of page.gallery; track image.src) {
+        <figure>
+          <div class="frame"><app-content-image [image]="image" [sizes]="gallerySizes" /></div>
+          @if (image.caption) {
+            <figcaption class="t-small t-muted">{{ image.caption }}</figcaption>
+          }
+        </figure>
+      }
+    </div>
+  }
+
+  <!-- 5. A recent project, on ink -->
+  <section class="section surface-ink case" aria-labelledby="case-label">
+    <div class="container">
+      <p class="section-label t-label" id="case-label">{{ page.case.label }}</p>
+      <h2 class="t-display case-title">{{ page.case.title }}</h2>
+      @if (page.case.meta?.length) {
+        <p class="t-label t-muted case-meta"><app-dot-line [items]="page.case.meta!" /></p>
+      }
+      <app-data-list [rows]="caseRows()" />
+    </div>
+  </section>
+
+  <!-- 6. The team -->
+  @if (page.team) {
+    <section class="container block" aria-labelledby="team-label">
+      <h2 class="section-label t-label" id="team-label">{{ page.teamHeading }}</h2>
+      <p class="t-lead"><app-inline-text [text]="page.team" /></p>
+    </section>
+  }
+
+  <!-- 7. How we work -->
+  <section class="container block" aria-labelledby="method-label">
+    <h2 class="section-label t-label" id="method-label">{{ page.methodHeading }}</h2>
+    <app-data-list [rows]="method()" />
+  </section>
+
+  <!-- 8. Where next -->
+  <div class="container actions">
+    <a appBlockButton [routerLink]="route.link('contact')">{{ page.contactLink }}</a>
+    <a appBlockButton [routerLink]="route.link('films')">{{ page.filmsLink }}</a>
+  </div>
+}

@@ -24,7 +24,7 @@ export const IMAGE_WIDTHS = [480, 768, 1152];
 export const IMAGE_FITS = ['cover', 'poster'] as const;
 
 /** Pages listed in the navigation, in display order. */
-export const NAV_PAGE_IDS = ['films', 'press', 'about', 'contact'] as const;
+export const NAV_PAGE_IDS = ['films', 'visual-stories', 'press', 'about', 'contact'] as const;
 
 /** Keys of `ui` in site.json. */
 export const UI_KEYS = [
@@ -103,6 +103,7 @@ const legalProse = [
  */
 export const PROSE_FIELDS: Record<string, string[]> = {
   'pages/about': ['biography', 'career[].text'],
+  'pages/visual-stories': ['intro', 'case.rows[].text', 'team'],
   'pages/legal': legalProse,
   'pages/privacy': legalProse,
   films: ['synopsis', 'statement'],
@@ -177,6 +178,25 @@ export const REQUIRED = {
       'inDevelopmentHeading',
       'filmsLink',
       'contactLink',
+    ],
+    'visual-stories': [
+      ...seo,
+      'heading',
+      'opening',
+      'intro',
+      'servicesHeading',
+      'services[].title',
+      'services[].text',
+      'case.label',
+      'case.title',
+      'case.rows[].label',
+      'case.rows[].text',
+      'teamHeading',
+      'methodHeading',
+      'method[].label',
+      'method[].text',
+      'contactLink',
+      'filmsLink',
     ],
     contact: [
       ...seo,
