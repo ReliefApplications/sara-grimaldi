@@ -110,32 +110,45 @@
   }
 }
 
-// Showreel (7.5): a play button in the hero; the player covers the hero
-// only after the click.
-.reel-play {
-  display: inline-flex;
+// Showreel (7.5): the controls sit in the hero block; the videos are
+// <app-showreel>. Wide screens: above the name, on the right, clear of the dancer.
+.reel-controls {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-3);
-  justify-self: start;
+  gap: var(--space-3) var(--space-5);
   margin-bottom: var(--space-5);
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--color-ground);
-  cursor: pointer;
 
-  // Wide screens: above the name, on the right, clear of the dancer.
   @include lg {
     position: absolute;
     right: var(--margin);
     bottom: calc(100% - var(--space-6));
     margin: 0;
   }
+}
+
+.reel-play,
+.reel-stop {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-ground);
+  cursor: pointer;
+}
+
+.reel-play {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
 
   &:hover .play-circle,
   &:focus-visible .play-circle {
     background: var(--color-accent);
   }
+}
+
+.reel-stop {
+  text-decoration: underline;
 }
 
 .play-circle {
@@ -166,30 +179,6 @@
       font-size: 1.6rem;
     }
   }
-}
-
-.reel-player {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: #000;
-
-  iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-}
-
-.reel-close {
-  position: absolute;
-  right: var(--margin);
-  bottom: var(--space-4);
-  padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--color-ground);
-  background: rgb(0 0 0 / 60%);
-  color: var(--color-ground);
-  cursor: pointer;
 }
 
 // 2. Statement (9.2). Less room below: collaborations continue its field.

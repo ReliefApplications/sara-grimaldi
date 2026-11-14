@@ -124,14 +124,21 @@ export interface HomePage {
   /** Image of the first screen; without it the hero is a plain dark field. */
   hero?: ImageRef;
   /**
-   * Sara's showreel, played over the hero on click (click-to-load facade,
-   * design system 7.5): nothing is fetched from the provider before the click.
+   * Sara's showreel (design system 7.5): the photo first, then, if the
+   * visitor stays, the showreel muted behind the name; the button plays it
+   * with sound.
    */
   reel?: {
     provider: 'vimeo' | 'youtube';
     id: string;
     /** Button text, e.g. "Voir la bande démo". */
     label: Text;
+    /** Button text while the muted showreel plays behind the name, e.g. "Voir avec le son". */
+    soundLabel: Text;
+    /** Stops the muted showreel and brings the photo back. */
+    stopLabel: Text;
+    /** Seconds on the first screen before the muted showreel starts (default 4). */
+    ambientDelay?: number;
     /** Names the player for screen readers, e.g. "Bande démo 2026". */
     title: Text;
     /** Shown after the label, e.g. "1:50". */
@@ -188,7 +195,12 @@ export interface VisualStoriesPage {
   /** Work samples; each image may carry a caption. */
   gallery?: ImageRef[];
   /** One recent project, told as a short case study. */
-  case: { label: Text; title: Text; meta?: Localized<string[]>; rows: { label: Text; text: Text }[] };
+  case: {
+    label: Text;
+    title: Text;
+    meta?: Localized<string[]>;
+    rows: { label: Text; text: Text }[];
+  };
   teamHeading: Text;
   /** Who is in the collective; a "[à compléter …]" marker until Sara supplies it. */
   team?: Text;

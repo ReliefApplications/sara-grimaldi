@@ -11,6 +11,11 @@
           [priority]="true"
         />
       }
+      @if (reel(); as reel) {
+        @if (ambient()) {
+          <app-showreel [video]="reel" mode="ambient" />
+        }
+      }
       <div class="scrim" aria-hidden="true"></div>
       <div class="container hero-block">
         <p class="roles t-label"><app-dot-line [items]="site.roles" /></p>
@@ -19,30 +24,29 @@
         @if (page.hero?.caption; as caption) {
           <p class="credit t-small"><app-inline-text [text]="caption" /></p>
         }
-        @if (page.reel && reelUrl() && !playing()) {
-          <button class="reel-play" type="button" (click)="playing.set(true)">
-            <span class="play-circle" aria-hidden="true"></span>
-            <span class="t-label"
-              >{{ page.reel.label }}
-              @if (page.reel.duration) {
-                · {{ page.reel.duration }}
-              }
-            </span>
-          </button>
+        @if (page.reel && reel() && !playing()) {
+          <div class="reel-controls">
+            <button class="reel-play" type="button" (click)="play()">
+              <span class="play-circle" aria-hidden="true"></span>
+              <span class="t-label"
+                >{{ ambient() ? page.reel.soundLabel : page.reel.label }}
+                @if (page.reel.duration) {
+                  · {{ page.reel.duration }}
+                }
+              </span>
+            </button>
+            @if (ambient()) {
+              <button class="reel-stop t-small" type="button" (click)="stopAmbient()">
+                {{ page.reel.stopLabel }}
+              </button>
+            }
+          </div>
         }
       </div>
-      @if (page.reel && playing()) {
-        <div class="reel-player">
-          <iframe
-            [src]="reelUrl()"
-            [title]="page.reel.title"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-          <button class="reel-close t-nav" type="button" (click)="playing.set(false)">
-            {{ page.reel.closeLabel }}
-          </button>
-        </div>
+      @if (reel(); as reel) {
+        @if (playing()) {
+          <app-showreel [video]="reel" (closed)="playing.set(false)" />
+        }
       }
     </section>
 

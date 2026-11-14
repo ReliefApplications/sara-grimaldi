@@ -30,6 +30,15 @@
       "fr": "Voir la bande démo",
       "en": "Watch the showreel"
     },
+    "soundLabel": {
+      "fr": "Voir avec le son",
+      "en": "Watch with sound"
+    },
+    "stopLabel": {
+      "fr": "Arrêter la vidéo",
+      "en": "Stop the video"
+    },
+    "ambientDelay": 4,
     "title": {
       "fr": "Bande démo 2026 de Sara Grimaldi",
       "en": "Sara Grimaldi – Showreel 2026"

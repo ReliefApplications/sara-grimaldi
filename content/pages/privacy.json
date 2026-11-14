@@ -64,13 +64,13 @@
           "Ce site ne dépose aucun cookie.",
           "Il n’utilise aucun outil de mesure d’audience ni de publicité.",
           "Il ne contient aucun formulaire et ne propose aucun compte.",
-          "Les polices de caractères et les images sont servies par le site lui-même : la consultation des pages ne déclenche aucune requête vers un service tiers."
+          "Les polices de caractères et les images sont servies par le site lui-même. Seule exception : la bande démo de la page d’accueil, hébergée par Vimeo (voir « Vidéos »)."
         ],
         "en": [
           "This website sets no cookies.",
           "It uses no analytics or advertising tools.",
           "It has no forms and no user accounts.",
-          "Fonts and images are served by the website itself: viewing its pages triggers no request to any third-party service."
+          "Fonts and images are served by the website itself. The one exception is the showreel on the home page, hosted by Vimeo (see “Videos”)."
         ]
       }
     },
@@ -158,27 +158,29 @@
     },
     {
       "id": "videos",
-      "published": false,
       "heading": {
         "fr": "Vidéos",
         "en": "Videos"
       },
       "paragraphs": {
         "fr": [
-          "Certaines pages proposent une vidéo hébergée par Vimeo. Le lecteur vidéo n’est chargé que lorsque vous cliquez sur le bouton de lecture. Avant ce clic, aucune donnée n’est transmise à ces services.",
-          "Après ce clic, le service concerné reçoit votre adresse IP et peut déposer des cookies ou utiliser des technologies similaires, selon sa propre politique."
+          "Sur la page d’accueil, la bande démo de Sara Grimaldi, hébergée par Vimeo, démarre sans le son après quelques secondes. Elle ne démarre pas si votre appareil demande de réduire les animations ou d’économiser les données, et le bouton « Arrêter la vidéo » l’arrête pour le reste de votre visite.",
+          "Sur les autres pages, le lecteur vidéo n’est chargé que lorsque vous cliquez sur le bouton de lecture ; avant ce clic, aucune donnée n’est transmise à Vimeo.",
+          "Le lecteur Vimeo est toujours chargé avec l’option « ne pas suivre » (dnt) de Vimeo, qui l’empêche de déposer des cookies et d’enregistrer des données de session. Vimeo reçoit néanmoins votre adresse IP, nécessaire pour vous envoyer la vidéo."
         ],
         "en": [
-          "Some pages offer a video hosted by Vimeo. The video player is loaded only when you click the play button. Before that click, no data is sent to these services.",
-          "After that click, the service concerned receives your IP address and may set cookies or use similar technologies, according to its own policy."
+          "On the home page, Sara Grimaldi’s showreel, hosted by Vimeo, starts without sound after a few seconds. It does not start if your device asks for reduced motion or reduced data use, and the “Stop the video” button stops it for the rest of your visit.",
+          "On other pages, the video player is loaded only when you click the play button; before that click, no data is sent to Vimeo.",
+          "The Vimeo player is always loaded with Vimeo’s “do not track” option (dnt), which stops it from setting cookies or recording session data. Vimeo still receives your IP address, which it needs to send you the video."
         ]
       },
       "links": [
         {
           "label": {
-            "fr": "[à compléter : politique de confidentialité du ou des services vidéo]",
-            "en": "[to be completed: privacy policy of the video service or services]"
-          }
+            "fr": "Politique de confidentialité de Vimeo",
+            "en": "Vimeo privacy policy"
+          },
+          "url": "https://vimeo.com/privacy"
         }
       ]
     },

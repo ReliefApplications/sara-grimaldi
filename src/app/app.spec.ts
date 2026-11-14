@@ -252,8 +252,9 @@ describe('App', () => {
     await open('/en/privacy');
     expect(text('h1')).toBe('Privacy policy');
     expect(document.title).toBe('Privacy – Sara Grimaldi');
-    // The section about videos is switched off in content.
-    expect(page.querySelector('#videos')).toBeNull();
+    // The section about videos is on since the home page plays the showreel.
+    expect(page.querySelector('#videos')).not.toBeNull();
+    expect(page.querySelector('a[href="https://vimeo.com/privacy"]')).not.toBeNull();
     expect(page.querySelector('#cookies')).not.toBeNull();
     expect(
       page.querySelector('header app-language-switcher a[hreflang="fr"]')?.getAttribute('href'),

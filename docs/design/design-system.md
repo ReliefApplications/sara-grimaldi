@@ -266,10 +266,15 @@ except the hero and a film page's lead image (`loading="eager"`,
 `--color-placeholder` (ink for `poster` tiles). Every image has alt text in
 both languages.
 
-7.5 **Video.** Home showreel (since 2026-11-14): a ground play circle with
-the label "Voir la bande démo · 1:50" in the hero (bottom left on small
-screens, above the name on the right from lg); on click the player covers
-the hero, with a "Fermer la vidéo" button. Film pages: click-to-load facade (a `<button>`
+7.5 **Video.** Home showreel (since 2026-11-14): the photo first; after
+`ambientDelay` seconds (4) on the first screen, the showreel plays muted,
+looping and without controls behind the scrim and the name (Vimeo
+`background=1&dnt=1`, cropped to fill, fading in once loaded). Not started
+with `prefers-reduced-motion`, Save-Data, or after "Arrêter la vidéo" in
+this visit. Controls in the hero (bottom left on small screens, above the
+name on the right from lg): a ground play circle, "Voir la bande démo · 1:50"
+(then "Voir avec le son" while the muted reel plays) opening the full player
+with sound over the hero, and "Arrêter la vidéo" (WCAG 2.2.2). Film pages: click-to-load facade (a `<button>`
 over the lead image with a centred 96 px ink circle and a ground triangle;
 hover: circle accent, triangle ink), provider iframe inserted only on click
 (`player.vimeo.com/video/{id}?dnt=1&autoplay=1` or

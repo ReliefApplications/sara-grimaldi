@@ -1,5 +1,13 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  Component,
+  computed,
+  DestroyRef,
+  effect,
+  inject,
+  PLATFORM_ID,
+  signal,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FAMILIES } from '../../core/content.models';
 import { ContentService } from '../../core/content.service';
@@ -13,6 +21,26 @@ import { DotLine } from '../../shared/dot-line';
 import { FilmTile } from '../../shared/film-tile';
 import { InlineText } from '../../shared/inline-text';
 import { LogoGrid } from '../../shared/logo-grid';
+import { Showreel, ShowreelVideo } from '../../shared/showreel';
+
+const STOPPED_KEY = 'showreel-stopped';
+
+/** False for visitors who asked for less motion or less data, or stopped the showreel in this visit. */
+function ambientAllowed(): boolean {
+  const saveData = (navigator as { connection?: { saveData?: boolean } }).connection?.saveData;
+  if (
+    saveData ||
+    typeof matchMedia !== 'function' ||
+    matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    return false;
+  }
+  try {
+    return sessionStorage.getItem(STOPPED_KEY) !== '1';
+  } catch {
+    return true;
+  }
+}
 
 /** Home page (design system, 9). */
 @Component({
@@ -28,6 +56,7 @@ import { LogoGrid } from '../../shared/logo-grid';
     FilmTile,
     InlineText,
     LogoGrid,
+    Showreel,
   ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
@@ -44,24 +73,55 @@ export class HomePage {
 
   protected readonly sizes = IMAGE_SIZES;
 
-  private readonly sanitizer = inject(DomSanitizer);
-  /** True once the visitor has asked for the showreel; only then is the player loaded. */
+  /** The full player, with sound, opened by the button. */
   protected readonly playing = signal(false);
+  /** The muted showreel behind the name, started after a few seconds on the page. */
+  protected readonly ambient = signal(false);
 
-  /** Player address, built only from a validated id (design system 7.5). */
-  protected readonly reelUrl = computed<SafeResourceUrl | null>(() => {
+  protected readonly reel = computed<ShowreelVideo | null>(() => {
     const reel = this.page()?.reel;
-    if (!reel) {
-      return null;
-    }
-    const url =
-      reel.provider === 'vimeo' && /^\d+$/.test(reel.id)
-        ? `https://player.vimeo.com/video/${reel.id}?dnt=1&autoplay=1`
-        : reel.provider === 'youtube' && /^[\w-]{11}$/.test(reel.id)
-          ? `https://www.youtube-nocookie.com/embed/${reel.id}?autoplay=1`
-          : null;
-    return url ? this.sanitizer.bypassSecurityTrustResourceUrl(url) : null;
+    return reel
+      ? { provider: reel.provider, id: reel.id, title: reel.title, closeLabel: reel.closeLabel }
+      : null;
   });
+
+  constructor() {
+    // Browser only. The photo shows first; the showreel starts if the visitor
+    // stays on the first screen, unless they asked for less motion or less data
+    // or stopped it earlier in this visit (design system 7.5). The content
+    // arrives after the first render, so the countdown starts once it is there.
+    const browser = isPlatformBrowser(inject(PLATFORM_ID));
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    effect(() => {
+      const reel = this.page()?.reel;
+      if (!browser || !reel || timer !== undefined || !ambientAllowed()) {
+        return;
+      }
+      timer = setTimeout(
+        () => {
+          if (document.visibilityState === 'visible' && scrollY < innerHeight / 2) {
+            this.ambient.set(true);
+          }
+        },
+        (reel.ambientDelay ?? 4) * 1000,
+      );
+    });
+    inject(DestroyRef).onDestroy(() => clearTimeout(timer));
+  }
+
+  protected play(): void {
+    this.ambient.set(false);
+    this.playing.set(true);
+  }
+
+  protected stopAmbient(): void {
+    this.ambient.set(false);
+    try {
+      sessionStorage.setItem(STOPPED_KEY, '1');
+    } catch {
+      // Storage blocked: the showreel may start again on the next visit to the page.
+    }
+  }
 
   /** The name on two lines below md: first name, then the rest. */
   protected readonly nameLines = computed(() => {
