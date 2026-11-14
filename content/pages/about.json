@@ -50,6 +50,26 @@
   },
   "career": [
     {
+      "_note": "From Sara's LinkedIn (GOBELINS Paris, Apr 2024 – present, “Documentary direction teacher”). Wording to be validated by Sara.",
+      "period": {
+        "fr": "Depuis 2024",
+        "en": "Since 2024"
+      },
+      "text": {
+        "fr": "Intervenante en réalisation documentaire à GOBELINS Paris.",
+        "en": "Documentary direction teacher at GOBELINS Paris."
+      },
+      "logo": {
+        "_source": "Source: gobelins.fr (the school's logo visual), cropped to a square as on Sara's LinkedIn.",
+        "src": "images/logos/gobelins.webp",
+        "size": [192, 192],
+        "alt": {
+          "fr": "GOBELINS Paris",
+          "en": "GOBELINS Paris"
+        }
+      }
+    },
+    {
       "_note": "Wording from Sara (2026-11-14); start date from her LinkedIn (ESRA, Sep 2020 – present).",
       "period": {
         "fr": "Depuis 2020",

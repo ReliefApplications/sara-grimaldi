@@ -22,6 +22,24 @@
       "en": "A dancer in a pale draped dress, in profile with one arm raised, against a black background."
     }
   },
+  "reel": {
+    "_source": "“SHOWREEL 2026” on Sara's Vimeo channel, the video on the home page of saragrimaldi.com.",
+    "provider": "vimeo",
+    "id": "947531070",
+    "label": {
+      "fr": "Voir la bande démo",
+      "en": "Watch the showreel"
+    },
+    "title": {
+      "fr": "Bande démo 2026 de Sara Grimaldi",
+      "en": "Sara Grimaldi – Showreel 2026"
+    },
+    "duration": "1:50",
+    "closeLabel": {
+      "fr": "Fermer la vidéo",
+      "en": "Close the video"
+    }
+  },
   "statement": {
     "fr": "Je travaille l’émotion, quel que soit le format.",
     "en": "I work with emotion, whatever the format."

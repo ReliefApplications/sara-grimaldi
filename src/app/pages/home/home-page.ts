@@ -1,4 +1,5 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { FAMILIES } from '../../core/content.models';
 import { ContentService } from '../../core/content.service';
@@ -42,6 +43,25 @@ export class HomePage {
   private readonly organisations = this.content.organisations();
 
   protected readonly sizes = IMAGE_SIZES;
+
+  private readonly sanitizer = inject(DomSanitizer);
+  /** True once the visitor has asked for the showreel; only then is the player loaded. */
+  protected readonly playing = signal(false);
+
+  /** Player address, built only from a validated id (design system 7.5). */
+  protected readonly reelUrl = computed<SafeResourceUrl | null>(() => {
+    const reel = this.page()?.reel;
+    if (!reel) {
+      return null;
+    }
+    const url =
+      reel.provider === 'vimeo' && /^\d+$/.test(reel.id)
+        ? `https://player.vimeo.com/video/${reel.id}?dnt=1&autoplay=1`
+        : reel.provider === 'youtube' && /^[\w-]{11}$/.test(reel.id)
+          ? `https://www.youtube-nocookie.com/embed/${reel.id}?autoplay=1`
+          : null;
+    return url ? this.sanitizer.bypassSecurityTrustResourceUrl(url) : null;
+  });
 
   /** The name on two lines below md: first name, then the rest. */
   protected readonly nameLines = computed(() => {

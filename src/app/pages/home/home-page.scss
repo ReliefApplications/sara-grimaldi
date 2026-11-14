@@ -110,6 +110,88 @@
   }
 }
 
+// Showreel (7.5): a play button in the hero; the player covers the hero
+// only after the click.
+.reel-play {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  justify-self: start;
+  margin-bottom: var(--space-5);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-ground);
+  cursor: pointer;
+
+  // Wide screens: above the name, on the right, clear of the dancer.
+  @include lg {
+    position: absolute;
+    right: var(--margin);
+    bottom: calc(100% - var(--space-6));
+    margin: 0;
+  }
+
+  &:hover .play-circle,
+  &:focus-visible .play-circle {
+    background: var(--color-accent);
+  }
+}
+
+.play-circle {
+  position: relative;
+  flex: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--color-ground);
+
+  @include lg {
+    width: 6rem; // 96 px (7.5)
+    height: 6rem;
+  }
+
+  // The triangle, nudged right so it looks centred.
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    border-block: 0.6em solid transparent;
+    border-left: 1em solid var(--color-ink);
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+
+    @include lg {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.reel-player {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #000;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.reel-close {
+  position: absolute;
+  right: var(--margin);
+  bottom: var(--space-4);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-ground);
+  background: rgb(0 0 0 / 60%);
+  color: var(--color-ground);
+  cursor: pointer;
+}
+
 // 2. Statement (9.2). Less room below: collaborations continue its field.
 .statement-section {
   padding-block: var(--section-pad) var(--space-7);

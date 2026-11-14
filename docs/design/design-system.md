@@ -248,8 +248,8 @@ or the image is `poster`.
 7.3 **Hero image.** The poster frame of Sara's showreel video: a dancer in a
 pale dress against black, 1920 × 1080, `fit: cover`, `focus: 55% 30%` at
 every breakpoint. Its black ground merges with the band beneath it, so the
-figure, the name and the red dots are the whole first screen. No video for
-now. Caption optional. Alt text describes the frame in both languages. On
+figure, the name and the red dots are the whole first screen. The showreel
+(`reel` in home.json) plays over it on click: see 7.5. Caption optional. Alt text describes the frame in both languages. On
 screens wider than 1920 px the image is upscaled, which the dark frame
 tolerates.
 
@@ -266,7 +266,10 @@ except the hero and a film page's lead image (`loading="eager"`,
 `--color-placeholder` (ink for `poster` tiles). Every image has alt text in
 both languages.
 
-7.5 **Video.** None yet. When it comes: click-to-load facade (a `<button>`
+7.5 **Video.** Home showreel (since 2026-11-14): a ground play circle with
+the label "Voir la bande démo · 1:50" in the hero (bottom left on small
+screens, above the name on the right from lg); on click the player covers
+the hero, with a "Fermer la vidéo" button. Film pages: click-to-load facade (a `<button>`
 over the lead image with a centred 96 px ink circle and a ground triangle;
 hover: circle accent, triangle ink), provider iframe inserted only on click
 (`player.vimeo.com/video/{id}?dnt=1&autoplay=1` or

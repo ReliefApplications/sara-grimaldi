@@ -19,7 +19,31 @@
         @if (page.hero?.caption; as caption) {
           <p class="credit t-small"><app-inline-text [text]="caption" /></p>
         }
+        @if (page.reel && reelUrl() && !playing()) {
+          <button class="reel-play" type="button" (click)="playing.set(true)">
+            <span class="play-circle" aria-hidden="true"></span>
+            <span class="t-label"
+              >{{ page.reel.label }}
+              @if (page.reel.duration) {
+                · {{ page.reel.duration }}
+              }
+            </span>
+          </button>
+        }
       </div>
+      @if (page.reel && playing()) {
+        <div class="reel-player">
+          <iframe
+            [src]="reelUrl()"
+            [title]="page.reel.title"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <button class="reel-close t-nav" type="button" (click)="playing.set(false)">
+            {{ page.reel.closeLabel }}
+          </button>
+        </div>
+      }
     </section>
 
     <nav class="surface-ink" [attr.aria-label]="site.ui.familiesNavLabel">

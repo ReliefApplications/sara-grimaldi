@@ -165,11 +165,11 @@
       },
       "paragraphs": {
         "fr": [
-          "Certaines pages proposent une vidéo hébergée par [à compléter : Vimeo et/ou YouTube]. Le lecteur vidéo n’est chargé que lorsque vous cliquez sur le bouton de lecture. Avant ce clic, aucune donnée n’est transmise à ces services.",
+          "Certaines pages proposent une vidéo hébergée par Vimeo. Le lecteur vidéo n’est chargé que lorsque vous cliquez sur le bouton de lecture. Avant ce clic, aucune donnée n’est transmise à ces services.",
           "Après ce clic, le service concerné reçoit votre adresse IP et peut déposer des cookies ou utiliser des technologies similaires, selon sa propre politique."
         ],
         "en": [
-          "Some pages offer a video hosted by [to be completed: Vimeo and/or YouTube]. The video player is loaded only when you click the play button. Before that click, no data is sent to these services.",
+          "Some pages offer a video hosted by Vimeo. The video player is loaded only when you click the play button. Before that click, no data is sent to these services.",
           "After that click, the service concerned receives your IP address and may set cookies or use similar technologies, according to its own policy."
         ]
       },

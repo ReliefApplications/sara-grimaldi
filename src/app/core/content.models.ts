@@ -123,6 +123,21 @@ export interface HomePage {
   intro: Text;
   /** Image of the first screen; without it the hero is a plain dark field. */
   hero?: ImageRef;
+  /**
+   * Sara's showreel, played over the hero on click (click-to-load facade,
+   * design system 7.5): nothing is fetched from the provider before the click.
+   */
+  reel?: {
+    provider: 'vimeo' | 'youtube';
+    id: string;
+    /** Button text, e.g. "Voir la bande démo". */
+    label: Text;
+    /** Names the player for screen readers, e.g. "Bande démo 2026". */
+    title: Text;
+    /** Shown after the label, e.g. "1:50". */
+    duration?: string;
+    closeLabel: Text;
+  };
   aboutLink: Text;
   /** `films`: file names of the featured films, in display order (the first three are shown). */
   featured: { label: Text; films: string[]; allLink: Text };
