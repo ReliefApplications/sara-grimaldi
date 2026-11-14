@@ -1,60 +1,53 @@
 @use '../../styles/breakpoints' as *;
 
-.head {
-  padding-top: var(--space-7);
+// 1. Hero: dark, one screen high at most, the image cropped to fill.
+.hero {
+  --text: var(--color-ground);
+  --focus: var(--color-ground);
 
-  @include lg {
-    padding-top: var(--space-9);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 34rem;
+  height: 85vh;
+  height: 85svh;
+  max-height: 56rem;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: var(--color-ground);
+}
+
+.hero-image,
+.scrim {
+  position: absolute;
+  inset: 0;
+}
+
+.scrim {
+  background:
+    linear-gradient(to top, rgb(0 0 0 / 85%) 0%, rgb(0 0 0 / 45%) 40%, rgb(0 0 0 / 0%) 75%),
+    linear-gradient(to bottom, rgb(0 0 0 / 60%) 0, rgb(0 0 0 / 0%) 180px);
+}
+
+.hero-block {
+  position: relative;
+  padding-bottom: var(--space-7);
+
+  > * + * {
+    margin-top: var(--space-5);
   }
 }
 
-.opening {
-  margin-top: var(--space-5);
-
-  @include lg {
-    grid-column: 1 / 12;
-  }
+.positioning {
+  max-width: 34rem;
 }
 
-.intro {
-  row-gap: var(--space-6);
-  margin-top: var(--space-7);
-
-  @include lg {
-    margin-top: var(--space-8);
-  }
-}
-
-.lead-image {
-  aspect-ratio: 3 / 4;
-}
-
-@include md {
-  .lead-image {
-    grid-column: 1 / 5;
-  }
-
-  .text {
-    grid-column: 5 / 9;
-
-    &.alone {
-      grid-column: 1 / -1;
-    }
-  }
-}
-
-@include lg {
-  .lead-image {
-    grid-column: 1 / 6;
-  }
-
-  .text {
-    grid-column: 7 / 13;
-  }
-}
-
-.practical {
-  margin-top: var(--space-6);
+.hero-button,
+.repeat-button,
+.contact-button {
+  width: fit-content;
+  max-width: 100%;
 }
 
 .block {
@@ -65,68 +58,72 @@
   margin-bottom: var(--space-6);
 }
 
-.head .section-label {
-  margin-bottom: 0;
-}
-
-// Services: rows on small screens, two columns from md.
-.services {
+// 2. Offers
+.offers {
   display: grid;
-
-  @include md {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: var(--gutter);
-  }
-
-  li {
-    padding-block: var(--space-5);
-    border-top: var(--rule-minor);
-
-    > * + * {
-      margin-top: var(--space-2);
-    }
-  }
-}
-
-.gallery {
-  display: grid;
-  gap: var(--space-6) var(--gutter);
-  margin-top: var(--space-8);
+  gap: var(--space-7) var(--gutter);
 
   @include md {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: start;
   }
 
-  .frame {
-    aspect-ratio: 4 / 5;
-  }
-
-  figcaption {
-    margin-top: var(--space-2);
+  li > * + * {
+    margin-top: var(--space-3);
   }
 }
 
-.case {
-  margin-top: var(--section-pad);
+.offer-image {
+  aspect-ratio: 4 / 5;
+  margin-bottom: var(--space-4);
 }
 
-.case-title {
-  max-width: 22ch;
+// 3. Selected work
+.project {
+  padding-block: var(--space-7);
+  border-top: var(--rule);
+
+  > * + * {
+    margin-top: var(--space-3);
+  }
 }
 
-.case-meta {
-  margin-block: var(--space-5) var(--space-6);
+.project-image {
+  aspect-ratio: 16 / 9;
+  margin-bottom: var(--space-5);
 }
 
-.actions {
-  display: grid;
-  gap: var(--space-4);
-  margin-top: var(--section-pad);
+.project-title {
+  max-width: 24ch;
+}
+
+.credits {
+  margin-bottom: var(--space-5);
+}
+
+.film-link {
+  margin-top: var(--space-5);
+}
+
+.repeat-button {
+  margin-top: var(--space-4);
+}
+
+// 4. Trusted by: one row of six from lg (three by two at md).
+.trusted-grid {
+  @include md {
+    --columns: 3;
+  }
+
+  @include lg {
+    --columns: 6;
+  }
+}
+
+// 6. Contact
+.contact {
   padding-bottom: var(--section-pad);
 
-  @include md {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--gutter);
+  > * + * {
+    margin-top: var(--space-5);
   }
 }

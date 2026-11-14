@@ -1,67 +1,72 @@
 @if (page(); as page) {
-  <!-- 1. Head: the name as a label, then the promise. -->
-  <div class="container grid head">
-    <h1 class="section-label t-label" appPageHeading>{{ page.heading }}</h1>
-    <p class="opening t-display">{{ page.opening }}</p>
-  </div>
-
-  <!-- 2. Lead image and what the collective is -->
-  <div class="container grid intro">
-    @if (page.image; as image) {
-      <div class="lead-image">
-        <app-content-image [image]="image" [sizes]="imageSizes" [priority]="true" />
-      </div>
-    }
-    <div class="prose text" [class.alone]="!page.image">
-      @for (paragraph of page.intro; track $index) {
-        <p [class.t-lead]="$first"><app-inline-text [text]="paragraph" /></p>
-      }
-      @if (page.practical?.length) {
-        <p class="t-label t-muted practical"><app-dot-line [items]="page.practical!" /></p>
-      }
+  <!-- 1. Hero: one strong image, the name, the positioning line, the button. -->
+  <section class="hero">
+    <app-content-image
+      class="hero-image"
+      [image]="page.hero"
+      [sizes]="sizes.bleed"
+      [priority]="true"
+    />
+    <div class="scrim" aria-hidden="true"></div>
+    <div class="container hero-block">
+      <h1 class="t-giant" appPageHeading>{{ page.heading }}</h1>
+      <p class="positioning t-lead">{{ page.positioning }}</p>
+      <a appBlockButton class="hero-button" href="#contact">{{ page.workWithUs }}</a>
     </div>
-  </div>
+  </section>
 
-  <!-- 3. What we do -->
-  <section class="container block" aria-labelledby="services-label">
-    <h2 class="section-label t-label" id="services-label">{{ page.servicesHeading }}</h2>
-    <ul class="services">
-      @for (service of page.services; track $index) {
+  <!-- 2. The three offers: one line and one image each. -->
+  <section class="container block" aria-labelledby="offers-label">
+    <h2 class="section-label t-label" id="offers-label">{{ page.offersHeading }}</h2>
+    <ul class="offers">
+      @for (offer of page.offers; track $index) {
         <li>
-          <h3 class="t-title">{{ service.title }}</h3>
-          <p class="t-body">{{ service.text }}</p>
+          <div class="offer-image">
+            <app-content-image [image]="offer.image" [sizes]="offerSizes" />
+          </div>
+          <h3 class="t-title">{{ offer.title }}</h3>
+          <p class="t-body">{{ offer.text }}</p>
         </li>
       }
     </ul>
   </section>
 
-  <!-- 4. Work samples -->
-  @if (page.gallery?.length) {
-    <div class="container gallery">
-      @for (image of page.gallery; track image.src) {
-        <figure>
-          <div class="frame"><app-content-image [image]="image" [sizes]="gallerySizes" /></div>
-          @if (image.caption) {
-            <figcaption class="t-small t-muted">{{ image.caption }}</figcaption>
-          }
-        </figure>
-      }
-    </div>
-  }
-
-  <!-- 5. A recent project, on ink -->
-  <section class="section surface-ink case" aria-labelledby="case-label">
-    <div class="container">
-      <p class="section-label t-label" id="case-label">{{ page.case.label }}</p>
-      <h2 class="t-display case-title">{{ page.case.title }}</h2>
-      @if (page.case.meta?.length) {
-        <p class="t-label t-muted case-meta"><app-dot-line [items]="page.case.meta!" /></p>
-      }
-      <app-data-list [rows]="caseRows()" />
-    </div>
+  <!-- 3. Selected work, strongest first; the same layout for each. -->
+  <section class="container block" aria-labelledby="work-label">
+    <h2 class="section-label t-label" id="work-label">{{ page.workHeading }}</h2>
+    @for (project of work(); track $index) {
+      <article class="project">
+        @if (project.image; as image) {
+          <div class="project-image">
+            <app-content-image [image]="image" [sizes]="sizes.full" />
+          </div>
+        }
+        <p class="t-label t-muted category">{{ project.category }}</p>
+        <h3 class="t-display project-title" [attr.lang]="project.titleLang">
+          <app-inline-text [text]="project.title" />
+        </h3>
+        <p class="t-label t-muted"><app-dot-line [items]="project.meta" /></p>
+        <p class="t-small credits"><app-inline-text [text]="project.credits" /></p>
+        <app-data-list [rows]="project.rows" />
+        @if (project.film) {
+          <p class="film-link">
+            <a appArrowLink [routerLink]="route.link('films', project.film)">{{
+              page.workLabels.film
+            }}</a>
+          </p>
+        }
+      </article>
+    }
+    <a appBlockButton class="repeat-button" href="#contact">{{ page.workWithUs }}</a>
   </section>
 
-  <!-- 6. The team -->
+  <!-- 4. Trusted by: one row of logos. -->
+  <section class="container block" aria-labelledby="trusted-label">
+    <h2 class="section-label t-label" id="trusted-label">{{ page.trustedHeading }}</h2>
+    <app-logo-grid class="trusted-grid" [names]="page.trusted" />
+  </section>
+
+  <!-- 5. Team -->
   @if (page.team) {
     <section class="container block" aria-labelledby="team-label">
       <h2 class="section-label t-label" id="team-label">{{ page.teamHeading }}</h2>
@@ -69,15 +74,18 @@
     </section>
   }
 
-  <!-- 7. How we work -->
-  <section class="container block" aria-labelledby="method-label">
-    <h2 class="section-label t-label" id="method-label">{{ page.methodHeading }}</h2>
-    <app-data-list [rows]="method()" />
-  </section>
-
-  <!-- 8. Where next -->
-  <div class="container actions">
-    <a appBlockButton [routerLink]="route.link('contact')">{{ page.contactLink }}</a>
-    <a appBlockButton [routerLink]="route.link('films')">{{ page.filmsLink }}</a>
-  </div>
+  <!-- 6. Contact: one person, one address. The footer below repeats the invitation. -->
+  @if (site(); as site) {
+    <section class="container block contact" id="contact" aria-labelledby="contact-label">
+      <h2 class="section-label t-label" id="contact-label">{{ page.contactHeading }}</h2>
+      <p class="t-lead">
+        {{ page.contactName }} ·
+        <a class="text-link" [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a>
+      </p>
+      <a appBlockButton class="contact-button" [href]="'mailto:' + site.contact.email">{{
+        page.contactButton
+      }}</a>
+      <p class="t-small t-muted">{{ page.contactLine }}</p>
+    </section>
+  }
 }

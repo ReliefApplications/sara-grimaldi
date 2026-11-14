@@ -183,33 +183,51 @@ export interface AboutPage {
   contactLink: Text;
 }
 
-/** content/pages/visual-stories.json: Sara's collective of women directors and photographers. */
+/**
+ * content/pages/visual-stories.json: Sara's collective of women directors and
+ * photographers. Order and copy from Sara (2026-11-14): hero, offers, selected
+ * work, trusted by, team, contact. Very little text, one repeated button.
+ */
 export interface VisualStoriesPage {
   seo: Seo;
   heading: Text;
-  opening: Text;
-  intro: Paragraphs;
-  image?: ImageRef;
-  servicesHeading: Text;
-  services: { title: Text; text: Text }[];
-  /** Work samples; each image may carry a caption. */
-  gallery?: ImageRef[];
-  /** One recent project, told as a short case study. */
-  case: {
-    label: Text;
-    title: Text;
-    meta?: Localized<string[]>;
-    rows: { label: Text; text: Text }[];
-  };
+  positioning: Text;
+  /** Full-width image of the first screen (a reel can replace it later). */
+  hero: ImageRef;
+  /** The one button, repeated; it leads to the contact block. */
+  workWithUs: Text;
+  offersHeading: Text;
+  /** Three offers: one line and one image each. */
+  offers: { title: Text; text: Text; image: ImageRef }[];
+  workHeading: Text;
+  workLabels: Record<'challenge' | 'done' | 'result' | 'film', Text>;
+  /** Strongest first; `"published": false` keeps a project off the site. */
+  work: VisualStoriesProject[];
+  trustedHeading: Text;
+  /** Organisation names, as in content/organisations, shown as a logo row. */
+  trusted: string[];
   teamHeading: Text;
-  /** Who is in the collective; a "[à compléter …]" marker until Sara supplies it. */
   team?: Text;
-  methodHeading: Text;
-  method: { label: Text; text: Text }[];
-  /** Short practical facts: languages, base. */
-  practical?: Localized<string[]>;
-  contactLink: Text;
-  filmsLink: Text;
+  contactHeading: Text;
+  contactName: string;
+  contactButton: Text;
+  contactLine: Text;
+}
+
+export interface VisualStoriesProject {
+  category: Text;
+  title: string;
+  /** Language of the title, for screen readers, e.g. "it". */
+  titleLang: string;
+  meta: Localized<string[]>;
+  credits: Text;
+  challenge: Text;
+  done: Text;
+  result: Text;
+  image?: ImageRef;
+  /** File name of a published film, linked from the project. */
+  film?: string;
+  published?: boolean;
 }
 
 export interface ContactPage {

@@ -1,249 +1,309 @@
 {
-  "_note": "Draft built from the Visual Stories page of saragrimaldi.com. French is a draft translation; all wording, the team and the images are to be validated by Sara.",
+  "_note": "Copy and order from Sara's document “Visual Stories page copy and order” (2026-11-14). Every [à compléter …] is still to be filled in by Sara; projects with \"published\": false stay off the site.",
   "seo": {
     "title": {
       "fr": "Visual Stories – Sara Grimaldi",
       "en": "Visual Stories – Sara Grimaldi"
     },
     "description": {
-      "fr": "Visual Stories : une équipe de réalisatrices et de photographes réunie par Sara Grimaldi. Films documentaires et photographie pour les causes qui font avancer les choses.",
-      "en": "Visual Stories: a team of women directors and photographers brought together by Sara Grimaldi. Documentary film and photography for the causes that move things forward."
+      "fr": "Visual Stories : documentaire, films à impact, campagnes de marque. De vraies histoires, une exigence de cinéma. Une équipe de tournage 100 % féminine, basée à Paris.",
+      "en": "Visual Stories: documentary, impact and brand films. Real stories, cinematic craft. An all-women film crew based in Paris."
     }
   },
   "heading": {
     "fr": "Visual Stories",
     "en": "Visual Stories"
   },
-  "opening": {
-    "fr": "Films et photographie documentaires pour les causes qui font avancer les choses.",
-    "en": "Documentary photography and film for the causes that move things forward."
+  "positioning": {
+    "fr": "Documentaire, films à impact, campagnes de marque. De vraies histoires, une exigence de cinéma.",
+    "en": "Documentary, impact and brand films. Real stories, cinematic craft."
   },
-  "intro": {
-    "fr": [
-      "Une équipe de réalisatrices et de photographes qui racontent des histoires vraies avec rigueur, attention et une exigence de cinéma.",
-      "Je réalise et je filme des documentaires et des histoires à impact, avec une équipe de femmes de confiance derrière la caméra. Ensemble, nous visons les standards du cinéma et de la photographie : des images fortes, un vrai accès au terrain et le respect des personnes que nous filmons.",
-      "Nous n’illustrons pas les causes, nous les racontons. Notre approche repose sur la confiance, le temps passé sur le terrain et un point de vue clair. Le résultat : un travail dont le public se souvient, au service de votre mission."
-    ],
-    "en": [
-      "A team of women directors and photographers, telling real stories with rigor, care and cinematic quality.",
-      "I direct and shoot documentary and impact stories, working with a trusted team of women behind the camera. Together we aim for the standards of cinema and photography: strong images, real access, and respect for the people we film.",
-      "We don’t illustrate causes, we tell them. Our approach is built on trust, time spent on the ground, and a clear point of view. The result is work that audiences remember and that supports your mission."
-    ]
-  },
-  "image": {
+  "hero": {
     "_source": "Source: the Visual Stories page of saragrimaldi.com. Placeholder: Sara can replace or veto it.",
     "src": "images/visual-stories/tournage.webp",
-    "width": 1152,
-    "height": 1536,
-    "focus": "50% 40%",
+    "width": 1920,
+    "height": 2560,
+    "focus": "50% 45%",
     "alt": {
       "fr": "Tournage d’une interview dans un salon ancien : une caméra au premier plan, son écran de contrôle montre la femme interviewée assise dans un fauteuil en cuir.",
       "en": "An interview being filmed in an old drawing room: a camera in the foreground, its monitor showing the woman being interviewed in a leather armchair."
-    }
+    },
+    "widths": [480, 768, 1152, 1920]
   },
-  "servicesHeading": {
+  "workWithUs": {
+    "fr": "Travaillons ensemble",
+    "en": "Work with us"
+  },
+  "offersHeading": {
     "fr": "Ce que nous faisons",
     "en": "What we do"
   },
-  "services": [
+  "offers": [
     {
       "title": {
-        "fr": "Films documentaires",
-        "en": "Documentary films"
+        "fr": "Documentaire",
+        "en": "Documentary"
       },
       "text": {
-        "fr": "Courts et longs métrages pour des campagnes, du plaidoyer, des levées de fonds, des festivals et la télévision.",
-        "en": "Short and feature-length films for campaigns, advocacy, fundraising, festivals and broadcast."
+        "fr": "Des films avec un point de vue.",
+        "en": "Films with a point of view."
+      },
+      "image": {
+        "_source": "Source: the Visual Stories page of saragrimaldi.com.",
+        "src": "images/visual-stories/interview.webp",
+        "width": 1152,
+        "height": 648,
+        "focus": "60% 40%",
+        "alt": {
+          "fr": "Une femme blonde en chemise fleurie, assise dans un salon, regarde hors champ pendant une interview.",
+          "en": "A blonde woman in a floral shirt, seated in a drawing room, looks off camera during an interview."
+        },
+        "caption": {
+          "fr": "Interview documentaire",
+          "en": "Documentary interview"
+        }
       }
     },
     {
       "title": {
-        "fr": "Photographie et reportage",
-        "en": "Photography and reportage"
+        "fr": "Impact",
+        "en": "Impact"
       },
       "text": {
-        "fr": "Séries éditoriales, portraits et identités visuelles pour des rapports, des expositions, la presse et la communication.",
-        "en": "Editorial series, portraits and visual identities for reports, exhibitions, press and communication."
+        "fr": "Des images au service d’une cause.",
+        "en": "Images that support a cause."
+      },
+      "image": {
+        "_source": "Second still of Il bosco incantato (see films/il-bosco-incantato.json).",
+        "src": "images/films/il-bosco-incantato-2.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": {
+          "fr": "Un arbre aux branches nues vu d’en bas, sur fond de ciel bleu.",
+          "en": "A bare-branched tree seen from below against a blue sky."
+        }
       }
     },
     {
       "title": {
-        "fr": "Film et photo, ensemble",
-        "en": "Film and photo, together"
+        "fr": "Marque et récit",
+        "en": "Brand and narrative"
       },
       "text": {
-        "fr": "Une équipe, une vision. Nous tournons l’image fixe et l’image animée sur le même projet : un univers visuel cohérent et un seul interlocuteur au lieu de deux prestataires.",
-        "en": "One team, one vision. We shoot stills and motion in the same project, so you get a coherent visual world and one point of contact instead of two suppliers."
-      }
-    },
-    {
-      "title": {
-        "fr": "Récits de marques et d’institutions",
-        "en": "Brand and institutional stories"
+        "fr": "Des histoires pour les marques qui ont quelque chose à dire.",
+        "en": "Stories for brands with something to say."
       },
-      "text": {
-        "fr": "Films et campagnes d’images pour des marques et des institutions engagées pour un impact social, culturel ou environnemental.",
-        "en": "Films and image campaigns for brands and institutions committed to social, cultural or environmental impact."
+      "image": {
+        "_source": "Source: the Visual Stories page of saragrimaldi.com.",
+        "src": "images/visual-stories/portrait-consule.webp",
+        "width": 1152,
+        "height": 1728,
+        "focus": "50% 30%",
+        "alt": {
+          "fr": "Portrait officiel d’une femme en tailleur sombre, bras croisés, devant les drapeaux italien et européen.",
+          "en": "Official portrait of a woman in a dark suit, arms crossed, in front of the Italian and European flags."
+        },
+        "caption": {
+          "fr": "Portrait officiel de Palma D’Ambrosio, consule d’Italie à Londres",
+          "en": "Official portrait of Palma D’Ambrosio, Italian Consul in London"
+        }
       }
     }
   ],
-  "gallery": [
-    {
-      "_source": "Source: the Visual Stories page of saragrimaldi.com.",
-      "src": "images/visual-stories/portrait-consule.webp",
-      "width": 1152,
-      "height": 1728,
-      "focus": "50% 30%",
-      "alt": {
-        "fr": "Portrait officiel d’une femme en tailleur sombre, bras croisés, devant les drapeaux italien et européen.",
-        "en": "Official portrait of a woman in a dark suit, arms crossed, in front of the Italian and European flags."
-      },
-      "caption": {
-        "fr": "Portrait officiel de Palma D’Ambrosio, consule d’Italie à Londres",
-        "en": "Official portrait of Palma D’Ambrosio, Italian Consul in London"
-      }
-    },
-    {
-      "_source": "Source: the Visual Stories page of saragrimaldi.com.",
-      "src": "images/visual-stories/interview.webp",
-      "width": 1152,
-      "height": 648,
-      "focus": "60% 40%",
-      "alt": {
-        "fr": "Une femme blonde en chemise fleurie, assise dans un salon, regarde hors champ pendant une interview.",
-        "en": "A blonde woman in a floral shirt, seated in a drawing room, looks off camera during an interview."
-      },
-      "caption": {
-        "fr": "Interview documentaire",
-        "en": "Documentary interview"
-      }
-    },
-    {
-      "_source": "Source: the Visual Stories page of saragrimaldi.com.",
-      "src": "images/visual-stories/camera.webp",
-      "width": 1152,
-      "height": 1534,
-      "focus": "50% 35%",
-      "alt": {
-        "fr": "Sara Grimaldi sourit, une caméra sur l’épaule, en extérieur sous le soleil.",
-        "en": "Sara Grimaldi smiling with a camera on her shoulder, outdoors in the sun."
-      },
-      "caption": {
-        "fr": "Derrière la caméra",
-        "en": "Behind the camera"
-      }
-    }
-  ],
-  "case": {
-    "label": {
-      "fr": "Projet récent",
-      "en": "Recent project"
-    },
-    "title": {
-      "fr": "Des rugbymen du Pacifique accompagnés pour vivre en France",
-      "en": "Pacific Island Rugby Players get help to live in France"
-    },
-    "meta": {
-      "fr": ["TP+", "Racing 92", "Tourné en mai 2026"],
-      "en": ["TP+", "Racing 92", "Shot May 2026"]
-    },
-    "rows": [
-      {
-        "label": {
-          "fr": "L’enjeu",
-          "en": "The challenge"
-        },
-        "text": {
-          "fr": "De nombreux joueurs du Pacifique, en grande partie d’origine tongienne, viennent en France pour jouer au rugby professionnel. Il s’agissait de raconter cette expérience et la façon dont ils sont accompagnés pour construire une vie loin de chez eux.",
-          "en": "Many Pacific players, a large number of them of Tongan origin, come to France to play professional rugby. The story was to capture what that experience is like and how they are supported in building a life far from home."
-        }
-      },
-      {
-        "label": {
-          "fr": "Ce que nous avons fait",
-          "en": "What we did"
-        },
-        "text": {
-          "fr": "Une équipe entièrement féminine a tourné le sujet au Racing 92 en mai 2026. Diffusé sur TP+.",
-          "en": "An all-women crew shot the story at Racing 92 in May 2026. Broadcast on TP+."
-        }
-      },
-      {
-        "label": {
-          "fr": "Équipe",
-          "en": "Crew"
-        },
-        "text": {
-          "fr": "Image : Sara Grimaldi · Journaliste et réalisatrice : Soana Aholelei · Productrice : Ngaire Fuata",
-          "en": "Cinematography: Sara Grimaldi · Reporter/Director: Soana Aholelei · Producer: Ngaire Fuata"
-        }
-      }
-    ]
+  "workHeading": {
+    "fr": "Projets choisis",
+    "en": "Selected work"
   },
+  "workLabels": {
+    "challenge": {
+      "fr": "Le défi",
+      "en": "The challenge"
+    },
+    "done": {
+      "fr": "Ce que nous avons fait",
+      "en": "What we did"
+    },
+    "result": {
+      "fr": "Le résultat",
+      "en": "The result"
+    },
+    "film": {
+      "fr": "Voir la fiche du film",
+      "en": "See the film page"
+    }
+  },
+  "work": [
+    {
+      "category": {
+        "fr": "Impact",
+        "en": "Impact"
+      },
+      "title": "Immunity",
+      "titleLang": "en",
+      "meta": {
+        "fr": ["Association IRIS", "Établissement français du sang", "2020"],
+        "en": ["Association IRIS", "Établissement français du sang", "2020"]
+      },
+      "credits": {
+        "fr": "Réalisation : Sara Grimaldi",
+        "en": "Direction: Sara Grimaldi"
+      },
+      "challenge": {
+        "fr": "Sensibiliser au don de plasma et au besoin de donneurs.",
+        "en": "Raise awareness of plasma donation and the need for donors."
+      },
+      "done": {
+        "fr": "Un documentaire de 52 minutes sur des adultes atteints d’un déficit immunitaire primitif et sur leur résilience.",
+        "en": "A 52-minute documentary about adults living with primary immunodeficiency, and their resilience."
+      },
+      "result": {
+        "fr": "Une trentaine de projections en partenariat avec l’Établissement français du sang, et une mention d’honneur au festival Sport Movies & TV.",
+        "en": "About 30 screenings in partnership with the Établissement français du sang, and an honourable mention at the Sport Movies & TV festival."
+      },
+      "image": {
+        "_source": "Source: poster frame of “TRAILER IMMUNITY” on Sara's Vimeo channel (video 411476434). Placeholder: Sara can replace or veto it. Cropped to leave out the lettering.",
+        "src": "images/films/immunity.webp",
+        "width": 1474,
+        "height": 1080,
+        "widths": [480, 768, 1152, 1474],
+        "focus": "30% 10%",
+        "alt": {
+          "fr": "Un cycliste casqué, vu de dos, arrêté au bord d’un canal sous un ciel nuageux.",
+          "en": "A cyclist in a helmet, seen from behind, stopped beside a canal under a cloudy sky."
+        }
+      },
+      "film": "immunity"
+    },
+    {
+      "category": {
+        "fr": "Documentaire",
+        "en": "Documentary"
+      },
+      "title": "Il bosco incantato",
+      "titleLang": "it",
+      "meta": {
+        "fr": ["Leroy Merlin", "2013"],
+        "en": ["Leroy Merlin", "2013"]
+      },
+      "credits": {
+        "fr": "Réalisation : Sara Grimaldi",
+        "en": "Direction: Sara Grimaldi"
+      },
+      "challenge": {
+        "fr": "[à compléter : ce que Leroy Merlin voulait atteindre, en une phrase]",
+        "en": "[to be completed: what Leroy Merlin wanted to achieve, in one sentence]"
+      },
+      "done": {
+        "fr": "Un documentaire tourné en prison en Italie : autour d’un atelier de peinture, des détenues retrouvent un lien avec la nature.",
+        "en": "A documentary shot in a prison in Italy: through a painting workshop, women inmates rediscover a connection with nature."
+      },
+      "result": {
+        "fr": "Présenté en événement spécial au festival Cinemambiente de Turin en 2013, puis sélectionné dans quatre festivals.",
+        "en": "Presented as a special event at the Cinemambiente festival in Turin in 2013, then selected at four festivals."
+      },
+      "image": {
+        "_source": "Source: poster frame of “THE ENCHANTED FOREST (IL BOSCO INCANTATO)” on Sara's Vimeo channel (video 79867294). Placeholder: Sara can replace or veto it.",
+        "src": "images/films/il-bosco-incantato.webp",
+        "width": 1920,
+        "height": 1080,
+        "widths": [480, 768, 1152, 1920],
+        "alt": {
+          "fr": "Un bois de peupliers traversé par la lumière du soleil.",
+          "en": "A poplar wood with sunlight coming through the trees."
+        }
+      },
+      "film": "il-bosco-incantato"
+    },
+    {
+      "published": false,
+      "_note": "Hidden until Sara finds the video and fills in the brackets.",
+      "category": {
+        "fr": "Marque et récit",
+        "en": "Brand and narrative"
+      },
+      "title": "[à compléter : titre du film]",
+      "titleLang": "fr",
+      "meta": {
+        "fr": ["Adobe MAX avec Woodkid", "[à compléter : année]"],
+        "en": ["Adobe MAX with Woodkid", "[to be completed: year]"]
+      },
+      "credits": {
+        "fr": "[à compléter : rôle de Sara, autres crédits]",
+        "en": "[to be completed: Sara's role, other credits]"
+      },
+      "challenge": {
+        "fr": "[à compléter : une phrase]",
+        "en": "[to be completed: one sentence]"
+      },
+      "done": {
+        "fr": "[à compléter : une phrase]",
+        "en": "[to be completed: one sentence]"
+      },
+      "result": {
+        "fr": "[à compléter : une phrase]",
+        "en": "[to be completed: one sentence]"
+      }
+    },
+    {
+      "category": {
+        "fr": "Reportage",
+        "en": "Reportage"
+      },
+      "title": "Pacific Island Rugby Players get help to live in France",
+      "titleLang": "en",
+      "meta": {
+        "fr": ["TP+", "Racing 92", "Tourné en mai 2026"],
+        "en": ["TP+", "Racing 92", "Shot May 2026"]
+      },
+      "credits": {
+        "fr": "Image : Sara Grimaldi · Journaliste et réalisatrice : Soana Aholelei · Productrice : Ngaire Fuata",
+        "en": "Cinematography: Sara Grimaldi · Reporter/Director: Soana Aholelei · Producer: Ngaire Fuata"
+      },
+      "challenge": {
+        "fr": "De nombreux joueurs du Pacifique, souvent d’origine tongienne, viennent en France pour jouer au rugby professionnel. Il s’agissait de montrer ce que cela représente et comment ils sont accompagnés pour se construire une vie loin de chez eux.",
+        "en": "Many Pacific players, a large number of them of Tongan origin, come to France to play professional rugby. The story was to capture what that experience is like and how they are supported in building a life far from home."
+      },
+      "done": {
+        "fr": "Une équipe de tournage entièrement féminine a tourné le reportage au Racing 92.",
+        "en": "An all-women crew shot the story at Racing 92."
+      },
+      "result": {
+        "fr": "Diffusé sur TP+.",
+        "en": "Broadcast on TP+."
+      }
+    }
+  ],
+  "trustedHeading": {
+    "fr": "Ils nous font confiance",
+    "en": "Trusted by"
+  },
+  "trusted": [
+    "Istituto Italiano di Cultura",
+    "Deutsche Welle",
+    "VPRO",
+    "france.tv",
+    "Leroy Merlin",
+    "Adobe"
+  ],
   "teamHeading": {
-    "fr": "L’équipe",
-    "en": "The team"
+    "fr": "Les personnes derrière la caméra",
+    "en": "The people behind the camera"
   },
   "team": {
-    "fr": "[à compléter : les membres du collectif, leur métier et une photo]",
-    "en": "[to be completed: the members of the collective, their craft and a photo]"
+    "fr": "[à compléter : cinq ou six femmes qui ont accepté d’être nommées : portrait, nom, rôle]",
+    "en": "[to be completed: five or six women who agreed to be named: portrait, name, role]"
   },
-  "methodHeading": {
-    "fr": "Notre méthode",
-    "en": "How we work"
+  "contactHeading": {
+    "fr": "Contact",
+    "en": "Contact"
   },
-  "method": [
-    {
-      "label": {
-        "fr": "Écouter",
-        "en": "Listen"
-      },
-      "text": {
-        "fr": "Nous partons de vos objectifs, de votre public et des personnes concernées.",
-        "en": "We start with your goals, your audience and the people involved."
-      }
-    },
-    {
-      "label": {
-        "fr": "Construire",
-        "en": "Develop"
-      },
-      "text": {
-        "fr": "Nous proposons une approche claire, un format et un calendrier.",
-        "en": "We propose a clear approach, a format and a schedule."
-      }
-    },
-    {
-      "label": {
-        "fr": "Tourner",
-        "en": "Shoot"
-      },
-      "text": {
-        "fr": "Une petite équipe discrète, attentive aux personnes que nous filmons.",
-        "en": "Small, discreet team, with attention to the people we film."
-      }
-    },
-    {
-      "label": {
-        "fr": "Livrer",
-        "en": "Deliver"
-      },
-      "text": {
-        "fr": "Les films et les images dans les formats dont vous avez besoin, prêts à être partagés.",
-        "en": "Final films and images in the formats you need, ready to share."
-      }
-    }
-  ],
-  "practical": {
-    "fr": ["Français, anglais, italien", "Basée à Paris, disponible partout"],
-    "en": ["French, English, Italian", "Based in Paris, available worldwide"]
+  "contactName": "Sara Grimaldi",
+  "contactButton": {
+    "fr": "Écrire",
+    "en": "Write to us"
   },
-  "contactLink": {
-    "fr": "Travailler avec nous",
-    "en": "Work with us"
-  },
-  "filmsLink": {
-    "fr": "Voir les films",
-    "en": "View the films"
+  "contactLine": {
+    "fr": "Équipe de tournage 100 % féminine. Basée à Paris, disponible partout.",
+    "en": "All-women film crew. Based in Paris, available worldwide."
   }
 }
