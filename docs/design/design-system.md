@@ -1,6 +1,6 @@
 # Design system: Sara Grimaldi website
 
-Version 2.2, 2026-11-14. Owner: designer. Replaces every 1.x version: the
+Version 2.3, 2026-11-14. Owner: designer. Replaces every 1.x version: the
 look is new, the structure (routes, content, legal, accessibility) is kept.
 This file is the single source of truth for the build. If something is not
 specified here, ask the designer rather than guessing.
@@ -113,7 +113,7 @@ run from a 360 px to a 1280 px viewport and are fixed outside it.
 |---|---|---|---|---|---|---|
 | `mega` | Wide 900, uppercase | see 9.1 | see 9.1 | viewport-fitted | 0.86 | -0.01em |
 | `giant` | Wide 900, uppercase | 34 px | 120 px | `clamp(2.125rem, 0.022rem + 9.348vw, 7.5rem)` | 0.92 | -0.01em |
-| `display` | Wide 900, uppercase | 30 px | 72 px | `clamp(1.875rem, 0.848rem + 4.565vw, 4.5rem)` | 0.98 | -0.005em |
+| `display` | Wide 900, uppercase | 26 px | 72 px | `clamp(1.625rem, 0.5rem + 5vw, 4.5rem)` | 0.98 | -0.005em |
 | `title` | Wide 800, uppercase | 19 px | 32 px | `clamp(1.1875rem, 0.87rem + 1.413vw, 2rem)` | 1.08 | 0 |
 | `band` | see 8.5, uppercase | 26 px | 46 px | `clamp(1.625rem, 1.136rem + 2.174vw, 2.875rem)` | 1 | 0 |
 | `label` | Wide 800, uppercase | 12 px | 14 px | `0.75rem`, `0.875rem` from lg | 1.3 | 0.03em |
@@ -287,8 +287,10 @@ Two variants.
 
 **Standard (every page except home).** Surface ground. Height 64 px base,
 72 px md and lg. 2 px ink rule under it. Not sticky.
-- Left: wordmark "Sara Grimaldi", Wide 900 uppercase, 16 px base, 20 px md
-  and lg, ink, link to home, accessible name "Sara Grimaldi – Accueil" /
+- Left: wordmark "Sara Grimaldi", Wide 900 uppercase, a fixed 14 px at base
+  and 20 px at md and lg (never scaled to the space left), ink, at least
+  12 px clear of the language switcher. Below a 340 px viewport it breaks
+  into two lines, "Sara" / "Grimaldi". Link to home, accessible name "Sara Grimaldi – Accueil" /
   "– Home".
 - Right, lg: nav links in `nav` style, 28 px apart: Films, Presse, À propos,
   Contact (EN Films, Press, About, Contact); then 28 px; then the language
@@ -443,6 +445,8 @@ only, always in its detailed form; the home page uses the logo grid (8.16).
   gap, row padding 16 px vertical).
 - Columns: 1 at base, 2 at md (48 px column gap), 3 at lg (48 px gap). Rows
   fill column by column.
+- From md, the role sits beside the name only when both fit on one line;
+  otherwise under it, as at base.
 - Surface ink. Names are not links.
 - A compact form (home) omits the roles; the detailed form (About) shows
   them.
@@ -544,7 +548,7 @@ versions. Rules that make them sit together:
 
   | Size | Box (max width × max height) base | md | lg | Used in |
   |---|---|---|---|---|
-  | grid | 104 × 40 px | 132 × 48 px | 156 × 56 px | Logo grid (8.16) |
+  | grid | 112 × 36 px | 132 × 48 px | 156 × 56 px | Logo grid (8.16) |
   | band | 180 × 30 px | 220 × 36 px | 260 × 42 px | `press` band (8.5) |
   | row | 180 × 30 px | 200 × 34 px | 220 × 36 px | Press rows (8.10) |
 
@@ -579,8 +583,15 @@ size) or one fallback name, centred both ways.
 
 | | Base | md | lg |
 |---|---|---|---|
-| Columns | 3 | 5 | 5 |
-| Cell height | 88 px | 112 px | 136 px |
+| Columns | 2 | 5 | 5 |
+| Cell height | 72 px | 112 px | 136 px |
+
+- A logo or name never comes closer than 16 px to a cell edge; the box of
+  8.15 shrinks if needed to keep that margin.
+- Order: organisations with a logo first, then those shown as names, so the
+  names form the end of the grid and never sit among the logos.
+- Thin or pale marks that read too faintly after the grayscale treatment get
+  `scale` 1.3; heavy black marks stay at 1 or go down to 0.85.
 
 - 1 px ink rules between cells (inner lines only, none around the outside);
   2 px ink rule above and below the grid.
@@ -667,8 +678,10 @@ field), `--section-pad` at the bottom.
 
 - Section label "Collaborations".
 - 32 px (48 px lg).
-- Logo grid (8.16) of the organisations flagged for home, in content order:
-  logos where cleared files exist, names in type otherwise.
+- Logo grid (8.16) of the organisations flagged for home: logos where
+  cleared files exist, names in type otherwise. **Exactly 15**, so the grid
+  is three full rows from md, with no empty cell. Client organisations only;
+  press outlets are in the band.
 - 32 px. One sentence in `small`, muted (draft: "Films, portraits et
   campagnes pour des marques, des médias, des associations et des
   fondations." / EN equivalent), max cols 1–6 at lg.
@@ -751,7 +764,9 @@ full-bleed under the head.
      statement" as section label, then prose.
    - Right: data list (8.12): Année, Durée, Genre, Pays, Langue(s), Format,
      Production, Avec le soutien de, Diffusion (only rows with content).
-     Watch line or external button (block button) under it when relevant.
+     Watch line or external button under it when relevant. In this narrow
+     column the block button is 56 px high with its text in `nav` style, so
+     its label stays on one or two lines.
 5. Stills, if two or more: full container, 2 columns from md (16 px gap), 1
    at base; not links.
 6. Selections and awards: section label; summary in `title` (e.g. "17
@@ -779,7 +794,7 @@ below, with a 2 px ink rule above the first row of the group.
 ### 10.4 About (`/fr/a-propos`, `/en/about`)
 
 1. Head: `h1` "À propos" / "About" as section label; 24 px; the opening
-   sentence (max 140 characters) in `display`, cols 1–11 at lg. No rule.
+   sentence (max 90 characters, three lines at lg) in `display`, cols 1–11 at lg. No rule.
 2. 48 px (64 px lg). Portrait 4:5, `cover`: base full width; md cols 1–4;
    lg cols 1–5. Biography beside it (md cols 5–8, lg cols 7–12; under it at
    base, 32 px): first paragraph `lead`, rest `body`.
@@ -801,8 +816,10 @@ Sections separated by `--section-pad`.
 ### 10.5 Contact (`/fr/contact`, `/en/contact`)
 
 1. Page head: `h1` "Contact" in `giant`; 24 px; one sentence in `lead`.
-2. 48 px. Email: section label "E-mail"; 12 px; address as a link in
-   `display` size, **not uppercase**, Wide 800, underline 3 px, offset 8 px,
+2. 48 px. Email: section label "E-mail"; 12 px; address as a link,
+   `font-size: clamp(1.25rem, 0.3rem + 4.2vw, 3.5rem)` (20 px at 360, 56 px
+   from 1280), so the address stays on one line at 360 px, **not
+   uppercase**, Wide 800, underline 3 px, offset 8 px,
    `overflow-wrap: anywhere`; hover: highlight.
 3. 48 px. Three groups, each a section label then the value in `title`
    style: "Téléphone" / "Phone" (`tel:` link, international format; the only
@@ -969,6 +986,12 @@ pause and play icons are CSS shapes.
 
 ## Change log
 
+- 2.3 (2026-11-14), after the full v2 build: `display` starts at 26 px so
+  single long words fit at 360 px (3.2); wordmark fixed at 14 px at base
+  (8.2); logo grid in 2 columns at base, logos before names, 16 px cell
+  margin, exactly 15 on home (8.15, 8.16, 9.3); name wall role placement
+  (8.9); About opening sentence max 90 characters (10.4); Contact email size
+  (10.5); external button in the film page column (10.2).
 - 2.2 (2026-11-14), after the first v2 build: hero is the showreel poster
   frame (7.3); statement back on ground, collaborations continue its field
   (9.2, 9.3); footer bottom row order (8.13); film tile caption rule (8.8);

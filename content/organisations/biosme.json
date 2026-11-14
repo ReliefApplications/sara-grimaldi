@@ -1,7 +1,7 @@
 {
   "name": "Biosme",
   "kind": "client",
-  "order": 18,
+  "order": 10,
   "home": true,
   "logo": {
     "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
@@ -10,6 +10,7 @@
     "alt": {
       "fr": "Biosme",
       "en": "Biosme"
-    }
+    },
+    "scale": 1.3
   }
 }

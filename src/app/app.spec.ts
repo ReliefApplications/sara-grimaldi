@@ -105,10 +105,10 @@ describe('App', () => {
 
     // Collaborators: a grid of logos, or names where there is no logo.
     const cells = [...page.querySelectorAll('app-logo-grid li')];
-    expect(cells.length).toBe(18);
-    expect(cells[0].querySelector('img')?.getAttribute('alt')).toBe('Vogue');
-    expect(cells[5].querySelector('img')).toBeNull();
-    expect(cells[5].textContent?.trim()).toBe('Barilla');
+    // Exactly fifteen on the home page, all with a logo.
+    expect(cells.length).toBe(15);
+    expect(cells[0].querySelector('img')?.getAttribute('alt')).toBe('Universal Music');
+    expect(cells.every((cell) => cell.querySelector('img'))).toBe(true);
     const tiles = [...page.querySelectorAll('app-film-tile')];
     expect(tiles.map((tile) => tile.querySelector('.title')?.textContent?.trim())).toEqual([
       'La Dolce Attesa',

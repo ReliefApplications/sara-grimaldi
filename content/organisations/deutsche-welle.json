@@ -1,7 +1,7 @@
 {
   "name": "Deutsche Welle",
   "kind": "client",
-  "order": 11,
+  "order": 15,
   "home": true,
   "logo": {
     "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",

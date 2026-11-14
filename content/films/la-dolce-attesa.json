@@ -172,6 +172,16 @@
   "stills": [
     {
       "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
+      "src": "images/films/la-dolce-attesa-6.webp",
+      "width": 1920,
+      "height": 1005,
+      "alt": {
+        "fr": "Gros plan sur une jeune femme à l’air stupéfait.",
+        "en": "Close-up of a young woman looking astonished."
+      }
+    },
+    {
+      "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
       "src": "images/films/la-dolce-attesa-2.webp",
       "width": 1920,
       "height": 1005,
@@ -192,12 +202,12 @@
     },
     {
       "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
-      "src": "images/films/la-dolce-attesa-4.webp",
+      "src": "images/films/la-dolce-attesa-7.webp",
       "width": 1920,
       "height": 1005,
       "alt": {
-        "fr": "Gros plan sur une jeune femme souriante, allongée.",
-        "en": "Close-up of a young woman smiling, lying down."
+        "fr": "Une jeune femme assise en tailleur, les yeux fermés, en méditation à côté d’un ballon de gym.",
+        "en": "A young woman sitting cross-legged with her eyes closed, meditating beside an exercise ball."
       }
     },
     {
@@ -212,24 +222,25 @@
     },
     {
       "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
-      "src": "images/films/la-dolce-attesa-6.webp",
+      "src": "images/films/la-dolce-attesa-4.webp",
       "width": 1920,
       "height": 1005,
       "alt": {
-        "fr": "Gros plan sur une jeune femme à l’air stupéfait.",
-        "en": "Close-up of a young woman looking astonished."
-      }
-    },
-    {
-      "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
-      "src": "images/films/la-dolce-attesa-7.webp",
-      "width": 1920,
-      "height": 1005,
-      "alt": {
-        "fr": "Une jeune femme assise en tailleur, les yeux fermés, en méditation à côté d’un ballon de gym.",
-        "en": "A young woman sitting cross-legged with her eyes closed, meditating beside an exercise ball."
+        "fr": "Gros plan sur une jeune femme souriante, allongée.",
+        "en": "Close-up of a young woman smiling, lying down."
       }
     }
   ],
+  "poster": {
+    "_source": "Source: cover image on the Work page of saragrimaldi.com. Placeholder: Sara can replace or veto it.",
+    "src": "images/films/la-dolce-attesa-poster.webp",
+    "width": 560,
+    "height": 700,
+    "widths": [280, 560],
+    "alt": {
+      "fr": "Affiche du film La Dolce Attesa : des cartons empilés devant une fenêtre aux rideaux dorés.",
+      "en": "Poster of La Dolce Attesa: stacked cardboard boxes in front of a window with golden curtains."
+    }
+  },
   "published": true
 }

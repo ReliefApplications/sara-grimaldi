@@ -1,7 +1,7 @@
 {
   "name": "GQ",
   "kind": "client",
-  "order": 2,
+  "order": 3,
   "home": true,
   "role": {
     "fr": "Filmmaker pendant six ans",
@@ -14,6 +14,7 @@
     "alt": {
       "fr": "GQ",
       "en": "GQ"
-    }
+    },
+    "scale": 0.85
   }
 }

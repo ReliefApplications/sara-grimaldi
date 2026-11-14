@@ -1,8 +1,8 @@
 {
   "name": "Volkswagen",
   "kind": "client",
-  "order": 7,
-  "home": true,
+  "order": 17,
+  "home": false,
   "role": {
     "fr": "Assistante réalisatrice",
     "en": "Assistant director"

@@ -1,8 +1,8 @@
 {
   "name": "Barilla",
   "kind": "client",
-  "order": 6,
-  "home": true,
+  "order": 16,
+  "home": false,
   "role": {
     "fr": "Assistante réalisatrice",
     "en": "Assistant director"

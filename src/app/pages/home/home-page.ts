@@ -93,8 +93,11 @@ export class HomePage {
       .slice(0, 3);
   });
 
-  /** Organisations flagged for the home page, in content order. */
-  protected readonly collaborators = computed(() =>
-    (this.organisations() ?? []).filter((entry) => entry.home).map((entry) => entry.name),
-  );
+  /** Organisations flagged for the home page: those with a logo first, then the names. */
+  protected readonly collaborators = computed(() => {
+    const home = (this.organisations() ?? []).filter((entry) => entry.home);
+    return [...home.filter((entry) => entry.logo), ...home.filter((entry) => !entry.logo)].map(
+      (entry) => entry.name,
+    );
+  });
 }

@@ -1,7 +1,7 @@
 {
   "name": "Crédit Agricole",
   "kind": "client",
-  "order": 16,
+  "order": 14,
   "home": true,
   "logo": {
     "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
@@ -10,6 +10,7 @@
     "alt": {
       "fr": "Crédit Agricole",
       "en": "Crédit Agricole"
-    }
+    },
+    "scale": 1.3
   }
 }

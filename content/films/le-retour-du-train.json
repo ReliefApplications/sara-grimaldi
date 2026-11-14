@@ -160,5 +160,16 @@
       "en": "The villagers pose as a group in front of a building hung with bunting; a young girl raises her arm."
     }
   },
+  "poster": {
+    "_source": "Source: cover image on the Work page of saragrimaldi.com. Placeholder: Sara can replace or veto it.",
+    "src": "images/films/le-retour-du-train-poster.webp",
+    "width": 560,
+    "height": 439,
+    "widths": [280, 560],
+    "alt": {
+      "fr": "Affiche du film Le Retour du Train : les habitants du village posent devant une façade pavoisée, avec le titre et des lauriers de festivals.",
+      "en": "Poster of Le Retour du Train: the villagers pose in front of a building hung with bunting, with the title and festival laurels."
+    }
+  },
   "published": true
 }

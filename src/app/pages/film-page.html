@@ -85,6 +85,12 @@
                 }}</a>
               </p>
             }
+            @if (film.poster; as poster) {
+              <!-- The poster is shown whole, at its own proportions. -->
+              <div class="poster" [style.aspect-ratio]="poster.width + ' / ' + poster.height">
+                <app-content-image [image]="poster" sizes="280px" />
+              </div>
+            }
           </div>
         </div>
 

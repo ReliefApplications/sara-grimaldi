@@ -18,8 +18,12 @@
 
 // The address: display size, wide and heavy, but in its own letter case.
 .email {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
   padding-block: var(--space-2);
+  // 20 px at 360, 56 px from 1280: the address stays on one line (10.5).
+  font-size: clamp(1.25rem, 0.3rem + 4.2vw, 3.5rem);
   font-weight: 800;
   text-transform: none;
   overflow-wrap: anywhere;

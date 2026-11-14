@@ -44,10 +44,13 @@ export class AboutPage {
     (this.page()?.career ?? []).map((row) => ({ label: row.period, value: row.text })),
   );
 
-  /** Every organisation, in content order, for the logo grid. */
-  protected readonly names = computed(() =>
-    (this.organisations() ?? []).map((entry) => entry.name),
-  );
+  /** Every organisation for the logo grid: those with a logo first, then the names. */
+  protected readonly names = computed(() => {
+    const all = this.organisations() ?? [];
+    return [...all.filter((entry) => entry.logo), ...all.filter((entry) => !entry.logo)].map(
+      (entry) => entry.name,
+    );
+  });
 
   /** The organisations whose content says what Sara did for them. */
   protected readonly collaborations = computed(() =>

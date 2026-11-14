@@ -186,5 +186,16 @@
       "en": "A cyclist in a helmet, seen from behind, stopped beside a canal under a cloudy sky."
     }
   },
+  "poster": {
+    "_source": "Source: cover image on the Work page of saragrimaldi.com. Placeholder: Sara can replace or veto it.",
+    "src": "images/films/immunity-poster.webp",
+    "width": 560,
+    "height": 792,
+    "widths": [280, 560],
+    "alt": {
+      "fr": "Affiche du film Immunity : un cycliste vu de dos au bord d’un canal, avec le titre et des lauriers de festivals.",
+      "en": "Poster of Immunity: a cyclist seen from behind beside a canal, with the title and festival laurels."
+    }
+  },
   "published": true
 }

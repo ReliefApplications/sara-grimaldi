@@ -1,8 +1,8 @@
 {
   "name": "Sky",
   "kind": "client",
-  "order": 8,
-  "home": true,
+  "order": 18,
+  "home": false,
   "role": {
     "fr": "Assistante réalisatrice",
     "en": "Assistant director"

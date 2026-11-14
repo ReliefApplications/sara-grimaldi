@@ -1,7 +1,7 @@
 {
   "name": "Vogue",
   "kind": "client",
-  "order": 1,
+  "order": 4,
   "home": true,
   "role": {
     "fr": "Filmmaker pendant six ans",

@@ -8,8 +8,8 @@
 }
 
 :host(.grid) {
-  --box-w: 104px;
-  --box-h: 40px;
+  --box-w: 112px;
+  --box-h: 36px;
 
   @include md {
     --box-w: 132px;
@@ -57,9 +57,11 @@
 // larger than the file itself.
 img {
   width: auto;
-  max-width: min(calc(var(--box-w) * var(--logo-scale, 1)), var(--logo-w));
+  // 100%: the box shrinks where its cell leaves less room.
+  max-width: min(calc(var(--box-w) * var(--logo-scale, 1)), var(--logo-w), 100%);
   height: auto;
-  max-height: min(calc(var(--box-h) * var(--logo-scale, 1)), var(--logo-h));
+  // --room-h: what the surrounding cell leaves, where there is one.
+  max-height: min(calc(var(--box-h) * var(--logo-scale, 1)), var(--logo-h), var(--room-h, 100vh));
   object-fit: contain;
 }
 

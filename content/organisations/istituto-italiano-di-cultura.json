@@ -1,7 +1,7 @@
 {
   "name": "Istituto Italiano di Cultura",
   "kind": "client",
-  "order": 14,
+  "order": 7,
   "home": true,
   "logo": {
     "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
@@ -10,6 +10,7 @@
     "alt": {
       "fr": "Istituto Italiano di Cultura",
       "en": "Istituto Italiano di Cultura"
-    }
+    },
+    "scale": 1.3
   }
 }

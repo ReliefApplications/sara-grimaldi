@@ -83,6 +83,20 @@ article {
   margin-top: var(--space-5);
 }
 
+// In this narrow column the button is lower and its label smaller (10.2).
+.watch {
+  min-height: 3.5rem; // 56 px; not on the spacing scale
+  font-size: var(--size-nav);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.poster {
+  max-width: 17.5rem; // 280 px (the poster slot)
+  margin-top: var(--space-6);
+}
+
 .request a {
   display: inline-flex;
   align-items: center;
