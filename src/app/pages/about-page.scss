@@ -57,6 +57,56 @@
   margin-top: var(--section-pad);
 }
 
+// Career, newest first: period, the organisation's mark (when there is
+// one), then what she did (design system 8.12, with a logo column).
+.career li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  column-gap: var(--space-4);
+  padding-block: var(--space-3);
+  border-top: var(--rule-minor);
+
+  &:last-child {
+    border-bottom: var(--rule-minor);
+  }
+
+  @include md {
+    grid-template-columns: 10rem 2.5rem minmax(0, 1fr);
+    column-gap: var(--space-5);
+    align-items: start;
+  }
+}
+
+.period {
+  grid-column: 1 / -1;
+  margin-bottom: var(--space-2);
+
+  @include md {
+    grid-column: auto;
+    margin-bottom: 0;
+    padding-top: 0.2em;
+  }
+}
+
+.mark img {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}
+
+.no-logo .what {
+  grid-column: 1 / -1;
+
+  @include md {
+    grid-column: 3;
+  }
+}
+
+.what > * + * {
+  margin-top: var(--space-1);
+}
+
 .wall {
   margin-top: var(--space-8);
 }

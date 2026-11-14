@@ -50,13 +50,43 @@
   },
   "career": [
     {
+      "_note": "Wording from Sara (2026-11-14); start date from her LinkedIn (ESRA, Sep 2020 – present).",
       "period": {
-        "fr": "Depuis 2002",
-        "en": "Since 2002"
+        "fr": "Depuis 2020",
+        "en": "Since 2020"
       },
       "text": {
-        "fr": "Réalise des courts métrages, des documentaires et des films publicitaires.",
-        "en": "Directs short films, documentaries and commercials."
+        "fr": "Intervenante en image et réalisation documentaire à l’ESRA.",
+        "en": "Image and documentary direction teacher at ESRA."
+      },
+      "logo": {
+        "_source": "Source: esra.edu (the school's site icon), as on Sara's LinkedIn.",
+        "src": "images/logos/esra.webp",
+        "size": [192, 192],
+        "alt": {
+          "fr": "ESRA",
+          "en": "ESRA"
+        }
+      },
+      "detail": {
+        "fr": [
+          "Enseigne en classe française, en classe internationale et en master.",
+          "Ateliers caméra (FS7 et F5), ateliers de méthodologie de plateau, suivi de la préproduction et des tournages."
+        ],
+        "en": [
+          "Teacher in the French class, the international class and the master’s degree program.",
+          "Teaching in the following classes: camera workshops (FS7 and F5 cameras), film set methodology workshops, film pre-production supervision and film shoot supervision."
+        ]
+      }
+    },
+    {
+      "period": {
+        "fr": "Depuis 2015",
+        "en": "Since 2015"
+      },
+      "text": {
+        "fr": "Production exécutive, principalement à Paris.",
+        "en": "Executive production, mainly in Paris."
       }
     },
     {
@@ -71,23 +101,12 @@
     },
     {
       "period": {
-        "fr": "Depuis 2015",
-        "en": "Since 2015"
+        "fr": "Depuis 2002",
+        "en": "Since 2002"
       },
       "text": {
-        "fr": "Production exécutive, principalement à Paris.",
-        "en": "Executive production, mainly in Paris."
-      }
-    },
-    {
-      "_note": "Wording from Sara (2026-11-14); start date from her LinkedIn (ESRA, Sep 2020 – present).",
-      "period": {
-        "fr": "Depuis 2020",
-        "en": "Since 2020"
-      },
-      "text": {
-        "fr": "Intervenante en image et réalisation documentaire à l’ESRA.",
-        "en": "Image and documentary direction teacher at ESRA."
+        "fr": "Réalise des courts métrages, des documentaires et des films publicitaires.",
+        "en": "Directs short films, documentaries and commercials."
       }
     }
   ],

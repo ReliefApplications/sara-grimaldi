@@ -23,7 +23,31 @@
   @if (career().length) {
     <section class="container block" aria-labelledby="career-label">
       <h2 class="section-label t-label" id="career-label">{{ page.careerHeading }}</h2>
-      <app-data-list [rows]="career()" />
+      <ul class="career">
+        @for (row of page.career; track $index) {
+          <li [class.no-logo]="!row.logo">
+            <p class="period t-label t-muted t-tabular">{{ row.period }}</p>
+            <div class="mark">
+              @if (row.logo; as logo) {
+                <img
+                  [src]="content.assetUrl(logo.src)"
+                  [alt]="logo.alt"
+                  [attr.width]="logo.size[0]"
+                  [attr.height]="logo.size[1]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              }
+            </div>
+            <div class="what">
+              <p class="t-body"><app-inline-text [text]="row.text" /></p>
+              @for (line of row.detail; track $index) {
+                <p class="t-small t-muted"><app-inline-text [text]="line" /></p>
+              }
+            </div>
+          </li>
+        }
+      </ul>
       @if (page.badge; as badge) {
         <img
           class="badge"

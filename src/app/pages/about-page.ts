@@ -5,7 +5,6 @@ import { CurrentRouteService } from '../core/current-route';
 import { PageHeading } from '../core/page-heading';
 import { BlockButton } from '../shared/block-button';
 import { ContentImage } from '../shared/content-image';
-import { DataList } from '../shared/data-list';
 import { DotLine } from '../shared/dot-line';
 import { InlineText } from '../shared/inline-text';
 import { LogoGrid } from '../shared/logo-grid';
@@ -19,7 +18,6 @@ import { NameWall } from '../shared/name-wall';
     PageHeading,
     BlockButton,
     ContentImage,
-    DataList,
     DotLine,
     InlineText,
     LogoGrid,
@@ -40,9 +38,8 @@ export class AboutPage {
   protected readonly portraitSizes =
     '(min-width: 90rem) 553px, (min-width: 80rem) 41vw, (min-width: 48rem) 50vw, calc(100vw - 40px)';
 
-  protected readonly career = computed(() =>
-    (this.page()?.career ?? []).map((row) => ({ label: row.period, value: row.text })),
-  );
+  /** Career lines, newest first as written in content. */
+  protected readonly career = computed(() => this.page()?.career ?? []);
 
   /** Every organisation for the logo grid: those with a logo first, then the names. */
   protected readonly names = computed(() => {

@@ -102,7 +102,7 @@ const legalProse = [
  * An asterisk anywhere else would be printed as is, so the build refuses it.
  */
 export const PROSE_FIELDS: Record<string, string[]> = {
-  'pages/about': ['biography', 'career[].text'],
+  'pages/about': ['biography', 'career[].text', 'career[].detail'],
   'pages/visual-stories': ['intro', 'case.rows[].text', 'team'],
   'pages/legal': legalProse,
   'pages/privacy': legalProse,

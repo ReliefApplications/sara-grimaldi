@@ -153,7 +153,8 @@ export interface AboutPage {
   /** Optional credential badge shown under the career list. */
   badge?: LogoImage;
   careerHeading: Text;
-  career: { period: Text; text: Text }[];
+  /** Newest first. `logo`: the organisation's mark, shown beside the line as on LinkedIn. */
+  career: { period: Text; text: Text; detail?: Paragraphs; logo?: LogoImage }[];
   collaborationsHeading: Text;
   inDevelopmentHeading: Text;
   filmsLink: Text;
