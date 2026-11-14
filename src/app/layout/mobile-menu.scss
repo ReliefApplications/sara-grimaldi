@@ -1,5 +1,6 @@
 @use '../../styles/breakpoints' as *;
 
+// A modal <dialog>, reset to fill the viewport (8.4). Appears without animation.
 .menu {
   position: fixed;
   inset: 0;
@@ -11,21 +12,6 @@
   padding: 0;
   border: 0;
   overflow-y: auto;
-  background: var(--color-paper);
-  color: var(--color-ink);
-  opacity: 0;
-  transition:
-    opacity var(--transition),
-    display var(--transition) allow-discrete,
-    overlay var(--transition) allow-discrete;
-
-  &[open] {
-    opacity: 1;
-
-    @starting-style {
-      opacity: 0;
-    }
-  }
 
   &::backdrop {
     background: transparent;
@@ -36,7 +22,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding-bottom: var(--space-6);
+  padding-bottom: var(--space-5);
 }
 
 // Same row as the site header: wordmark, language switcher, Close.
@@ -45,9 +31,6 @@
   flex: none;
   align-items: center;
   height: var(--header-height);
-  margin-inline: calc(-1 * var(--margin));
-  padding-inline: var(--margin);
-  border-bottom: var(--hairline);
 }
 
 .wordmark {
@@ -55,64 +38,54 @@
   align-items: center;
   min-height: var(--target-size);
   margin-right: auto;
-  font-family: var(--font-display);
-  font-variation-settings:
-    'SOFT' 0,
-    'WONK' 0;
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 1.2;
+  font-size: 1rem;
+  font-stretch: var(--wide);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
 
   @include md {
-    font-size: 1.375rem;
+    font-size: 1.25rem;
   }
 }
 
 .close {
-  min-height: var(--target-size);
-  margin-left: var(--space-4);
-  padding: 0 var(--space-1);
+  height: var(--target-size);
+  margin-left: var(--space-3);
+  padding: 0 var(--space-3);
+  border: 2px solid var(--text);
 }
 
 .links {
-  margin-top: var(--space-6);
+  margin-top: var(--space-5);
 
   li + li {
-    border-top: var(--hairline);
+    border-top: var(--rule-on-ink);
   }
 }
 
 .link {
   display: flex;
   align-items: center;
-  min-height: var(--space-8);
-  text-decoration: underline 1px transparent;
-  text-underline-offset: 6px;
+  min-height: 4.5rem; // 72 px rows (8.4); not on the spacing scale
 
-  &:hover {
-    color: var(--color-accent);
-  }
-
-  &[aria-current='page'] {
-    text-decoration-color: var(--color-accent);
+  &:hover .link-text,
+  &[aria-current='page'] .link-text {
+    padding: 0 0.12em;
+    background: var(--highlight-bg);
+    color: var(--highlight-text);
   }
 }
 
 .contact {
   margin-top: auto;
   padding-top: var(--space-6);
-
-  dd + dt {
-    margin-top: var(--space-4);
-  }
 }
 
 .contact-link {
   display: inline-flex;
   align-items: center;
   min-height: var(--target-size);
-
-  &:hover {
-    color: var(--color-accent);
-  }
+  text-decoration: underline 2px;
+  text-underline-offset: 3px;
 }

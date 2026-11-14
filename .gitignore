@@ -52,3 +52,10 @@ Thumbs.db
 
 # Internal design brief: stays on the team's machines, not in the public repository
 docs/design/brief.md
+
+# Screenshots of other sites, kept locally for the designer only
+docs/design/references/*
+!docs/design/references/.gitkeep
+
+# Designer's internal notes on the reference sites
+docs/design/reference-notes.md

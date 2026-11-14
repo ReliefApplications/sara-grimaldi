@@ -9,17 +9,19 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  // Keeps focused elements clear of the privacy notice while it is shown (8.26).
+  // Keeps focused elements clear of the privacy notice while it is shown (8.14).
   scroll-padding-bottom: var(--notice-space, 0px);
 }
 
 body {
   margin: 0;
-  background: var(--color-paper);
+  background: var(--color-ground);
   color: var(--color-ink);
-  font-family: var(--font-text);
+  font-family: var(--font-sans);
   font-size: var(--size-body);
+  font-stretch: 100%;
   font-weight: 400;
+  font-synthesis: none;
   line-height: 1.6;
   text-wrap: pretty;
   -webkit-font-smoothing: antialiased;
@@ -73,19 +75,22 @@ button {
   cursor: pointer;
 }
 
+strong,
+b {
+  font-weight: 700;
+}
+
 a,
 button {
   transition:
     color var(--transition),
     background-color var(--transition),
-    border-color var(--transition),
-    text-decoration-color var(--transition),
-    opacity var(--transition);
+    border-color var(--transition);
 }
 
-// Focus ring (6): identical on every interactive element.
+// Focus ring (6.5): its colour follows the surface.
 :focus-visible {
-  outline: 2px solid var(--color-focus);
+  outline: 3px solid var(--focus);
   outline-offset: 3px;
 }
 

@@ -1,0 +1,20 @@
+@let entry = film();
+<a class="tile" [routerLink]="route.link('films', entry.slug)">
+  <span class="frame">
+    @if (entry.still; as still) {
+      <app-content-image [image]="still" [sizes]="sizes()" />
+    }
+  </span>
+  <span class="caption">
+    <span class="number t-label t-muted t-tabular" aria-hidden="true">{{ number() }}</span>
+    <span
+      class="title"
+      [class.t-display]="lead()"
+      [class.t-title]="!lead()"
+      role="heading"
+      [attr.aria-level]="level()"
+      ><span class="title-text" [attr.lang]="entry.titleLang">{{ entry.title }}</span></span
+    >
+    <span class="meta t-label t-tabular"><app-dot-line [items]="meta()" /></span>
+  </span>
+</a>

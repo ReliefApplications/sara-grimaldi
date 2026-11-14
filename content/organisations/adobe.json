@@ -1,0 +1,13 @@
+{
+  "name": "Adobe",
+  "kind": "client",
+  "order": 3,
+  "logo": {
+    "src": "images/logos/adobe.webp",
+    "size": [282, 57],
+    "alt": {
+      "fr": "Logo Adobe",
+      "en": "Adobe logo"
+    }
+  }
+}

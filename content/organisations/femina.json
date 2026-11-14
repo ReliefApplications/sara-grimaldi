@@ -1,0 +1,13 @@
+{
+  "name": "Femina",
+  "kind": "press",
+  "order": 8,
+  "logo": {
+    "src": "images/logos/femina.webp",
+    "size": [64, 116],
+    "alt": {
+      "fr": "Logo Femina",
+      "en": "Femina logo"
+    }
+  }
+}

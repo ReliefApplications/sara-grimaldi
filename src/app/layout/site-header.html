@@ -1,12 +1,14 @@
 @if (site(); as site) {
   <header class="header">
     <div class="container bar">
-      <a
-        class="wordmark"
-        [routerLink]="route.link('home')"
-        [attr.aria-label]="site.name + ' – ' + site.ui.home"
-        >{{ site.name }}</a
-      >
+      @if (!home()) {
+        <a
+          class="wordmark"
+          [routerLink]="route.link('home')"
+          [attr.aria-label]="site.name + ' – ' + site.ui.home"
+          >{{ site.name }}</a
+        >
+      }
 
       <nav class="nav" [attr.aria-label]="site.ui.mainNavLabel">
         <ul>
@@ -17,18 +19,17 @@
                 [routerLink]="route.link(page)"
                 routerLinkActive
                 ariaCurrentWhenActive="page"
-                >{{ site.nav[page] }}</a
+                ><span class="nav-text">{{ site.nav[page] }}</span></a
               >
             </li>
           }
         </ul>
       </nav>
 
-      <span class="divider" aria-hidden="true"></span>
-      <app-language-switcher />
+      <app-language-switcher class="switcher" />
 
       <button
-        class="menu-button t-label"
+        class="menu-button t-nav"
         type="button"
         aria-controls="site-menu"
         [attr.aria-expanded]="menuOpen()"

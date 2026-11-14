@@ -1,0 +1,13 @@
+{
+  "name": "Birdmen",
+  "kind": "press",
+  "order": 11,
+  "logo": {
+    "src": "images/logos/birdmen.webp",
+    "size": [205, 95],
+    "alt": {
+      "fr": "Logo Birdmen",
+      "en": "Birdmen logo"
+    }
+  }
+}

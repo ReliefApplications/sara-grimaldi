@@ -1,0 +1,13 @@
+{
+  "name": "Leroy Merlin",
+  "kind": "client",
+  "order": 5,
+  "logo": {
+    "src": "images/logos/leroy-merlin.webp",
+    "size": [221, 134],
+    "alt": {
+      "fr": "Logo Leroy Merlin",
+      "en": "Leroy Merlin logo"
+    }
+  }
+}

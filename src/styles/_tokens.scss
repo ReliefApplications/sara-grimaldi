@@ -1,43 +1,45 @@
-// Design tokens from docs/design/design-system.md, sections 2 to 4.
+// Design tokens from docs/design/design-system.md (v2), sections 2 to 6.
 // This is the only place where their values are written.
 
 :root {
-  // Colour (2.1)
-  --color-paper: #f6f1e8;
-  --color-surface: #eae2d3;
-  --color-ink: #1c1a17;
-  --color-muted: #5e574d;
-  --color-accent: #a23e1f;
-  --color-accent-hover: #7f2f16;
-  --color-rule: #cfc5b3;
-  --color-border: #8a8171;
-  --color-on-accent: #ffffff;
-  --color-dark-text: #f6f1e8;
-  --color-dark-muted: #b8afa1;
-  --color-dark-accent: #e9a083;
-  --color-dark-rule: #3a362f;
+  // Colour (2)
+  --color-ground: #f2f1ed;
+  --color-ink: #0e0e0e;
+  --color-accent: #ff4b1f;
+  --color-muted: #5c5b57;
+  --color-muted-on-ink: #a9a8a3;
+  --color-rule-on-ink: #3a3a38;
+  --color-placeholder: #d9d7d0;
 
-  // Colour of the focus ring; the footer (ink background) overrides it.
-  --color-focus: var(--color-ink);
+  // What a component reads; each surface class in _layout.scss sets them.
+  --surface: var(--color-ground);
+  --text: var(--color-ink);
+  --text-muted: var(--color-muted);
+  --dot: var(--color-accent);
+  --highlight-bg: var(--color-accent);
+  --highlight-text: var(--color-ink);
+  --focus: var(--color-ink);
 
-  // Typography (3.1, 3.2)
-  --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
-  --font-text: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  // Typography (3)
+  --font-sans: 'Archivo', 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --wide: 125%;
+  --narrow: 62%;
 
-  --size-display-xl: clamp(2.5rem, 1.717rem + 3.478vw, 4.5rem);
-  --size-display-l: clamp(2.125rem, 1.587rem + 2.391vw, 3.5rem);
-  --size-h2: clamp(1.625rem, 1.38rem + 1.087vw, 2.25rem);
-  --size-h3: clamp(1.3125rem, 1.239rem + 0.326vw, 1.5rem);
-  --size-quote: clamp(1.5rem, 1.255rem + 1.087vw, 2.125rem);
-  --size-lead: clamp(1.1875rem, 1.114rem + 0.326vw, 1.375rem);
+  --size-giant: clamp(2.125rem, 0.022rem + 9.348vw, 7.5rem);
+  --size-display: clamp(1.875rem, 0.848rem + 4.565vw, 4.5rem);
+  --size-title: clamp(1.1875rem, 0.87rem + 1.413vw, 2rem);
+  --size-band: clamp(1.625rem, 1.136rem + 2.174vw, 2.875rem);
+  --size-label: 0.75rem;
+  --size-nav: 0.8125rem;
+  --size-lead: clamp(1.25rem, 1.103rem + 0.652vw, 1.625rem);
   --size-body: 1.0625rem;
   --size-small: 0.9375rem;
-  --size-label: 0.8125rem;
-  --size-nav: 1rem;
+  --size-quote: clamp(1.625rem, 1.185rem + 1.957vw, 2.75rem);
 
-  --measure: 68ch;
+  --measure: 66ch;
 
-  // Spacing (4.1)
+  // Spacing (4)
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -48,20 +50,22 @@
   --space-8: 4rem;
   --space-9: 6rem;
   --space-10: 8rem;
+  --space-11: 10rem;
 
-  // Grid (4.2) and vertical rhythm (4.3), base values
+  // Grid (4), base values
   --grid-columns: 4;
   --gutter: 1rem;
   --margin: 1.25rem;
-  --container-max: 80rem;
-  --section-gap: var(--space-8);
-  --block-gap: var(--space-6);
-  --page-top: var(--space-6);
+  --container-max: 90rem; // 1360 px of content plus the side margins
+  --section-pad: var(--space-8);
   --header-height: 4rem;
+  --band-height: 3.5rem;
 
   // Shape and motion (6)
-  --hairline: 1px solid var(--color-rule);
-  --transition: 200ms ease-out;
+  --rule: 2px solid var(--color-ink);
+  --rule-minor: 1px solid var(--color-ink);
+  --rule-on-ink: 1px solid var(--color-rule-on-ink);
+  --transition: 150ms ease-out;
   --target-size: 2.75rem;
 }
 
@@ -70,20 +74,19 @@
     --size-body: 1.125rem;
     --grid-columns: 8;
     --gutter: 1.5rem;
-    --margin: 2.5rem;
-    --section-gap: var(--space-9);
-    --block-gap: var(--space-7);
-    --page-top: var(--space-7);
-    --header-height: 5rem;
+    --margin: 2rem;
+    --section-pad: var(--space-9);
+    --header-height: 4.5rem;
+    --band-height: 4.5rem;
   }
 }
 
 @media (min-width: 80rem) {
   :root {
+    --size-label: 0.875rem;
     --grid-columns: 12;
-    --gutter: 2rem;
-    --margin: 4rem;
-    --section-gap: var(--space-10);
-    --page-top: var(--space-8);
+    --margin: 2.5rem;
+    --section-pad: var(--space-10);
+    --band-height: 5.5rem;
   }
 }

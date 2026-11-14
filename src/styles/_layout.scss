@@ -1,6 +1,49 @@
 @use 'breakpoints' as *;
 
-// Grid container (design system, section 4.2).
+// Surfaces (2): each sets what the components inside it read.
+.surface-ground {
+  --surface: var(--color-ground);
+  --text: var(--color-ink);
+  --text-muted: var(--color-muted);
+  --dot: var(--color-accent);
+  --highlight-bg: var(--color-accent);
+  --highlight-text: var(--color-ink);
+  --focus: var(--color-ink);
+  --minor-rule: var(--rule-minor);
+
+  background: var(--surface);
+  color: var(--text);
+}
+
+.surface-ink {
+  --surface: var(--color-ink);
+  --text: var(--color-ground);
+  --text-muted: var(--color-muted-on-ink);
+  --dot: var(--color-accent);
+  --highlight-bg: var(--color-accent);
+  --highlight-text: var(--color-ink);
+  --focus: var(--color-ground);
+  --minor-rule: var(--rule-on-ink);
+
+  background: var(--surface);
+  color: var(--text);
+}
+
+.surface-accent {
+  --surface: var(--color-accent);
+  --text: var(--color-ink);
+  --text-muted: var(--color-ink);
+  --dot: var(--color-ink);
+  --highlight-bg: var(--color-ink);
+  --highlight-text: var(--color-accent);
+  --focus: var(--color-ink);
+  --minor-rule: var(--rule-minor);
+
+  background: var(--surface);
+  color: var(--text);
+}
+
+// Grid container (4).
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -19,53 +62,57 @@
   }
 }
 
-// Space between the page content and the footer. The not-found page brings
-// its own (8.25).
-main {
-  padding-bottom: var(--section-gap);
+.section {
+  padding-block: var(--section-pad);
+}
 
-  &:has(app-not-found-page) {
-    padding-bottom: 0;
+// Record dot (6.3): a circle in the accent colour of the surface.
+.dot {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--dot);
+  vertical-align: 0.08em;
+}
+
+// Section label (8.6): record dot, then the text.
+.section-label {
+  display: block;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    margin-right: 0.6em;
+    border-radius: 50%;
+    background: var(--dot);
+    vertical-align: 0.08em;
   }
 }
 
-// A page section; consecutive sections are one section gap apart (9).
-.section {
-  margin-top: var(--section-gap);
+// Highlight (6.4), as a hover state for links.
+@mixin highlight {
+  background: var(--highlight-bg);
+  color: var(--highlight-text);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
-// Section label (8.9).
-.section-label {
-  margin-bottom: var(--space-4);
-  color: var(--color-muted);
+.highlight {
+  @include highlight;
+  padding: 0 0.12em;
 }
 
-// Text link inside running text (8.6).
+// Text link inside running text (8.7).
 .text-link {
-  color: var(--color-accent);
-  text-decoration: underline 1px;
+  text-decoration: underline 2px;
   text-underline-offset: 3px;
 
   &:hover {
-    color: var(--color-accent-hover);
-    text-decoration-thickness: 2px;
-  }
-}
-
-// Secondary button (8.8).
-.button-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: var(--space-7);
-  padding: 0 var(--space-5);
-  border: 1px solid var(--color-border);
-  color: var(--color-ink);
-
-  &:hover,
-  &:active {
-    border-color: var(--color-ink);
-    color: var(--color-accent);
+    @include highlight;
+    text-decoration: none;
   }
 }
 
@@ -81,9 +128,9 @@ main {
   border: 0;
 }
 
-// Pages not yet built to the design system: readable inside the shared shell.
+// Pages not yet rebuilt to the design system: readable inside the shared shell.
 .plain-page {
-  padding-top: var(--page-top);
+  padding-block: var(--space-7) var(--section-pad);
 
   > * + * {
     margin-top: var(--space-4);

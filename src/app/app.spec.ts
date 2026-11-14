@@ -5,6 +5,7 @@ import { provideRouter, Router } from '@angular/router';
 import collaborations from '../../.generated/content/collections/collaborations.json';
 import films from '../../.generated/content/collections/films.json';
 import inDevelopment from '../../.generated/content/collections/in-development.json';
+import organisations from '../../.generated/content/collections/organisations.json';
 import press from '../../.generated/content/collections/press.json';
 import about from '../../.generated/content/pages/about.json';
 import filmsPage from '../../.generated/content/pages/films.json';
@@ -12,6 +13,7 @@ import contact from '../../.generated/content/pages/contact.json';
 import home from '../../.generated/content/pages/home.json';
 import legal from '../../.generated/content/pages/legal.json';
 import notFound from '../../.generated/content/pages/not-found.json';
+import pressPage from '../../.generated/content/pages/press.json';
 import privacy from '../../.generated/content/pages/privacy.json';
 import site from '../../.generated/content/site.json';
 import { App } from './app';
@@ -25,6 +27,7 @@ const CONTENT: Record<string, object> = {
   'content/pages/films.json': filmsPage,
   'content/pages/about.json': about,
   'content/pages/not-found.json': notFound,
+  'content/pages/press.json': pressPage,
   'content/pages/contact.json': contact,
   'content/pages/legal.json': legal,
   'content/pages/privacy.json': privacy,
@@ -32,6 +35,7 @@ const CONTENT: Record<string, object> = {
   'content/collections/press.json': press,
   'content/collections/collaborations.json': collaborations,
   'content/collections/in-development.json': inDevelopment,
+  'content/collections/organisations.json': organisations,
 };
 
 describe('App', () => {
@@ -69,33 +73,82 @@ describe('App', () => {
     await open('/');
     expect(TestBed.inject(Router).url).toBe('/fr');
     expect(document.documentElement.lang).toBe('fr');
-    expect(text('h1')).toBe('Je travaille l’émotion, quel que soit le format.');
-    expect(text('h1 em')).toBe('l’émotion');
+    expect(text('h1')).toBe('Sara Grimaldi');
+    expect(text('.statement')).toBe('Je travaille l’émotion, quel que soit le format.');
+    expect(text('.statement em')).toBe('l’émotion');
     expect(document.title).toBe('Sara Grimaldi – Réalisatrice et scénariste');
   });
 
-  it('shows featured films, family counts, press and projects on the home page', async () => {
+  it('shows the hero, bands, collaborators and featured films on the home page', async () => {
     await open('/en');
-    expect(page.querySelectorAll('app-film-feature').length).toBe(3);
-    expect(text('app-family-list li:first-child')).toMatch(/^Fiction\s+2\s+films$/);
-    expect(page.querySelector('app-family-list a')?.getAttribute('href')).toBe('/en/films#fiction');
-    expect(page.querySelectorAll('app-press-row').length).toBe(3);
-    // Third row: an article in French about Immunity, seen from the English page.
+    expect(page.querySelector('.hero img')?.getAttribute('src')).toBe(
+      'content/images/hero-1920.webp',
+    );
+    expect(page.querySelector('.hero img')?.getAttribute('alt')).toContain('dancer');
+    expect(
+      [...page.querySelectorAll('.roles [role="listitem"]')].map((li) => li.textContent),
+    ).toEqual(['Director\u2060', 'Screenwriter\u2060', 'Producer']);
+
+    // Roles band: families (links to the films index) and roles, interleaved.
+    const band = page.querySelector('nav app-band .items:not(.copy)');
+    expect([...band!.querySelectorAll('.item')].map((item) => item.textContent?.trim())).toEqual([
+      'Fiction',
+      'Director',
+      'Documentary',
+      'Screenwriter',
+      'Impact campaigns',
+      'Producer',
+    ]);
+    expect(band?.querySelector('a')?.getAttribute('href')).toBe('/en/films#fiction');
+    // The second copy is for the loop only.
+    const copy = page.querySelector('nav app-band .items.copy');
+    expect(copy?.getAttribute('aria-hidden')).toBe('true');
+    expect(copy?.querySelector('a')?.getAttribute('tabindex')).toBe('-1');
+
+    expect(page.querySelectorAll('app-name-wall li').length).toBe(8);
+    const tiles = [...page.querySelectorAll('app-film-tile')];
+    expect(tiles.map((tile) => tile.querySelector('.title')?.textContent?.trim())).toEqual([
+      'La Dolce Attesa',
+      'Immunity',
+      'Le Retour du Train',
+    ]);
+    expect(tiles[0].querySelector('.number')?.textContent).toBe('01');
+    expect(tiles[1].querySelector('a')?.getAttribute('href')).toBe('/en/films/immunity');
+
+    // Press band: each publication once.
+    const names = [...page.querySelectorAll('.surface-accent app-band .items:not(.copy) .item')];
+    expect(names.length).toBe(new Set(names.map((item) => item.textContent)).size);
+    expect(names.length).toBeGreaterThan(5);
+  });
+
+  it('pauses both bands with one button', async () => {
+    await open('/fr');
+    const buttons = [...page.querySelectorAll<HTMLButtonElement>('app-band .pause')];
+    expect(buttons.length).toBe(2);
+    expect(buttons[0].getAttribute('aria-label')).toBe('Mettre le défilement en pause');
+    buttons[0].click();
+    await fixture.whenStable();
+    expect(buttons.map((button) => button.getAttribute('aria-pressed'))).toEqual(['true', 'true']);
+    expect(buttons[1].getAttribute('aria-label')).toBe('Reprendre le défilement');
+    expect(page.querySelectorAll('app-band.paused').length).toBe(2);
+  });
+
+  it('adds the article language to a press row only when it differs from the page', async () => {
+    await open('/fr/presse');
+    const metas = () => [...page.querySelectorAll('app-press-row .meta')].map((m) => m.textContent);
+    expect(metas().slice(0, 4)).toEqual([
+      '2025\u00A0· France',
+      '2025\u00A0· France',
+      '2024\u00A0· France',
+      '2019\u00A0· Italie\u00A0· it – article en italien',
+    ]);
+    await open('/en/press');
+    expect(metas()[2]).toBe('2024\u00A0· France\u00A0· fr – article in French');
     const row = page.querySelectorAll('app-press-row')[2];
     expect(row.querySelector('cite')?.textContent).toBe('Immunity');
     expect(row.querySelector('.description')?.textContent?.trim()).toBe(
       'Article about the documentary Immunity',
     );
-    expect(row.querySelector('.meta')?.textContent).toBe(
-      '2024\u00A0· France\u00A0· fr – article in French',
-    );
-    expect(page.querySelectorAll('app-in-development-list li').length).toBe(3);
-  });
-
-  it('adds the article language to a press row only when it differs from the page', async () => {
-    await open('/fr');
-    const metas = [...page.querySelectorAll('app-press-row .meta')].map((meta) => meta.textContent);
-    expect(metas).toEqual(['2025\u00A0· France', '2025\u00A0· France', '2024\u00A0· France']);
   });
 
   it('renders a page in English with its title, description and canonical links', async () => {
@@ -138,7 +191,7 @@ describe('App', () => {
   });
 
   it('shows the phone number on the Contact page only', async () => {
-    const phone = site.contact.phoneDisplay;
+    const phone = contact.phone.display;
     await open('/fr');
     expect(page.textContent).not.toContain(phone);
     expect(page.querySelector('a[href^="tel:"]')).toBeNull();

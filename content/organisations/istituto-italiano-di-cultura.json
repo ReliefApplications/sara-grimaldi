@@ -1,0 +1,13 @@
+{
+  "name": "Istituto Italiano di Cultura",
+  "kind": "client",
+  "order": 11,
+  "logo": {
+    "src": "images/logos/istituto-italiano-di-cultura.webp",
+    "size": [214, 113],
+    "alt": {
+      "fr": "Logo Istituto Italiano di Cultura",
+      "en": "Istituto Italiano di Cultura logo"
+    }
+  }
+}

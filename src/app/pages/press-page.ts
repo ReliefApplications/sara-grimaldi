@@ -11,7 +11,7 @@ import { PressRow } from '../shared/press-row';
   template: `
     @if (page(); as page) {
       <div class="container plain-page">
-        <h1 class="t-display-l" appPageHeading>{{ page.heading }}</h1>
+        <h1 class="t-display" appPageHeading>{{ page.heading }}</h1>
         <p>{{ page.intro }}</p>
         @for (group of years(); track group.year) {
           <h2 class="t-label t-muted t-tabular">{{ group.year }}</h2>

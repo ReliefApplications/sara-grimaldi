@@ -23,7 +23,7 @@ import { dotJoin } from '../core/text';
     @if (page(); as page) {
       @if (site(); as site) {
         <div class="container plain-page">
-          <h1 class="t-display-l" appPageHeading>{{ page.heading }}</h1>
+          <h1 class="t-display" appPageHeading>{{ page.heading }}</h1>
           <p>{{ page.intro }}</p>
           <nav [attr.aria-label]="page.familyNavLabel">
             <ul>
@@ -38,7 +38,7 @@ import { dotJoin } from '../core/text';
           </nav>
           @for (family of families(); track family.id) {
             <section class="family" [id]="family.id">
-              <h2 class="t-h2">{{ site.families[family.id] }}</h2>
+              <h2 class="t-title">{{ site.families[family.id] }}</h2>
               <ul>
                 @for (film of family.films; track film.slug) {
                   <li>

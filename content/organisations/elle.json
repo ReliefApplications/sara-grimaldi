@@ -1,0 +1,13 @@
+{
+  "name": "ELLE",
+  "kind": "press",
+  "order": 2,
+  "logo": {
+    "src": "images/logos/elle.webp",
+    "size": [220, 88],
+    "alt": {
+      "fr": "Logo ELLE",
+      "en": "ELLE logo"
+    }
+  }
+}

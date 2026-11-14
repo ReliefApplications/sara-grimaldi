@@ -148,5 +148,17 @@
   "watch": {
     "mode": "none"
   },
+  "still": {
+    "_source": "Source: poster frame of “LE RETOUR DU TRAIN - TRAILER” on Sara's Vimeo channel (video 208282443). Placeholder: Sara can replace or veto it. Cropped to leave out the title and laurels.",
+    "src": "images/films/le-retour-du-train.webp",
+    "width": 1497,
+    "height": 842,
+    "widths": [480, 768, 1152, 1497],
+    "focus": "50% 35%",
+    "alt": {
+      "fr": "Les habitants du village posent en groupe devant une façade décorée de fanions ; une jeune fille lève le bras.",
+      "en": "The villagers pose as a group in front of a building hung with bunting; a young girl raises her arm."
+    }
+  },
   "published": true
 }

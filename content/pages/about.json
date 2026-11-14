@@ -32,6 +32,18 @@
       "Her screenplays explore characters stuck in the present, haunted by the past, who struggle to imagine a future. Her films have aired in France, Singapore, the Netherlands, Canada, Italy and the United States."
     ]
   },
+  "portrait": {
+    "_source": "Source: saragrimaldi.com (the About page of her current site). Placeholder: Sara can replace or veto it. Cropped from 2:3 to 4:5.",
+    "src": "images/sara-grimaldi.webp",
+    "width": 1000,
+    "height": 1250,
+    "widths": [480, 768, 1000],
+    "focus": "50% 30%",
+    "alt": {
+      "fr": "Portrait de Sara Grimaldi, cheveux bruns mi-longs, sur fond sombre.",
+      "en": "Portrait of Sara Grimaldi, with shoulder-length dark hair, against a dark background."
+    }
+  },
   "careerHeading": {
     "fr": "Parcours",
     "en": "Career"

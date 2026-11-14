@@ -1,0 +1,13 @@
+{
+  "name": "Deutsche Welle",
+  "kind": "client",
+  "order": 8,
+  "logo": {
+    "src": "images/logos/deutsche-welle.webp",
+    "size": [305, 83],
+    "alt": {
+      "fr": "Logo Deutsche Welle",
+      "en": "Deutsche Welle logo"
+    }
+  }
+}

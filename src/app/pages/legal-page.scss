@@ -2,7 +2,7 @@
 
 // 1. Page head (9.8)
 .head {
-  padding-top: var(--page-top);
+  padding-top: var(--space-7);
 }
 
 .updated {
@@ -66,5 +66,5 @@ p + p,
 .cross {
   margin-top: var(--space-7);
   padding-top: var(--space-5);
-  border-top: var(--hairline);
+  border-top: var(--rule-minor);
 }

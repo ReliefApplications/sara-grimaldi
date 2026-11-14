@@ -19,5 +19,17 @@
     "mode": "full",
     "provider": "youtube"
   },
+  "still": {
+    "_source": "Source: poster frame of “Endométriose : parlons-en / Real Disease True Hope” on Sara's Vimeo channel (video 119327225). Placeholder: Sara can replace or veto it.",
+    "src": "images/films/endometriose-parlons-en.webp",
+    "width": 1920,
+    "height": 1080,
+    "widths": [480, 768, 1152, 1920],
+    "focus": "40% 40%",
+    "alt": {
+      "fr": "Une jeune femme en blouse d’hôpital, les yeux fermés, assise sur un lit d’examen à côté d’une perfusion.",
+      "en": "A young woman in a hospital gown, eyes closed, sitting on an examination bed beside a drip."
+    }
+  },
   "published": true
 }

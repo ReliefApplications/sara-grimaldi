@@ -1,0 +1,13 @@
+{
+  "name": "Madame Figaro",
+  "kind": "press",
+  "order": 7,
+  "logo": {
+    "src": "images/logos/madame-figaro.webp",
+    "size": [275, 70],
+    "alt": {
+      "fr": "Logo Madame Figaro",
+      "en": "Madame Figaro logo"
+    }
+  }
+}

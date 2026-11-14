@@ -6,6 +6,7 @@ import {
   Collaboration,
   Film,
   InDevelopmentItem,
+  Organisation,
   PageId,
   Pages,
   PressItem,
@@ -59,6 +60,22 @@ export class ContentService {
   inDevelopment(): Signal<Resolved<InDevelopmentItem>[] | undefined> {
     return this.load<InDevelopmentItem[]>('collections/in-development.json');
   }
+
+  /** Entries of content/organisations, in their set order. */
+  organisations(): Signal<Resolved<Organisation>[] | undefined> {
+    return this.load<Organisation[]>('collections/organisations.json');
+  }
+
+  /** Organisations by name and alias, to find the logo of a client or a medium. */
+  readonly organisationByName = computed(() => {
+    const byName = new Map<string, Resolved<Organisation>>();
+    for (const organisation of this.organisations()() ?? []) {
+      for (const name of [organisation.name, ...(organisation.aliases ?? [])]) {
+        byName.set(name.toLowerCase(), organisation);
+      }
+    }
+    return byName;
+  });
 
   /** URL of a file referenced from content, e.g. "images/photo.webp". */
   assetUrl(path: string): string {

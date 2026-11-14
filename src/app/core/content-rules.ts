@@ -14,8 +14,14 @@ export const FAMILIES = ['fiction', 'documentaire', 'impact'] as const;
 
 export const WATCH_MODES = ['full', 'trailer', 'external', 'none'] as const;
 
+/** What an organisation is to Sara: someone she worked for, or a medium that covered her work. */
+export const ORGANISATION_KINDS = ['client', 'press'] as const;
+
 /** Widths (px) every still is exported in, unless the image sets its own `widths`. */
-export const IMAGE_WIDTHS = [480, 768, 1152, 1600];
+export const IMAGE_WIDTHS = [480, 768, 1152];
+
+/** How an image fills its tile (design system, 7.1). */
+export const IMAGE_FITS = ['cover', 'poster'] as const;
 
 /** Pages listed in the navigation, in display order. */
 export const NAV_PAGE_IDS = ['films', 'press', 'about', 'contact'] as const;
@@ -30,7 +36,6 @@ export const UI_KEYS = [
   'close',
   'newWindow',
   'email',
-  'phone',
   'filmCountOne',
   'filmCountOther',
   'watchFull',
@@ -40,6 +45,9 @@ export const UI_KEYS = [
   'lastUpdated',
   'dateMissing',
   'noscript',
+  'bandPause',
+  'bandResume',
+  'familiesNavLabel',
 ] as const;
 
 /** Rows of the data table of a film, in display order. */
@@ -120,7 +128,6 @@ export const REQUIRED = {
     ...FAMILIES.map((family) => `families.${family}`),
     ...UI_KEYS.map((key) => `ui.${key}`),
     'contact.email',
-    'location',
     'social[].label',
     'social[].url',
     'footer.label',
@@ -140,17 +147,13 @@ export const REQUIRED = {
       ...seo,
       'statement',
       'intro',
+      'aboutLink',
       'featured.label',
       'featured.films',
-      'featured.filmLink',
       'featured.allLink',
       'collaborations.label',
       'collaborations.context',
-      'collaborations.aboutLink',
-      'press.label',
-      'press.count',
       'press.allLink',
-      'inDevelopment.label',
     ],
     films: [
       ...seo,
@@ -173,7 +176,15 @@ export const REQUIRED = {
       'filmsLink',
       'contactLink',
     ],
-    contact: [...seo, 'heading', 'intro', 'labels.location', 'labels.social'],
+    contact: [
+      ...seo,
+      'heading',
+      'intro',
+      'location',
+      'labels.phone',
+      'labels.location',
+      'labels.social',
+    ],
     'not-found': [...seo, 'code', 'heading', 'homeLink'],
     legal: legalPage,
     privacy: legalPage,
@@ -194,4 +205,5 @@ export const REQUIRED = {
   press: ['publication', 'year', 'description', 'country', 'articleLang'],
   collaborations: ['names', 'role', 'order', 'home'],
   'in-development': ['title', 'titleLang', 'format', 'order', 'home'],
+  organisations: ['name', 'kind', 'order'],
 };

@@ -15,17 +15,18 @@ The site exists in French (main language) and English. Every page has both.
 You never need to touch the code to change wording. Everything is in
 `content/`:
 
-| What                                              | File                                       |
-| ------------------------------------------------- | ------------------------------------------ |
-| Name, roles, menu, e-mail, phone, socials, footer | `content/site.json`                        |
-| Home, Films, Press, About, Contact, "not found"   | `content/pages/<page>.json`                |
-| Legal notice, privacy policy                      | `content/pages/legal.json`, `privacy.json` |
-| The small privacy notice ("cookie banner")        | `privacyNotice` in `content/site.json`     |
-| One film                                          | `content/films/<film>.json`                |
-| One press item                                    | `content/press/<year>-<outlet>.json`       |
-| One collaboration (brand, media…)                 | `content/collaborations/<name>.json`       |
-| One project in development                        | `content/in-development/<name>.json`       |
-| Images                                            | `content/images/`                          |
+| What                                            | File                                       |
+| ----------------------------------------------- | ------------------------------------------ |
+| Name, roles, menu, e-mail, socials, footer      | `content/site.json`                        |
+| Home, Films, Press, About, Contact, "not found" | `content/pages/<page>.json`                |
+| Legal notice, privacy policy                    | `content/pages/legal.json`, `privacy.json` |
+| The small privacy notice ("cookie banner")      | `privacyNotice` in `content/site.json`     |
+| One film                                        | `content/films/<film>.json`                |
+| One press item                                  | `content/press/<year>-<outlet>.json`       |
+| One collaboration (brand, media…)               | `content/collaborations/<name>.json`       |
+| One project in development                      | `content/in-development/<name>.json`       |
+| One client or medium, with its logo             | `content/organisations/<name>.json`        |
+| Images                                          | `content/images/`                          |
 
 What visitors can and cannot see: only a prepared copy of these files is
 published. Films and sections with `"published": false`, blocks and list
@@ -86,18 +87,26 @@ Other content:
   name of the film it talks about) and `"url"` (the link to the article) are
   optional. Items are listed most recent year first; for two items of the
   same year, add `"order": 1`, `"order": 2` to choose.
+- **Organisations** (clients and media): each file has a `"name"`, a
+  `"kind"` (`client` or `press`), an `"order"` and, when a logo exists, a
+  `"logo"` (file in `content/images/logos/`, its pixel `"size"`, and a
+  description in both languages). Wherever a collaboration or a press item
+  names an organisation, the site can show its logo; without a logo, or when
+  the name is written differently, it shows the name as text. List other
+  spellings under `"aliases"` (for example `"Universal"` for Universal
+  Music). The current logos come from Sara's own site and are small.
 - **Collaborations** and **projects in development**: `"order"` sets the
   position, `"home": true` shows the entry on the home page.
 - **Second contact** on the Contact page (for example an agent):
-  `"secondaryContact": { "show": true, … }` in `content/site.json`, with its
+  `"secondaryContact": { "show": true, … }` in `content/pages/contact.json`, with its
   heading, name and e-mail. The name and e-mail are empty for now: fill them
   in before switching `"show"` to `true`. While `"show"` is `false` nothing
   from this block is published anywhere on the website.
-- **Phone number**: shown on the Contact page only. `"phone"` (digits only,
-  starting with `+33`) and `"phoneDisplay"` (as it should read) under
-  `"contact"` in `content/site.json`. The current value is a placeholder
-  from a range reserved for fiction, not a real number; leave both empty
-  (`""`) to show no phone at all.
+- **Phone number**: shown on the Contact page only, and stored only in that
+  page's file: `"phone"` in `content/pages/contact.json`, with `"number"`
+  (digits only, starting with `+33`) and `"display"` (as it should read).
+  The current value is a placeholder from a range reserved for fiction, not
+  a real number; leave both empty (`""`) to show no phone at all.
 - **Legal notice and privacy policy** (`content/pages/legal.json` and
   `privacy.json`): a list of sections, each with a heading, paragraphs, an
   optional list, optional paragraphs after the list (`"after"`) and optional
@@ -118,22 +127,33 @@ Other content:
 
 Images (`content/images/`):
 
-- Each still is exported by hand as WebP (quality about 78), 16:9, in four
-  widths: 480, 768, 1152 and 1600 pixels, named with the width at the end:
-  `immunity-480.webp`, `immunity-768.webp`, `immunity-1152.webp`,
-  `immunity-1600.webp`.
+- Each photograph is exported by hand as WebP (quality about 78) in several
+  widths, named with the width at the end. A film image used in tiles needs
+  480, 768 and 1152 pixels: `immunity-480.webp`, `immunity-768.webp`,
+  `immunity-1152.webp`.
 - In the content file, reference the set once, without the width:
-  `"still": { "src": "images/immunity.webp", "width": 1600, "height": 900, "alt": { "fr": "…", "en": "…" } }`.
+  `"still": { "src": "images/films/immunity.webp", "width": 1474, "height": 1080, "alt": { "fr": "…", "en": "…" } }`.
   `width` and `height` are those of the largest file. The site picks the
   right file for each screen.
-- A portrait (4:5) uses the widths 480, 768 and 960: add
-  `"widths": [480, 768, 960]` to its reference.
-- The sharing image (shown by social networks) is a single JPEG of
-  1200 × 630 pixels under 300 KB, referenced with its full name under
-  `"seo"` in `content/site.json`:
+- When the set has other widths, list them: `"widths": [480, 768, 1280, 1920]`
+  for the image of the first screen (`"hero"` in `content/pages/home.json`),
+  a larger last width for a film's main image, `[480, 768, 1000]` for the
+  portrait.
+- `"focus"` says which point stays visible when the image is cropped to fit
+  its frame, as two percentages from the left and from the top:
+  `"focus": "35% 60%"`. Without it the centre is kept.
+- `"fit": "poster"` shows the whole image on a black field instead of
+  cropping it. Use it for posters and any picture with a title printed on it.
+- `"_source"` notes where a picture came from. It is for the team only and is
+  never published. The current pictures are placeholders taken from Sara's
+  own site and Vimeo channel, for her to replace or refuse.
+- Logos and the sharing image are single files, referenced with their full
+  name. The sharing image (shown by social networks) is a JPEG of
+  1200 × 630 pixels under 300 KB, under `"seo"` in `content/site.json`:
   `"image": { "src": "images/share.jpg", "alt": { "fr": "…", "en": "…" } }`.
   A film can have its own as `"shareImage"`.
 - The build stops if a description (`alt`) or one of the files is missing.
+- Only pictures used by published content are put online.
 
 Once the change is pushed to the `main` branch on GitHub, the site is rebuilt
 and published automatically within a few minutes.
@@ -203,14 +223,15 @@ SITE_URL=https://reliefapplications.github.io/sara-grimaldi SITE_NOINDEX=true np
   additions to the CLI scaffold are `@angular/ssr` and its peer
   `@angular/platform-server`, used at build time only for prerendering
   (`outputMode: "static"`, no server entry).
-- Design: `docs/design/design-system.md` is the source of truth. Its tokens
-  are CSS custom properties defined once in `src/styles/_tokens.scss`; the
-  type scale is in `src/styles/_type.scss`. The home page, header, footer,
-  legal pages, privacy notice and not-found page are built to it; the other
-  pages are still plain.
-- Fonts: Fraunces and Inter (SIL Open Font License), self-hosted in
-  `public/fonts/` as Latin subsets of the official releases, declared and
-  preloaded in `src/index.html`.
+- Design: `docs/design/design-system.md` (v2) is the source of truth. Its
+  tokens are CSS custom properties defined once in `src/styles/_tokens.scss`;
+  the type styles are in `src/styles/_type.scss` and the three surfaces
+  (ground, ink, accent) in `src/styles/_layout.scss`. The shell (header,
+  menu, footer, privacy notice) and the home page are built to it; the other
+  pages are being rebuilt and are plain meanwhile.
+- Fonts: Archivo (variable width and weight) and Fraunces italic, both under
+  the SIL Open Font License, self-hosted in `public/fonts/` as Latin subsets
+  of the official files, declared and preloaded in `src/index.html`.
 - `src/app/core/content.service.ts` is the only place that loads content.
   It returns signals already resolved to the current language. The shape of
   every content file is typed in `src/app/core/content.models.ts`; update it

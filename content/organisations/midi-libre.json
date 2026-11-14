@@ -1,0 +1,13 @@
+{
+  "name": "Midi Libre",
+  "kind": "press",
+  "order": 9,
+  "logo": {
+    "src": "images/logos/midi-libre.webp",
+    "size": [337, 80],
+    "alt": {
+      "fr": "Logo Midi Libre",
+      "en": "Midi Libre logo"
+    }
+  }
+}

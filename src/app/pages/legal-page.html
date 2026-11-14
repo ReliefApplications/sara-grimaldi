@@ -2,7 +2,7 @@
   @if (site(); as site) {
     <div class="container grid">
       <header class="head">
-        <h1 class="t-display-l" appPageHeading>{{ page.heading }}</h1>
+        <h1 class="t-display" appPageHeading>{{ page.heading }}</h1>
         <p class="updated t-label t-muted">
           {{ site.ui.lastUpdated }}
           @if (updated(); as date) {
@@ -19,7 +19,7 @@
       <div class="body">
         @for (section of page.sections; track section.id) {
           <section [attr.aria-labelledby]="section.id">
-            <h2 class="t-h3" [id]="section.id">{{ section.heading }}</h2>
+            <h2 class="t-title" [id]="section.id">{{ section.heading }}</h2>
             @for (paragraph of section.paragraphs; track $index) {
               <p><app-inline-text [text]="paragraph" /></p>
             }
@@ -43,7 +43,7 @@
                         [href]="link.url"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >{{ link.label }}&nbsp;<span class="t-arrow" aria-hidden="true">↗</span>
+                        >{{ link.label }}&nbsp;<span class="t-arrow-out" aria-hidden="true">→</span>
                         <span class="visually-hidden">{{ site.ui.newWindow }}</span></a
                       >
                     } @else {

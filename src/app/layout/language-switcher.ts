@@ -12,11 +12,11 @@ import { pageLink } from '../core/site-routes';
   template: `
     @if (site(); as site) {
       <nav [attr.aria-label]="site.ui.languageNavLabel">
-        <ul class="t-label">
+        <ul class="t-nav">
           @for (language of site.languages; track language.code) {
             <li>
               @if (language.code === route.lang()) {
-                <span class="item" aria-current="true"
+                <span class="item current" aria-current="true"
                   >{{ language.short
                   }}<span class="visually-hidden"> – {{ site.ui.currentLanguage }}</span></span
                 >
@@ -26,8 +26,8 @@ import { pageLink } from '../core/site-routes';
                   [routerLink]="link(language.code)"
                   [attr.lang]="language.code"
                   [attr.hreflang]="language.code"
-                  >{{ language.short
-                  }}<span class="visually-hidden"> – {{ language.name }}</span></a
+                  ><span class="code">{{ language.short }}</span
+                  ><span class="visually-hidden"> – {{ language.name }}</span></a
                 >
               }
             </li>
@@ -40,27 +40,32 @@ import { pageLink } from '../core/site-routes';
     ul {
       display: flex;
       align-items: center;
+      color: var(--text);
     }
 
     li + li::before {
       content: '/';
-      color: var(--color-muted);
     }
 
     .item {
       display: inline-flex;
       align-items: center;
+      min-width: var(--space-6);
       min-height: var(--target-size);
-      padding-inline: var(--space-2);
+      justify-content: center;
+    }
+
+    .current {
+      font-weight: 800;
     }
 
     a.item {
-      color: var(--color-muted);
+      font-weight: 400;
 
-      &:hover {
-        color: var(--color-accent);
-        text-decoration: underline 1px;
-        text-underline-offset: 6px;
+      &:hover .code {
+        padding: 0 0.12em;
+        background: var(--highlight-bg);
+        color: var(--highlight-text);
       }
     }
   `,

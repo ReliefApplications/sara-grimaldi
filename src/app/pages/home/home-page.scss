@@ -1,103 +1,208 @@
 @use '../../../styles/breakpoints' as *;
 
-// 1. Hero
+// 1. Hero (9.1): with the band under it, exactly one screen.
 .hero {
-  padding-top: var(--space-7);
+  --text: var(--color-ground);
+  --focus: var(--color-ground);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: calc(100vh - var(--band-height));
+  height: calc(100svh - var(--band-height));
+  min-height: 30rem;
+  max-height: 57.5rem;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: var(--color-ground);
+}
+
+.hero-image,
+.scrim {
+  position: absolute;
+  inset: 0;
+}
+
+// Two layers: a dark foot for the name, a dark top for the navigation.
+.scrim {
+  background:
+    linear-gradient(
+      to top,
+      rgb(14 14 14 / 90%) 0%,
+      rgb(14 14 14 / 60%) 30%,
+      rgb(14 14 14 / 0%) 65%
+    ),
+    linear-gradient(to bottom, rgb(14 14 14 / 65%) 0, rgb(14 14 14 / 0%) 180px);
+}
+
+.hero-block {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding-bottom: 1.25rem; // 20 px (9.1); not on the spacing scale
+  // The name is sized from the width of this block.
+  container-type: inline-size;
 
   @include md {
-    padding-top: 4.5rem; // 72 px (9.1); not on the spacing scale
+    padding-bottom: 1.75rem; // 28 px (9.1)
   }
 
   @include lg {
-    padding-top: var(--space-9);
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--gutter);
+    padding-bottom: var(--space-6);
   }
 }
 
 .roles {
-  margin-bottom: var(--space-5);
-}
-
-.intro {
-  margin-top: var(--space-6);
-}
-
-.families {
-  margin-top: var(--space-6);
-}
-
-@include lg {
-  .roles,
-  .statement {
-    grid-column: 1 / 12;
-  }
-
-  .intro {
-    grid-column: 1 / 7;
-    margin-top: var(--space-7);
-  }
-
-  .families {
-    grid-column: 8 / 13;
-    margin-top: var(--space-7);
-  }
-}
-
-// 2. Featured films
-.features {
-  display: grid;
-  row-gap: var(--section-gap);
-}
-
-.all-films {
-  margin-top: var(--space-7);
-}
-
-// 3. Collaborations: a band across the full viewport width
-.band {
-  padding-block: var(--space-8);
-  background: var(--color-surface);
+  margin-bottom: var(--space-3);
 
   @include lg {
-    padding-block: var(--space-9);
+    margin-bottom: var(--space-4);
   }
 }
 
-.collaborators {
-  font-weight: 400;
+// The name: as wide as the container. The factors are measured with the real
+// font (see --name-fit); the vw values are a fallback for older browsers.
+.name {
+  --name-fit: 0.15; // font-size over line width for "GRIMALDI", wide 900
 
-  li {
+  overflow: hidden;
+  font-size: 15vw;
+  font-size: calc(100cqw * var(--name-fit));
+  font-stretch: var(--wide);
+  font-weight: 900;
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+
+  @include md {
+    --name-fit: 0.0925; // for "SARA GRIMALDI" on one line
+
+    font-size: 9.2vw;
+    font-size: min(calc(100cqw * var(--name-fit)), 8.25rem);
+  }
+
+  @include lg {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+.name-line {
+  display: block;
+  white-space: nowrap;
+
+  @include md {
     display: inline;
   }
+}
 
-  li + li::before {
-    content: '\00a0· '; // non-breaking space: no line starts with the dot
-  }
+.credit {
+  margin-top: var(--space-3);
 
   @include lg {
-    grid-column: 1 / 11;
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+    text-align: right;
   }
 }
 
-.context {
-  margin-top: var(--space-5);
+// 2. Statement (9.2)
+.intro {
+  margin-top: var(--space-6);
 }
 
 .about {
   margin-top: var(--space-5);
 }
 
-// 4. Press
-.press {
-  border-bottom: var(--hairline);
+@include md {
+  .intro {
+    grid-column: 1 / 7;
+  }
 }
 
-.all-press {
+@include lg {
+  .statement {
+    grid-column: 1 / 12;
+  }
+
+  .intro {
+    grid-column: 1 / 8;
+    margin-top: var(--space-7);
+  }
+
+  // Beside the intro, on its last line, at the right edge.
+  .about {
+    grid-column: 9 / 13;
+    align-self: end;
+    margin-top: 0;
+    text-align: right;
+  }
+}
+
+// 3. Collaborations (9.3)
+.wall {
+  display: block;
   margin-top: var(--space-6);
+
+  @include lg {
+    margin-top: var(--space-7);
+  }
 }
 
-// 5. In development
-.development {
+.context {
+  margin-top: var(--space-6);
+
   @include lg {
-    grid-column: 1 / 9;
+    max-width: calc(50% - var(--gutter) / 2);
+  }
+}
+
+// 4. Films (9.4)
+.films {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7) var(--gutter);
+  margin-top: var(--space-6);
+
+  // Tiles are 4:3, except the lead film from md.
+  --tile-ratio: 4 / 3;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: var(--space-8);
+
+    .lead,
+    &.pair > * {
+      grid-column: 1 / -1;
+      --tile-ratio: 16 / 9;
+    }
+  }
+
+  @include lg {
+    row-gap: var(--space-9);
+    margin-top: var(--space-7);
+  }
+}
+
+.all-films {
+  margin-top: var(--space-7);
+
+  @include lg {
+    margin-top: var(--space-8);
+  }
+}
+
+// 5. Link under the press band (9.5)
+.all-press {
+  display: flex;
+  padding-block: var(--space-5);
+
+  @include md {
+    justify-content: flex-end;
   }
 }

@@ -1,9 +1,9 @@
 @let press = item();
 <ng-template #body>
-  <h3 class="publication t-h3">
+  <h3 class="publication t-title">
     {{ press.publication }}
     @if (link()) {
-      <span class="t-arrow" aria-hidden="true">↗</span>
+      <span class="t-arrow-out" aria-hidden="true">→</span>
       <span class="visually-hidden">{{ site()?.ui?.newWindow }}</span>
     }
   </h3>

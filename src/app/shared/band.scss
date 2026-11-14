@@ -1,0 +1,139 @@
+:host {
+  position: relative;
+  display: block;
+  height: var(--band-height);
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.viewport {
+  height: 100%;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: band-scroll 36s linear infinite;
+}
+
+:host(.reverse) .track {
+  animation-direction: reverse;
+}
+
+// Paused under the pointer, while focus is inside, and by the button.
+:host(:hover) .track,
+:host(:focus-within) .track,
+:host(.paused) .track {
+  animation-play-state: paused;
+}
+
+@keyframes band-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.items {
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+
+.item {
+  display: flex;
+  flex: none;
+  align-items: center;
+  font-size: var(--size-band);
+  font-stretch: var(--wide);
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &.narrow {
+    font-stretch: var(--narrow);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+}
+
+.dot {
+  flex: none;
+  margin-inline: 0.7em;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+
+  &:hover,
+  &:focus-visible {
+    padding: 0 0.12em;
+    background: var(--highlight-bg);
+    color: var(--highlight-text);
+  }
+}
+
+// Pause button: at the right end, above the track.
+.pause {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: var(--target-size);
+  height: 100%;
+  border-left: 2px solid var(--text);
+  background: var(--surface);
+  color: var(--text);
+
+  &:focus-visible {
+    outline-offset: -5px;
+  }
+}
+
+// Two bars (pause) or a triangle (play), 14 px high, drawn in CSS.
+.icon {
+  width: 0.75rem;
+  height: 0.875rem;
+  border-inline: 0.25rem solid currentColor;
+
+  &.play {
+    width: 0;
+    height: 0;
+    border-block: 0.4375rem solid transparent;
+    border-left: 0.75rem solid currentColor;
+    border-right: 0;
+  }
+}
+
+// Reduced motion: a static strip; items wrap; no second copy; no button.
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    height: auto;
+    padding: var(--space-3) var(--margin);
+  }
+
+  .track {
+    width: auto;
+    animation: none;
+  }
+
+  .items {
+    flex-wrap: wrap;
+    row-gap: var(--space-2);
+  }
+
+  .copy,
+  .pause,
+  .item:last-child .dot {
+    display: none;
+  }
+}

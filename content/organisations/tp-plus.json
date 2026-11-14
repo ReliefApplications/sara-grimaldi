@@ -1,0 +1,13 @@
+{
+  "name": "TP+",
+  "kind": "client",
+  "order": 10,
+  "logo": {
+    "src": "images/logos/tp-plus.webp",
+    "size": [269, 90],
+    "alt": {
+      "fr": "Logo TP+",
+      "en": "TP+ logo"
+    }
+  }
+}

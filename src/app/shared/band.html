@@ -1,0 +1,38 @@
+<div class="viewport">
+  <div class="track t-band" [style.animation-duration.s]="duration()">
+    <!-- The list is there twice so the loop has no seam; only the first copy
+         is exposed to assistive technology and to the keyboard. -->
+    @for (copy of [0, 1]; track copy) {
+      <ul class="items" [class.copy]="copy === 1" [attr.aria-hidden]="copy === 1 ? 'true' : null">
+        @for (item of items(); track $index) {
+          <li class="item" [class.narrow]="item.narrow">
+            @if (item.link) {
+              <a
+                class="link"
+                [routerLink]="item.link"
+                [fragment]="item.fragment"
+                [attr.tabindex]="copy === 1 ? -1 : null"
+                >{{ item.text }}</a
+              >
+            } @else {
+              <span>{{ item.text }}</span>
+            }
+            <span class="dot" aria-hidden="true"></span>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+</div>
+
+@if (site(); as site) {
+  <button
+    class="pause"
+    type="button"
+    [attr.aria-pressed]="state.paused()"
+    [attr.aria-label]="state.paused() ? site.ui.bandResume : site.ui.bandPause"
+    (click)="state.toggle()"
+  >
+    <span class="icon" [class.play]="state.paused()" aria-hidden="true"></span>
+  </button>
+}

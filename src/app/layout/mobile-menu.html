@@ -1,5 +1,11 @@
 @if (site(); as site) {
-  <dialog #dialog id="site-menu" class="menu" [attr.aria-label]="site.ui.menu" (close)="onClose()">
+  <dialog
+    #dialog
+    id="site-menu"
+    class="menu surface-ink"
+    [attr.aria-label]="site.ui.menu"
+    (close)="onClose()"
+  >
     <div class="container panel">
       <div class="bar">
         <a
@@ -10,7 +16,7 @@
           >{{ site.name }}</a
         >
         <app-language-switcher />
-        <button class="close t-label" type="button" autofocus (click)="close()">
+        <button class="close t-nav" type="button" autofocus (click)="close()">
           {{ site.ui.close }}
         </button>
       </div>
@@ -20,26 +26,21 @@
           @for (page of pages; track page) {
             <li>
               <a
-                class="link t-display-l"
+                class="link t-display"
                 [routerLink]="route.link(page)"
                 routerLinkActive
                 ariaCurrentWhenActive="page"
                 (click)="close()"
-                >{{ site.nav[page] }}</a
+                ><span class="link-text">{{ site.nav[page] }}</span></a
               >
             </li>
           }
         </ul>
       </nav>
 
-      <dl class="contact">
-        <dt class="t-label t-muted">{{ site.ui.email }}</dt>
-        <dd>
-          <a class="contact-link" [href]="'mailto:' + site.contact.email">{{
-            site.contact.email
-          }}</a>
-        </dd>
-      </dl>
+      <p class="contact t-small">
+        <a class="contact-link" [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a>
+      </p>
     </div>
   </dialog>
 }

@@ -1,0 +1,13 @@
+{
+  "name": "Biosme",
+  "kind": "client",
+  "order": 15,
+  "logo": {
+    "src": "images/logos/biosme.webp",
+    "size": [103, 145],
+    "alt": {
+      "fr": "Logo Biosme",
+      "en": "Biosme logo"
+    }
+  }
+}

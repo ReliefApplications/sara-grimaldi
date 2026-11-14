@@ -6,8 +6,10 @@ import {
   FAMILIES,
   FILM_DATA_KEYS,
   FILM_LABEL_KEYS,
+  IMAGE_FITS,
   LANGS,
   LEGAL_PAGE_IDS,
+  ORGANISATION_KINDS,
   NAV_PAGE_IDS,
   UI_KEYS,
   WATCH_MODES,
@@ -50,14 +52,25 @@ export interface ImageRef {
   width: number;
   height: number;
   alt: Text;
-  /** Only when the set differs from IMAGE_WIDTHS, e.g. [480, 768, 960] for a portrait. */
+  /** Only when the set differs from IMAGE_WIDTHS, e.g. [480, 768, 1280, 1920] for the hero. */
   widths?: number[];
+  /**
+   * "cover" (default) fills its tile and may be cropped; "poster" is shown
+   * whole on a dark field, for artwork with a title printed on it.
+   */
+  fit?: (typeof IMAGE_FITS)[number];
+  /** Point kept in view when cropped, as CSS `object-position`, e.g. "35% 60%". */
+  focus?: string;
+  /** Credit line shown with the image where the design has one (the home hero). */
+  caption?: Text;
 }
 
 /** One file used as is, e.g. the 1200 × 630 sharing image "images/share.jpg". */
 export interface ImageFile {
   src: string;
   alt: Text;
+  /** Pixel width and height of the file, so the page can reserve its place. */
+  size?: [number, number];
 }
 
 /** .generated/content/build.json, written by tools/build-content.mjs. */
@@ -79,12 +92,8 @@ export interface SiteContent {
   nav: Record<NavPageId, Text>;
   families: Record<Family, Text>;
   ui: Record<(typeof UI_KEYS)[number], Text>;
-  /** The phone is shown on the Contact page only, and only when both values are set. */
-  contact: { email: string; phone?: string; phoneDisplay?: string };
-  location: Text;
+  contact: { email: string };
   social: { label: string; url: string }[];
-  /** Optional second contact on the Contact page; absent while `"show"` is false. */
-  secondaryContact?: { show: boolean; heading: Text; name: string; email: string };
   footer: {
     label: Text;
     invitation: Text;
@@ -112,11 +121,13 @@ export interface HomePage {
   /** Part of the statement to set in italic; leave empty for none. */
   statementEmphasis: Text;
   intro: Text;
+  /** Image of the first screen; without it the hero is a plain dark field. */
+  hero?: ImageRef;
+  aboutLink: Text;
   /** `films`: file names of the featured films, in display order (the first three are shown). */
-  featured: { label: Text; films: string[]; filmLink: Text; allLink: Text };
-  collaborations: { label: Text; context: Text; aboutLink: Text };
-  press: { label: Text; count: number; allLink: Text };
-  inDevelopment: { label: Text };
+  featured: { label: Text; films: string[]; allLink: Text };
+  collaborations: { label: Text; context: Text };
+  press: { allLink: Text };
 }
 
 export interface FilmsPage {
@@ -151,7 +162,16 @@ export interface ContactPage {
   seo: Seo;
   heading: Text;
   intro: Text;
-  labels: Record<'location' | 'social', Text>;
+  /**
+   * Shown here only, and kept in this file so that it is in no other page's
+   * data. `number` is the dialable form ("+33…"), `display` how it reads;
+   * leave both empty to show no phone.
+   */
+  phone?: { number: string; display: string };
+  location: Text;
+  /** Optional second contact; absent while `"show"` is false. */
+  secondaryContact?: { show: boolean; heading: Text; name: string; email: string };
+  labels: Record<'phone' | 'location' | 'social', Text>;
 }
 
 export interface NotFoundPage {
@@ -271,6 +291,22 @@ export interface Collaboration {
   role: Text;
   order: number;
   home: boolean;
+}
+
+/**
+ * content/organisations/<slug>.json — a client or a medium, with its logo
+ * when Sara's own material provides one. Collaborations and press items are
+ * matched to it by name (or one of `aliases`); without a logo, or without a
+ * match, the name is shown as text.
+ */
+export interface Organisation {
+  slug: string;
+  name: string;
+  /** Other names used for it in collaborations or press items. */
+  aliases?: string[];
+  kind: (typeof ORGANISATION_KINDS)[number];
+  order: number;
+  logo?: ImageFile;
 }
 
 /** content/in-development/<slug>.json */

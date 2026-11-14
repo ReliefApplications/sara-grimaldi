@@ -11,26 +11,19 @@ import { Component } from '@angular/core';
       display: inline-flex;
       align-items: center;
       min-height: var(--target-size);
-      color: var(--color-ink);
+      color: var(--text);
     }
 
     .text {
-      text-decoration: underline 1px var(--color-accent);
+      text-decoration: underline 2px;
       text-underline-offset: 6px;
     }
 
-    .arrow {
-      transition: transform var(--transition);
-    }
-
-    :host(:hover) {
-      color: var(--color-accent);
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      :host(:hover) .arrow {
-        transform: translateX(var(--space-1));
-      }
+    :host(:hover) .text {
+      padding: 0 0.12em;
+      background: var(--highlight-bg);
+      color: var(--highlight-text);
+      text-decoration: none;
     }
   `,
 })

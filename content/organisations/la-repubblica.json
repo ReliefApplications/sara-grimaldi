@@ -1,0 +1,14 @@
+{
+  "name": "la Repubblica",
+  "aliases": ["Invece Concita (la Repubblica)"],
+  "kind": "press",
+  "order": 3,
+  "logo": {
+    "src": "images/logos/la-repubblica.webp",
+    "size": [348, 69],
+    "alt": {
+      "fr": "Logo la Repubblica",
+      "en": "la Repubblica logo"
+    }
+  }
+}

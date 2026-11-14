@@ -1,0 +1,13 @@
+{
+  "name": "Vogue",
+  "kind": "client",
+  "order": 1,
+  "logo": {
+    "src": "images/logos/vogue.webp",
+    "size": [269, 69],
+    "alt": {
+      "fr": "Logo Vogue",
+      "en": "Vogue logo"
+    }
+  }
+}

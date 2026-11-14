@@ -10,6 +10,18 @@
       "en": "Sara Grimaldi, director and screenwriter in Paris: fiction films, documentaries and impact campaigns driven by emotion, between France and Italy."
     }
   },
+  "hero": {
+    "_source": "Source: poster frame of “SHOWREEL 2026” on Sara's Vimeo channel (video 947531070). Placeholder: Sara can replace or veto it. It is the opening image of her current home page.",
+    "src": "images/hero.webp",
+    "width": 1920,
+    "height": 1080,
+    "widths": [480, 768, 1280, 1920],
+    "focus": "55% 30%",
+    "alt": {
+      "fr": "Une danseuse en robe claire drapée, de profil, un bras levé, sur fond noir.",
+      "en": "A dancer in a pale draped dress, in profile with one arm raised, against a black background."
+    }
+  },
   "statement": {
     "fr": "Je travaille l’émotion, quel que soit le format.",
     "en": "I work with emotion, whatever the format."
@@ -22,20 +34,9 @@
     "fr": "Sara Grimaldi est réalisatrice, scénariste et productrice, installée à Paris. Elle réalise des fictions, des documentaires et des campagnes à impact, entre la France et l’Italie.",
     "en": "Sara Grimaldi is a director, screenwriter and producer based in Paris. She makes fiction, documentaries and impact campaigns, between France and Italy."
   },
-  "featured": {
-    "label": {
-      "fr": "Films choisis",
-      "en": "Selected films"
-    },
-    "films": ["la-dolce-attesa", "immunity", "le-retour-du-train"],
-    "filmLink": {
-      "fr": "Voir le film",
-      "en": "View the film"
-    },
-    "allLink": {
-      "fr": "Tous les films",
-      "en": "All films"
-    }
+  "aboutLink": {
+    "fr": "À propos",
+    "en": "About"
   },
   "collaborations": {
     "label": {
@@ -45,27 +46,23 @@
     "context": {
       "fr": "Films, portraits et campagnes pour des marques, des médias, des associations et des fondations.",
       "en": "Films, portraits and campaigns for brands, media, charities and foundations."
+    }
+  },
+  "featured": {
+    "label": {
+      "fr": "Films choisis",
+      "en": "Selected films"
     },
-    "aboutLink": {
-      "fr": "En savoir plus",
-      "en": "More about Sara"
+    "films": ["la-dolce-attesa", "immunity", "le-retour-du-train"],
+    "allLink": {
+      "fr": "Tous les films",
+      "en": "All films"
     }
   },
   "press": {
-    "label": {
-      "fr": "Presse",
-      "en": "Press"
-    },
-    "count": 3,
     "allLink": {
       "fr": "Toute la presse",
       "en": "All press"
-    }
-  },
-  "inDevelopment": {
-    "label": {
-      "fr": "En développement",
-      "en": "In development"
     }
   }
 }

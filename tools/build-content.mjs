@@ -24,7 +24,9 @@ import { basename, dirname, join } from 'node:path';
 // The rules are shared with the app: one list, read by both.
 import {
   FAMILIES,
+  IMAGE_FITS,
   IMAGE_WIDTHS,
+  ORGANISATION_KINDS,
   PLACEHOLDER_PATTERN,
   PROSE_FIELDS,
   REQUIRED,
@@ -50,6 +52,7 @@ const COLLECTIONS = [
   { name: 'press', sort: byYearThenOrder },
   { name: 'collaborations', sort: byOrder },
   { name: 'in-development', sort: byOrder },
+  { name: 'organisations', sort: byOrder },
 ];
 
 const isObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -174,6 +177,11 @@ export function buildContent({ production = false } = {}) {
     }
     // A still (it has a width) is exported in several widths; see README.
     const files = imageFiles(image);
+    if (image.fit !== undefined && !IMAGE_FITS.includes(image.fit)) {
+      problem(
+        `content/${file}: image "${path}" has "fit" "${image.fit}"; use ${IMAGE_FITS.join(' or ')}`,
+      );
+    }
     if (typeof image.width === 'number' && typeof image.height !== 'number') {
       problem(`content/${file}: image "${path}" needs "width" and "height"`);
     }
@@ -232,6 +240,14 @@ export function buildContent({ production = false } = {}) {
     }
     if (!WATCH_MODES.includes(film.watch?.mode)) {
       problem(`content/${file}: "watch.mode" must be one of ${WATCH_MODES.join(', ')}`);
+    }
+  }
+  for (const organisation of collections.organisations) {
+    if (!ORGANISATION_KINDS.includes(organisation.kind)) {
+      problem(
+        `content/organisations/${organisation.slug}.json: "kind" must be one of ` +
+          ORGANISATION_KINDS.join(', '),
+      );
     }
   }
   for (const slug of pages.home?.featured?.films ?? []) {

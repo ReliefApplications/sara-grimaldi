@@ -1,0 +1,13 @@
+{
+  "name": "Corriere della Sera",
+  "kind": "press",
+  "order": 4,
+  "logo": {
+    "src": "images/logos/corriere-della-sera.webp",
+    "size": [580, 45],
+    "alt": {
+      "fr": "Logo Corriere della Sera",
+      "en": "Corriere della Sera logo"
+    }
+  }
+}

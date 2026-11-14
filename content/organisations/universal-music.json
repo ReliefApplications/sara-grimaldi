@@ -1,0 +1,14 @@
+{
+  "name": "Universal Music",
+  "aliases": ["Universal"],
+  "kind": "client",
+  "order": 4,
+  "logo": {
+    "src": "images/logos/universal-music.webp",
+    "size": [195, 102],
+    "alt": {
+      "fr": "Logo Universal Music",
+      "en": "Universal Music logo"
+    }
+  }
+}

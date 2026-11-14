@@ -34,5 +34,28 @@
   "watch": {
     "mode": "none"
   },
+  "still": {
+    "_source": "Source: poster frame of “IL BOSCO INCANTATO (LA FORÊT ENCHANTÉE)” on Sara's Vimeo channel (video 77709950). Placeholder: Sara can replace or veto it.",
+    "src": "images/films/il-bosco-incantato.webp",
+    "width": 1920,
+    "height": 1080,
+    "widths": [480, 768, 1152, 1920],
+    "alt": {
+      "fr": "Un bois de peupliers traversé par la lumière du soleil.",
+      "en": "A poplar wood with sunlight coming through the trees."
+    }
+  },
+  "stills": [
+    {
+      "_source": "Source: poster frame of “THE ENCHANTED FOREST (IL BOSCO INCANTATO)” on Sara's Vimeo channel (video 79867294). Placeholder: Sara can replace or veto it.",
+      "src": "images/films/il-bosco-incantato-2.webp",
+      "width": 1920,
+      "height": 1080,
+      "alt": {
+        "fr": "Un arbre aux branches nues vu d’en bas, sur fond de ciel bleu.",
+        "en": "A bare-branched tree seen from below against a blue sky."
+      }
+    }
+  ],
   "published": true
 }

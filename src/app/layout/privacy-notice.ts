@@ -26,11 +26,11 @@ const STORAGE_KEY = 'sg-privacy-notice';
   imports: [RouterLink],
   template: `
     @if (visible() && site()?.privacyNotice; as notice) {
-      <aside #panel class="notice t-small" [attr.aria-label]="notice.regionLabel">
+      <aside #panel class="notice surface-ground t-small" [attr.aria-label]="notice.regionLabel">
         <p>{{ notice.text }}</p>
         <div class="actions">
           <a class="text-link" [routerLink]="route.link('privacy')">{{ notice.linkLabel }}</a>
-          <button class="button-secondary t-nav" type="button" (click)="dismiss(notice.version)">
+          <button class="dismiss t-nav" type="button" (click)="dismiss(notice.version)">
             {{ notice.dismissLabel }}
           </button>
         </div>

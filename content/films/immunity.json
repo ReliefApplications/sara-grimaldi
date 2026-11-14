@@ -174,5 +174,17 @@
     },
     "externalUrl": "https://openddb.it/film/immunity/"
   },
+  "still": {
+    "_source": "Source: poster frame of “TRAILER IMMUNITY” on Sara's Vimeo channel (video 411476434). Placeholder: Sara can replace or veto it. Cropped to leave out the lettering.",
+    "src": "images/films/immunity.webp",
+    "width": 1474,
+    "height": 1080,
+    "widths": [480, 768, 1152, 1474],
+    "focus": "30% 40%",
+    "alt": {
+      "fr": "Un cycliste casqué, vu de dos, arrêté au bord d’un canal sous un ciel nuageux.",
+      "en": "A cyclist in a helmet, seen from behind, stopped beside a canal under a cloudy sky."
+    }
+  },
   "published": true
 }

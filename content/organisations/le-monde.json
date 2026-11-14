@@ -1,0 +1,13 @@
+{
+  "name": "Le Monde",
+  "kind": "press",
+  "order": 1,
+  "logo": {
+    "src": "images/logos/le-monde.webp",
+    "size": [292, 64],
+    "alt": {
+      "fr": "Logo Le Monde",
+      "en": "Le Monde logo"
+    }
+  }
+}

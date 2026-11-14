@@ -1,0 +1,13 @@
+{
+  "name": "Ciné+ Premier",
+  "kind": "client",
+  "order": 7,
+  "logo": {
+    "src": "images/logos/cine-plus-premier.webp",
+    "size": [254, 132],
+    "alt": {
+      "fr": "Logo Ciné+ Premier",
+      "en": "Ciné+ Premier logo"
+    }
+  }
+}

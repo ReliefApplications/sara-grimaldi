@@ -13,7 +13,7 @@ import { ArrowLink } from '../shared/arrow-link';
     @if (page(); as page) {
       <div class="container">
         <p class="t-label t-muted">{{ page.code }}</p>
-        <h1 class="t-display-l" appPageHeading>{{ page.heading }}</h1>
+        <h1 class="t-display" appPageHeading>{{ page.heading }}</h1>
         <a appArrowLink [routerLink]="route.link('home')">{{ page.homeLink }}</a>
       </div>
     }

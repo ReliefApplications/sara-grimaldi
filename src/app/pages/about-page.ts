@@ -19,7 +19,7 @@ import { InlineText } from '../shared/inline-text';
           <p><app-inline-text [text]="paragraph" /></p>
         }
 
-        <h2 class="t-h2">{{ page.careerHeading }}</h2>
+        <h2 class="t-title">{{ page.careerHeading }}</h2>
         <dl>
           @for (row of page.career; track $index) {
             <dt>{{ row.period }}</dt>
@@ -27,7 +27,7 @@ import { InlineText } from '../shared/inline-text';
           }
         </dl>
 
-        <h2 class="t-h2">{{ page.collaborationsHeading }}</h2>
+        <h2 class="t-title">{{ page.collaborationsHeading }}</h2>
         <dl>
           @for (entry of collaborations(); track entry.slug) {
             <dt>{{ entry.names.join(', ') }}</dt>
@@ -36,7 +36,7 @@ import { InlineText } from '../shared/inline-text';
         </dl>
 
         @if (inDevelopment(); as items) {
-          <h2 class="t-h2">{{ page.inDevelopmentHeading }}</h2>
+          <h2 class="t-title">{{ page.inDevelopmentHeading }}</h2>
           <app-in-development-list [items]="items" />
         }
 

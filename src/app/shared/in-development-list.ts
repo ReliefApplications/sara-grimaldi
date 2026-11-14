@@ -11,7 +11,7 @@ import { InlineText } from './inline-text';
     <ul>
       @for (item of items(); track item.slug) {
         <li>
-          <h3 class="t-h3 t-film-title" [attr.lang]="item.titleLang">{{ item.title }}</h3>
+          <h3 class="t-title t-film-title" [attr.lang]="item.titleLang">{{ item.title }}</h3>
           <p class="t-small t-muted">{{ line(item.format) }}</p>
           @if (item.description) {
             <p class="t-body"><app-inline-text [text]="item.description" /></p>
@@ -23,10 +23,10 @@ import { InlineText } from './inline-text';
   styles: `
     li {
       padding-block: var(--space-4);
-      border-top: var(--hairline);
+      border-top: var(--rule-minor);
 
       &:last-child {
-        border-bottom: var(--hairline);
+        border-bottom: var(--rule-minor);
       }
     }
   `,

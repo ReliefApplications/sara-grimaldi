@@ -19,6 +19,10 @@
     "en": "For a film, an impact campaign, a collaboration or a screening."
   },
   "labels": {
+    "phone": {
+      "fr": "Téléphone",
+      "en": "Phone"
+    },
     "location": {
       "fr": "Basée à",
       "en": "Based in"
@@ -27,5 +31,23 @@
       "fr": "Réseaux",
       "en": "Social"
     }
+  },
+  "phone": {
+    "_note": "PLACEHOLDER phone number: 06 39 98 is a range reserved for fiction and reaches nobody. Replace both lines with the real number once it may be public.",
+    "number": "+33639980000",
+    "display": "+33 6 39 98 00 00"
+  },
+  "location": {
+    "fr": "Paris, France",
+    "en": "Paris, France"
+  },
+  "secondaryContact": {
+    "show": false,
+    "heading": {
+      "fr": "Cessions de droits",
+      "en": "Rights and licensing"
+    },
+    "name": "",
+    "email": ""
   }
 }

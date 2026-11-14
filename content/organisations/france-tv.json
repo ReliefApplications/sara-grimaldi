@@ -1,0 +1,14 @@
+{
+  "name": "france.tv",
+  "aliases": ["France 3", "France 3 Pays de la Loire", "France TV"],
+  "kind": "press",
+  "order": 6,
+  "logo": {
+    "src": "images/logos/france-tv.webp",
+    "size": [274, 48],
+    "alt": {
+      "fr": "Logo france.tv",
+      "en": "france.tv logo"
+    }
+  }
+}

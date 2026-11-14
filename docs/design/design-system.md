@@ -1,84 +1,74 @@
 # Design system: Sara Grimaldi website
 
-Direction: **B, "Carnet de réalisatrice"**. Version 1.6, 2026-11-14.
-Owner: designer. This file is the single source of truth for the build. If
-something is not specified here, ask the designer rather than guessing.
+Version 2.1, 2026-11-14. Owner: designer. Replaces every 1.x version: the
+look is new, the structure (routes, content, legal, accessibility) is kept.
+This file is the single source of truth for the build. If something is not
+specified here, ask the designer rather than guessing.
 
-This document is self-sufficient. The design brief behind it is an internal
-working document and is not part of the repository. Draft legal copy is in
-`legal-copy.md` in this folder.
+This document is self-sufficient. The design takes its level of ambition
+from two reference sites (see the internal brief, which is not part of the
+repository); nothing from them is reused. Draft legal copy is in
+`legal-copy.md`.
 
 Contents: 1 Principles, 2 Colour, 3 Typography, 4 Spacing and grid,
-5 Breakpoints, 6 Shape, borders, motion, 7 Images and video, 8 Components,
-9 Page layouts, 10 Accessibility, 11 SEO, 12 Content model implied by the
-design, 13 Dependencies, 14 Defaults for missing content.
+5 Breakpoints, 6 Shape, focus, motion, 7 Images, 8 Shell and components,
+9 Home page, 10 Other pages, 11 Accessibility, 12 SEO, 13 Content model,
+14 Dependencies and defaults, 15 Build order.
 
 ---
 
 ## 1. Principles
 
-1. **Clear and professional structure first.** One column of reading, obvious
-   hierarchy, no decorative layout.
-2. **Her words lead.** The home page opens on a statement set as text, not on
-   an image. Film pages open on a quote from her director statement.
-3. **Warm paper, ink, one accent.** No gradients, no shadows, no second accent.
-4. **Stills are generous but never full-bleed**: they sit in the page like
-   plates in a printed catalogue.
-5. **Names in type, never logo files**, for clients, broadcasters and press.
-6. **Quiet motion.** Nothing moves unless the user acts.
-
-No UI framework. Everything here is achievable with plain SCSS, CSS grid and
-CSS custom properties.
+1. **Image first.** The first screen is a film image, edge to edge.
+2. **One loud voice.** Very wide, very heavy uppercase type for the name,
+   titles and labels. Everything else is quiet.
+3. **Three colours.** Off-white, black, vermilion. Sections alternate between
+   them as full-width fields.
+4. **Two motifs, used everywhere.** The **record dot** (a solid vermilion
+   circle) marks labels and separates items. The **highlight** (a vermilion
+   block behind black text) marks emphasis, hover and the current item.
+5. **A moving band** of territories and roles, and a second one of press
+   names. Pausable, and still under reduced motion.
+6. **Proof before work.** Collaborators' logos come before the films, and
+   press mastheads run in the second band. Only logos Sara is cleared to use
+   are shown; any organisation without one appears as its name in the site's
+   type (8.15).
+7. **Little prose on the home page.** Labels, names, titles, one statement.
 
 ---
 
 ## 2. Colour
 
-### 2.1 Tokens
-
 | Token | Value | Use |
 |---|---|---|
-| `--color-paper` | `#F6F1E8` | Page background |
-| `--color-surface` | `#EAE2D3` | Alternate band background, image placeholder |
-| `--color-ink` | `#1C1A17` | Text, headings, dark band background, focus ring on light |
-| `--color-muted` | `#5E574D` | Secondary text, labels, captions |
-| `--color-accent` | `#A23E1F` | Links, active states, quote rule, primary button background |
-| `--color-accent-hover` | `#7F2F16` | Hover and active state of accent links and primary button |
-| `--color-rule` | `#CFC5B3` | Decorative hairlines between rows and sections |
-| `--color-border` | `#8A8171` | Borders that identify a control (secondary button, play button ring) |
-| `--color-on-accent` | `#FFFFFF` | Text on accent background |
-| `--color-dark-text` | `#F6F1E8` | Text on ink background |
-| `--color-dark-muted` | `#B8AFA1` | Secondary text on ink background |
-| `--color-dark-accent` | `#E9A083` | Links and hover on ink background |
-| `--color-dark-rule` | `#3A362F` | Hairlines on ink background |
+| `--color-ground` | `#F2F1ED` | Default page background; text on ink and on images |
+| `--color-ink` | `#0E0E0E` | Text; dark sections; rules; borders |
+| `--color-accent` | `#FF4B1F` | Record dot, highlight, accent sections (footer, press band) |
+| `--color-muted` | `#5C5B57` | Secondary text on ground |
+| `--color-muted-on-ink` | `#A9A8A3` | Secondary text on ink |
+| `--color-rule-on-ink` | `#3A3A38` | Hairlines on ink |
+| `--color-placeholder` | `#D9D7D0` | Image placeholder; `<mark>` background |
 
-### 2.2 Contrast (WCAG 2.1 relative luminance, calculated)
+Contrast (WCAG 2.1, calculated):
 
-| Foreground | Background | Ratio | Passes |
+| Foreground | Background | Ratio | Use allowed |
 |---|---|---|---|
-| ink | paper | 15.4:1 | AA and AAA text |
-| ink | surface | 13.5:1 | AA and AAA text |
-| muted | paper | 6.3:1 | AA text |
-| muted | surface | 5.5:1 | AA text |
-| accent | paper | 5.7:1 | AA text |
-| accent | surface | 5.0:1 | AA text |
-| on-accent | accent | 6.5:1 | AA text |
-| border | paper | 3.4:1 | AA non-text (3:1) |
-| dark-text | ink | 15.4:1 | AA and AAA text |
-| dark-muted | ink | 8.0:1 | AA text |
-| dark-accent | ink | 8.1:1 | AA text |
+| ink | ground | 17.1:1 | All text |
+| ground | ink | 17.1:1 | All text |
+| ink | accent | 5.8:1 | All text |
+| accent | ink | 5.8:1 | All text |
+| muted | ground | 6.0:1 | All text |
+| muted-on-ink | ink | 8.1:1 | All text |
+| ink | placeholder | 13.5:1 | All text |
+| accent | ground | 3.0:1 | **Not for text or control boundaries.** Decoration only (dots, bars) |
+| ground | accent | 3.0:1 | **Not allowed for text** |
 
 Rules:
-- `--color-rule` is decorative only (1.6:1). Never use it for text or as the
-  only boundary of a control.
-- `--color-accent-hover` is darker than accent, so it passes wherever accent
-  passes.
-- Never place text directly on a photograph. Captions go under images.
-- The developer should re-check these pairs with an automated tool at review.
-
-### 2.3 Where the dark band is used
-
-Only the site footer (section 8.5) uses the ink background. Nothing else.
+- On accent, text is always ink. On ground, accent is never text.
+- Text over a photograph is allowed only in the hero and only over the scrim
+  specified in 9.1.
+- Three surface types: `ground` (ink text), `ink` (ground text), `accent`
+  (ink text). Each component below states its surface.
 
 ---
 
@@ -86,1154 +76,898 @@ Only the site footer (section 8.5) uses the ink background. Nothing else.
 
 ### 3.1 Families (both SIL Open Font License 1.1)
 
-| Role | Family | Format | Axes used |
+| Role | Family | File | Axes used |
 |---|---|---|---|
-| Display, quotes, film titles | **Fraunces** (variable) | woff2, roman + italic | `wght` 400 to 600, `opsz` automatic. Set `font-variation-settings: "SOFT" 0, "WONK" 0` |
-| Text, labels, UI | **Inter** (variable) | woff2, roman only | `wght` 400 to 600 |
+| Everything except the accent word and quotes | **Archivo** (variable) | 1 woff2, roman | `wght` 400 to 900, `wdth` 62 to 125 |
+| Accent word, pull quotes, inline film titles | **Fraunces** (variable) | 1 woff2, italic | `wght` 400, `opsz` auto |
 
-- Self-host the woff2 files in the app assets (downloaded from the official
-  open-source releases). No font CDN at runtime, no npm font package.
-- Subset: Latin (must include `é è ê ë à â ç î ï ô ù û œ Œ « » ’ –` and
-  Italian accents `ì ò`). Three files in total: Fraunces roman, Fraunces
-  italic, Inter roman.
-- `font-display: swap`. Preload all three files. Fraunces italic is used
-  above the fold in the largest text of the home page (the emphasised phrase
-  of the `h1`) and of every film page (the title), so leaving it out causes a
-  visible font swap in the main heading. The app has a single HTML document,
-  so the preload cannot be limited to those pages.
-- Fallback stacks:
-  - `--font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;`
-  - `--font-text: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;`
-- `font-optical-sizing: auto` on everything set in Fraunces.
-- Never use Inter italic (not loaded). Emphasis in body text uses weight 600.
+Two font files in total. Inter and Fraunces roman are removed from the
+project.
 
-### 3.2 Scale
+Where to get them:
+- Archivo: the variable font `Archivo[wdth,wght].ttf` in the `ofl/archivo`
+  folder of the `google/fonts` repository on GitHub (upstream:
+  Omnibus-Type/Archivo), licence file `OFL.txt` alongside it. Needed as
+  woff2, Latin subset. The Google Fonts CSS API serves that subset as a
+  variable woff2 when requested with a current browser user agent
+  (`family=Archivo:wdth,wght@62..125,100..900`); with a generic client it
+  returns static files instead, which are not wanted. Download once and
+  self-host; no font CDN at runtime.
+- Fraunces italic: the file already in the project.
+- Subset must include `é è ê ë à â ç î ï ô ù û œ Œ É È À Ç « » ’ – ●` and
+  Italian `ì ò`. If `●` is missing from the subset, draw dots in CSS (they
+  are specified as CSS shapes below anyway).
+- `font-display: swap`. Preload both files. Keep the licence texts in the
+  repository next to the fonts.
+- Fallbacks: `--font-sans: "Archivo", "Arial Black", "Helvetica Neue", Arial,
+  sans-serif;` `--font-serif: "Fraunces", Georgia, "Times New Roman", serif;`
+- Widths are set with `font-stretch` (125%, 100%, 62%), weights with
+  `font-weight`. No synthetic bold or italic: `font-synthesis: none`.
 
-Root font size 100% (16 px). Sizes scale fluidly between a 360 px and a
-1280 px viewport and are fixed beyond those bounds.
+### 3.2 Styles
 
-| Token | Family, weight, style | Size at 360 | Size at 1280 | CSS `font-size` | Line height | Letter spacing |
+"Wide" = `font-stretch: 125%`. "Normal" = 100%. "Narrow" = 62%. Fluid sizes
+run from a 360 px to a 1280 px viewport and are fixed outside it.
+
+| Token | Width, weight, case | 360 | 1280 | `font-size` | Line height | Tracking |
 |---|---|---|---|---|---|---|
-| `display-xl` | Fraunces 400 | 40 px | 72 px | `clamp(2.5rem, 1.717rem + 3.478vw, 4.5rem)` | 1.08 | -0.02em |
-| `display-l` | Fraunces 400 | 34 px | 56 px | `clamp(2.125rem, 1.587rem + 2.391vw, 3.5rem)` | 1.1 | -0.015em |
-| `h2` | Fraunces 500 | 26 px | 36 px | `clamp(1.625rem, 1.380rem + 1.087vw, 2.25rem)` | 1.2 | -0.01em |
-| `h3` | Fraunces 500 | 21 px | 24 px | `clamp(1.3125rem, 1.239rem + 0.326vw, 1.5rem)` | 1.3 | 0 |
-| `quote` | Fraunces 400 italic | 24 px | 34 px | `clamp(1.5rem, 1.255rem + 1.087vw, 2.125rem)` | 1.3 | -0.005em |
-| `lead` | Inter 400 | 19 px | 22 px | `clamp(1.1875rem, 1.114rem + 0.326vw, 1.375rem)` | 1.5 | 0 |
-| `body` | Inter 400 | 17 px | 18 px (from 768) | `1.0625rem`, `1.125rem` from 768 | 1.6 | 0 |
-| `small` | Inter 400 | 15 px | 15 px | `0.9375rem` | 1.5 | 0 |
-| `label` | Inter 500, uppercase | 13 px | 13 px | `0.8125rem` | 1.4 | 0.08em |
-| `nav` | Inter 500 | 16 px | 16 px | `1rem` | 1.25 | 0 |
+| `mega` | Wide 900, uppercase | see 9.1 | see 9.1 | viewport-fitted | 0.86 | -0.01em |
+| `giant` | Wide 900, uppercase | 34 px | 120 px | `clamp(2.125rem, 0.022rem + 9.348vw, 7.5rem)` | 0.92 | -0.01em |
+| `display` | Wide 900, uppercase | 30 px | 72 px | `clamp(1.875rem, 0.848rem + 4.565vw, 4.5rem)` | 0.98 | -0.005em |
+| `title` | Wide 800, uppercase | 19 px | 32 px | `clamp(1.1875rem, 0.87rem + 1.413vw, 2rem)` | 1.08 | 0 |
+| `band` | see 8.5, uppercase | 26 px | 46 px | `clamp(1.625rem, 1.136rem + 2.174vw, 2.875rem)` | 1 | 0 |
+| `label` | Wide 800, uppercase | 12 px | 14 px | `0.75rem`, `0.875rem` from lg | 1.3 | 0.03em |
+| `nav` | Wide 700, uppercase | 13 px | 13 px | `0.8125rem` | 1.2 | 0.04em |
+| `lead` | Normal 400 | 20 px | 26 px | `clamp(1.25rem, 1.103rem + 0.652vw, 1.625rem)` | 1.4 | 0 |
+| `body` | Normal 400 | 17 px | 18 px from md | `1.0625rem`, `1.125rem` | 1.6 | 0 |
+| `small` | Normal 400 | 15 px | 15 px | `0.9375rem` | 1.5 | 0 |
+| `quote` | Fraunces italic 400 | 26 px | 44 px | `clamp(1.625rem, 1.185rem + 1.957vw, 2.75rem)` | 1.2 | -0.01em |
 
 Rules:
-- **Film titles are always Fraunces italic**, at whatever size they appear
-  (cards: `h3` italic 400; film page: `display-l` italic 400; inline in body
-  text: Fraunces italic at the surrounding size).
-- **Inline marking in content text.** Prose fields are plain strings (one
-  string per paragraph), not Markdown. One convention only: text between two
-  asterisks, `*Immunity*`, is a film or work title and is rendered as
-  `<cite>` in Fraunces italic 400 at the surrounding size and colour
-  (`font-style: italic` comes from the italic font file). No nesting, no
-  other syntax, an unpaired asterisk is printed as is. This needs a
-  few-line split function, not a parser or a dependency; build the output
-  as text and elements, never by injecting the string as HTML. It applies to
-  every prose field: biography, synopsis, statement, press descriptions,
-  collaboration descriptions, career rows. The convention is valid Markdown
-  emphasis, so it stays compatible with a Git-based CMS later.
-- **Placeholder marking.** A fact that is not yet known is written in the
-  content as a bracketed marker starting with `[à compléter` (French) or
-  `[to be completed` (English), e.g. `[à compléter : adresse
-  professionnelle]`. Wherever prose is rendered, such a segment (from the
-  opening bracket to the next closing bracket) is wrapped in `<mark>` styled
-  with background `--color-surface`, text ink, padding 0 4 px, no radius
-  (ink on surface is 13.5:1). The same split function handles it. Nobody must
-  be able to mistake a placeholder for real information; the build should
-  warn while any marker remains in the content.
-- Body text measure: maximum `68ch`.
-- Paragraph spacing: `--space-4` (16 px) between paragraphs.
-- Headings: `text-wrap: balance`. Body: `text-wrap: pretty`.
-- Use real typographic characters: `’`, `« »` with non-breaking spaces in
-  French, `“ ”` in English, `·` as separator in metadata lines, `–` for
-  ranges. These live in the content files.
-- Numbers in metadata lines: `font-variant-numeric: tabular-nums`.
-- Semantic heading order is independent of the visual token: one `h1` per
-  page, no skipped levels.
+- Uppercase is applied with CSS (`text-transform`), never typed in content.
+  French capitals keep their accents.
+- Wide uppercase words are long. Every `giant`, `display` and `title` block
+  has `overflow-wrap: anywhere` and `hyphens: none`; nothing may cause
+  horizontal scroll at 320 px.
+- Headings: `text-wrap: balance`. Body measure: max `66ch`.
+- Emphasis in body text: weight 700. No italic sans.
+- **Accent word.** Where a phrase is marked for emphasis inside a `display`
+  or `giant` text (the home statement), it is set in Fraunces italic 400,
+  **not uppercase**, at 1.08 times the surrounding size, as a highlight (6.4).
+- **Inline film titles** in prose: content convention `*Title*`, rendered as
+  `<cite>` in Fraunces italic 400 at 1.05 times the surrounding size. No
+  nesting, no other syntax; an unpaired asterisk prints as is. Built as text
+  and elements, never by injecting HTML.
+- **Placeholder marking**: a segment starting `[à compléter` or
+  `[to be completed` up to the next `]` is wrapped in `<mark>`: background
+  `--color-placeholder`, ink text, padding 0 4 px. The build warns while any
+  remains.
+- Numbers in meta lines: `font-variant-numeric: tabular-nums`.
+- One `h1` per page; heading levels are never skipped; visual tokens are
+  independent of heading level.
+- Typographic characters live in content: `’`, `« »` with non-breaking
+  spaces in French, `“ ”` in English, `–`.
 
 ---
 
 ## 4. Spacing and grid
 
-### 4.1 Spacing scale
-
-| Token | px | rem |
-|---|---|---|
-| `--space-1` | 4 | 0.25 |
-| `--space-2` | 8 | 0.5 |
-| `--space-3` | 12 | 0.75 |
-| `--space-4` | 16 | 1 |
-| `--space-5` | 24 | 1.5 |
-| `--space-6` | 32 | 2 |
-| `--space-7` | 48 | 3 |
-| `--space-8` | 64 | 4 |
-| `--space-9` | 96 | 6 |
-| `--space-10` | 128 | 8 |
-
-Only these values are used for margins, padding and gaps.
-
-### 4.2 Grid
+Spacing scale (only these values): 4, 8, 12, 16, 24, 32, 48, 64, 96, 128,
+160 px (`--space-1` to `--space-11`).
 
 | | Base (below 768) | md (768 to 1279) | lg (1280 and above) |
 |---|---|---|---|
 | Columns | 4 | 8 | 12 |
-| Gutter | 16 px | 24 px | 32 px |
-| Side margin | 20 px | 40 px | 64 px |
-| Container max width | none | none | 1152 px content (1280 px including margins), centred |
+| Gutter | 16 px | 24 px | 24 px |
+| Side margin | 20 px | 32 px | 40 px |
+| Container | fluid | fluid | fluid up to 1360 px content (1440 px viewport), then centred |
 
-Column positions in section 9 are written "cols 1–7" meaning grid lines 1 to
-8 (`grid-column: 1 / 8`).
+"Full-bleed" = the element ignores the container and touches both viewport
+edges. Section backgrounds are always full-bleed; their content sits in the
+container unless stated.
 
-### 4.3 Vertical rhythm
-
-| Token | Base | md | lg |
-|---|---|---|---|
-| `--section-gap` (between page sections) | 64 px | 96 px | 128 px |
-| `--block-gap` (between blocks inside a section) | 32 px | 48 px | 48 px |
-| Page top padding under header | 32 px | 48 px | 64 px |
+Section vertical padding (`--section-pad`): 64 px base, 96 px md, 128 px lg.
 
 ---
 
 ## 5. Breakpoints
 
-| Name | Media query | Designed and checked at |
+| Name | Media query | Checked at |
 |---|---|---|
-| base | none (mobile first) | 360 px |
+| base | none | 360 px |
 | `md` | `(min-width: 48rem)` | 768 px |
 | `lg` | `(min-width: 80rem)` | 1280 px |
 
-No other breakpoints. Between them, layouts are fluid. The site must not
-scroll horizontally at 320 px.
-
 ---
 
-## 6. Shape, borders, motion
+## 6. Shape, focus, motion
 
-- **Radius:** `0` everywhere (images, buttons, cards). Printed-matter feel.
-- **Hairline:** 1 px solid `--color-rule`.
-- **Shadows:** none.
-- **Focus:** `outline: 2px solid var(--color-ink); outline-offset: 3px;` on
-  `:focus-visible` for every interactive element. On the ink background the
-  outline colour is `--color-dark-text`. Never remove outlines.
-- **Minimum target size:** 44 × 44 px for every link or button that is not
-  inside a paragraph.
-- **Transitions:** `200ms ease-out` on `color`, `background-color`,
-  `border-color`, `text-decoration-color`, `opacity`. Nothing else animates.
-- **Image hover (cards):** image `opacity` 1 to 0.88. No zoom, no movement.
-- **Page transitions, scroll-triggered animation, parallax, marquee:** none.
-- **`prefers-reduced-motion: reduce`:** all transitions set to `0ms`;
+6.1 **Shape.** Radius 0 everywhere except the record dot (circle). No
+shadows, no gradients except the hero scrim.
+
+6.2 **Rules.** Major rule: 2 px solid ink (on ink surfaces: 1 px
+`--color-rule-on-ink`). Minor rule between rows: 1 px solid ink.
+
+6.3 **Record dot.** A CSS circle, `0.5em` wide and high, `border-radius:
+50%`, `display: inline-block`, vertically centred on the cap height
+(`vertical-align: 0.08em`), `aria-hidden`. Colour: accent on ground and ink
+surfaces, ink on accent surfaces.
+- Before a section label: dot, then `0.6em` gap, then the label.
+- As a separator in a line of items: `0.7em` margin each side. The dot is
+  bound to the item before it (no line may start with a dot).
+
+6.4 **Highlight.** Black text on a vermilion block: `background:
+var(--color-accent); color: var(--color-ink); padding: 0 0.12em;
+box-decoration-break: clone`. Used for: the accent word, link hover, the
+current navigation item, hover on film titles. On accent surfaces the
+highlight inverts: `background: var(--color-ink); color:
+var(--color-accent)`.
+
+6.5 **Focus.** `outline: 3px solid; outline-offset: 3px` on
+`:focus-visible`, colour ink on ground and accent surfaces, ground on ink
+surfaces and over the hero. Never removed, except the route-change `h1`
+(section 11).
+
+6.6 **Targets.** 44 × 44 px minimum for every link or button outside a
+paragraph.
+
+6.7 **Motion.**
+- Transitions: 150 ms ease-out on `color`, `background-color`,
+  `border-color`.
+- Film tiles: image `transform: scale(1.03)` over 400 ms ease-out on hover or
+  focus (image is clipped by its tile).
+- Bands move (8.5). Nothing else moves. No scroll-triggered animation, no
+  parallax, no page transitions.
+- `prefers-reduced-motion: reduce`: no transitions, no scale, bands static,
   `scroll-behavior: auto`.
-- **Scrolling:** `scroll-behavior: smooth` for in-page anchors only when
-  motion is allowed. `scroll-margin-top: 96px` on anchor targets.
 
 ---
 
-## 7. Images and video
+## 7. Images
 
-### 7.1 Ratios
+7.1 **Two treatments.** The films' existing images are uneven: a few clean
+frames, and posters with titles and festival laurels printed on them. Each
+image declares how it is shown (`fit`):
 
-| Use | Ratio | Notes |
+| `fit` | For | How |
 |---|---|---|
-| Film still (cards, features, film page lead) | 16:9 | `object-fit: cover` |
-| Film gallery stills | 16:9 | Same |
-| Portrait of Sara (About) | 4:5 | |
-| Poster (optional, film page aside) | 2:3 | |
-| Press scan (optional) | free, max height 80vh | `object-fit: contain` |
-| Open Graph image | 1200 × 630 | One default, plus one per film |
+| `cover` | Clean frames; images whose printed title can be cropped away | Fills its tile, `object-fit: cover`, `object-position` from the image's `focus` value (default `50% 50%`) |
+| `poster` | Posters and any image with a title printed across it | The tile is an ink field. The whole image is shown uncropped, centred, `object-fit: contain`, at 84% of the tile height (max 84% width), like a poster in a lightbox |
 
-Always set `width` and `height` attributes (or `aspect-ratio`) so nothing
-shifts on load. Placeholder background while loading: `--color-surface`.
+A poster is never cropped into a fake still. A `cover` crop must not cut
+through printed lettering: either the lettering is entirely outside the crop
+or the image is `poster`.
 
-### 7.2 Delivery
+7.2 **Tile ratios.** Home lead film 16:9 (4:3 at base). Home secondary films
+4:3. Films index 16:9. Film page lead 16:9. Gallery 16:9. Portrait of Sara
+4:5. Open Graph 1200 × 630.
 
-- Format: WebP, quality about 78, with widths **480, 768, 1152, 1600** px
-  exported for each still (portrait: 480, 768, 960).
-- `srcset` with those widths and these `sizes`:
-  - Full-container image: `(min-width: 80rem) 1152px, calc(100vw - 40px)`
-  - Feature image (7 of 12 cols): `(min-width: 80rem) 659px, (min-width: 48rem) calc(100vw - 80px), calc(100vw - 40px)`
-  - Card in 2 columns: `(min-width: 80rem) 560px, (min-width: 48rem) calc(50vw - 52px), calc(100vw - 40px)`
-- `loading="lazy"` and `decoding="async"` on every image except the lead
-  image of a film page, which is `loading="eager"` with
-  `fetchpriority="high"`.
-- The home page has no image above the fold: its largest first paint is text.
-- Every image has alt text in both languages in the content files. Purely
-  decorative images do not exist in this design.
+7.3 **Hero image.** The clean 16:9 frame from *Endométriose – Parlons-en*
+(a woman in a hospital gown in a dark blue room), 1920 px wide, `fit:
+cover`. `focus`: `40% 35%` from md; at base, where the hero is taller than
+wide, `42% 35%` so her face and shoulders stay in frame. It is the most
+cinematic clean frame available and its cold blue sets off the vermilion.
+No video for now. Caption: the film's title. Alt text describes the frame
+in both languages. On screens wider than 1920 px the image is upscaled; the
+scrim and the type carry the screen.
 
-### 7.3 Video (no library)
+7.3b **Frames with lettering.** A frame that carries printed text in part of
+the picture is exported as a crop that excludes all of it, then used as
+`cover`. If no crop of the needed ratio is free of lettering, the image is
+`poster`.
 
-A **click-to-load facade**: the page shows the still with a play button; the
-provider iframe is inserted only after the user activates it. No third-party
-request is made before that.
+7.4 **Delivery.** WebP, quality about 78, widths 480, 768, 1280, 1920 (hero
+and full-bleed) or 480, 768, 1152 (tiles); `srcset` and `sizes` matching the
+layout; `width` and `height` set; `loading="lazy"` and `decoding="async"`
+except the hero and a film page's lead image (`loading="eager"`,
+`fetchpriority="high"`). Placeholder colour while loading:
+`--color-placeholder` (ink for `poster` tiles). Every image has alt text in
+both languages.
 
-- Vimeo: `https://player.vimeo.com/video/{id}?dnt=1&autoplay=1`
-- YouTube: `https://www.youtube-nocookie.com/embed/{id}?autoplay=1`
-- iframe: `title` set to "{film title} – {Bande-annonce | Film}", `allow="autoplay; fullscreen; picture-in-picture"`, 16:9.
-
-Watch modes per film (content field `watch.mode`):
-
-| Mode | Shown on film page |
-|---|---|
-| `full` | Facade, label "Voir le film" / "Watch the film" |
-| `trailer` | Facade, label "Voir la bande-annonce" / "Watch the trailer" |
-| `external` | Still without play button, plus a button linking out (e.g. "Voir en VOD sur OpenDDB") |
-| `none` | Still only. Under it, `small` muted: "Film disponible sur demande" / "Available on request" linking to Contact |
-
-A film can combine `trailer` with an external link (Immunity: trailer plus
-OpenDDB).
+7.5 **Video.** None yet. When it comes: click-to-load facade (a `<button>`
+over the lead image with a centred 96 px ink circle and a ground triangle;
+hover: circle accent, triangle ink), provider iframe inserted only on click
+(`player.vimeo.com/video/{id}?dnt=1&autoplay=1` or
+`youtube-nocookie.com/embed/{id}?autoplay=1`). Watch modes per film: `full`,
+`trailer`, `external` (button linking out), `none` (line "Film disponible
+sur demande" / "Available on request" linking to Contact).
 
 ---
 
-## 8. Components
-
-Each component lists structure, exact styling and all states. "Label",
-"body" and so on refer to the type tokens of section 3.2.
+## 8. Shell and components
 
 ### 8.1 Skip link
 
-First focusable element. Text: "Aller au contenu" / "Skip to content".
-Hidden off-screen until focused; on focus: fixed at top 8 px, left 8 px,
-background ink, text dark-text, `small` 500, padding 12 px 16 px. Targets
-`<main id="contenu">`.
+First focusable element. "Aller au contenu" / "Skip to content". Off-screen
+until focused; then fixed top 8 px, left 8 px, accent background, ink text,
+`nav` style, padding 12 px 16 px. Targets `<main id="contenu">`.
 
 ### 8.2 Header
 
-- Not sticky. Background paper. Bottom hairline `--color-rule`.
-- Height: 64 px base, 80 px from md. Content aligned to the grid container.
-- **Left:** wordmark "Sara Grimaldi", Fraunces 500, 20 px base and 22 px from
-  md, colour ink, no underline, links to home in the current language.
-  `aria-label` "Sara Grimaldi – Accueil / Home".
-- **Right, from lg:** nav links in `nav` style, gap 32 px, in this order:
-  Films, Presse, À propos, Contact (EN: Films, Press, About, Contact), then a
-  1 px × 16 px vertical rule `--color-rule` with 24 px either side, then the
-  language switcher.
-- **Right, below lg:** language switcher, then 16 px gap, then the Menu
-  button.
+Two variants.
 
-Nav link states:
+**Standard (every page except home).** Surface ground. Height 64 px base,
+72 px md and lg. 2 px ink rule under it. Not sticky.
+- Left: wordmark "Sara Grimaldi", Wide 900 uppercase, 16 px base, 20 px md
+  and lg, ink, link to home, accessible name "Sara Grimaldi – Accueil" /
+  "– Home".
+- Right, lg: nav links in `nav` style, 28 px apart: Films, Presse, À propos,
+  Contact (EN Films, Press, About, Contact); then 28 px; then the language
+  switcher.
+- Right, below lg: language switcher, 12 px, Menu button.
+
+**Home.** Same content and positions, but: `position: absolute` over the top
+of the hero, no background, no rule, text in ground, and **no wordmark** (the
+name is the hero). The left slot is empty.
+
+Nav link states (standard; home in brackets):
 
 | State | Style |
 |---|---|
-| Default | ink, no underline |
-| Hover | accent, underline 1 px, offset 6 px |
-| Focus-visible | standard focus ring |
-| Current page (`aria-current="page"`) | ink, underline 1 px `--color-accent`, offset 6 px |
-
-On a film detail page, "Films" is the current item.
+| Default | ink (ground) |
+| Hover | highlight (6.4) |
+| Focus-visible | ring (6.5) |
+| Current page | highlight, `aria-current="page"`. On a film page, Films is current |
 
 ### 8.3 Language switcher
 
-- Two items, "FR" and "EN", `label` style, separated by a `/` in muted.
-- The current language is plain text in ink with `aria-current="true"`; the
-  other is a link in muted (hover: accent, underline) pointing to the same
-  page in the other language, with `lang` and `hreflang` attributes.
-- Accessible name (WCAG 2.5.3 Label in Name): no `aria-label`. The link
-  contains the visible text followed by visually hidden text, so its name
-  starts with what is on screen: "EN" + hidden " – English version", or "FR"
-  + hidden " – version française". The current-language item likewise has
-  hidden text: " – langue actuelle" / " – current language".
-- Wrapped in `<nav aria-label="Langue / Language">`.
-- Each item has a 44 px tall hit area.
+"FR" and "EN" in `nav` style, separated by `/`. Current language: plain
+text, weight 800, `aria-current="true"`, plus visually hidden " – langue
+actuelle" / " – current language". Other language: link to the same page in
+the other language, `lang` and `hreflang`, visible code followed by visually
+hidden " – English version" / " – version française" (no `aria-label`).
+Hover: highlight. Wrapped in `<nav aria-label="Langue / Language">`. 44 px
+hit areas.
 
 ### 8.4 Mobile menu (below lg)
 
-- **Menu button:** text button "Menu" in `label` style, ink, 44 px tall,
-  padding 0 4 px, `aria-expanded`, `aria-controls`. When open the label
-  becomes "Fermer" / "Close".
-- **Panel:** full-viewport overlay, background paper, `role="dialog"`,
-  `aria-modal="true"`, `aria-label` "Menu". The header row (wordmark, switcher,
-  Fermer) stays at the top of the panel.
-- **Links:** the four nav items stacked, `display-l` (Fraunces 400), ink,
-  each row 64 px minimum height, separated by hairlines, left-aligned at the
-  side margin, starting 32 px under the header row.
-- **Footer of panel:** email in `body`, with a muted label above it, pinned
-  32 px from the bottom. No phone number.
-- **Implementation:** a native `<dialog>` opened with `showModal()`, which
-  provides the focus trap, `Esc` and focus return. Two things the browser
-  does not guarantee and that must be handled: the Fermer button is the
-  initially focused element (`autofocus`), and page scroll is locked while
-  open (`overflow: hidden` on the root). The dialog's default padding, border,
-  max-width and max-height are reset so it fills the viewport, and its
-  `::backdrop` is transparent.
-- **Behaviour:** opening moves focus to the Fermer button; focus is trapped
-  in the panel; `Esc` closes; closing returns focus to the Menu button; body
-  scroll is locked while open; choosing a link closes the panel.
-- Open/close: opacity 0 to 1 in 200 ms; instant under reduced motion.
+- Button: "Menu" in `nav` style inside a 2 px border (ink; ground on home),
+  height 44 px, padding 0 12 px. `aria-expanded`, `aria-controls`.
+- Panel: native `<dialog>` opened with `showModal()`, reset to fill the
+  viewport, transparent `::backdrop`. Surface **ink**. Top row: wordmark
+  (ground), language switcher, "Fermer" / "Close" button (same box style,
+  ground), `autofocus`.
+- Links: the four nav items stacked, `display` style, ground, each row
+  min-height 72 px, 1 px `--color-rule-on-ink` between rows, starting 24 px
+  under the top row. Hover and current: highlight.
+- Bottom, pinned 24 px from the bottom edge: email as a link, `small`,
+  ground.
+- Behaviour: focus trapped by the dialog; `Esc` closes; focus returns to the
+  Menu button; page scroll locked (`overflow: hidden` on the root); choosing
+  a link closes it. Appears and disappears without animation.
 
-### 8.5 Footer (the only dark band)
+### 8.5 Band (moving)
 
-Background ink, text dark-text. Padding: 64 px top and 32 px bottom (base),
-96 px and 48 px (lg).
+A full-bleed strip of large uppercase items that scrolls horizontally.
 
-Content, in order:
-1. `label` in dark-muted: "Contact".
-2. Invitation line, `display-l`, dark-text (draft copy: "Un projet, une
-   idée ? Parlons-en." / "A project, an idea? Let's talk.").
-3. Email as a link, `h2` size in Fraunces 400, dark-text with 1 px underline
-   in dark-accent, offset 8 px. Hover: text dark-accent.
-4. Hairline `--color-dark-rule`, 48 px above and 24 px below.
-5. Bottom row, `small`, three groups:
-   - Copyright, dark-muted: "© {year} Sara Grimaldi".
-   - Legal links, in a `<nav aria-label="Informations légales / Legal
-     information">`: "Mentions légales" and "Confidentialité" (EN "Legal
-     notice" and "Privacy"), dark-text, underline on hover (hover colour
-     dark-accent), gap 24 px, internal links in the current language.
-   - Social links as **text** ("Instagram", "Vimeo"), dark-text, underline on
-     hover, gap 24 px, each opening in a new tab with
-     `rel="noopener noreferrer"` and visually hidden text "(nouvelle
-     fenêtre)" / "(new window)".
-   Every link in this row has a 44 px tall hit area.
+| | Base | md | lg |
+|---|---|---|---|
+| Height | 56 px | 72 px | 88 px |
+| Type | `band` token | | |
 
-The phone number does not appear in the footer; it is on the Contact page
-only (9.6).
+Items sit on one line, vertically centred, separated by record dots (6.3).
 
-Gaps: label to invitation 16 px; invitation to the email 32 px at base and
-48 px at md, where they are stacked.
+Two variants:
 
-Layout: base and md, everything stacked and left-aligned; in the bottom row
-the order is social links, legal links, copyright, 8 px apart. lg: items 1
-to 2 in cols 1–7, the email in cols 8–12, aligned to the top of item 2; the
-bottom row spans 12 columns as one line: copyright at the left, then legal
-links 48 px after it, and social links pushed to the right edge.
+| Variant | Surface | Items | Dot colour | Direction, duration |
+|---|---|---|---|---|
+| `roles` | ink, ground text | The three film families and the role labels, interleaved: family, role, family, role, family, role | accent | right to left, 36 s per loop |
+| `press` | accent, ink | Press outlets, unique, in press order: each as its logo (8.15, band size) or, without one, its name in type | ink | left to right, 48 s per loop |
 
-The footer is identical on every page. On the Contact page the invitation
-line (item 2) is omitted to avoid repetition.
+Type inside the band:
+- Families (variant `roles`) and outlet names shown as text (variant
+  `press`): Wide 900.
+- Logos in the `press` band: black artwork on the accent surface, shown as
+  supplied (no filter). Separator dots have 1em margin each side in this
+  variant.
+- Role labels: **Narrow 700**, tracking 0.02em. The alternation of very wide
+  and very narrow words at the same height is the band's signature.
 
-### 8.6 Text link (inside running text)
+Links: in `roles`, each family is a link to `/{lang}/films#{family}`; hover
+and focus: highlight. Role labels and press names are plain text.
 
-| State | Style |
-|---|---|
-| Default | accent, underline 1 px, offset 3 px |
-| Hover | accent-hover, underline 2 px |
-| Focus-visible | standard focus ring |
-| Visited | same as default |
+Mechanics:
+- The track holds the item list twice; the second copy is `aria-hidden` and
+  its links have `tabindex="-1"`. Animation: `transform: translateX(0)` to
+  `translateX(-50%)` (reversed for `press`), linear, infinite.
+- The first copy is a `<ul>`; the `roles` band is wrapped in
+  `<nav aria-label="Familles de films / Film families">`.
+- **Pause** (WCAG 2.2.2): the animation pauses while the pointer is over the
+  band, while focus is inside it, and when the pause button is pressed.
+- Pause button: at the right end of the band, above the track, 44 × 44 px,
+  same surface colour as the band with a 2 px rule on its left edge (ground
+  on ink band, ink on accent band). Icon drawn in CSS: two bars (pause) or a
+  triangle (play), 14 px high, in the band's text colour. `aria-pressed`;
+  accessible name "Mettre le défilement en pause" / "Pause the scrolling
+  text", and when paused "Reprendre le défilement" / "Resume the scrolling
+  text". One press pauses **both** bands; the state lasts for the page view
+  and is not stored.
+- **Reduced motion:** no animation, no second copy, no pause button; the band
+  becomes a static strip: `height: auto`, items wrap, 12 px vertical padding,
+  left-aligned in the container.
 
-External links in body text open in the same tab. External links in lists of
-references (press, socials, watch links) open in a new tab and carry a
-trailing `↗` (`aria-hidden`) plus the visually hidden "(nouvelle fenêtre)".
+### 8.6 Section label
 
-### 8.7 Arrow link (calls to action that navigate)
+Record dot + text in `label` style. Ink on ground, ground on ink, ink on
+accent. It is the section's `h2` unless a larger heading follows.
 
-Text in `nav` style (Inter 500, 16 px) followed by ` →`. Ink, with a 1 px
-underline in accent, offset 6 px. Minimum height 44 px.
+### 8.7 Links and buttons
 
-| State | Style |
-|---|---|
-| Default | ink text, accent underline |
-| Hover | accent text; the arrow shifts 4 px right (no shift under reduced motion) |
-| Focus-visible | standard focus ring |
+**Text link (in prose):** ink, underline 2 px, offset 3 px. Hover:
+highlight, no underline. External links in reference lists (press, socials)
+open in a new tab with a trailing `↗` (`aria-hidden`) and visually hidden
+"(nouvelle fenêtre)" / "(new window)".
 
-Used for: "Voir le film", "Tous les films", "Toute la presse", "En savoir
-plus".
+**Arrow link:** text in `nav` style followed by ` →`, min-height 44 px,
+underline 2 px, offset 6 px. Hover: highlight. Colour follows the surface.
 
-### 8.8 Buttons
+**Block button:** full width of its column, height 64 px base and 72 px from
+md, 2 px border, `title` style text left and `→` right, padding 0 24 px.
 
-Height 48 px, padding 0 24 px, `nav` type style, radius 0, inline-flex,
-centred.
+| Surface | Default | Hover and focus |
+|---|---|---|
+| ground | border and text ink, transparent | background ink, text ground |
+| ink | border and text ground | background accent, text ink, border accent |
+| accent | border and text ink | background ink, text accent |
 
-| Variant | Default | Hover | Active | Focus-visible | Disabled |
-|---|---|---|---|---|---|
-| Primary | bg accent, text on-accent | bg accent-hover | bg accent-hover | standard ring | not used |
-| Secondary | bg transparent, 1 px border `--color-border`, text ink | border ink, text accent | same as hover | standard ring | not used |
+No disabled states on this site.
 
-Primary is used at most once per page (the main watch or contact action).
-There are no disabled buttons on this site.
+### 8.8 Film tile
 
-### 8.9 Section label
+A link wrapping the image tile and the title.
 
-`label` style, muted, with no dash, bullet or other mark before it. Margin
-bottom 16 px. When it titles a section it is the section's
-heading element (`h2`) styled as a label, unless a visible `h2` follows.
-
-### 8.10 Family list (home hero)
-
-A list of three links, one per family, each row:
-
-- Left: family name in `h3` (Fraunces 500), ink.
-- Right: film count in `label`, muted, e.g. "2 films" / "1 film".
-- Row height 56 px minimum, hairline above each row and below the last.
-- Whole row is the link, to `/{lang}/films#{family}`.
+1. Image tile at the ratio given by its context (7.2), treatment `cover` or
+   `poster` (7.1), clipped.
+2. 16 px.
+3. Row: index number ("01", from display order) in `label`, muted; then the
+   title; then, right-aligned on md and lg (below the title at base), the
+   meta in `label`: family, dot, year, dot, duration.
+4. Title: `display` for the home lead film, `title` elsewhere.
 
 | State | Style |
 |---|---|
-| Hover | name in accent; count unchanged |
-| Focus-visible | standard ring around the row |
-
-Counts are computed from published films. A family with zero published films
-is not shown.
-
-### 8.11 Family navigation (films index)
-
-A horizontal list of anchor links to the three family sections on the same
-page: "Fiction", "Documentaire", "Campagnes à impact" (EN "Fiction",
-"Documentary", "Impact campaigns"), `nav` style, gap 24 px, each 44 px tall,
-wrapped in `<nav aria-label="Familles de films / Film families">`. Hairline
-above and below the row; row padding 8 px vertical. If the row overflows at
-360 px it wraps to a second line (no horizontal scrolling).
-
-States: as header nav links, without a "current" state (these are in-page
-anchors, not filters). No JavaScript state.
-
-### 8.12 Film card (films index)
-
-Structure, top to bottom, whole card is one link to the film page (the link
-wraps the image and the title; the meta line is outside the link):
-
-1. Still, 16:9.
-2. 16 px gap.
-3. Title: `h3` size, Fraunces italic 400, ink.
-4. 4 px gap.
-5. Meta line: `small`, muted: `{year} · {duration} · {role}`, e.g.
-   "2024 · 9 min · Réalisation, scénario".
-6. Optional proof line, 8 px above it: `small`, ink, e.g. "17 sélections,
-   13 prix".
-
-| State | Style |
-|---|---|
-| Hover | image opacity 0.88; title in accent |
-| Focus-visible | standard ring around image and title |
-
-### 8.13 Film feature (home)
-
-A larger presentation of a featured film.
-
-- Image: still 16:9, links to the film page (`aria-hidden` link duplicate is
-  not allowed: the image link has `tabindex="-1"` and the title link is the
-  accessible one).
-- Text block, in order: section label showing the family name; title `h2`
-  size in Fraunces italic 400; meta line (`small`, muted); pull quote from the
-  director statement (`h3` size, Fraunces italic 400, ink, max 180
-  characters, in quotation marks of the language); optional proof line
-  (`small`, ink); arrow link "Voir le film" / "View the film".
-- Gaps inside the text block: 12 px after label, 8 px after title, 24 px
-  after meta, 16 px after quote, 24 px before the arrow link.
-
-Layout:
-- base and md: image, 24 px gap, text block. Stacked, full container width.
-- lg: two columns, vertically centred. Odd features: image cols 1–7, text
-  cols 9–12. Even features: text cols 1–4, image cols 6–12.
-
-States: image hover opacity 0.88; arrow link states per 8.7.
-
-### 8.14 Pull quote (film page)
-
-`<blockquote>` with a 2 px left border in accent, padding-left 24 px (base)
-and 32 px (lg). Text in `quote` style, ink, with quotation marks of the
-language. Attribution under it, 12 px gap, `label`, muted: "Sara Grimaldi".
-Maximum width: cols 1–10 at lg.
-
-### 8.15 Data line (film page, under the title)
-
-One line, wrapping allowed, `label` style, muted, items separated by ` · `:
-family, year, duration, role. Example: "DOCUMENTAIRE · 2020 · 52 MIN ·
-RÉALISATION, SCÉNARIO, IMAGE".
-
-### 8.16 Data table (film page aside)
-
-A `<dl>`. Each pair is a row with a hairline above (and below the last row),
-padding 12 px vertical.
-
-- `<dt>`: `label`, muted.
-- `<dd>`: `small`, ink.
-- Base and md: `dt` above `dd`, 4 px gap. Rows in 2 columns from md
-  (gap 24 px).
-- lg (in the aside, cols 9–12): `dt` above `dd`, single column.
-
-Rows, shown only when the content exists, in this order: Année, Durée,
-Genre, Pays, Langue(s), Format, Production, Avec le soutien de, Diffusion.
-
-### 8.17 Credits list
-
-Heading `h2` ("Générique" / "Credits"). Then one or more groups, each with an
-`h3` in `label` style, muted ("Équipe", "Distribution", "Équipe technique").
-Each credit is a row: role in `small` muted, name in `small` ink.
-
-- Base: role above name, 2 px gap, 12 px between credits.
-- md and lg: two-column grid inside the list, role left (40%) and name right
-  (60%) on one line, 8 px between rows; at lg the whole list flows in 2
-  columns with a 32 px gap.
-
-### 8.18 Selections and awards list
-
-Heading `h2` ("Sélections et prix" / "Selections and awards"). Summary line
-directly under it in `lead`, ink, e.g. "17 sélections, 13 prix". Then a
-`<ul>` without bullets: each item `small`, ink, festival name, then ` · `
-and country or year in muted; if there is an award, it follows on the same
-item in Inter 600: " — Mention d'honneur". Hairline between items, 10 px
-vertical padding. From md the list flows in 2 columns, gap 32 px. If more
-than 12 items, items beyond the 12th sit in a native `<details>` with summary
-"Voir toutes les sélections ({n})" / "Show all selections ({n})" styled as an
-arrow link without the arrow.
-
-### 8.19 Video facade
-
-- Container 16:9, still as background image element, `--color-surface`
-  placeholder.
-- A real `<button>` covering the container, with `aria-label` equal to the
-  watch label plus the film title.
-- Play control centred: circle 72 px (base) or 96 px (lg), background paper,
-  1 px border `--color-border`, containing a solid ink triangle 20 px (base)
-  or 26 px (lg), optically centred (2 px to the right).
-- Under the container, 12 px gap: watch label in `label`, muted, plus
-  duration if known.
-
-| State | Style |
-|---|---|
-| Hover | circle background accent, triangle on-accent, border accent |
-| Focus-visible | standard ring on the whole container (offset -6 px so it stays visible) |
-| Activated | still and button replaced by the iframe; focus moves to the iframe |
-
-### 8.20 Press row
-
-A row in a list, hairline between rows, padding 20 px vertical.
-
-- Line 1: publication name, `h3` (Fraunces 500), ink.
-- Line 2: description, `body`, ink (e.g. "Article sur le documentaire
-  *Immunity*", film title in Fraunces italic). Nothing is appended to it.
-- Line 3 (meta): `label`, muted, `white-space: nowrap`: `{year} · {country}`,
-  e.g. "2024 · FRANCE". When the article is in a language other than the
-  page's, its two-letter code is added as a third item: "2019 · ITALIE · IT"
-  on a French page, "2025 · FRANCE · FR" on an English page. The code is
-  followed by visually hidden text in the page language (" – article en
-  italien" / " – article in French"). When the article language matches the
-  page language, no code is shown. The language is data in the meta column,
-  not a phrase repeated at the end of each description.
-- Whole row links to the external article (new tab, `↗`) or to the scan
-  image. A row with neither link is plain text.
-
-Layout at lg: publication in cols 1–4, description in cols 5–9, meta in
-cols 10–12 right-aligned (264 px, enough for the longest case,
-"2015 · SWITZERLAND · FR", on one line). The three cells are aligned on their
-first baseline (`align-items: baseline`); a publication name or description
-may wrap to a second line, the meta never does. Base and md: stacked, 4 px
-gaps.
-
-| State | Style |
-|---|---|
-| Hover (linked rows) | publication name in accent |
-| Focus-visible | standard ring around the row |
-
-### 8.21 Collaboration list
-
-Two forms.
-
-- **Compact (home):** a single paragraph of names in `h3` size, Fraunces
-  400, ink, separated by ` · `, wrapping freely, max width cols 1–10 at lg.
-  Marked up as a `<ul>` displayed inline.
-- **Detailed (About):** rows like the data table: name in `h3` (Fraunces
-  500) on the left (cols 1–4 at lg), role and description in `body` on the
-  right (cols 5–12), hairline between rows, 16 px vertical padding. Stacked
-  below lg.
-
-### 8.22 In-development item
-
-Row: title in `h3` Fraunces italic 400; next line `small` muted: format and
-status (e.g. "Long métrage · scénario" / "Feature · screenplay"); optional
-one-sentence description in `body`. Hairline between items, 16 px vertical
-padding. No links.
-
-### 8.23 Prose block
-
-Used for synopsis, statement, biography. `body` style, max width `68ch`.
-First paragraph of a biography or synopsis may be set in `lead`. Headings
-inside prose: `h2` with 48 px above and 16 px below.
-
-### 8.24 Previous / next film (film page end)
-
-Two links in a row, hairline above, padding 32 px vertical. Each: `label`
-muted ("Film précédent" / "Film suivant"), then the title in `h3` Fraunces
-italic. Previous is left-aligned, next is right-aligned. Order follows the
-films index order; first and last wrap around. Base: stacked, both
-left-aligned, 24 px apart. Hover: title in accent.
-
-### 8.25 Not found
-
-Centred in the container, padding 96 px vertical. `label` muted "404";
-`display-l` "Cette page n'existe pas." / "This page does not exist."; arrow
-link "Retour à l'accueil" / "Back to home".
-
-### 8.26 Privacy notice (the "cookie banner")
-
-What it is today: an honest information notice, not a consent request. The
-site sets no cookies, uses no analytics and makes no third-party requests, so
-there is nothing to consent to. The notice says so, links to the privacy
-policy and can be closed.
-
-**Content (all from the content files, both languages):** `enabled`
-(boolean, the single on/off switch), `version` (string), `text`, `linkLabel`,
-`dismissLabel`, `regionLabel`. Draft copy:
-
-- FR: "Ce site n'utilise ni cookies ni outil de suivi." Link:
-  "Confidentialité". Button: "J'ai compris". Region label: "Cookies et
-  confidentialité".
-- EN: "This site uses no cookies and no tracking tools." Link: "Privacy".
-  Button: "Got it". Region label: "Cookies and privacy".
-
-One sentence only. The fact that closing the notice is remembered in the
-browser is explained in the privacy policy (section "Cookies et stockage
-local"), which the link opens; it is not repeated in the notice.
-
-The text must stay true: if the site ever sets a cookie or loads a third
-party without a click, the text and `version` change in the same commit.
-
-**Structure:** `<aside aria-label="{regionLabel}">` containing one paragraph,
-one text link (8.6) to the privacy policy page in the current language, and
-one secondary button (8.8). Not a dialog: no `role="dialog"`, no
-`aria-modal`, no focus trap, no focus moved to it on appearance, no
-`aria-live`, no backdrop, page scroll and interaction unaffected.
-
-**DOM position:** directly after the skip link and before the header, so
-keyboard and screen-reader users meet it early and the skip link still comes
-first. Its visual position is independent of this.
-
-**Visual position:** `position: fixed`, bottom of the viewport. Base: 12 px
-from the left, right and bottom edges. md and lg: bottom-left, 24 px from the
-left and bottom edges, width 420 px. It never touches the top of the
-viewport, so it cannot cover the skip link, the header or the navigation.
-Above page content in stacking order; the mobile menu dialog (top layer)
-covers it.
-
-**Style:** background paper, 1 px solid border ink, radius 0, no shadow,
-padding 16 px (base) or 20 px (md and lg). Text `small`, ink (15.4:1). Link
-in accent (5.7:1), underlined. Below the text, 12 px gap, a row with the link
-at the left and the button at the right (wraps at narrow widths, 12 px gap).
-The button is the secondary button with height 44 px in this component.
-Limits, checked at 360 px in both languages: the notice is at most 160 px
-tall, the text at most two lines, and the link and button sit on one row
-(304 px inner width). Copy that breaks these limits must be shortened, not
-the limits raised.
-
-**So that it hides nothing from keyboard users** (focus not obscured): while
-the notice is visible, the root element gets `scroll-padding-bottom` equal to
-the notice height plus 24 px, and the footer gets the same value as extra
-bottom padding so its last row can be scrolled clear of the notice.
-
-**States:**
-
-| State | Behaviour |
-|---|---|
-| Hidden by switch | `enabled` false: the component is not rendered at all and nothing is read from or written to storage |
-| Visible | Rendered once the stored value has been read and does not match `version` |
-| Dismissed | Removed from the DOM; `version` is stored; if focus was inside the notice it moves to the page `h1`; the extra scroll and footer padding are removed |
-| Button hover, focus | As secondary button (8.8); standard focus ring |
-| Link hover, focus | As text link (8.6) |
-
-**Remembering dismissal:** `localStorage`, key `sg-privacy-notice`, value =
-the `version` string. Nothing else is stored: no identifier, no date. When
-`version` changes in content, the notice is shown again to everyone. If
-storage is unavailable or throws (private browsing, blocked storage), the
-dismissal is kept in memory for the current visit only and no error is
-shown. This single entry is a strictly necessary preference and is disclosed
-in the privacy policy (legal-copy.md, section "Cookies et stockage local").
-
-**No flash:** the notice is rendered only in the browser, after the stored
-value has been read. It must not appear and then vanish for returning
-visitors, and it is not part of any prerendered HTML.
-
-**Motion:** it appears and disappears without animation.
-
-**Print:** hidden.
-
-**Without JavaScript:** the pages are prerendered and fully readable without
-JavaScript. The notice is not shown in that case, which is acceptable: a
-page without JavaScript stores nothing, and the privacy policy stays
-reachable from the footer. The only document that shows nothing without
-JavaScript is the deep-link fallback (`404.html`); it alone carries a
-`<noscript>` block with: the name "Sara Grimaldi", one sentence saying this
-page needs JavaScript to be displayed (both languages), a link to the home
-page, and the contact email as a `mailto:` link. Styled inline: paper
-background, ink text, system serif, 20 px padding. No `<noscript>` message
-on the prerendered pages, where the sentence would be false.
-
-**When video embeds arrive:** the embeds are click-to-load (7.3), so the
-recommended consent point is the video itself: a line under the facade
-stating that playing the video loads the provider's player, which may set
-cookies. The notice text then changes to mention this and `version` is
-incremented. A site-wide accept/refuse choice would only be needed if
-something third-party were loaded without a click; it is not designed here
-and must come back to the designer before being built.
-
-### 8.27 Legal prose (legal notice and privacy policy pages)
-
-A variant of the prose block (8.23) for long structured text.
-
-- Section heading: an `h2` element in the `h3` type token (Fraunces 500),
-  ink, 48 px above, 12 px below. The first heading has no margin of its own
-  above it: the 48 px gap under the page head (9.8) is the only space there. Each has an `id` so it
-  can be linked.
-- Paragraphs: `body`, max width `68ch`, 16 px apart.
-- Lists: `<ul>`, `body`, `list-style: disc`, marker colour muted,
-  padding-left 20 px, 8 px between items, 16 px above and below.
-- Order inside a section: paragraphs, then the list, then optional closing
-  paragraphs (`after`), then the link list. Closing paragraphs are styled as
-  paragraphs.
-- No inline code style. A technical name such as a storage key is set in the
-  quotation marks of the language (« … » in French, “ … ” in English).
-- Link list (optional, after a section's text): each link on its own line as
-  a text link (8.6); external ones open in a new tab with `↗` and the hidden
-  "(nouvelle fenêtre)" / "(new window)".
-- Placeholders: marked as in section 3.2.
-- No pull quotes, no images, no `lead` paragraph.
+| Hover, focus-visible | Image scales (6.7); title becomes a highlight |
+| Focus-visible | Ring around the whole tile |
+
+### 8.9 Name wall (About page)
+
+Collaborators' names with their roles, as rows. Used on the About page
+only, always in its detailed form; the home page uses the logo grid (8.16).
+
+- Each row: name in `title` style on the left; role in `small`
+  (muted-on-ink) on the right, optional. Row min-height 64 px base, 80 px
+  from md; 1 px `--color-rule-on-ink` above each row and below the last;
+  content vertically centred. At base the role sits under the name (4 px
+  gap, row padding 16 px vertical).
+- Columns: 1 at base, 2 at md (48 px column gap), 3 at lg (48 px gap). Rows
+  fill column by column.
+- Surface ink. Names are not links.
+- A compact form (home) omits the roles; the detailed form (About) shows
+  them.
+
+### 8.10 Press row
+
+Whole row is a link when the item has a URL or scan (new tab, `↗`).
+- Publication: its logo (8.15, row size), left-aligned, when it has one;
+  otherwise its name in `title` style.
+- Description: `body`.
+- Meta: `label`, muted, nowrap: year, dot, country, and when the article
+  language differs from the page language, dot and its two-letter code,
+  followed by visually hidden " – article en italien" / " – article in
+  French".
+- Base and md: stacked, 6 px gaps, 20 px vertical padding. lg: one row,
+  publication cols 1–4, description cols 5–9, meta cols 10–12 right-aligned,
+  first baselines aligned, 24 px vertical padding. 1 px ink rule between
+  rows.
+- Hover (linked rows): the publication name becomes a highlight.
+
+### 8.11 Pull quote
+
+Surface as its section. A 6 px accent bar on the left (ink on accent
+surfaces), 24 px gap, text in `quote`, with the quotation marks of the
+language. Attribution under it, 16 px, in `label`. Max width cols 1–10 at
+lg.
+
+### 8.12 Data list
+
+A `<dl>` of rows: `dt` in `label`, muted; `dd` in `body`. 1 px ink rule
+above each row and below the last, 12 px vertical padding. `dt` above `dd`
+at base; from md, `dt` in a 160 px column, `dd` beside it.
+
+### 8.13 Footer
+
+Surface **accent**, ink text. Padding 64 px top, 24 px bottom (base); 128 px
+and 32 px (lg).
+
+1. Section label "Contact" (dot in ink).
+2. 24 px. Invitation in `giant` (draft: "Un projet ? Parlons-en." / "A
+   project? Let's talk."). Omitted on the Contact page.
+3. 32 px (48 px lg). Email link in `title` style but **not uppercase**
+   (`text-transform: none`), underline 3 px, offset 6 px,
+   `overflow-wrap: anywhere`. Hover: highlight (inverted, 6.4).
+4. 64 px (96 px lg). 2 px ink rule. 16 px.
+5. Bottom row in `nav` style, three groups: copyright "© {year} Sara
+   Grimaldi"; legal links in `<nav aria-label="Informations légales / Legal
+   information">` ("Mentions légales", "Confidentialité" / "Legal notice",
+   "Privacy"); social links as text ("Instagram", "Vimeo", new tab). Links:
+   hover highlight (inverted). 44 px hit areas, 24 px between links.
+   Base and md: stacked in the order social, legal, copyright, 4 px apart.
+   lg: one line, copyright left, legal links 48 px after it, social links at
+   the right edge.
+
+No phone number in the footer or the menu.
+
+### 8.14 Privacy notice
+
+Behaviour unchanged from the built version; only the look changes.
+
+- Content: `enabled`, `version`, `text`, `linkLabel`, `dismissLabel`,
+  `regionLabel`. Copy: "Ce site n'utilise ni cookies ni outil de suivi." /
+  "This site uses no cookies and no tracking tools."; link "Confidentialité"
+  / "Privacy"; button "J'ai compris" / "Got it".
+- `<aside aria-label>`; not a dialog; no focus trap, no focus move, no
+  `aria-live`. In the DOM directly after the skip link.
+- Fixed at the bottom: base 12 px from left, right and bottom; md and lg
+  bottom-left, 24 px inset, 420 px wide.
+- Look: surface ground, 2 px ink border, padding 16 px (20 px from md). Text
+  `small`. One row under it, 12 px gap: text link (8.7) left, button right.
+  Button: height 44 px, 2 px ink border, `nav` style, padding 0 16 px; hover:
+  background ink, text ground. At 360 px in both languages: max 160 px tall,
+  text max two lines, link and button on one row.
+- While visible: `scroll-padding-bottom` on the root and extra bottom padding
+  on the footer, both = notice height + 24 px.
+- Dismissal: `localStorage` key `sg-privacy-notice` = `version`; nothing else
+  stored; in memory only if storage is unavailable. If focus was inside,
+  move it to the page `h1`.
+- Rendered in the browser only, after reading storage; never in prerendered
+  HTML. No animation. Hidden in print. `enabled: false`: not rendered,
+  storage untouched.
+- Without JavaScript: no notice. Only `404.html` has a `<noscript>` block
+  (name, one sentence in both languages saying this page needs JavaScript,
+  link to home, email).
+
+### 8.15 Logo
+
+The logos are small raster files of uneven shape and colour, with no vector
+versions. Rules that make them sit together:
+
+- **Only cleared logos.** An organisation has a logo only if the file is one
+  Sara is allowed to use. Otherwise it is shown as its name (fallback
+  below). Never fetch a logo from elsewhere.
+- **Box, not height.** Each logo is fitted inside a box with `object-fit:
+  contain`, centred, so wide wordmarks and tall emblems get comparable
+  visual weight:
+
+  | Size | Box (max width × max height) base | md | lg | Used in |
+  |---|---|---|---|---|
+  | grid | 104 × 40 px | 132 × 48 px | 156 × 56 px | Logo grid (8.16) |
+  | band | 180 × 30 px | 220 × 36 px | 260 × 42 px | `press` band (8.5) |
+  | row | 180 × 30 px | 200 × 34 px | 220 × 36 px | Press rows (8.10) |
+
+- **Optical correction.** An optional `scale` per logo in content (0.7 to
+  1.3, default 1) multiplies the box, to even out marks that look too heavy
+  or too light. Start at 1 for all and adjust by eye.
+- **Never upscale** a file beyond its pixel size at 1x. The boxes above stay
+  within the files' sizes; on high-density screens some will be slightly
+  soft, which is accepted until better files are supplied.
+- **Colour treatment.**
+  - On the **ground** surface (logo grid): `filter: grayscale(1)` and
+    `mix-blend-mode: multiply`. Grayscale makes multi-coloured logos sit
+    together and next to the vermilion; multiply makes any white box around
+    a logo disappear into the ground, so transparent backgrounds are not
+    assumed. No hover effect.
+  - On the **accent** surface (`press` band) and in press rows on ground:
+    black artwork as supplied, no filter. A logo that is not black-only is
+    not used on accent; show the name instead.
+  - Logos are **never placed on the ink surface** (many are black) and never
+    recoloured or inverted.
+- **Alt text** is the organisation's name, nothing more. In the band's
+  hidden second copy the alt is empty.
+- **Fallback (no logo):** the name in Wide 800 uppercase, ink, centred in the
+  same box area: 13 px (base), 14 px (md), 16 px (lg) in the grid, allowed to
+  wrap to two lines; `band` token in the band; `title` in press rows.
+- Stray edge lines left by cutting the files are cleaned at export.
+
+### 8.16 Logo grid
+
+Surface ground. A grid of equal cells, each holding one logo (8.15, grid
+size) or one fallback name, centred both ways.
+
+| | Base | md | lg |
+|---|---|---|---|
+| Columns | 3 | 5 | 5 |
+| Cell height | 88 px | 112 px | 136 px |
+
+- 1 px ink rules between cells (inner lines only, none around the outside);
+  2 px ink rule above and below the grid.
+- Marked up as a `<ul>`; cells are not links.
+- Order from content. If the last row is incomplete, its empty cells stay
+  empty (rules still drawn).
 
 ---
 
-## 9. Page layouts
+## 9. Home page (`/fr`, `/en`)
 
-Every page: skip link, privacy notice (8.26, when enabled and not
-dismissed), header (8.2), `<main>`, footer (8.5). Section order is
-identical on mobile and desktop; only the arrangement changes. "Container"
-means the grid of section 4.2. Vertical gaps between numbered sections are
-`--section-gap` unless stated.
+Order: hero, band `roles`, statement, collaborations, films, band `press`,
+footer. Surfaces in that order: image, ink, ink, ground, ink, accent
+(then a ground row), accent. DOM order is the same at every breakpoint.
 
-Copy quoted below is draft placeholder for the content files, not final.
+### 9.1 Hero and first screen
 
-### 9.1 Home (`/fr`, `/en`)
+The first screen is the hero plus the `roles` band, exactly filling the
+viewport.
 
-**1. Hero (statement)**
-- Padding top: 48 px base, 72 px md, 96 px lg.
-- Role labels: one line in `label`, muted: "Réalisatrice · Scénariste ·
-  Productrice" (EN "Director · Screenwriter · Producer"). The line may wrap
-  at 360 px. Each separator is bound to the word before it with a
-  non-breaking space (`Réalisatrice&nbsp;· Scénariste&nbsp;· Productrice`),
-  so a line never starts with a separator. The component adds the separators;
-  content holds only the list of roles. The same rule applies to every `·`
-  separated line on the site (meta lines, data line, compact collaborations).
-- 24 px gap.
-- `h1` statement in `display-xl`, ink. Draft: "Je travaille l'émotion, quel
-  que soit le format." / "I work with emotion, whatever the format." One
-  phrase of the statement, set in content, is in Fraunces italic 400 at the
-  same size and colour: "l'émotion" in French, "emotion" in English (draft,
-  like the statement). Mark it up with `<em>`. At most one emphasised phrase;
-  if the content field is empty, no italic.
-- 32 px gap (48 px at lg).
-- Introduction: 2 to 3 sentences in `lead`, ink, saying who she is, where
-  (Paris), and what she makes (fiction, documentary, impact campaigns).
-- Family list (8.10).
-- Base and md: all stacked, full width; family list 32 px under the intro.
-- lg: role labels and statement in cols 1–11; below, intro in cols 1–6 and
-  family list in cols 8–12, tops aligned.
+- Hero height: `calc(100svh - {band height})`, min 480 px, max 920 px.
+  Full-bleed. Surface: image.
+- Image: 7.3, covering the hero.
+- **Scrim** (over the image, under the text), two layers:
+  - bottom: `linear-gradient(to top, rgba(14,14,14,0.90) 0%,
+    rgba(14,14,14,0.60) 30%, rgba(14,14,14,0) 65%)`;
+  - top: `linear-gradient(to bottom, rgba(14,14,14,0.65) 0,
+    rgba(14,14,14,0) 180px)`.
+  All hero text is ground on this scrim.
+- Header (home variant, 8.2) at the top.
+- **Bottom block**, in the container, bottom padding 20 px base, 28 px md,
+  32 px lg:
+  1. Role line in `label`, ground: role labels separated by record dots
+     (accent). May wrap; no line starts with a dot.
+  2. 12 px (16 px lg).
+  3. `h1` "Sara Grimaldi" in `mega`, ground.
+  4. Image credit, `small`, solid ground (no reduced opacity): draft
+     "Image : {title of the film}" / "Image: {title}". Rendered only when
+     the caption field is filled. Base and md: 12 px under
+     the name. lg: on the role line's row, right-aligned.
 
-**2. Featured films**
-- Section label: "Films choisis" / "Selected films".
-- Up to 3 film features (8.13), in the order set in content. Gap between
-  features: 64 px base, 96 px md, 128 px lg.
-- After the last, 48 px gap, arrow link "Tous les films" / "All films",
-  left-aligned.
+**The name (`mega`).**
 
-**3. Collaborations** (band on `--color-surface`, full viewport width,
-padding 64 px vertical base, 96 px lg; content in the container)
-- Section label: "Collaborations".
-- Compact collaboration list (8.21).
-- 24 px gap, `small` muted sentence giving context (draft: "Films, portraits
-  et campagnes pour des marques, des médias, des associations et des
-  fondations.").
-- 24 px gap, arrow link "En savoir plus" / "More about Sara" to About.
+| | Lines | Starting `font-size` | Target |
+|---|---|---|---|
+| Base | 2: "Sara" / "Grimaldi" (forced break) | `15vw` | The line "GRIMALDI" spans the container width |
+| md | 1 | `9.2vw` | The line "SARA GRIMALDI" spans the container width |
+| lg | 1 | `9.2vw`, capped at `132px` from 1440 px | Same |
 
-**4. Press**
-- Section label: "Presse" / "Press".
-- The 3 most recent press rows (8.20).
-- 32 px gap, arrow link "Toute la presse" / "All press".
+The values are starting points from estimated glyph widths. Measure in the
+browser with the real font and adjust the `vw` factor so the longest line is
+between 96% and 100% of the container width at 360, 768 and 1280 px. It must
+never overflow, including with the fallback font: the `h1` has
+`overflow: hidden` and `white-space: nowrap` per line as a safety net.
 
-**5. In development** (shown only if at least one item is flagged for home)
-- Section label: "En développement" / "In development".
-- In-development items (8.22). lg: list in cols 1–8.
+Left-aligned. No statement, button or other text in the hero.
 
-**6. Footer.**
+Band `roles` (8.5) directly under the hero, full-bleed.
 
-### 9.2 Films index (`/fr/films`, `/en/films`)
+### 9.2 Statement
 
-**1. Page head**
-- `h1` "Films" in `display-l`.
-- 16 px gap; one sentence in `lead`, max width cols 1–8 at lg.
-- 32 px gap; family navigation (8.11).
+Surface **ink** (it continues the band's black; a 1 px
+`--color-rule-on-ink` separates them). All text ground. Padding
+`--section-pad`.
 
-**2 to 4. One section per family**, in the order Fiction, Documentaire,
-Campagnes à impact. Each section has `id` `fiction`, `documentaire`, `impact`
-(same ids in both languages).
-- `h2` family name in `h2` style; on the same line at md and lg,
-  right-aligned, the count in `label` muted. Hairline under the heading, 32 px
-  gap.
-- Film cards (8.12), newest first.
-  - Base: 1 column, 48 px between cards.
-  - md and lg: 2 columns, column gap = gutter, row gap 64 px.
-  - A family with a single film at md and lg: the card occupies the left
-    column only.
-- Gap between family sections: `--section-gap`.
+- The statement in `display`, ground, as a `<p>` (not a heading). Draft: "Je
+  travaille l'émotion, quel que soit le format." / "I work with emotion,
+  whatever the format." The emphasised phrase ("l'émotion" / "emotion") is
+  the accent word (3.2): Fraunces italic, not uppercase, highlight.
+- 32 px (48 px lg).
+- Intro, 2 to 3 sentences, `lead`.
+- Arrow link "À propos" / "About".
 
-**5. Footer.**
+| | Statement | Intro | Arrow link |
+|---|---|---|---|
+| Base | full width | full width | 24 px under the intro |
+| md | cols 1–8 | cols 1–6 | 24 px under the intro |
+| lg | cols 1–11 | cols 1–7 | cols 9–12, aligned to the last line of the intro, right-aligned |
 
-Unpublished films (flag off) never appear.
+### 9.3 Collaborations
 
-### 9.3 Film page (`/fr/films/:slug`, `/en/films/:slug`)
+Surface **ground**. Padding `--section-pad`.
 
-**1. Film head**
-- Back link: arrow link in reverse, "← Films", `nav` style, 24 px above the
-  title.
-- `h1` film title in `display-l`, Fraunces italic 400. The title carries the
-  `lang` attribute of its original language (`fr`, `it`).
-- 16 px gap; data line (8.15).
-- lg: cols 1–10.
+- Section label "Collaborations".
+- 32 px (48 px lg).
+- Logo grid (8.16) of the organisations flagged for home, in content order:
+  logos where cleared files exist, names in type otherwise.
+- 32 px. One sentence in `small`, muted (draft: "Films, portraits et
+  campagnes pour des marques, des médias, des associations et des
+  fondations." / EN equivalent), max cols 1–6 at lg.
 
-**2. Pull quote** (8.14), only if the film has a statement quote.
-48 px above and below (not `--section-gap`).
+### 9.4 Films
 
-**3. Lead media**
-- Video facade (8.19) or still, full container width at every breakpoint.
-- For mode `external` or a combined mode: the external button (secondary
-  button, 8.8) sits 16 px under the media, left-aligned.
+Surface **ink**: the films are shown in a dark room. Titles ground, index
+numbers and meta muted-on-ink, block button in its ink variant. Padding
+`--section-pad`.
 
-**4. Body**
-- Left: synopsis (`h2` "Synopsis", prose block), then director statement
-  (`h2` "Note d'intention" / "Director's statement", prose block).
-- Right: data table (8.16); under it, optional poster (2:3, max width 240 px).
-- Base and md: synopsis, statement, data table, poster, stacked, 48 px
-  apart.
-- lg: left in cols 1–7, right in cols 9–12; the right column is not sticky.
+- Section label "Films choisis" / "Selected films". 32 px (48 px lg).
+- Up to three film tiles (8.8), in the order of the home content list.
 
-**5. Stills** (only if the film has 2 or more extra stills)
-- `h2` "Images" in `label` style.
-- Base: 1 column, 16 px apart. md and lg: 2 columns, gap = gutter. An odd
-  last image spans both columns.
-- No lightbox. Images are not links.
+| | Film 1 (lead) | Films 2 and 3 |
+|---|---|---|
+| Base | full container width, tile 4:3, title `display` | stacked, full width, tile 4:3, title `title`; 48 px between films |
+| md | full width, tile 16:9 | side by side, 4 cols each, tile 4:3; 64 px above |
+| lg | full width (12 cols), tile 16:9 | side by side, 6 cols each, tile 4:3; 96 px above |
 
-**6. Selections and awards** (8.18), if any.
+With only two films: the second is full width like the first. With one: just
+the lead.
+- 48 px (64 px lg). Block button (8.7) "Tous les films" / "All films", full
+  container width.
 
-**7. Credits** (8.17), if any.
+### 9.5 Press band
 
-**8. Press about this film** (if any): `h2` "Presse" / "Press", press rows
-(8.20) filtered to this film.
+Band `press` (8.5), full-bleed, directly after the films section (no gap).
+Rendered only when there is at least one press item.
 
-**9. Previous / next** (8.24).
+Under it, surface ground, a row in the container with 24 px vertical
+padding: arrow link "Toute la presse" / "All press", right-aligned at md and
+lg, left-aligned at base.
 
-**10. Footer.**
+### 9.6 Footer
 
-### 9.4 Press (`/fr/presse`, `/en/press`)
+8.13, directly after.
 
-**1. Page head:** `h1` "Presse" / "Press" in `display-l`; optional sentence
-in `lead`.
+---
 
-**2. List:** press rows (8.20), newest first, grouped by year: each year is
-an `h2` in `label` style, muted, with 48 px above and 8 px below. Full
-container width.
+## 10. Other pages
 
-**3. Footer.**
+Every page: skip link, privacy notice, header (standard), `<main>`, footer.
+Page head pattern unless stated: surface ground, padding 48 px top (72 px
+md, 96 px lg) and 32 px bottom (48 px lg); `h1` in `giant`; 2 px ink rule
+full-bleed under the head.
 
-### 9.5 About (`/fr/a-propos`, `/en/about`)
+### 10.1 Films index (`/fr/films`, `/en/films`)
 
-**1. Intro**
-- `h1` "À propos" / "About" in `label` style (visually a label; it is still
-  the `h1`).
-- 16 px gap; opening sentence of the biography in `display-l` (maximum 140
-  characters).
-- Portrait 4:5.
-- Biography: prose block, 150 to 200 words, third person, first paragraph in
-  `lead`.
-- Base: opening sentence, portrait (full width), biography.
-- md: same order; portrait limited to 5 of 8 columns.
-- lg: opening sentence in cols 1–10; below it, portrait in cols 1–5 and
-  biography in cols 7–12, tops aligned.
+1. Page head: `h1` "Films". Under it, 24 px, one sentence in `lead`
+   (cols 1–7 at lg).
+2. Family navigation: three anchor links ("Fiction", "Documentaire",
+   "Campagnes à impact" / "Fiction", "Documentary", "Impact campaigns") as
+   bordered boxes: height 44 px, 2 px ink border, `nav` style, padding
+   0 16 px, 8 px apart, wrapping; hover: background ink, text ground.
+   `<nav aria-label="Familles de films / Film families">`. 32 px above,
+   48 px below.
+3. One section per family with at least one published film, ids `fiction`,
+   `documentaire`, `impact`:
+   - Heading row: `h2` family name in `display`; count in `label`, muted,
+     right-aligned on the same baseline from md (under the name at base).
+     2 px ink rule above the row, 24 px padding above the name, 32 px below.
+   - Film tiles (8.8), 16:9, newest first. Base: 1 column, 48 px apart. md
+     and lg: 2 columns, row gap 64 px. A lone film stays in the left column.
+   - `--section-pad` between family sections.
 
-**2. Roles and career** (`h2` "Parcours" / "Career")
-- A data table (8.16) used as a timeline, 3 to 5 rows: `dt` = period (e.g.
-  "Depuis 2002"), `dd` = one sentence. lg: cols 1–8, `dt` and `dd` side by
-  side (cols 1–2 and 3–8).
+### 10.2 Film page (`/fr/films/:slug`, `/en/films/:slug`)
 
-**3. Collaborations** (`h2` "Collaborations")
-- Detailed collaboration list (8.21). Rows come from the content files
-  (name, then role and description), in the order set there.
+1. Head (no rule, no `giant`): back link "← Films" (arrow link reversed);
+   24 px; `h1` title in `display`, with the `lang` of its original language;
+   16 px; data line in `label`: family, year, duration, roles, separated by
+   record dots.
+2. Lead image: **full-bleed**, 16:9, max-height `80svh`, treatment `cover`
+   or `poster`; 32 px above. With video later: facade (7.5).
+3. Pull quote (8.11) if the film has one: container, 64 px above and below
+   (96 px lg).
+4. Body. lg: left cols 1–7, right cols 9–12; below lg: stacked, 48 px
+   apart.
+   - Left: `h2` "Synopsis" as section label, then prose (`body`, first
+     paragraph `lead`); 48 px; `h2` "Note d'intention" / "Director's
+     statement" as section label, then prose.
+   - Right: data list (8.12): Année, Durée, Genre, Pays, Langue(s), Format,
+     Production, Avec le soutien de, Diffusion (only rows with content).
+     Watch line or external button (block button) under it when relevant.
+5. Stills, if two or more: full container, 2 columns from md (16 px gap), 1
+   at base; not links.
+6. Selections and awards: section label; summary in `title` (e.g. "17
+   sélections, 13 prix") if provided; list in 2 columns from md, `body`,
+   1 px ink rules, awards in weight 700. More than 12: the rest in a native
+   `<details>`.
+7. Credits: section label; groups with `label` headings; rows role (`small`,
+   muted) and name (`body`), 2 columns from md.
+8. Press about this film: section label; press rows (8.10).
+9. Previous / next: full-bleed, two halves side by side from md (stacked at
+   base), surface **ink**, each a link: `label` "Film précédent" / "Film
+   suivant" (muted-on-ink), 12 px, title in `title`, ground; padding 48 px
+   (64 px lg); 1 px `--color-rule-on-ink` between halves. Hover: half turns
+   accent with ink text. Order follows the index; wraps around.
 
-**4. In development** (`h2` "En développement" / "In development")
-- In-development items (8.22), from the content files. The section is not
-  rendered when there are none.
+Sections 4 to 8 are separated by `--section-pad` and a 2 px ink rule at the
+top of each.
 
-**5. Call to action:** arrow link "Voir les films" / "View the films" and
-arrow link "Contact", side by side with 32 px gap (stacked at base).
+### 10.3 Press (`/fr/presse`, `/en/press`)
 
-**6. Footer.**
+Page head: `h1` "Presse" / "Press". Then press rows (8.10), newest first,
+grouped by year: each year is an `h2` in `display`, muted, 64 px above, 16 px
+below, with a 2 px ink rule above the first row of the group.
 
-### 9.6 Contact (`/fr/contact`, `/en/contact`)
+### 10.4 About (`/fr/a-propos`, `/en/about`)
 
-**1. Page head**
-- `h1` "Contact" in `label` style.
-- 16 px gap; invitation in `display-l` (same draft copy as the footer line).
-- 16 px gap; one sentence in `lead` naming what she can be contacted for
-  (films, campagnes à impact, collaborations, projections).
+1. Head: `h1` "À propos" / "About" as section label; 24 px; the opening
+   sentence (max 140 characters) in `display`, cols 1–11 at lg. No rule.
+2. 48 px (64 px lg). Portrait 4:5, `cover`: base full width; md cols 1–4;
+   lg cols 1–5. Biography beside it (md cols 5–8, lg cols 7–12; under it at
+   base, 32 px): first paragraph `lead`, rest `body`.
+3. Career: section label "Parcours" / "Career"; data list (8.12), `dt` =
+   period.
+4. Collaborations: section label; logo grid (8.16) of all organisations;
+   then, 64 px under it, a full-bleed ink section with the name wall (8.9)
+   giving each collaborator's role. An optional credential badge (image from
+   content, max 320 × 56 px, grayscale and multiply as in 8.15, alt = its
+   wording) may sit under the career list.
+5. In development (only if items): section label "En développement" / "In
+   development"; rows: title in `title`, format and status in `label` muted,
+   optional sentence in `body`; 1 px ink rules.
+6. Two block buttons side by side from md (stacked at base, 16 px): "Voir
+   les films" / "View the films", "Contact".
 
-**2. Contact details** (48 px under the head)
-- Email: `label` muted "E-mail", then the address as a link in `h2` size,
-  Fraunces 400, ink, 1 px accent underline, offset 8 px (hover: accent). At
-  360 px the address must not overflow: allow `overflow-wrap: anywhere`.
-- Phone: `label` muted "Téléphone" / "Phone", then the number as a `tel:`
-  link in `h2` size, same style, directly under the email group. Displayed
-  in international format with spaces (pattern "+33 6 00 00 00 00"); `href`
-  in E.164 form. This is the only place on the site where the phone number
-  appears. The group is not rendered when the content field is empty. Until
-  the real number is supplied the content holds an obviously fictional
-  placeholder.
-- Location: `label` muted "Basée à" / "Based in", then "Paris, France" in
-  `h3`.
-- Social: `label` muted "Réseaux" / "Social", then "Instagram" and "Vimeo" as
-  text links in `h3` size (new tab, `↗`).
-- Optional secondary contact (rendered only when its content flag is on;
-  off by default): a `label` muted heading from content, then a name and an
-  email link in `body`.
-- Base: stacked, 32 px between groups.
-- md and lg: 2 columns (email and phone left, cols 1–7 at lg; location,
-  social and secondary contact right, cols 9–12 at lg).
+Sections separated by `--section-pad`.
 
-**3. Footer** without its invitation line (see 8.5).
+### 10.5 Contact (`/fr/contact`, `/en/contact`)
+
+1. Page head: `h1` "Contact" in `giant`; 24 px; one sentence in `lead`.
+2. 48 px. Email: section label "E-mail"; 12 px; address as a link in
+   `display` size, **not uppercase**, Wide 800, underline 3 px, offset 8 px,
+   `overflow-wrap: anywhere`; hover: highlight.
+3. 48 px. Three groups, each a section label then the value in `title`
+   style: "Téléphone" / "Phone" (`tel:` link, international format; the only
+   place the number appears; not rendered when empty), "Basée à" / "Based
+   in", "Réseaux" / "Social" (text links, new tab). Base: stacked, 32 px
+   apart. md and lg: three columns.
+4. Optional secondary contact (content flag, off by default): section
+   label from content, name and email in `body`.
+5. Footer without its invitation line.
 
 No form.
 
-### 9.7 Not found
+### 10.6 Legal pages
 
-Component 8.25 between header and footer, in the language of the URL prefix
-(French if none).
+Routes: `/fr/mentions-legales`, `/en/legal-notice`, `/fr/confidentialite`,
+`/en/privacy`. Linked from the footer and from each other; the privacy
+policy also from the notice. Not in the navigation. `noindex`.
 
-### 9.8 Legal pages
+- Head: `h1` in `display`; 16 px; "Dernière mise à jour : {date}" / "Last
+  updated: {date}" in `label`, muted (placeholder marker when empty);
+  optional intro in `body`. 2 px ink rule.
+- Body, 48 px under the head, cols 1–8 at lg, max `66ch`: sections in
+  content order. Section heading: `h2` in `title` style at a fixed 20 px
+  (22 px lg), 48 px above (none above the first), 12 px below, with an `id`.
+  Paragraphs `body`, 16 px apart. Lists: disc, muted marker, padding-left
+  20 px, 8 px between items. Order inside a section: paragraphs, list,
+  `after` paragraphs, links (one text link per line). No inline code:
+  technical names in the quotation marks of the language. Sections with
+  `published: false` are not rendered.
+- 48 px, 2 px ink rule, 24 px: one arrow link to the other legal page.
 
-| Page | FR route | EN route |
-|---|---|---|
-| Legal notice | `/fr/mentions-legales` | `/en/legal-notice` |
-| Privacy policy | `/fr/confidentialite` | `/en/privacy` |
+Section headings and draft copy: `legal-copy.md`.
 
-Both pages use the same layout. They are linked from the footer (8.5) on
-every page and from each other; the privacy policy is also linked from the
-privacy notice (8.26). They are not in the header navigation or the mobile
-menu. The language switcher maps each page to its counterpart.
+### 10.7 Not found
 
-**1. Page head**
-- `h1` in `display-l`: "Mentions légales" / "Legal notice";
-  "Politique de confidentialité" / "Privacy policy".
-- 16 px gap; `label`, muted: "Dernière mise à jour : {date}" / "Last
-  updated: {date}", the date written out in the page language from an ISO
-  date in content.
-- Optional introduction, one paragraph in `body` (not `lead`), 24 px under
-  the date.
-
-**2. Body** (48 px under the head)
-- Sections in legal prose (8.27), in the order of the content file.
-- Base and md: full container width, text limited to `68ch`.
-- lg: cols 1–8. No table of contents, no aside.
-
-**3. Cross-link** (48 px under the last section, hairline above, 24 px
-padding-top): one arrow link (8.7) to the other legal page.
-
-**4. Footer.**
-
-Section headings, in order. The draft text for each, in both languages, with
-placeholders for every unknown fact, is in `legal-copy.md`.
-
-Legal notice:
-1. Éditeur du site / Publisher
-2. Directrice de la publication / Director of publication
-3. Hébergement / Hosting
-4. Propriété intellectuelle / Intellectual property
-5. Crédits / Credits
-6. Liens externes / External links
-7. Signaler un contenu / Reporting content
-
-Privacy policy:
-1. Responsable du traitement / Data controller
-2. En bref / In short
-3. Données liées à l'hébergement / Hosting data
-4. Quand vous m'écrivez ou m'appelez / When you write or call
-5. Cookies et stockage local / Cookies and local storage
-6. Vidéos / Videos (kept in content but not rendered until embeds are live:
-   a `published` flag per section, off for this one)
-7. Liens vers d'autres sites / Links to other sites
-8. Personnes citées sur ce site / People named on this site
-9. Vos droits / Your rights
-10. Modifications / Changes
-
-Both pages carry `<meta name="robots" content="noindex">`.
+Surface ground, `--section-pad` twice. `h1` "404" in `giant`; 16 px; "Cette
+page n'existe pas." / "This page does not exist." in `lead`; 32 px; block
+button "Retour à l'accueil" / "Back to home", max width 6 cols at lg.
 
 ---
 
-## 10. Accessibility requirements (WCAG 2.1 AA)
+## 11. Accessibility (WCAG 2.1 AA)
 
-- `<html lang>` follows the current language. Film titles and any quoted
-  text in another language carry their own `lang`.
-- Landmarks: `header`, `nav` (labelled), `main`, `footer`. One `h1` per page.
-- On route change: focus moves to the `h1` (`tabindex="-1"`), the page title
-  updates, and scroll returns to top (except for in-page anchors). The
-  programmatically focused `h1` shows **no outline** (`outline: none` on
-  `h1[tabindex="-1"]:focus`): it is not interactive and cannot be reached with
-  Tab. This is the only exception to the focus rule of section 6. On first
-  page load, focus is not moved.
-- All functionality works with keyboard only; visible focus everywhere
-  (section 6).
-- Hover never reveals information that is not available otherwise.
-- Colour is never the only indicator: current nav item has an underline;
-  links in text are underlined.
-- Text can be zoomed to 200% without loss; layout reflows at 320 px width.
-- Touch targets 44 × 44 px minimum (section 6).
-- Alt text required for every image in both languages; the build should fail
-  or warn when it is missing.
-- Video: iframe titles as in 7.3. Captions are the responsibility of the
-  hosted video; note in content whether a film has subtitles.
-- Links that open a new tab announce it (8.6).
-- Reduced motion honoured (section 6).
+- `<html lang>` follows the page language; film titles and foreign-language
+  text carry their own `lang`.
+- Landmarks: `header`, labelled `nav`s, `main`, `footer`. One `h1` per page
+  (home: the name).
+- Route change: focus moves to the `h1` (`tabindex="-1"`, no outline on that
+  programmatic focus only), title updates, scroll to top except for anchors.
+  Not on first load.
+- Keyboard: everything operable; visible focus (6.5); bands pause on focus.
+- Moving content: bands are pausable by a visible control and stop under
+  reduced motion (8.5).
+- Text over the hero image only on the scrim (9.1). Check the name and role
+  line against the darkest and lightest parts of the image: minimum 4.5:1
+  for the role line and credit, 3:1 for the name.
+- Colour pairs only as allowed in section 2. Never accent text on ground.
+- Uppercase is CSS only, so screen readers read normal words.
+- Hover never reveals information unavailable otherwise.
+- Zoom to 200% and reflow at 320 px without loss or horizontal scroll.
+- Targets 44 × 44 px. Alt text required in both languages (build warns).
+- New-tab links say so. Reduced motion honoured (6.7).
 
 ---
 
-## 11. SEO and sharing
+## 12. SEO and sharing
 
-| Page | `<title>` | Meta description |
-|---|---|---|
-| Home | "Sara Grimaldi – Réalisatrice et scénariste" / "Sara Grimaldi – Director and screenwriter" | From content, 140 to 160 characters |
-| Films | "Films – Sara Grimaldi" | From content |
-| Film | "{Titre} ({année}) – Sara Grimaldi" | Film logline, max 160 characters |
-| Press | "Presse – Sara Grimaldi" / "Press – Sara Grimaldi" | From content |
-| About | "À propos – Sara Grimaldi" / "About – Sara Grimaldi" | From content |
-| Contact | "Contact – Sara Grimaldi" | From content |
-| Legal notice | "Mentions légales – Sara Grimaldi" / "Legal notice – Sara Grimaldi" | From content; page is `noindex` |
-| Privacy policy | "Confidentialité – Sara Grimaldi" / "Privacy – Sara Grimaldi" | From content; page is `noindex` |
+| Page | `<title>` |
+|---|---|
+| Home | "Sara Grimaldi – Réalisatrice et scénariste" / "Sara Grimaldi – Director and screenwriter" |
+| Films | "Films – Sara Grimaldi" |
+| Film | "{Titre} ({année}) – Sara Grimaldi" |
+| Press | "Presse – Sara Grimaldi" / "Press – Sara Grimaldi" |
+| About | "À propos – Sara Grimaldi" / "About – Sara Grimaldi" |
+| Contact | "Contact – Sara Grimaldi" |
+| Legal notice | "Mentions légales – Sara Grimaldi" / "Legal notice – Sara Grimaldi" (`noindex`) |
+| Privacy policy | "Confidentialité – Sara Grimaldi" / "Privacy – Sara Grimaldi" (`noindex`) |
 
-- Open Graph and Twitter card on every page: `og:title`, `og:description`,
-  `og:image` (1200 × 630; film still for film pages, default image
-  elsewhere), `og:locale` (`fr_FR` or `en_GB`), `og:type` (`website`;
-  `video.movie` for films).
-- `link rel="alternate" hreflang="fr" | "en" | "x-default"` (x-default to
-  French) and a canonical URL on every page, built from a single configurable
-  base URL so the site stays portable to a custom domain.
-- Theme colour: `#F6F1E8`.
-- **Default Open Graph image:** a still from *Immunity*, cropped to
-  1200 × 630, JPEG, under 300 KB, with no text overlaid. Its alt text
-  (`og:image:alt`) names the film in both languages. Until that file
-  exists the `og:image` tag is omitted on pages without their own image (the
-  content field stays). Film pages use their lead still cropped to 1200 × 630
-  as soon as stills are supplied.
-- **Favicon:** the initials "SG", ink on paper, in the system serif. A
-  favicon cannot load the site's web font, and no Fraunces outlines are
-  available, so the system serif is the specified final rendering, not a
-  stopgap. One SVG file, exactly:
+Meta descriptions from content. Open Graph and Twitter card on every page
+(`og:title`, `og:description`, `og:image` 1200 × 630 with `og:image:alt`,
+`og:locale`, `og:type`). `hreflang` alternates (`fr`, `en`, `x-default` to
+French) and canonical from one configurable base URL. Default Open Graph
+image: a still from *Immunity*; tag omitted until the file exists.
 
-  ```svg
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-    <rect width="32" height="32" fill="#F6F1E8"/>
-    <text x="16" y="22" text-anchor="middle"
-          font-family="Georgia, 'Times New Roman', serif"
-          font-size="17" font-weight="700" letter-spacing="-0.5"
-          fill="#1C1A17">SG</text>
-  </svg>
-  ```
+Theme colour: `#0E0E0E`.
 
-  Referenced with `<link rel="icon" type="image/svg+xml">`. The 180 px PNG
-  (`apple-touch-icon`) is the same artwork rasterised at 180 × 180; it is
-  omitted until someone exports it, since producing it must not add a build
-  dependency. No dark-mode variant.
+Favicon: the record dot. One SVG, exactly:
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#0E0E0E"/>
+  <circle cx="16" cy="16" r="8" fill="#FF4B1F"/>
+</svg>
+```
 
 ---
 
-## 12. Content model implied by the design
+## 13. Content model
 
-For the developer's content service. Every text field is bilingual
-(`fr`, `en`). Names are suggestions; the fields are requirements.
+Unchanged from the built model except the additions marked **new**. Every
+text field is bilingual.
 
-**Site:** name; role labels (list); statement; statement emphasis; intro;
-email; phone (Contact page only; may be empty); location; socials (label,
-URL); secondary contact (heading, name, email, `show` flag, default off);
-footer invitation; footer legal link labels; default meta description;
-default OG image; navigation labels; UI strings (skip link, menu, close, new
-window, watch labels, section labels, last-updated label, 404, `noscript`
-sentence).
+- **Site:** name; role labels (list); statement; statement emphasis; intro;
+  email; phone (Contact only; may be empty); location; socials; secondary
+  contact (heading, name, email, `show`, default off); footer invitation;
+  legal link labels; default meta description; default OG image; navigation
+  labels; UI strings, including **new**: band pause and resume labels, film
+  index number is generated (no field).
+- **Home:** featured films (ordered list of references, up to 3). **New:**
+  hero image (`src`, `width`, `height`, `alt`, `focus`, optional `caption`).
+- **Image (everywhere an image is referenced). New fields:** `fit`
+  (`cover` | `poster`, default `cover`) and `focus` (CSS `object-position`,
+  default `50% 50%`).
+- **Film:** slug; title; title language; family (`fiction` | `documentaire`
+  | `impact`); year; duration; roles; logline; synopsis; statement;
+  statement quote; proof line; data rows; credits groups; selections;
+  selections summary; `watch` (mode, provider, id, external label and URL);
+  lead image; stills; poster; `published`; order.
+- **Press item:** publication; description; year; country; article language;
+  URL or scan; related film. The `press` band lists unique publication names
+  in press order.
+- **Organisation (new, replaces Collaboration):** name; optional logo
+  (`src`, `width`, `height`, optional `scale`); kind (`client` | `press`);
+  optional role and description (shown in the name wall); order; `home`
+  flag. Alt text is the name. Press items refer to their organisation.
+- **In-development item:** title; format and status; description.
+- **About:** opening sentence; biography (paragraphs); portrait; career
+  rows.
+- **Privacy notice:** `enabled`; `version`; `text`; `linkLabel`;
+  `dismissLabel`; `regionLabel`.
+- **Legal page:** title; meta description; `updated`; intro; sections (`id`,
+  heading, paragraphs, list, `after`, links, `published`); cross-link label.
 
-**Privacy notice:** `enabled`; `version`; `text`; `linkLabel`;
-`dismissLabel`; `regionLabel` (8.26).
-
-**Legal page** (one per page: legal notice, privacy policy): title; meta
-description; `updated` (ISO date); introduction (optional); sections, each
-with `id`, heading, paragraphs (list of plain strings, with the conventions
-of section 3.2), list items (optional), `after` (optional: paragraphs that
-follow the list), links (optional: label, URL),
-`published` (boolean, default true); label of the cross-link to the other
-legal page.
-
-**Film:** slug; title; title language; family (`fiction` | `documentaire` |
-`impact`); year; duration (display string); roles (list); logline; synopsis;
-statement; statement quote (max 180 characters); proof line; data rows
-(genre, country, languages, format, production, support, broadcast); credits
-groups (group title, role, name); selections (festival, place or year,
-award); selections summary; `watch` (mode, provider, id, external label,
-external URL); lead still (file, alt); stills (file, alt); poster (file,
-alt); `published` (boolean); order.
-
-**Home:** featured films as an ordered list of film references (up to 3);
-the list order is the display order of 9.1. There is no `featured` flag on
-films.
-
-The values for each film (family, year, duration, watch mode, published)
-live in the content files, which are the reference; this document
-does not list them.
-
-**Press item:** publication; description; year; country; article language;
-URL or scan image (file, alt); related film slug (optional).
-
-**Collaboration:** name(s); role and description; order; `home` flag.
-
-**In-development item:** title; format and status; description (optional);
-`home` flag.
-
-**About:** opening sentence; biography (list of paragraphs, plain strings
-with the `*title*` convention of section 3.2); portrait (file, alt);
-career rows (period, text).
+Per-film values live in the content files, not here.
 
 ---
 
-## 13. Dependencies
+## 14. Dependencies and defaults
 
-None required by this design. No UI framework, no icon set (the only glyphs
-are `→`, `←`, `↗`, `·` as text and one CSS triangle), no animation library,
-no carousel, no lightbox, no video SDK, no font package. Font files are
-static assets.
-
----
-
-## 14. Defaults for missing content (nothing here blocks the build)
+No dependency is required: no UI framework, icon set, animation or carousel
+library, video SDK or font package. Glyphs used as text: `→ ← ↗`. Dots,
+pause and play icons are CSS shapes.
 
 | When this is missing | Use |
 |---|---|
-| Final wording of any text, in either language | Draft copy, marked as draft in content |
-| A film's watch link | Watch mode `none` ("available on request") |
-| A selections summary number | The list alone, no summary line |
-| Stills, portrait, posters | Placeholders on `--color-surface` at the specified ratios |
+| Final wording | Draft copy, marked as draft in content |
+| A clean frame for a film | Its poster, `fit: poster` |
+| A cleared logo for an organisation | Its name in type (8.15) |
+| The hero image | An ink field; the name and band still fill the screen |
+| A film's watch link | Mode `none` |
 | Default Open Graph image | No `og:image` tag |
-| Phone number | Fictional placeholder in content, or empty (group not rendered) |
-| Any legal fact (publisher identity, address, registration numbers, retention periods) | A visible placeholder marker (3.2); never an invented value |
-| Optional blocks (secondary contact, in-development list) | Not rendered |
+| Phone number | Fictional placeholder, or empty (not rendered) |
+| Any legal fact | A visible placeholder marker; never an invented value |
+| Optional blocks | Not rendered |
+
+---
+
+## 15. Build order
+
+1. Tokens, fonts, shell (header, menu, footer), band.
+2. Home page.
+3. Films index, film page.
+4. Press, About, Contact, legal pages, 404, privacy notice restyle.
 
 ## Change log
 
-- 1.0 (2026-11-14): first version, direction B.
-- 1.1 (2026-11-14): no outline on the route-change `h1` (section 10); default
-  Open Graph image and favicon specified (section 11); statement emphasis
-  fixed (9.1); mobile menu as native `<dialog>` (8.4).
-- 1.3 (2026-11-14), after the home page review: press row meta moved to
-  cols 10–12 without the article language (8.20); footer and collaborations
-  gaps written in (8.5, 9.1); Fraunces italic preloaded (3.1); language
-  switcher name without `aria-label` (8.3); separators bound with
-  non-breaking spaces (9.1); `*title*` convention for inline film titles
-  (3.2, 12). Inter kept as text face.
-- 1.2 (2026-11-14): default Open Graph image is a still from *Immunity*
-  (section 11).
-- 1.4 (2026-11-14): phone number on the Contact page only, removed from the
-  footer and the mobile menu (8.4, 8.5, 9.6); legal notice and privacy policy
-  pages, footer legal links (8.5, 8.27, 9.8, 11, 12); privacy notice
-  component (8.26); placeholder marking (3.2); press row language shown as a
-  code in the meta (8.20); document made self-sufficient and reviewed for
-  publication in a public repository (header, 9.5, 9.6, 12, 14).
-- 1.5 (2026-11-14): privacy notice copy shortened to one sentence, limits
-  set at 160 px and one action row at 360 px, `<noscript>` block on the
-  deep-link fallback only (8.26); `after` paragraphs and no inline code in
-  legal prose (8.27, 12).
-- 1.6 (2026-11-14): first legal section starts 48 px under the page head,
-  with no extra margin (8.27); featured films are an ordered list on the
-  home content, not a flag on films (12).
+- 2.1 (2026-11-14): logos for collaborators and press (8.15, 8.16, 8.5,
+  8.10, 9.3, 10.4, 13); statement and films sections on ink (9.2, 9.4); hero
+  image changed and rule for frames with lettering (7.3).
+- 2.0 (2026-11-14): complete visual redesign (colour, type, imagery, shell,
+  band, all page layouts). Routes, content model, legal pages, privacy
+  notice behaviour and accessibility rules carried over from 1.6.
+- 1.0 to 1.6 (2026-11-14): first direction, superseded.

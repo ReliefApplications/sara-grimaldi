@@ -1,0 +1,13 @@
+{
+  "name": "Crédit Agricole",
+  "kind": "client",
+  "order": 13,
+  "logo": {
+    "src": "images/logos/credit-agricole.webp",
+    "size": [301, 94],
+    "alt": {
+      "fr": "Logo Crédit Agricole",
+      "en": "Crédit Agricole logo"
+    }
+  }
+}

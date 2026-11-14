@@ -1,0 +1,14 @@
+{
+  "name": "IRIS",
+  "aliases": ["Association IRIS"],
+  "kind": "client",
+  "order": 12,
+  "logo": {
+    "src": "images/logos/iris.webp",
+    "size": [173, 111],
+    "alt": {
+      "fr": "Logo IRIS",
+      "en": "IRIS logo"
+    }
+  }
+}

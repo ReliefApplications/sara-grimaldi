@@ -1,0 +1,13 @@
+{
+  "name": "La Stampa",
+  "kind": "press",
+  "order": 5,
+  "logo": {
+    "src": "images/logos/la-stampa.webp",
+    "size": [296, 36],
+    "alt": {
+      "fr": "Logo La Stampa",
+      "en": "La Stampa logo"
+    }
+  }
+}

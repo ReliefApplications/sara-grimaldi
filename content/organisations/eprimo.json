@@ -1,0 +1,13 @@
+{
+  "name": "eprimo",
+  "kind": "client",
+  "order": 14,
+  "logo": {
+    "src": "images/logos/eprimo.webp",
+    "size": [288, 127],
+    "alt": {
+      "fr": "Logo eprimo",
+      "en": "eprimo logo"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+@use '../../styles/breakpoints' as *;
+
+:host {
+  display: block;
+}
+
+.tile {
+  display: block;
+  color: var(--text);
+}
+
+// The image; its proportions come from the parent through --tile-ratio.
+.frame {
+  display: block;
+  aspect-ratio: var(--tile-ratio, 16 / 9);
+  overflow: hidden;
+  background: var(--color-placeholder);
+
+  app-content-image {
+    transition: transform 400ms ease-out;
+  }
+}
+
+.caption {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--space-3);
+  row-gap: var(--space-2);
+  align-items: baseline;
+  margin-top: var(--space-4);
+}
+
+.number {
+  grid-row: 1;
+}
+
+.title {
+  grid-column: 2;
+}
+
+.meta {
+  grid-column: 2;
+}
+
+// Meta at the right of the title where the tile is wide enough: a
+// full-width tile from md, any tile from lg.
+@mixin meta-beside {
+  .caption {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .meta {
+    grid-column: 3;
+    text-align: right;
+    white-space: nowrap;
+  }
+}
+
+@include md {
+  :host(.lead) {
+    @include meta-beside;
+  }
+}
+
+@include lg {
+  @include meta-beside;
+}
+
+// Hover and focus: the image grows slightly, the title becomes a highlight.
+.tile:hover,
+.tile:focus-visible {
+  .title-text {
+    padding: 0 0.12em;
+    background: var(--highlight-bg);
+    color: var(--highlight-text);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tile:hover app-content-image,
+  .tile:focus-visible app-content-image {
+    transform: scale(1.03);
+  }
+}

@@ -1,75 +1,64 @@
 @use '../../styles/breakpoints' as *;
 
+// The accent field that closes every page (8.13).
 .footer {
-  --color-focus: var(--color-dark-text);
-
-  // --notice-space: room for the privacy notice while it is shown (8.26).
-  padding: var(--space-8) 0 calc(var(--space-6) + var(--notice-space, 0px));
-  background: var(--color-ink);
-  color: var(--color-dark-text);
+  // --notice-space: room for the privacy notice while it is shown (8.14).
+  padding: var(--space-8) 0 calc(var(--space-5) + var(--notice-space, 0px));
 
   @include lg {
-    padding: var(--space-9) 0 calc(var(--space-7) + var(--notice-space, 0px));
+    padding: var(--space-10) 0 calc(var(--space-6) + var(--notice-space, 0px));
   }
 }
 
-.label {
-  margin-bottom: var(--space-4);
-  color: var(--color-dark-muted);
+.invitation {
+  margin-top: var(--space-5);
 }
 
 .contact {
-  margin-top: var(--block-gap);
-}
+  margin-top: var(--space-6);
 
-@include lg {
-  .label,
-  .invitation {
-    grid-column: 1 / 8;
-  }
-
-  // The email sits beside the invitation, tops aligned.
-  .contact {
-    grid-column: 8 / 13;
-    grid-row: 2;
-    margin-top: 0;
+  @include lg {
+    margin-top: var(--space-7);
   }
 }
 
 .email {
   display: inline-block;
   padding-block: var(--space-2);
-  font-family: var(--font-display);
-  font-variation-settings:
-    'SOFT' 0,
-    'WONK' 0;
-  font-size: var(--size-h2);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  text-transform: none;
   overflow-wrap: anywhere;
-  text-decoration: underline 1px var(--color-dark-accent);
-  text-underline-offset: 8px;
+  text-decoration: underline 3px;
+  text-underline-offset: 6px;
+
+  &:hover .email-text {
+    padding: 0 0.12em;
+    background: var(--highlight-bg);
+    color: var(--highlight-text);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
 
   &:hover {
-    color: var(--color-dark-accent);
+    text-decoration: none;
   }
 }
 
-// Bottom row: social links, legal links, copyright (stacked below lg).
+// Bottom row. The page order is legal links, social links, copyright, so
+// keyboard focus always follows what is seen; from lg the three sit on one
+// line with the copyright first.
 .bottom {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  margin-top: var(--space-7);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--color-dark-rule);
+  gap: var(--space-1);
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: var(--rule);
 
-  // lg: one line, copyright first, legal links after it, social links at the right.
   @include lg {
     flex-direction: row;
     align-items: center;
     gap: var(--space-7);
+    margin-top: var(--space-9);
   }
 }
 
@@ -77,7 +66,6 @@
   display: flex;
   align-items: center;
   min-height: var(--target-size);
-  color: var(--color-dark-muted);
 
   @include lg {
     order: -1;
@@ -86,7 +74,6 @@
 
 .social {
   @include lg {
-    order: 1;
     margin-left: auto;
   }
 }
@@ -101,11 +88,10 @@
   display: inline-flex;
   align-items: center;
   min-height: var(--target-size);
-  color: var(--color-dark-text);
 
-  &:hover {
-    color: var(--color-dark-accent);
-    text-decoration: underline 1px;
-    text-underline-offset: 3px;
+  &:hover .link-text {
+    padding: 0 0.12em;
+    background: var(--highlight-bg);
+    color: var(--highlight-text);
   }
 }

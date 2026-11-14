@@ -1,0 +1,13 @@
+{
+  "name": "GQ",
+  "kind": "client",
+  "order": 2,
+  "logo": {
+    "src": "images/logos/gq.webp",
+    "size": [219, 105],
+    "alt": {
+      "fr": "Logo GQ",
+      "en": "GQ logo"
+    }
+  }
+}

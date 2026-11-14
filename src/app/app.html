@@ -1,5 +1,5 @@
 @if (site(); as site) {
-  <a class="skip-link t-small" [href]="skipHref()" (click)="skipToMain($event)">{{
+  <a class="skip-link t-nav" [href]="skipHref()" (click)="skipToMain($event)">{{
     site.ui.skipToContent
   }}</a>
   <app-privacy-notice />

@@ -1,0 +1,13 @@
+{
+  "name": "Vivre FM",
+  "kind": "press",
+  "order": 10,
+  "logo": {
+    "src": "images/logos/vivre-fm.webp",
+    "size": [253, 89],
+    "alt": {
+      "fr": "Logo Vivre FM",
+      "en": "Vivre FM logo"
+    }
+  }
+}

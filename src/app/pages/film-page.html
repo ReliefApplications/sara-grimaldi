@@ -7,7 +7,7 @@
             ><span aria-hidden="true">← </span>{{ page.labels.back }}</a
           >
         </p>
-        <h1 class="t-display-l t-film-title" appPageHeading [attr.lang]="film.titleLang">
+        <h1 class="t-display t-film-title" appPageHeading [attr.lang]="film.titleLang">
           {{ film.title }}
         </h1>
         <p>
@@ -24,7 +24,7 @@
         @if (film.watch.externalUrl && film.watch.externalLabel) {
           <p>
             <a [href]="film.watch.externalUrl" target="_blank" rel="noopener noreferrer"
-              >{{ film.watch.externalLabel }} <span aria-hidden="true">↗</span>
+              >{{ film.watch.externalLabel }} <span class="t-arrow-out" aria-hidden="true">→</span>
               <span class="visually-hidden">{{ site.ui.newWindow }}</span></a
             >
           </p>
@@ -38,14 +38,14 @@
         <p>{{ film.logline }}</p>
 
         @if (film.synopsis; as synopsis) {
-          <h2 class="t-h2">{{ page.labels.synopsis }}</h2>
+          <h2 class="t-title">{{ page.labels.synopsis }}</h2>
           @for (paragraph of synopsis; track $index) {
             <p><app-inline-text [text]="paragraph" /></p>
           }
         }
 
         @if (film.statement; as statement) {
-          <h2 class="t-h2">{{ page.labels.statement }}</h2>
+          <h2 class="t-title">{{ page.labels.statement }}</h2>
           @for (paragraph of statement; track $index) {
             <p><app-inline-text [text]="paragraph" /></p>
           }
@@ -59,7 +59,7 @@
         </dl>
 
         @if (film.selections || film.selectionsSummary) {
-          <h2 class="t-h2">{{ page.labels.selections }}</h2>
+          <h2 class="t-title">{{ page.labels.selections }}</h2>
           @if (film.selectionsSummary) {
             <p>{{ film.selectionsSummary }}</p>
           }
@@ -76,7 +76,7 @@
         }
 
         @if (film.credits; as credits) {
-          <h2 class="t-h2">{{ page.labels.credits }}</h2>
+          <h2 class="t-title">{{ page.labels.credits }}</h2>
           @for (group of credits; track $index) {
             <h3 class="t-label t-muted">{{ group.title }}</h3>
             <dl>
@@ -91,7 +91,7 @@
         }
 
         @if (press().length) {
-          <h2 class="t-h2">{{ page.labels.press }}</h2>
+          <h2 class="t-title">{{ page.labels.press }}</h2>
           <ul>
             @for (item of press(); track item.slug) {
               <li><app-press-row [item]="item" /></li>

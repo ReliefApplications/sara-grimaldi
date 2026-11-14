@@ -158,5 +158,78 @@
   "watch": {
     "mode": "none"
   },
+  "still": {
+    "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
+    "src": "images/films/la-dolce-attesa.webp",
+    "width": 1920,
+    "height": 1005,
+    "widths": [480, 768, 1152, 1920],
+    "alt": {
+      "fr": "Une femme âgée, la main sur le front, à côté d’une jeune femme aux cheveux bouclés devant une porte bleue.",
+      "en": "An elderly woman with her hand on her forehead beside a young woman with curly hair, in front of a blue door."
+    }
+  },
+  "stills": [
+    {
+      "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
+      "src": "images/films/la-dolce-attesa-2.webp",
+      "width": 1920,
+      "height": 1005,
+      "alt": {
+        "fr": "Une jeune femme aux cheveux bouclés devant une grande porte en bois, dans la rue.",
+        "en": "A young woman with curly hair in front of a large wooden door, in the street."
+      }
+    },
+    {
+      "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
+      "src": "images/films/la-dolce-attesa-3.webp",
+      "width": 1920,
+      "height": 1005,
+      "alt": {
+        "fr": "Une femme âgée dans une cuisine, un téléphone jaune à la main.",
+        "en": "An elderly woman in a kitchen holding a yellow phone."
+      }
+    },
+    {
+      "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
+      "src": "images/films/la-dolce-attesa-4.webp",
+      "width": 1920,
+      "height": 1005,
+      "alt": {
+        "fr": "Gros plan sur une jeune femme souriante, allongée.",
+        "en": "Close-up of a young woman smiling, lying down."
+      }
+    },
+    {
+      "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
+      "src": "images/films/la-dolce-attesa-5.webp",
+      "width": 1920,
+      "height": 1005,
+      "alt": {
+        "fr": "Une jeune femme dans une rue parisienne, les mains sur les hanches.",
+        "en": "A young woman in a Paris street, hands on her hips."
+      }
+    },
+    {
+      "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
+      "src": "images/films/la-dolce-attesa-6.webp",
+      "width": 1920,
+      "height": 1005,
+      "alt": {
+        "fr": "Gros plan sur une jeune femme à l’air stupéfait.",
+        "en": "Close-up of a young woman looking astonished."
+      }
+    },
+    {
+      "_source": "Source: saragrimaldi.com (the La Dolce Attesa page of her current site). Placeholder: Sara can replace or veto it.",
+      "src": "images/films/la-dolce-attesa-7.webp",
+      "width": 1920,
+      "height": 1005,
+      "alt": {
+        "fr": "Une jeune femme assise en tailleur, les yeux fermés, en méditation à côté d’un ballon de gym.",
+        "en": "A young woman sitting cross-legged with her eyes closed, meditating beside an exercise ball."
+      }
+    }
+  ],
   "published": true
 }

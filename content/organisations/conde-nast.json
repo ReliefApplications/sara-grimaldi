@@ -1,0 +1,13 @@
+{
+  "name": "Condé Nast",
+  "kind": "client",
+  "order": 6,
+  "logo": {
+    "src": "images/logos/conde-nast.webp",
+    "size": [352, 104],
+    "alt": {
+      "fr": "Logo Condé Nast",
+      "en": "Condé Nast logo"
+    }
+  }
+}
