@@ -1,0 +1,65 @@
+@if (page(); as page) {
+  @if (site(); as site) {
+    <div class="container grid">
+      <header class="head">
+        <h1 class="t-display-l" appPageHeading>{{ page.heading }}</h1>
+        <p class="updated t-label t-muted">
+          {{ site.ui.lastUpdated }}
+          @if (updated(); as date) {
+            {{ date }}
+          } @else {
+            <app-inline-text [text]="site.ui.dateMissing" />
+          }
+        </p>
+        @if (page.intro) {
+          <p class="intro t-body"><app-inline-text [text]="page.intro" /></p>
+        }
+      </header>
+
+      <div class="body">
+        @for (section of page.sections; track section.id) {
+          <section [attr.aria-labelledby]="section.id">
+            <h2 class="t-h3" [id]="section.id">{{ section.heading }}</h2>
+            @for (paragraph of section.paragraphs; track $index) {
+              <p><app-inline-text [text]="paragraph" /></p>
+            }
+            @if (section.list; as list) {
+              <ul class="list">
+                @for (item of list; track $index) {
+                  <li><app-inline-text [text]="item" /></li>
+                }
+              </ul>
+            }
+            @for (paragraph of section.after; track $index) {
+              <p><app-inline-text [text]="paragraph" /></p>
+            }
+            @if (section.links; as links) {
+              <ul class="links">
+                @for (link of links; track $index) {
+                  <li>
+                    @if (link.url) {
+                      <a
+                        class="text-link"
+                        [href]="link.url"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >{{ link.label }}&nbsp;<span class="t-arrow" aria-hidden="true">↗</span>
+                        <span class="visually-hidden">{{ site.ui.newWindow }}</span></a
+                      >
+                    } @else {
+                      <app-inline-text [text]="link.label" />
+                    }
+                  </li>
+                }
+              </ul>
+            }
+          </section>
+        }
+      </div>
+
+      <p class="cross">
+        <a appArrowLink [routerLink]="route.link(other())">{{ page.crossLink }}</a>
+      </p>
+    </div>
+  }
+}

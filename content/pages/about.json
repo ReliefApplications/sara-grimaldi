@@ -1,0 +1,87 @@
+{
+  "_note": "Draft copy: French is a draft translation, all wording to be validated by Sara.",
+  "seo": {
+    "title": {
+      "fr": "À propos – Sara Grimaldi",
+      "en": "About – Sara Grimaldi"
+    },
+    "description": {
+      "fr": "Parcours de Sara Grimaldi, réalisatrice et scénariste installée à Paris : fiction, documentaire, campagnes à impact, collaborations et projets en développement.",
+      "en": "The career of Sara Grimaldi, director and screenwriter based in Paris: fiction, documentary, impact campaigns, collaborations and projects in development."
+    }
+  },
+  "heading": {
+    "fr": "À propos",
+    "en": "About"
+  },
+  "opening": {
+    "fr": "Réalisatrice et scénariste, Sara Grimaldi filme depuis 2002 des histoires portées par l’émotion.",
+    "en": "A director and screenwriter, Sara Grimaldi has been filming emotionally driven stories since 2002."
+  },
+  "biography": {
+    "fr": [
+      "Sara Grimaldi est réalisatrice, scénariste et productrice. Elle réalise depuis 2002 des courts métrages, des documentaires et des films publicitaires.",
+      "De 2005 à 2015, elle est assistante réalisatrice sur des films pour Barilla, Volkswagen et Sky. À partir de 2015, elle se tourne vers la production exécutive, principalement à Paris : un clip pour Universal, des mini-documentaires pour Adobe. Pendant six ans, elle filme pour Vogue et GQ.",
+      "Son documentaire *Immunity* (2020), consacré aux déficits immunitaires primitifs, a été sélectionné dans de nombreux festivals internationaux. *Il bosco incantato* (2013) suit des femmes détenues en Italie. *Le Retour du Train* (2017) a reçu 13 prix.",
+      "Ses scénarios explorent des personnages figés dans le présent, hantés par le passé, qui peinent à imaginer un avenir. Ses films ont été diffusés en France, à Singapour, aux Pays-Bas, au Canada, en Italie et aux États-Unis."
+    ],
+    "en": [
+      "Sara Grimaldi is a director, screenwriter and producer. She has been directing short films, documentaries and commercials since 2002.",
+      "From 2005 to 2015 she was an assistant director on films for Barilla, Volkswagen and Sky. From 2015 she moved into executive production, mainly in Paris: a music video for Universal, mini-documentaries for Adobe. For six years she filmed for Vogue and GQ.",
+      "Her documentary *Immunity* (2020), about primary immunodeficiency, was selected at many international festivals. *Il bosco incantato* (2013) follows women in prison in Italy. *Le Retour du Train* (2017) won 13 awards.",
+      "Her screenplays explore characters stuck in the present, haunted by the past, who struggle to imagine a future. Her films have aired in France, Singapore, the Netherlands, Canada, Italy and the United States."
+    ]
+  },
+  "careerHeading": {
+    "fr": "Parcours",
+    "en": "Career"
+  },
+  "career": [
+    {
+      "period": {
+        "fr": "Depuis 2002",
+        "en": "Since 2002"
+      },
+      "text": {
+        "fr": "Réalise des courts métrages, des documentaires et des films publicitaires.",
+        "en": "Directs short films, documentaries and commercials."
+      }
+    },
+    {
+      "period": {
+        "fr": "2005–2015",
+        "en": "2005–2015"
+      },
+      "text": {
+        "fr": "Assistante réalisatrice pour Barilla, Volkswagen et Sky.",
+        "en": "Assistant director for Barilla, Volkswagen and Sky."
+      }
+    },
+    {
+      "period": {
+        "fr": "Depuis 2015",
+        "en": "Since 2015"
+      },
+      "text": {
+        "fr": "Production exécutive, principalement à Paris.",
+        "en": "Executive production, mainly in Paris."
+      }
+    }
+  ],
+  "collaborationsHeading": {
+    "fr": "Collaborations",
+    "en": "Collaborations"
+  },
+  "inDevelopmentHeading": {
+    "fr": "En développement",
+    "en": "In development"
+  },
+  "filmsLink": {
+    "fr": "Voir les films",
+    "en": "View the films"
+  },
+  "contactLink": {
+    "fr": "Contact",
+    "en": "Contact"
+  }
+}

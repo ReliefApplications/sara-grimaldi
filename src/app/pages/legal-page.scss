@@ -1,0 +1,70 @@
+@use '../../styles/breakpoints' as *;
+
+// 1. Page head (9.8)
+.head {
+  padding-top: var(--page-top);
+}
+
+.updated {
+  margin-top: var(--space-4);
+}
+
+.intro {
+  max-width: var(--measure);
+  margin-top: var(--space-5);
+}
+
+// 2. Body: legal prose (8.27)
+.body {
+  margin-top: var(--space-7);
+
+  @include lg {
+    grid-column: 1 / 9;
+  }
+}
+
+section + section {
+  margin-top: var(--space-7);
+}
+
+h2 {
+  margin-bottom: var(--space-3);
+  scroll-margin-top: var(--space-9);
+}
+
+p,
+.list,
+.links {
+  max-width: var(--measure);
+}
+
+p + p,
+.links {
+  margin-top: var(--space-4);
+}
+
+.list {
+  margin-block: var(--space-4);
+  padding-left: 1.25rem; // 20 px (8.27); not on the spacing scale
+  list-style: disc;
+
+  li + li {
+    margin-top: var(--space-2);
+  }
+
+  li::marker {
+    color: var(--color-muted);
+  }
+
+  // The list opens the section when no paragraph precedes it.
+  h2 + & {
+    margin-top: 0;
+  }
+}
+
+// 3. Link to the other legal page
+.cross {
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: var(--hairline);
+}

@@ -1,0 +1,9 @@
+{
+  "names": ["Universal"],
+  "role": {
+    "fr": "Production exécutive, clip tourné à Paris",
+    "en": "Executive production, music video shot in Paris"
+  },
+  "order": 3,
+  "home": true
+}

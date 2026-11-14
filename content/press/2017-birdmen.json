@@ -1,0 +1,14 @@
+{
+  "publication": "Birdmen",
+  "year": 2017,
+  "country": {
+    "fr": "Italie",
+    "en": "Italy"
+  },
+  "articleLang": "it",
+  "description": {
+    "fr": "Article sur le court métrage *Le Retour du Train*",
+    "en": "Article about the short film *Le Retour du Train*"
+  },
+  "relatedFilm": "le-retour-du-train"
+}

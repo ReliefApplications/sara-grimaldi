@@ -1,0 +1,9 @@
+{
+  "names": ["Vogue", "GQ"],
+  "role": {
+    "fr": "Filmmaker pendant six ans",
+    "en": "Filmmaker for six years"
+  },
+  "order": 1,
+  "home": true
+}

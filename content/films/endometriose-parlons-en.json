@@ -1,0 +1,23 @@
+{
+  "title": "Endométriose - Parlons en",
+  "titleLang": "fr",
+  "family": "impact",
+  "year": 2015,
+  "roles": {
+    "fr": ["Réalisation"],
+    "en": ["Director"]
+  },
+  "logline": {
+    "fr": "Un film court pour faire connaître l’endométriose.",
+    "en": "A short film raising awareness of endometriosis."
+  },
+  "proof": {
+    "fr": "Relayé par Le Monde, Elle, la Repubblica, France TV et Femina",
+    "en": "Featured in Le Monde, Elle, la Repubblica, France TV and Femina"
+  },
+  "watch": {
+    "mode": "full",
+    "provider": "youtube"
+  },
+  "published": true
+}

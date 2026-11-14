@@ -1,0 +1,19 @@
+{
+  "title": "La chose qui manque",
+  "titleLang": "fr",
+  "family": "fiction",
+  "year": 2013,
+  "order": 2,
+  "roles": {
+    "fr": ["Réalisation", "scénario"],
+    "en": ["Director", "screenwriter"]
+  },
+  "logline": {
+    "fr": "Un court métrage écrit et réalisé par Sara Grimaldi.",
+    "en": "A short film written and directed by Sara Grimaldi."
+  },
+  "watch": {
+    "mode": "none"
+  },
+  "published": false
+}

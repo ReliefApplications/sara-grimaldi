@@ -1,0 +1,14 @@
+{
+  "publication": "Invece Concita (la Repubblica)",
+  "year": 2019,
+  "country": {
+    "fr": "Italie",
+    "en": "Italy"
+  },
+  "articleLang": "it",
+  "description": {
+    "fr": "Article sur le documentaire *Immunity*",
+    "en": "Article about the documentary *Immunity*"
+  },
+  "relatedFilm": "immunity"
+}

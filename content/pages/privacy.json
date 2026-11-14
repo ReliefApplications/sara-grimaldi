@@ -1,0 +1,273 @@
+{
+  "_note": "Draft, not legal advice: written to describe what the site does, not reviewed by a lawyer. Every [à compléter …] / [to be completed …] marker must be replaced and the text validated before launch.",
+  "seo": {
+    "title": {
+      "fr": "Confidentialité – Sara Grimaldi",
+      "en": "Privacy – Sara Grimaldi"
+    },
+    "description": {
+      "fr": "Comment le site de Sara Grimaldi traite vos données : pas de cookies de suivi, pas de mesure d’audience, pas de formulaire.",
+      "en": "How Sara Grimaldi’s website handles your data: no tracking cookies, no analytics, no forms."
+    }
+  },
+  "heading": {
+    "fr": "Politique de confidentialité",
+    "en": "Privacy policy"
+  },
+  "updated": "",
+  "intro": {
+    "fr": "Ce site est une vitrine professionnelle. Il a été conçu pour collecter le moins de données possible. Cette page explique précisément ce qui se passe quand vous le consultez.",
+    "en": "This website is a professional showcase. It was designed to collect as little data as possible. This page explains exactly what happens when you visit it."
+  },
+  "sections": [
+    {
+      "id": "responsable",
+      "heading": {
+        "fr": "Responsable du traitement",
+        "en": "Data controller"
+      },
+      "paragraphs": {
+        "fr": [
+          "Le responsable du traitement des données est [à compléter : nom et prénom, ou dénomination sociale], [à compléter : adresse professionnelle].",
+          "Pour toute question sur vos données : [à compléter : adresse e-mail de contact]."
+        ],
+        "en": [
+          "The data controller is [to be completed: full name or company name], [to be completed: business address].",
+          "For any question about your data: [to be completed: contact email address]."
+        ]
+      }
+    },
+    {
+      "id": "en-bref",
+      "heading": {
+        "fr": "En bref",
+        "en": "In short"
+      },
+      "list": {
+        "fr": [
+          "Ce site ne dépose aucun cookie.",
+          "Il n’utilise aucun outil de mesure d’audience ni de publicité.",
+          "Il ne contient aucun formulaire et ne propose aucun compte.",
+          "Les polices de caractères et les images sont servies par le site lui-même : la consultation des pages ne déclenche aucune requête vers un service tiers."
+        ],
+        "en": [
+          "This website sets no cookies.",
+          "It uses no analytics or advertising tools.",
+          "It has no forms and no user accounts.",
+          "Fonts and images are served by the website itself: viewing its pages triggers no request to any third-party service."
+        ]
+      }
+    },
+    {
+      "id": "hebergement",
+      "heading": {
+        "fr": "Données liées à l’hébergement",
+        "en": "Hosting data"
+      },
+      "paragraphs": {
+        "fr": [
+          "Le site est hébergé par GitHub Pages, un service de GitHub, Inc. (États-Unis). Comme tout hébergeur, GitHub reçoit l’adresse IP de votre appareil lorsque vous consultez une page. Selon sa documentation, GitHub enregistre et conserve cette adresse à des fins de sécurité.",
+          "L’éditeur de ce site n’a pas accès à ces journaux et ne les utilise pas.",
+          "Ces données sont traitées par GitHub aux États-Unis. GitHub déclare adhérer au cadre de protection des données UE–États-Unis (Data Privacy Framework) et s’appuyer sur les clauses contractuelles types de la Commission européenne.",
+          "Durée de conservation : elle est fixée par GitHub ([à compléter : durée, si elle est connue]).",
+          "Fondement : l’intérêt légitime à assurer la sécurité et le bon fonctionnement du site."
+        ],
+        "en": [
+          "The website is hosted on GitHub Pages, a service of GitHub, Inc. (United States). Like any host, GitHub receives your device’s IP address when you view a page. According to its documentation, GitHub logs and stores this address for security purposes.",
+          "The publisher of this website has no access to these logs and does not use them.",
+          "This data is processed by GitHub in the United States. GitHub states that it complies with the EU-U.S. Data Privacy Framework and relies on the European Commission’s standard contractual clauses.",
+          "Retention period: set by GitHub ([to be completed: period, if known]).",
+          "Legal basis: the legitimate interest in keeping the website secure and working."
+        ]
+      },
+      "links": [
+        {
+          "label": {
+            "fr": "Déclaration de confidentialité de GitHub",
+            "en": "GitHub’s privacy statement"
+          },
+          "url": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement"
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "heading": {
+        "fr": "Quand vous m’écrivez ou m’appelez",
+        "en": "When you write or call"
+      },
+      "paragraphs": {
+        "fr": [
+          "Si vous me contactez par e-mail ou par téléphone, les informations que vous me transmettez (nom, coordonnées, contenu du message) servent uniquement à vous répondre et à donner suite à votre demande.",
+          "Elles ne sont ni vendues ni transmises à des tiers, sauf si votre demande le nécessite et avec votre accord."
+        ],
+        "en": [
+          "If you contact me by email or phone, the information you give me (name, contact details, the content of your message) is used only to reply and to follow up on your request.",
+          "It is not sold or passed on to third parties, unless your request requires it and you agree."
+        ]
+      },
+      "list": {
+        "fr": [
+          "Fournisseur de messagerie : [à compléter : fournisseur de messagerie et pays d’hébergement].",
+          "Durée de conservation : [à compléter : durée de conservation des échanges].",
+          "Fondement : l’intérêt légitime à répondre aux demandes reçues, ou les mesures précontractuelles prises à votre demande."
+        ],
+        "en": [
+          "Email provider: [to be completed: email provider and hosting country].",
+          "Retention period: [to be completed: how long correspondence is kept].",
+          "Legal basis: the legitimate interest in answering the requests received, or steps taken at your request before entering into a contract."
+        ]
+      }
+    },
+    {
+      "id": "cookies",
+      "heading": {
+        "fr": "Cookies et stockage local",
+        "en": "Cookies and local storage"
+      },
+      "paragraphs": {
+        "fr": [
+          "Ce site ne dépose aucun cookie.",
+          "Une seule information est enregistrée dans votre navigateur, et seulement si vous fermez le message d’information sur la confidentialité : le fait que vous l’avez fermé, afin de ne plus vous l’afficher. Elle est stockée dans le « stockage local » du navigateur sous le nom « sg-privacy-notice ». Elle ne contient aucun identifiant, n’est pas envoyée au site et ne permet pas de vous suivre.",
+          "Vous pouvez la supprimer à tout moment en effaçant les données de site dans les réglages de votre navigateur.",
+          "Cette information étant strictement nécessaire à un choix que vous avez exprimé, elle ne requiert pas de consentement."
+        ],
+        "en": [
+          "This website sets no cookies.",
+          "A single piece of information is saved in your browser, and only if you close the privacy notice: the fact that you closed it, so that it is not shown to you again. It is kept in the browser’s “local storage” under the name “sg-privacy-notice”. It contains no identifier, is not sent to the website and cannot be used to track you.",
+          "You can delete it at any time by clearing site data in your browser settings.",
+          "Because this information is strictly necessary to a choice you made, it does not require consent."
+        ]
+      }
+    },
+    {
+      "id": "videos",
+      "published": false,
+      "heading": {
+        "fr": "Vidéos",
+        "en": "Videos"
+      },
+      "paragraphs": {
+        "fr": [
+          "Certaines pages proposent une vidéo hébergée par [à compléter : Vimeo et/ou YouTube]. Le lecteur vidéo n’est chargé que lorsque vous cliquez sur le bouton de lecture. Avant ce clic, aucune donnée n’est transmise à ces services.",
+          "Après ce clic, le service concerné reçoit votre adresse IP et peut déposer des cookies ou utiliser des technologies similaires, selon sa propre politique."
+        ],
+        "en": [
+          "Some pages offer a video hosted by [to be completed: Vimeo and/or YouTube]. The video player is loaded only when you click the play button. Before that click, no data is sent to these services.",
+          "After that click, the service concerned receives your IP address and may set cookies or use similar technologies, according to its own policy."
+        ]
+      },
+      "links": [
+        {
+          "label": {
+            "fr": "[à compléter : politique de confidentialité du ou des services vidéo]",
+            "en": "[to be completed: privacy policy of the video service or services]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "liens",
+      "heading": {
+        "fr": "Liens vers d’autres sites",
+        "en": "Links to other sites"
+      },
+      "paragraphs": {
+        "fr": [
+          "Ce site contient des liens vers Instagram, Vimeo, OpenDDB et des sites de presse. Tant que vous ne cliquez pas sur ces liens, aucune donnée n’est transmise à ces sites. Si vous les suivez, leurs propres politiques de confidentialité s’appliquent."
+        ],
+        "en": [
+          "This website links to Instagram, Vimeo, OpenDDB and press websites. As long as you do not click these links, no data is sent to those sites. If you follow them, their own privacy policies apply."
+        ]
+      }
+    },
+    {
+      "id": "personnes",
+      "heading": {
+        "fr": "Personnes citées sur ce site",
+        "en": "People named on this site"
+      },
+      "paragraphs": {
+        "fr": [
+          "Ce site mentionne les noms de personnes ayant participé aux films (génériques, distribution, équipes techniques) ou citées dans la presse. Ces mentions ont pour but de créditer leur travail et d’informer sur les œuvres.",
+          "Si vous êtes cité sur ce site et souhaitez qu’une mention soit corrigée ou retirée, écrivez à [à compléter : adresse e-mail de contact]."
+        ],
+        "en": [
+          "This website mentions the names of people who took part in the films (credits, cast, crew) or who are quoted in the press. These mentions are there to credit their work and to give information about the films.",
+          "If you are named on this website and would like a mention to be corrected or removed, write to [to be completed: contact email address]."
+        ]
+      }
+    },
+    {
+      "id": "droits",
+      "heading": {
+        "fr": "Vos droits",
+        "en": "Your rights"
+      },
+      "paragraphs": {
+        "fr": [
+          "Conformément au Règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants sur les données qui vous concernent :"
+        ],
+        "en": [
+          "Under the General Data Protection Regulation (GDPR) and the French Data Protection Act, you have the following rights over data that concerns you:"
+        ]
+      },
+      "list": {
+        "fr": [
+          "droit d’accès ;",
+          "droit de rectification ;",
+          "droit à l’effacement ;",
+          "droit à la limitation du traitement ;",
+          "droit d’opposition ;",
+          "droit à la portabilité, lorsqu’il s’applique."
+        ],
+        "en": [
+          "right of access;",
+          "right to rectification;",
+          "right to erasure;",
+          "right to restriction of processing;",
+          "right to object;",
+          "right to data portability, where it applies."
+        ]
+      },
+      "after": {
+        "fr": [
+          "Pour les exercer, écrivez à [à compléter : adresse e-mail de contact]. Une réponse vous sera apportée dans un délai d’un mois.",
+          "Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la Commission nationale de l’informatique et des libertés (CNIL)."
+        ],
+        "en": [
+          "To exercise them, write to [to be completed: contact email address]. You will receive a reply within one month.",
+          "If you believe your rights are not being respected, you can lodge a complaint with the French data protection authority, the Commission nationale de l’informatique et des libertés (CNIL)."
+        ]
+      },
+      "links": [
+        {
+          "label": {
+            "fr": "CNIL",
+            "en": "CNIL"
+          },
+          "url": "https://www.cnil.fr"
+        }
+      ]
+    },
+    {
+      "id": "modifications",
+      "heading": {
+        "fr": "Modifications",
+        "en": "Changes"
+      },
+      "paragraphs": {
+        "fr": [
+          "Cette page est mise à jour lorsque le fonctionnement du site change. La date de dernière mise à jour figure en haut de la page."
+        ],
+        "en": [
+          "This page is updated when the way the website works changes. The date of the last update is shown at the top of the page."
+        ]
+      }
+    }
+  ],
+  "crossLink": {
+    "fr": "Mentions légales",
+    "en": "Legal notice"
+  }
+}

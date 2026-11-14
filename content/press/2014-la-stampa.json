@@ -1,0 +1,14 @@
+{
+  "publication": "La Stampa",
+  "year": 2014,
+  "country": {
+    "fr": "Italie",
+    "en": "Italy"
+  },
+  "articleLang": "it",
+  "description": {
+    "fr": "Article sur le documentaire *Il bosco incantato*",
+    "en": "Article about the documentary *Il bosco incantato*"
+  },
+  "relatedFilm": "il-bosco-incantato"
+}

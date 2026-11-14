@@ -1,0 +1,152 @@
+{
+  "title": "Le Retour du Train",
+  "titleLang": "fr",
+  "family": "fiction",
+  "year": 2017,
+  "duration": "26 min",
+  "roles": {
+    "fr": ["Réalisation", "scénario"],
+    "en": ["Director", "screenwriter"]
+  },
+  "logline": {
+    "fr": "Une comédie nostalgique dans un village français des années 1960.",
+    "en": "A nostalgic comedy set in a French village in the 1960s."
+  },
+  "synopsis": {
+    "fr": [
+      "Dans un village isolé des années 1960, les habitants apprennent que l’État va rouvrir cinquante gares dans la région et se persuadent que la leur en fera partie.",
+      "Un maire naïf, un cheminot retraité nostalgique, un berger insolent et une commerçante rigide entraînent tout le village dans un délire collectif, sous le regard de Sophie, une jeune fille qui rêve de partir."
+    ],
+    "en": [
+      "In an isolated village in the 1960s, the residents learn that the state will reopen fifty stations in the region and convince themselves that theirs will be one of them.",
+      "A naive mayor, a nostalgic retired railwayman, a cheeky shepherd and a strict shopkeeper sweep the whole village into a collective frenzy, seen through the eyes of Sophie, a young girl who dreams of leaving."
+    ]
+  },
+  "statementQuote": {
+    "fr": "« Les apparences sont parfois trompeuses. »",
+    "en": "“Appearances are sometimes deceptive.”"
+  },
+  "proof": {
+    "fr": "17 sélections, 13 prix",
+    "en": "17 selections, 13 awards"
+  },
+  "data": {
+    "country": {
+      "fr": "France",
+      "en": "France"
+    },
+    "languages": {
+      "fr": "Français",
+      "en": "French"
+    },
+    "format": {
+      "fr": "2.5K, 1.85, couleur",
+      "en": "2.5K, 1.85, colour"
+    },
+    "production": {
+      "fr": "Outer Space Productions",
+      "en": "Outer Space Productions"
+    },
+    "broadcast": {
+      "fr": "Shorts TV",
+      "en": "Shorts TV"
+    }
+  },
+  "credits": [
+    {
+      "title": {
+        "fr": "Équipe",
+        "en": "Crew"
+      },
+      "items": [
+        {
+          "role": {
+            "fr": "Réalisation et scénario",
+            "en": "Director and screenwriter"
+          },
+          "name": "Sara Grimaldi"
+        },
+        {
+          "role": {
+            "fr": "Production",
+            "en": "Producer"
+          },
+          "name": "Jean-Walter Muller"
+        },
+        {
+          "role": {
+            "fr": "Image",
+            "en": "Cinematography"
+          },
+          "name": "Matteo Pellegrinuzzi"
+        },
+        {
+          "role": {
+            "fr": "Musique",
+            "en": "Music"
+          },
+          "name": "Stéphanie Desbourdes"
+        },
+        {
+          "role": {
+            "fr": "Montage",
+            "en": "Editing"
+          },
+          "name": "Monica Ross"
+        },
+        {
+          "role": {
+            "fr": "Son",
+            "en": "Sound"
+          },
+          "name": "Corentin Favreau"
+        },
+        {
+          "role": {
+            "fr": "Décors",
+            "en": "Art direction"
+          },
+          "name": "Arnaud Chaffard"
+        },
+        {
+          "role": {
+            "fr": "Postproduction et mixage",
+            "en": "Post-production and mix"
+          },
+          "name": "Fabrice Valsin"
+        }
+      ]
+    },
+    {
+      "title": {
+        "fr": "Distribution",
+        "en": "Cast"
+      },
+      "items": [
+        {
+          "name": "Gérard Chaillou"
+        },
+        {
+          "name": "Lisa Cipriani"
+        },
+        {
+          "name": "Claire Corlier"
+        },
+        {
+          "name": "Laurent Richard"
+        },
+        {
+          "name": "Eric Hémon"
+        }
+      ]
+    }
+  ],
+  "selectionsSummary": {
+    "fr": "17 sélections, 13 prix",
+    "en": "17 selections, 13 awards"
+  },
+  "watch": {
+    "mode": "none"
+  },
+  "published": true
+}

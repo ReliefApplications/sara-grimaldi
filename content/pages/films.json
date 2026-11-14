@@ -1,0 +1,99 @@
+{
+  "_note": "Draft copy: French is a draft translation, all wording to be validated by Sara.",
+  "seo": {
+    "title": {
+      "fr": "Films – Sara Grimaldi",
+      "en": "Films – Sara Grimaldi"
+    },
+    "description": {
+      "fr": "Les films de Sara Grimaldi : fiction, documentaire et campagnes à impact. Courts métrages, documentaires et films de sensibilisation, avec sélections et prix.",
+      "en": "The films of Sara Grimaldi: fiction, documentary and impact campaigns. Short films, documentaries and awareness films, with selections and awards."
+    }
+  },
+  "heading": {
+    "fr": "Films",
+    "en": "Films"
+  },
+  "intro": {
+    "fr": "Fictions, documentaires et campagnes à impact, du plus récent au plus ancien.",
+    "en": "Fiction, documentaries and impact campaigns, most recent first."
+  },
+  "familyNavLabel": {
+    "fr": "Familles de films / Film families",
+    "en": "Familles de films / Film families"
+  },
+  "labels": {
+    "back": {
+      "fr": "Films",
+      "en": "Films"
+    },
+    "synopsis": {
+      "fr": "Synopsis",
+      "en": "Synopsis"
+    },
+    "statement": {
+      "fr": "Note d’intention",
+      "en": "Director’s statement"
+    },
+    "year": {
+      "fr": "Année",
+      "en": "Year"
+    },
+    "duration": {
+      "fr": "Durée",
+      "en": "Duration"
+    },
+    "genre": {
+      "fr": "Genre",
+      "en": "Genre"
+    },
+    "country": {
+      "fr": "Pays",
+      "en": "Country"
+    },
+    "languages": {
+      "fr": "Langue(s)",
+      "en": "Language(s)"
+    },
+    "format": {
+      "fr": "Format",
+      "en": "Format"
+    },
+    "production": {
+      "fr": "Production",
+      "en": "Production"
+    },
+    "support": {
+      "fr": "Avec le soutien de",
+      "en": "With the support of"
+    },
+    "broadcast": {
+      "fr": "Diffusion",
+      "en": "Broadcast"
+    },
+    "stills": {
+      "fr": "Images",
+      "en": "Stills"
+    },
+    "selections": {
+      "fr": "Sélections et prix",
+      "en": "Selections and awards"
+    },
+    "credits": {
+      "fr": "Générique",
+      "en": "Credits"
+    },
+    "press": {
+      "fr": "Presse",
+      "en": "Press"
+    },
+    "previous": {
+      "fr": "Film précédent",
+      "en": "Previous film"
+    },
+    "next": {
+      "fr": "Film suivant",
+      "en": "Next film"
+    }
+  }
+}

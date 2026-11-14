@@ -1,0 +1,103 @@
+@use '../../../styles/breakpoints' as *;
+
+// 1. Hero
+.hero {
+  padding-top: var(--space-7);
+
+  @include md {
+    padding-top: 4.5rem; // 72 px (9.1); not on the spacing scale
+  }
+
+  @include lg {
+    padding-top: var(--space-9);
+  }
+}
+
+.roles {
+  margin-bottom: var(--space-5);
+}
+
+.intro {
+  margin-top: var(--space-6);
+}
+
+.families {
+  margin-top: var(--space-6);
+}
+
+@include lg {
+  .roles,
+  .statement {
+    grid-column: 1 / 12;
+  }
+
+  .intro {
+    grid-column: 1 / 7;
+    margin-top: var(--space-7);
+  }
+
+  .families {
+    grid-column: 8 / 13;
+    margin-top: var(--space-7);
+  }
+}
+
+// 2. Featured films
+.features {
+  display: grid;
+  row-gap: var(--section-gap);
+}
+
+.all-films {
+  margin-top: var(--space-7);
+}
+
+// 3. Collaborations: a band across the full viewport width
+.band {
+  padding-block: var(--space-8);
+  background: var(--color-surface);
+
+  @include lg {
+    padding-block: var(--space-9);
+  }
+}
+
+.collaborators {
+  font-weight: 400;
+
+  li {
+    display: inline;
+  }
+
+  li + li::before {
+    content: '\00a0· '; // non-breaking space: no line starts with the dot
+  }
+
+  @include lg {
+    grid-column: 1 / 11;
+  }
+}
+
+.context {
+  margin-top: var(--space-5);
+}
+
+.about {
+  margin-top: var(--space-5);
+}
+
+// 4. Press
+.press {
+  border-bottom: var(--hairline);
+}
+
+.all-press {
+  margin-top: var(--space-6);
+}
+
+// 5. In development
+.development {
+  @include lg {
+    grid-column: 1 / 9;
+  }
+}

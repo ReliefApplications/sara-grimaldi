@@ -1,0 +1,31 @@
+{
+  "_note": "Draft copy: French is a draft translation, all wording to be validated by Sara.",
+  "seo": {
+    "title": {
+      "fr": "Contact – Sara Grimaldi",
+      "en": "Contact – Sara Grimaldi"
+    },
+    "description": {
+      "fr": "Contacter Sara Grimaldi, réalisatrice et scénariste à Paris, pour un film, une campagne à impact, une collaboration ou une projection : e-mail et téléphone.",
+      "en": "Contact Sara Grimaldi, director and screenwriter in Paris, about a film, an impact campaign, a collaboration or a screening: email and phone."
+    }
+  },
+  "heading": {
+    "fr": "Contact",
+    "en": "Contact"
+  },
+  "intro": {
+    "fr": "Pour un film, une campagne à impact, une collaboration ou une projection.",
+    "en": "For a film, an impact campaign, a collaboration or a screening."
+  },
+  "labels": {
+    "location": {
+      "fr": "Basée à",
+      "en": "Based in"
+    },
+    "social": {
+      "fr": "Réseaux",
+      "en": "Social"
+    }
+  }
+}

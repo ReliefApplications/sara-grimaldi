@@ -1,0 +1,106 @@
+@if (page(); as page) {
+  @if (site(); as site) {
+    @if (film(); as film) {
+      <article class="container plain-page">
+        <p>
+          <a [routerLink]="route.link('films')"
+            ><span aria-hidden="true">← </span>{{ page.labels.back }}</a
+          >
+        </p>
+        <h1 class="t-display-l t-film-title" appPageHeading [attr.lang]="film.titleLang">
+          {{ film.title }}
+        </h1>
+        <p>
+          {{ line([site.families[film.family], film.year, film.duration, film.roles.join(', ')]) }}
+        </p>
+
+        @if (film.statementQuote) {
+          <blockquote>
+            <p>{{ film.statementQuote }}</p>
+            <footer>{{ site.name }}</footer>
+          </blockquote>
+        }
+
+        @if (film.watch.externalUrl && film.watch.externalLabel) {
+          <p>
+            <a [href]="film.watch.externalUrl" target="_blank" rel="noopener noreferrer"
+              >{{ film.watch.externalLabel }} <span aria-hidden="true">↗</span>
+              <span class="visually-hidden">{{ site.ui.newWindow }}</span></a
+            >
+          </p>
+        }
+        @if (film.watch.mode === 'none') {
+          <p>
+            <a [routerLink]="route.link('contact')">{{ site.ui.onRequest }}</a>
+          </p>
+        }
+
+        <p>{{ film.logline }}</p>
+
+        @if (film.synopsis; as synopsis) {
+          <h2 class="t-h2">{{ page.labels.synopsis }}</h2>
+          @for (paragraph of synopsis; track $index) {
+            <p><app-inline-text [text]="paragraph" /></p>
+          }
+        }
+
+        @if (film.statement; as statement) {
+          <h2 class="t-h2">{{ page.labels.statement }}</h2>
+          @for (paragraph of statement; track $index) {
+            <p><app-inline-text [text]="paragraph" /></p>
+          }
+        }
+
+        <dl>
+          @for (row of data(); track row.label) {
+            <dt>{{ row.label }}</dt>
+            <dd>{{ row.value }}</dd>
+          }
+        </dl>
+
+        @if (film.selections || film.selectionsSummary) {
+          <h2 class="t-h2">{{ page.labels.selections }}</h2>
+          @if (film.selectionsSummary) {
+            <p>{{ film.selectionsSummary }}</p>
+          }
+          <ul>
+            @for (selection of film.selections; track selection.festival) {
+              <li>
+                {{ line([selection.festival, selection.place]) }}
+                @if (selection.award) {
+                  — {{ selection.award }}
+                }
+              </li>
+            }
+          </ul>
+        }
+
+        @if (film.credits; as credits) {
+          <h2 class="t-h2">{{ page.labels.credits }}</h2>
+          @for (group of credits; track $index) {
+            <h3 class="t-label t-muted">{{ group.title }}</h3>
+            <dl>
+              @for (credit of group.items; track $index) {
+                @if (credit.role) {
+                  <dt>{{ credit.role }}</dt>
+                }
+                <dd>{{ credit.name }}</dd>
+              }
+            </dl>
+          }
+        }
+
+        @if (press().length) {
+          <h2 class="t-h2">{{ page.labels.press }}</h2>
+          <ul>
+            @for (item of press(); track item.slug) {
+              <li><app-press-row [item]="item" /></li>
+            }
+          </ul>
+        }
+      </article>
+    } @else if (films()) {
+      <app-not-found-page />
+    }
+  }
+}

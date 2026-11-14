@@ -1,0 +1,66 @@
+@if (page(); as page) {
+  @if (site(); as site) {
+    <section class="hero container grid">
+      <p class="roles t-label t-muted">{{ roles() }}</p>
+      <!-- Kept on one line: a line break here would add a space around the italic phrase. -->
+      <!-- prettier-ignore -->
+      <h1 class="statement t-display-xl" appPageHeading>{{ statement().before }}<em class="t-emphasis">{{ statement().emphasis }}</em>{{ statement().after }}</h1>
+      <p class="intro t-lead">{{ page.intro }}</p>
+      <app-family-list class="families" />
+    </section>
+  }
+
+  @if (featured().length) {
+    <section class="section container" aria-labelledby="featured-label">
+      <h2 class="section-label t-label" id="featured-label">{{ page.featured.label }}</h2>
+      <div class="features">
+        @for (film of featured(); track film.slug) {
+          <app-film-feature [film]="film" [reversed]="$odd" [linkLabel]="page.featured.filmLink" />
+        }
+      </div>
+      <a class="all-films" appArrowLink [routerLink]="route.link('films')">{{
+        page.featured.allLink
+      }}</a>
+    </section>
+  }
+
+  @if (collaborators().length) {
+    <section class="section band" aria-labelledby="collaborations-label">
+      <div class="container grid">
+        <h2 class="section-label t-label" id="collaborations-label">
+          {{ page.collaborations.label }}
+        </h2>
+        <ul class="collaborators t-h3">
+          @for (name of collaborators(); track name) {
+            <li>{{ name }}</li>
+          }
+        </ul>
+        <p class="context t-small t-muted">{{ page.collaborations.context }}</p>
+        <p class="about">
+          <a appArrowLink [routerLink]="route.link('about')">{{ page.collaborations.aboutLink }}</a>
+        </p>
+      </div>
+    </section>
+  }
+
+  @if (press().length) {
+    <section class="section container" aria-labelledby="press-label">
+      <h2 class="section-label t-label" id="press-label">{{ page.press.label }}</h2>
+      <ul class="press">
+        @for (item of press(); track item.slug) {
+          <li><app-press-row [item]="item" /></li>
+        }
+      </ul>
+      <a class="all-press" appArrowLink [routerLink]="route.link('press')">{{
+        page.press.allLink
+      }}</a>
+    </section>
+  }
+
+  @if (inDevelopment().length) {
+    <section class="section container grid" aria-labelledby="development-label">
+      <h2 class="section-label t-label" id="development-label">{{ page.inDevelopment.label }}</h2>
+      <app-in-development-list class="development" [items]="inDevelopment()" />
+    </section>
+  }
+}

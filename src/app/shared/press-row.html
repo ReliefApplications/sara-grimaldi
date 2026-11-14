@@ -1,0 +1,25 @@
+@let press = item();
+<ng-template #body>
+  <h3 class="publication t-h3">
+    {{ press.publication }}
+    @if (link()) {
+      <span class="t-arrow" aria-hidden="true">↗</span>
+      <span class="visually-hidden">{{ site()?.ui?.newWindow }}</span>
+    }
+  </h3>
+  <p class="description t-body">
+    <app-inline-text [text]="press.description" />
+  </p>
+  <!-- prettier-ignore -->
+  <p class="meta t-label t-muted t-tabular">{{ meta() }}@if (otherLanguage(); as language) {<span class="visually-hidden"> – {{ language }}</span>}</p>
+</ng-template>
+
+@if (link(); as href) {
+  <a class="row grid linked" [href]="href" target="_blank" rel="noopener noreferrer">
+    <ng-container [ngTemplateOutlet]="body" />
+  </a>
+} @else {
+  <div class="row grid">
+    <ng-container [ngTemplateOutlet]="body" />
+  </div>
+}

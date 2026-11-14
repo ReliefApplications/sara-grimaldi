@@ -1,0 +1,19 @@
+// Breakpoints (design system, section 5). Media queries cannot read custom
+// properties, so the two values live here and nowhere else.
+@mixin md {
+  @media (min-width: 48rem) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: 80rem) {
+    @content;
+  }
+}
+
+@mixin below-lg {
+  @media (max-width: 79.9375rem) {
+    @content;
+  }
+}

@@ -1,0 +1,83 @@
+@use '../../styles/breakpoints' as *;
+
+.header {
+  border-bottom: var(--hairline);
+  background: var(--color-paper);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+  margin-right: auto;
+  font-family: var(--font-display);
+  font-variation-settings:
+    'SOFT' 0,
+    'WONK' 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.2;
+
+  @include md {
+    font-size: 1.375rem;
+  }
+}
+
+// Below lg: language switcher, then the Menu button.
+.nav,
+.divider {
+  display: none;
+}
+
+.menu-button {
+  min-height: var(--target-size);
+  margin-left: var(--space-4);
+  padding: 0 var(--space-1);
+}
+
+@include lg {
+  .nav {
+    display: block;
+
+    ul {
+      display: flex;
+      gap: var(--space-6);
+    }
+  }
+
+  .divider {
+    display: block;
+    width: 1px;
+    height: var(--space-4);
+    margin-inline: var(--space-5);
+    background: var(--color-rule);
+  }
+
+  .menu-button {
+    display: none;
+  }
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+  text-decoration: underline 1px transparent;
+  text-underline-offset: 6px;
+
+  &:hover {
+    color: var(--color-accent);
+    text-decoration-color: currentColor;
+  }
+
+  &[aria-current='page'] {
+    color: var(--color-ink);
+    text-decoration-color: var(--color-accent);
+  }
+}

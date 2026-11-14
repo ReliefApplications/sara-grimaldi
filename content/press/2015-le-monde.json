@@ -1,0 +1,14 @@
+{
+  "publication": "Le Monde",
+  "year": 2015,
+  "country": {
+    "fr": "France",
+    "en": "France"
+  },
+  "articleLang": "fr",
+  "description": {
+    "fr": "Article sur la campagne *Endométriose - Parlons en*",
+    "en": "Article about the campaign *Endométriose - Parlons en*"
+  },
+  "relatedFilm": "endometriose-parlons-en"
+}

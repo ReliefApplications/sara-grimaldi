@@ -1,0 +1,10 @@
+{
+  "title": "Trombinoscope",
+  "titleLang": "fr",
+  "format": {
+    "fr": ["Collection", "en développement"],
+    "en": ["Collection", "in development"]
+  },
+  "order": 3,
+  "home": true
+}

@@ -1,0 +1,95 @@
+@use 'breakpoints' as *;
+
+// Grid container (design system, section 4.2).
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--margin);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--gutter);
+
+  // Children span the full width unless a component says otherwise.
+  > * {
+    grid-column: 1 / -1;
+  }
+}
+
+// Space between the page content and the footer. The not-found page brings
+// its own (8.25).
+main {
+  padding-bottom: var(--section-gap);
+
+  &:has(app-not-found-page) {
+    padding-bottom: 0;
+  }
+}
+
+// A page section; consecutive sections are one section gap apart (9).
+.section {
+  margin-top: var(--section-gap);
+}
+
+// Section label (8.9).
+.section-label {
+  margin-bottom: var(--space-4);
+  color: var(--color-muted);
+}
+
+// Text link inside running text (8.6).
+.text-link {
+  color: var(--color-accent);
+  text-decoration: underline 1px;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: var(--color-accent-hover);
+    text-decoration-thickness: 2px;
+  }
+}
+
+// Secondary button (8.8).
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--space-7);
+  padding: 0 var(--space-5);
+  border: 1px solid var(--color-border);
+  color: var(--color-ink);
+
+  &:hover,
+  &:active {
+    border-color: var(--color-ink);
+    color: var(--color-accent);
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Pages not yet built to the design system: readable inside the shared shell.
+.plain-page {
+  padding-top: var(--page-top);
+
+  > * + * {
+    margin-top: var(--space-4);
+  }
+
+  a {
+    @extend .text-link;
+  }
+}

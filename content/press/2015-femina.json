@@ -1,0 +1,14 @@
+{
+  "publication": "Femina",
+  "year": 2015,
+  "country": {
+    "fr": "Suisse",
+    "en": "Switzerland"
+  },
+  "articleLang": "fr",
+  "description": {
+    "fr": "Article sur la campagne *Endométriose - Parlons en*",
+    "en": "Article about the campaign *Endométriose - Parlons en*"
+  },
+  "relatedFilm": "endometriose-parlons-en"
+}

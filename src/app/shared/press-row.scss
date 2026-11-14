@@ -1,0 +1,44 @@
+@use '../../styles/breakpoints' as *;
+
+:host {
+  display: block;
+  border-top: var(--hairline);
+}
+
+.row {
+  row-gap: var(--space-1);
+  padding-block: 1.25rem; // 20 px (8.20); not on the spacing scale
+}
+
+.publication,
+.description,
+.meta {
+  display: block;
+}
+
+.meta {
+  white-space: nowrap;
+}
+
+.linked:hover .publication {
+  color: var(--color-accent);
+}
+
+@include lg {
+  .row {
+    align-items: baseline;
+  }
+
+  .publication {
+    grid-column: 1 / 5;
+  }
+
+  .description {
+    grid-column: 5 / 10;
+  }
+
+  .meta {
+    grid-column: 10 / 13;
+    text-align: right;
+  }
+}

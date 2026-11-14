@@ -1,0 +1,13 @@
+{
+  "publication": "France 3 Pays de la Loire",
+  "year": 2025,
+  "country": {
+    "fr": "France",
+    "en": "France"
+  },
+  "articleLang": "fr",
+  "description": {
+    "fr": "Reportage",
+    "en": "TV report"
+  }
+}

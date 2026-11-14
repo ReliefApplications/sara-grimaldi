@@ -1,0 +1,10 @@
+{
+  "title": "Senza domani",
+  "titleLang": "it",
+  "format": {
+    "fr": ["Long métrage", "scénario"],
+    "en": ["Feature", "screenplay"]
+  },
+  "order": 2,
+  "home": true
+}

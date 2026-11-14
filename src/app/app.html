@@ -1,0 +1,11 @@
+@if (site(); as site) {
+  <a class="skip-link t-small" [href]="skipHref()" (click)="skipToMain($event)">{{
+    site.ui.skipToContent
+  }}</a>
+  <app-privacy-notice />
+  <app-site-header />
+  <main id="contenu" #main tabindex="-1">
+    <router-outlet />
+  </main>
+  <app-site-footer />
+}

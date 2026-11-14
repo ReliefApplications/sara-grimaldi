@@ -1,0 +1,71 @@
+{
+  "_note": "Draft copy: French is a draft translation, all wording to be validated by Sara.",
+  "seo": {
+    "title": {
+      "fr": "Sara Grimaldi – Réalisatrice et scénariste",
+      "en": "Sara Grimaldi – Director and screenwriter"
+    },
+    "description": {
+      "fr": "Sara Grimaldi, réalisatrice et scénariste à Paris : films de fiction, documentaires et campagnes à impact, guidés par l’émotion, entre la France et l’Italie.",
+      "en": "Sara Grimaldi, director and screenwriter in Paris: fiction films, documentaries and impact campaigns driven by emotion, between France and Italy."
+    }
+  },
+  "statement": {
+    "fr": "Je travaille l’émotion, quel que soit le format.",
+    "en": "I work with emotion, whatever the format."
+  },
+  "statementEmphasis": {
+    "fr": "l’émotion",
+    "en": "emotion"
+  },
+  "intro": {
+    "fr": "Sara Grimaldi est réalisatrice, scénariste et productrice, installée à Paris. Elle réalise des fictions, des documentaires et des campagnes à impact, entre la France et l’Italie.",
+    "en": "Sara Grimaldi is a director, screenwriter and producer based in Paris. She makes fiction, documentaries and impact campaigns, between France and Italy."
+  },
+  "featured": {
+    "label": {
+      "fr": "Films choisis",
+      "en": "Selected films"
+    },
+    "films": ["la-dolce-attesa", "immunity", "le-retour-du-train"],
+    "filmLink": {
+      "fr": "Voir le film",
+      "en": "View the film"
+    },
+    "allLink": {
+      "fr": "Tous les films",
+      "en": "All films"
+    }
+  },
+  "collaborations": {
+    "label": {
+      "fr": "Collaborations",
+      "en": "Collaborations"
+    },
+    "context": {
+      "fr": "Films, portraits et campagnes pour des marques, des médias, des associations et des fondations.",
+      "en": "Films, portraits and campaigns for brands, media, charities and foundations."
+    },
+    "aboutLink": {
+      "fr": "En savoir plus",
+      "en": "More about Sara"
+    }
+  },
+  "press": {
+    "label": {
+      "fr": "Presse",
+      "en": "Press"
+    },
+    "count": 3,
+    "allLink": {
+      "fr": "Toute la presse",
+      "en": "All press"
+    }
+  },
+  "inDevelopment": {
+    "label": {
+      "fr": "En développement",
+      "en": "In development"
+    }
+  }
+}

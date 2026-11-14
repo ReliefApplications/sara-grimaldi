@@ -1,0 +1,21 @@
+{
+  "seo": {
+    "title": {
+      "fr": "Page introuvable – Sara Grimaldi",
+      "en": "Page not found – Sara Grimaldi"
+    },
+    "description": {
+      "fr": "Cette page n’existe pas.",
+      "en": "This page does not exist."
+    }
+  },
+  "code": "404",
+  "heading": {
+    "fr": "Cette page n’existe pas.",
+    "en": "This page does not exist."
+  },
+  "homeLink": {
+    "fr": "Retour à l’accueil",
+    "en": "Back to home"
+  }
+}

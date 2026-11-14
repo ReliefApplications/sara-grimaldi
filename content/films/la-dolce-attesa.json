@@ -1,0 +1,162 @@
+{
+  "title": "La Dolce Attesa",
+  "titleLang": "it",
+  "family": "fiction",
+  "year": 2024,
+  "duration": "9 min",
+  "roles": {
+    "fr": ["Réalisation", "scénario"],
+    "en": ["Director", "screenwriter"]
+  },
+  "logline": {
+    "fr": "Une comédie autour d’une femme qui attend un colis tant espéré.",
+    "en": "A comedy about a woman waiting for a long-awaited parcel."
+  },
+  "synopsis": {
+    "fr": [
+      "Juliette Lagouche attend un colis tant espéré. Des obstacles imprévus transforment sa journée en une série de mésaventures comiques, et l’attente devient de plus en plus éprouvante."
+    ],
+    "en": [
+      "Juliette Lagouche is waiting for a long-awaited parcel. Unexpected obstacles turn her day into a series of comic misadventures, and the wait becomes more and more trying."
+    ]
+  },
+  "statementQuote": {
+    "fr": "« Pour découvrir, une fois l’attente terminée, qu’il ne reste plus rien d’excitant à savourer. »",
+    "en": "“Only to find out that once the wait is over, there’s nothing exciting left to enjoy.”"
+  },
+  "data": {
+    "genre": {
+      "fr": "Comédie",
+      "en": "Comedy"
+    },
+    "country": {
+      "fr": "France",
+      "en": "France"
+    },
+    "production": {
+      "fr": "The Blue Dog",
+      "en": "The Blue Dog"
+    }
+  },
+  "credits": [
+    {
+      "title": {
+        "fr": "Équipe",
+        "en": "Crew"
+      },
+      "items": [
+        {
+          "role": {
+            "fr": "Réalisation",
+            "en": "Director"
+          },
+          "name": "Sara Grimaldi"
+        },
+        {
+          "role": {
+            "fr": "Scénario",
+            "en": "Screenplay"
+          },
+          "name": "Sara Grimaldi, Italo Scialdone"
+        },
+        {
+          "role": {
+            "fr": "Image",
+            "en": "Cinematography"
+          },
+          "name": "Matteo Pellegrinuzzi"
+        },
+        {
+          "role": {
+            "fr": "Décors",
+            "en": "Art direction"
+          },
+          "name": "Lili-Jeanne Zunino"
+        },
+        {
+          "role": {
+            "fr": "Son",
+            "en": "Sound"
+          },
+          "name": "Kirian Bar"
+        },
+        {
+          "role": {
+            "fr": "Montage",
+            "en": "Editing"
+          },
+          "name": "Lucien Burckel de Tell"
+        },
+        {
+          "role": {
+            "fr": "Musique",
+            "en": "Music"
+          },
+          "name": "Luigi Scialdone"
+        },
+        {
+          "role": {
+            "fr": "Postproduction son",
+            "en": "Sound post-production"
+          },
+          "name": "Olivier Esman"
+        }
+      ]
+    },
+    {
+      "title": {
+        "fr": "Distribution",
+        "en": "Cast"
+      },
+      "items": [
+        {
+          "role": {
+            "fr": "Juliette Lagouche",
+            "en": "Juliette Lagouche"
+          },
+          "name": "Lisa Cipriani"
+        },
+        {
+          "role": {
+            "fr": "Le livreur",
+            "en": "Delivery man"
+          },
+          "name": "Mazigh Bouaïch"
+        },
+        {
+          "role": {
+            "fr": "La voisine",
+            "en": "Neighbour"
+          },
+          "name": "Claude Mathieu"
+        },
+        {
+          "role": {
+            "fr": "La mère",
+            "en": "Mother"
+          },
+          "name": "Christine Anglio"
+        },
+        {
+          "role": {
+            "fr": "Anne",
+            "en": "Anne"
+          },
+          "name": "Myrddrina Antoni"
+        }
+      ]
+    }
+  ],
+  "selections": [
+    {
+      "festival": "Authentic Global Film Awards"
+    },
+    {
+      "festival": "Lift-Off Filmmaker Session"
+    }
+  ],
+  "watch": {
+    "mode": "none"
+  },
+  "published": true
+}

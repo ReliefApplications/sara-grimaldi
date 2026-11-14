@@ -1,0 +1,45 @@
+@use '../../styles/breakpoints' as *;
+
+.notice {
+  position: fixed;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  left: var(--space-3);
+  z-index: 5;
+  padding: var(--space-4);
+  border: 1px solid var(--color-ink);
+  background: var(--color-paper);
+  color: var(--color-ink);
+
+  @include md {
+    right: auto;
+    bottom: var(--space-5);
+    left: var(--space-5);
+    width: 26.25rem; // 420 px (8.26); not on the spacing scale
+    padding: 1.25rem; // 20 px (8.26)
+  }
+
+  @media print {
+    display: none;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+}
+
+// The secondary button is 44 px tall in this component.
+.button-secondary {
+  height: var(--target-size);
+}

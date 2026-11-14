@@ -1,0 +1,9 @@
+{
+  "names": ["Adobe"],
+  "role": {
+    "fr": "Productrice et réalisatrice, mini-documentaires pour Adobe MAX",
+    "en": "Producer and director, mini-documentaries for Adobe MAX"
+  },
+  "order": 2,
+  "home": true
+}

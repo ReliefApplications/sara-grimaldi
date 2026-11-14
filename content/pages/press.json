@@ -1,0 +1,21 @@
+{
+  "_note": "Draft copy: French is a draft translation, all wording to be validated by Sara.",
+  "seo": {
+    "title": {
+      "fr": "Presse – Sara Grimaldi",
+      "en": "Press – Sara Grimaldi"
+    },
+    "description": {
+      "fr": "Articles, reportages et podcasts consacrés aux films de Sara Grimaldi dans la presse française, italienne et suisse, du plus récent au plus ancien.",
+      "en": "Articles, broadcasts and podcasts about the films of Sara Grimaldi in the French, Italian and Swiss press, most recent first."
+    }
+  },
+  "heading": {
+    "fr": "Presse",
+    "en": "Press"
+  },
+  "intro": {
+    "fr": "Articles, reportages et podcasts, du plus récent au plus ancien.",
+    "en": "Articles, broadcasts and podcasts, most recent first."
+  }
+}

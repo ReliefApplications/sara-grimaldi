@@ -1,0 +1,44 @@
+@if (site(); as site) {
+  <footer class="footer">
+    <div class="container">
+      <div class="grid top">
+        <h2 class="label t-label">{{ site.footer.label }}</h2>
+        <!-- The Contact page already shows this line in its head. -->
+        @if (route.page() !== 'contact') {
+          <p class="invitation t-display-l">{{ site.footer.invitation }}</p>
+        }
+        <p class="contact">
+          <a class="email" [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a>
+        </p>
+      </div>
+
+      <div class="bottom t-small">
+        <ul class="social links">
+          @for (link of site.social; track link.url) {
+            <li>
+              <a class="link" [href]="link.url" target="_blank" rel="noopener noreferrer"
+                >{{ link.label }} <span class="visually-hidden">{{ site.ui.newWindow }}</span></a
+              >
+            </li>
+          }
+        </ul>
+        <nav class="legal" [attr.aria-label]="site.footer.legalNavLabel">
+          <ul class="links">
+            @for (page of legalPages; track page) {
+              <li>
+                <a
+                  class="link"
+                  [routerLink]="route.link(page)"
+                  routerLinkActive
+                  ariaCurrentWhenActive="page"
+                  >{{ site.footer.legalLinks[page] }}</a
+                >
+              </li>
+            }
+          </ul>
+        </nav>
+        <p class="copyright">© {{ year }} {{ site.name }}</p>
+      </div>
+    </div>
+  </footer>
+}

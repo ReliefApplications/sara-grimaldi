@@ -1,0 +1,10 @@
+{
+  "title": "Snow",
+  "titleLang": "en",
+  "format": {
+    "fr": ["En préproduction", "soutenu par le CNC"],
+    "en": ["In pre-production", "supported by the CNC"]
+  },
+  "order": 1,
+  "home": true
+}

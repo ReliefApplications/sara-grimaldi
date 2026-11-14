@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+// Skip link (8.1): off-screen until it receives focus.
+.skip-link {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 10;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-ink);
+  color: var(--color-dark-text);
+  font-weight: 500;
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: none;
+  }
+}
+
+main {
+  flex: 1;
+
+  &:focus {
+    outline: none;
+  }
+}

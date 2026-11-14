@@ -1,0 +1,178 @@
+{
+  "title": "Immunity",
+  "titleLang": "en",
+  "family": "documentaire",
+  "year": 2020,
+  "duration": "52 min",
+  "roles": {
+    "fr": ["Réalisation", "scénario", "image"],
+    "en": ["Director", "screenwriter", "cinematography"]
+  },
+  "logline": {
+    "fr": "Un documentaire sur des adultes atteints d’un déficit immunitaire primitif et sur leur résilience.",
+    "en": "A documentary about adults living with primary immunodeficiency, and their resilience."
+  },
+  "synopsis": {
+    "fr": [
+      "Matteo Pellegrinuzzi, photographe installé à Paris et né avec un déficit immunitaire primitif, décide en juillet 2019 de relier Paris à Londres à vélo, soit 270 km, en moins de 24 heures pour faire connaître la maladie.",
+      "Le film suit ses huit mois de préparation et croise son parcours avec la vie de trois autres patients."
+    ],
+    "en": [
+      "Matteo Pellegrinuzzi, a Paris-based photographer born with primary immunodeficiency, decides in July 2019 to cycle the 270 km from Paris to London in under 24 hours to raise awareness of the condition.",
+      "The film follows his eight months of preparation and weaves in the lives of three other patients."
+    ]
+  },
+  "statementQuote": {
+    "fr": "« C’est une ode à la vie, qui mérite d’être vécue malgré les difficultés que nous pouvons rencontrer. »",
+    "en": "“It is an ode to life, which deserves to be lived in spite of the difficulties we may face.”"
+  },
+  "proof": {
+    "fr": "Mention d’honneur, Sport Movies & TV",
+    "en": "Honourable mention, Sport Movies & TV"
+  },
+  "data": {
+    "country": {
+      "fr": "France",
+      "en": "France"
+    },
+    "languages": {
+      "fr": "Français, italien",
+      "en": "French, Italian"
+    },
+    "format": {
+      "fr": "Numérique, 16:9, couleur. Version festivals : 50 min",
+      "en": "Digital, 16:9, colour. Festival version: 50 min"
+    },
+    "support": {
+      "fr": "Takeda, association IRIS",
+      "en": "Takeda, Association IRIS"
+    }
+  },
+  "credits": [
+    {
+      "title": {
+        "fr": "Équipe",
+        "en": "Crew"
+      },
+      "items": [
+        {
+          "role": {
+            "fr": "Réalisation et scénario",
+            "en": "Director and screenwriter"
+          },
+          "name": "Sara Grimaldi"
+        },
+        {
+          "role": {
+            "fr": "Image",
+            "en": "Cinematography"
+          },
+          "name": "Sara Grimaldi, Matteo Pellegrinuzzi"
+        },
+        {
+          "role": {
+            "fr": "Montage",
+            "en": "Editing"
+          },
+          "name": "Italo Scialdone"
+        },
+        {
+          "role": {
+            "fr": "Musique",
+            "en": "Music"
+          },
+          "name": "Luigi Scialdone"
+        },
+        {
+          "role": {
+            "fr": "Cadre",
+            "en": "Camera operators"
+          },
+          "name": "Steven Gruen, Victor Salis"
+        },
+        {
+          "role": {
+            "fr": "Son",
+            "en": "Sound"
+          },
+          "name": "Olivier Esman, Fabrice Valsin"
+        },
+        {
+          "role": {
+            "fr": "Mixage",
+            "en": "Sound mix"
+          },
+          "name": "Olivier Esman"
+        },
+        {
+          "role": {
+            "fr": "Étalonnage",
+            "en": "Colour grading"
+          },
+          "name": "Jean Coudsi"
+        },
+        {
+          "role": {
+            "fr": "Effets visuels",
+            "en": "Visual effects"
+          },
+          "name": "Gaston Marcotti"
+        }
+      ]
+    }
+  ],
+  "selections": [
+    {
+      "festival": "Sport Movies & TV",
+      "award": {
+        "fr": "Mention d’honneur",
+        "en": "Honourable mention"
+      }
+    },
+    {
+      "festival": "International Rare Disease Film Festival"
+    },
+    {
+      "festival": "Interdoc"
+    },
+    {
+      "festival": "Boden International Film Festival"
+    },
+    {
+      "festival": "Los Angeles Italia Film Festival"
+    },
+    {
+      "festival": "Apox Film Festival"
+    },
+    {
+      "festival": "BCT – Festival nazionale del cinema e della televisione"
+    },
+    {
+      "festival": "Älvsbyn Film Festival"
+    },
+    {
+      "festival": "Pärnu Film Festival"
+    },
+    {
+      "festival": "Social World Film Festival"
+    },
+    {
+      "festival": "Apulia Web Fest"
+    },
+    {
+      "festival": "Cine Off"
+    },
+    {
+      "festival": "Festival Internacional de Cine Austral"
+    }
+  ],
+  "watch": {
+    "mode": "trailer",
+    "externalLabel": {
+      "fr": "Voir en VOD sur OpenDDB",
+      "en": "Watch on demand on OpenDDB"
+    },
+    "externalUrl": "https://openddb.it/film/immunity/"
+  },
+  "published": true
+}

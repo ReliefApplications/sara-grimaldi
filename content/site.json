@@ -1,0 +1,219 @@
+{
+  "_note": "Draft copy: French is a draft translation, all wording to be validated by Sara.",
+  "name": "Sara Grimaldi",
+  "roles": {
+    "fr": ["Réalisatrice", "Scénariste", "Productrice"],
+    "en": ["Director", "Screenwriter", "Producer"]
+  },
+  "languages": [
+    {
+      "code": "fr",
+      "short": "FR",
+      "name": "version française"
+    },
+    {
+      "code": "en",
+      "short": "EN",
+      "name": "English version"
+    }
+  ],
+  "nav": {
+    "films": {
+      "fr": "Films",
+      "en": "Films"
+    },
+    "press": {
+      "fr": "Presse",
+      "en": "Press"
+    },
+    "about": {
+      "fr": "À propos",
+      "en": "About"
+    },
+    "contact": {
+      "fr": "Contact",
+      "en": "Contact"
+    }
+  },
+  "families": {
+    "fiction": {
+      "fr": "Fiction",
+      "en": "Fiction"
+    },
+    "documentaire": {
+      "fr": "Documentaire",
+      "en": "Documentary"
+    },
+    "impact": {
+      "fr": "Campagnes à impact",
+      "en": "Impact campaigns"
+    }
+  },
+  "ui": {
+    "skipToContent": {
+      "fr": "Aller au contenu",
+      "en": "Skip to content"
+    },
+    "home": {
+      "fr": "Accueil",
+      "en": "Home"
+    },
+    "mainNavLabel": {
+      "fr": "Navigation principale",
+      "en": "Main navigation"
+    },
+    "languageNavLabel": {
+      "fr": "Langue / Language",
+      "en": "Langue / Language"
+    },
+    "menu": {
+      "fr": "Menu",
+      "en": "Menu"
+    },
+    "close": {
+      "fr": "Fermer",
+      "en": "Close"
+    },
+    "newWindow": {
+      "fr": "(nouvelle fenêtre)",
+      "en": "(new window)"
+    },
+    "email": {
+      "fr": "E-mail",
+      "en": "Email"
+    },
+    "phone": {
+      "fr": "Téléphone",
+      "en": "Phone"
+    },
+    "filmCountOne": {
+      "fr": "film",
+      "en": "film"
+    },
+    "filmCountOther": {
+      "fr": "films",
+      "en": "films"
+    },
+    "watchFull": {
+      "fr": "Voir le film",
+      "en": "Watch the film"
+    },
+    "watchTrailer": {
+      "fr": "Voir la bande-annonce",
+      "en": "Watch the trailer"
+    },
+    "onRequest": {
+      "fr": "Film disponible sur demande",
+      "en": "Available on request"
+    },
+    "currentLanguage": {
+      "fr": "langue actuelle",
+      "en": "current language"
+    },
+    "lastUpdated": {
+      "fr": "Dernière mise à jour :",
+      "en": "Last updated:"
+    },
+    "dateMissing": {
+      "fr": "[à compléter : date de mise en ligne]",
+      "en": "[to be completed: publication date]"
+    },
+    "noscript": {
+      "fr": "Cette page a besoin de JavaScript pour s’afficher.",
+      "en": "This page needs JavaScript to be displayed."
+    }
+  },
+  "contact": {
+    "_note": "PLACEHOLDER phone number: 06 39 98 is a range reserved for fiction and reaches nobody. Replace both lines with the real number once it may be public.",
+    "email": "info@saragrimaldi.com",
+    "phone": "+33639980000",
+    "phoneDisplay": "+33 6 39 98 00 00"
+  },
+  "location": {
+    "fr": "Paris, France",
+    "en": "Paris, France"
+  },
+  "social": [
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/saragrimaldidirector/"
+    },
+    {
+      "label": "Vimeo",
+      "url": "https://vimeo.com/saragrimaldi"
+    }
+  ],
+  "secondaryContact": {
+    "show": false,
+    "heading": {
+      "fr": "Cessions de droits",
+      "en": "Rights and licensing"
+    },
+    "name": "",
+    "email": ""
+  },
+  "footer": {
+    "label": {
+      "fr": "Contact",
+      "en": "Contact"
+    },
+    "invitation": {
+      "fr": "Un projet, une idée ? Parlons-en.",
+      "en": "A project, an idea? Let’s talk."
+    },
+    "legalNavLabel": {
+      "fr": "Informations légales / Legal information",
+      "en": "Informations légales / Legal information"
+    },
+    "legalLinks": {
+      "legal": {
+        "fr": "Mentions légales",
+        "en": "Legal notice"
+      },
+      "privacy": {
+        "fr": "Confidentialité",
+        "en": "Privacy"
+      }
+    }
+  },
+  "seo": {
+    "description": {
+      "fr": "Sara Grimaldi, réalisatrice et scénariste à Paris : films de fiction, documentaires et campagnes à impact, guidés par l’émotion, entre la France et l’Italie.",
+      "en": "Sara Grimaldi, director and screenwriter in Paris: fiction films, documentaries and impact campaigns driven by emotion, between France and Italy."
+    }
+  },
+  "articleLanguages": {
+    "fr": {
+      "fr": "article en français",
+      "en": "article in French"
+    },
+    "it": {
+      "fr": "article en italien",
+      "en": "article in Italian"
+    },
+    "en": {
+      "fr": "article en anglais",
+      "en": "article in English"
+    }
+  },
+  "privacyNotice": {
+    "enabled": true,
+    "version": "1",
+    "text": {
+      "fr": "Ce site n’utilise ni cookies ni outil de suivi.",
+      "en": "This site uses no cookies and no tracking tools."
+    },
+    "linkLabel": {
+      "fr": "Confidentialité",
+      "en": "Privacy"
+    },
+    "dismissLabel": {
+      "fr": "J’ai compris",
+      "en": "Got it"
+    },
+    "regionLabel": {
+      "fr": "Cookies et confidentialité",
+      "en": "Cookies and privacy"
+    }
+  }
+}

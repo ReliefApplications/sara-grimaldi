@@ -1,0 +1,43 @@
+@if (site(); as site) {
+  <header class="header">
+    <div class="container bar">
+      <a
+        class="wordmark"
+        [routerLink]="route.link('home')"
+        [attr.aria-label]="site.name + ' – ' + site.ui.home"
+        >{{ site.name }}</a
+      >
+
+      <nav class="nav" [attr.aria-label]="site.ui.mainNavLabel">
+        <ul>
+          @for (page of pages; track page) {
+            <li>
+              <a
+                class="nav-link t-nav"
+                [routerLink]="route.link(page)"
+                routerLinkActive
+                ariaCurrentWhenActive="page"
+                >{{ site.nav[page] }}</a
+              >
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <span class="divider" aria-hidden="true"></span>
+      <app-language-switcher />
+
+      <button
+        class="menu-button t-label"
+        type="button"
+        aria-controls="site-menu"
+        [attr.aria-expanded]="menuOpen()"
+        (click)="openMenu()"
+      >
+        {{ site.ui.menu }}
+      </button>
+    </div>
+  </header>
+
+  <app-mobile-menu (openChange)="menuOpen.set($event)" />
+}

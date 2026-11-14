@@ -1,0 +1,38 @@
+{
+  "title": "Il bosco incantato",
+  "titleLang": "it",
+  "family": "documentaire",
+  "year": 2013,
+  "duration": "10 min",
+  "order": 1,
+  "roles": {
+    "fr": ["Réalisation"],
+    "en": ["Director"]
+  },
+  "logline": {
+    "fr": "Des femmes détenues en Italie retrouvent un lien avec la nature.",
+    "en": "Women in prison in Italy find a renewed contact with nature."
+  },
+  "proof": {
+    "fr": "Événement spécial à Cinemambiente, 4 sélections",
+    "en": "Special event at Cinemambiente, 4 selections"
+  },
+  "data": {
+    "country": {
+      "fr": "Italie",
+      "en": "Italy"
+    },
+    "production": {
+      "fr": "Leroy Merlin",
+      "en": "Leroy Merlin"
+    },
+    "support": {
+      "fr": "Ministère italien de la Justice, prison de San Vittore, PEFC",
+      "en": "Italian Ministry of Justice, San Vittore prison, PEFC"
+    }
+  },
+  "watch": {
+    "mode": "none"
+  },
+  "published": true
+}
