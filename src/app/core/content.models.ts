@@ -150,6 +150,8 @@ export interface AboutPage {
   opening: Text;
   biography: Paragraphs;
   portrait?: ImageRef;
+  /** Optional credential badge shown under the career list. */
+  badge?: LogoImage;
   careerHeading: Text;
   career: { period: Text; text: Text }[];
   collaborationsHeading: Text;
@@ -284,29 +286,31 @@ export interface PressItem {
   relatedFilm?: string;
 }
 
-/** content/collaborations/<slug>.json */
-export interface Collaboration {
-  slug: string;
-  names: string[];
-  role: Text;
-  order: number;
-  home: boolean;
-}
-
 /**
- * content/organisations/<slug>.json — a client or a medium, with its logo
- * when Sara's own material provides one. Collaborations and press items are
- * matched to it by name (or one of `aliases`); without a logo, or without a
- * match, the name is shown as text.
+ * content/organisations/<slug>.json — a client or a medium Sara has worked
+ * with or been covered by. It is shown as its logo when Sara's own material
+ * provides one, and as its name in type otherwise. Press items are matched
+ * to it by publication name (or one of `aliases`).
  */
 export interface Organisation {
   slug: string;
   name: string;
-  /** Other names used for it in collaborations or press items. */
+  /** Other names used for it in press items. */
   aliases?: string[];
   kind: (typeof ORGANISATION_KINDS)[number];
   order: number;
-  logo?: ImageFile;
+  /** Shown in the grid of the home page. */
+  home: boolean;
+  /** What Sara did for or with it; listed on the About page. `*Title*` allowed. */
+  role?: Text;
+  logo?: LogoImage;
+}
+
+/** A logo: one file, with its pixel size and an optional optical correction. */
+export interface LogoImage extends ImageFile {
+  size: [number, number];
+  /** 0.7 to 1.3: evens out marks that look too heavy or too light beside the others. */
+  scale?: number;
 }
 
 /** content/in-development/<slug>.json */

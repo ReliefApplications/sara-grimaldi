@@ -26,8 +26,8 @@
       <app-band [items]="rolesBand()" [duration]="36" />
     </nav>
 
-    <!-- 2. Statement -->
-    <section class="section surface-ground">
+    <!-- 2. Statement: the first light field after the dark first screen -->
+    <section class="statement-section surface-ground">
       <div class="container grid statement-grid">
         <!-- Kept on one line: a line break would add a space around the accent word. -->
         <!-- prettier-ignore -->
@@ -39,22 +39,22 @@
       </div>
     </section>
 
-    <!-- 3. Collaborations -->
+    <!-- 3. Collaborations: on the same field as the statement -->
     @if (collaborators().length) {
-      <section class="section surface-ink" aria-labelledby="collaborations-label">
+      <section class="collaborations surface-ground" aria-labelledby="collaborations-label">
         <div class="container">
           <h2 class="section-label t-label" id="collaborations-label">
             {{ page.collaborations.label }}
           </h2>
-          <app-name-wall class="wall" [rows]="collaborators()" />
+          <app-logo-grid class="logos" [names]="collaborators()" />
           <p class="context t-small t-muted">{{ page.collaborations.context }}</p>
         </div>
       </section>
     }
 
-    <!-- 4. Films -->
+    <!-- 4. Films: shown in a dark room -->
     @if (featured().length) {
-      <section class="section surface-ground" aria-labelledby="films-label">
+      <section class="section surface-ink" aria-labelledby="films-label">
         <div class="container">
           <h2 class="section-label t-label" id="films-label">{{ page.featured.label }}</h2>
           <div class="films" [class.pair]="featured().length === 2">
@@ -78,7 +78,7 @@
     <!-- 5. Press band -->
     @if (pressBand().length) {
       <div class="surface-accent">
-        <app-band [items]="pressBand()" [reverse]="true" [duration]="48" />
+        <app-band [items]="pressBand()" [reverse]="true" [logos]="true" [duration]="48" />
       </div>
       <div class="surface-ground">
         <p class="container all-press">

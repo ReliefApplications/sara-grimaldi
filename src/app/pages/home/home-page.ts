@@ -11,7 +11,7 @@ import { ContentImage, IMAGE_SIZES } from '../../shared/content-image';
 import { DotLine } from '../../shared/dot-line';
 import { FilmTile } from '../../shared/film-tile';
 import { InlineText } from '../../shared/inline-text';
-import { NameWall } from '../../shared/name-wall';
+import { LogoGrid } from '../../shared/logo-grid';
 
 /** Home page (design system, 9). */
 @Component({
@@ -26,7 +26,7 @@ import { NameWall } from '../../shared/name-wall';
     DotLine,
     FilmTile,
     InlineText,
-    NameWall,
+    LogoGrid,
   ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
@@ -39,7 +39,7 @@ export class HomePage {
   protected readonly page = this.content.page('home');
   private readonly films = this.content.films();
   private readonly allPress = this.content.press();
-  private readonly allCollaborations = this.content.collaborations();
+  private readonly organisations = this.content.organisations();
 
   protected readonly sizes = IMAGE_SIZES;
 
@@ -61,10 +61,14 @@ export class HomePage {
     ]);
   });
 
-  /** Each publication once, in press order. */
-  protected readonly pressBand = computed<BandItem[]>(() =>
-    [...new Set((this.allPress() ?? []).map((item) => item.publication))].map((text) => ({ text })),
-  );
+  /** Each press outlet once, in press order, as its logo where it has one. */
+  protected readonly pressBand = computed<BandItem[]>(() => {
+    const byName = this.content.organisationByName();
+    const outlets = (this.allPress() ?? []).map(
+      (item) => byName.get(item.publication.toLowerCase())?.name ?? item.publication,
+    );
+    return [...new Set(outlets)].map((text) => ({ text, logo: true }));
+  });
 
   /** The statement split around the phrase to set as the accent word, if any. */
   protected readonly statement = computed(() => {
@@ -89,11 +93,8 @@ export class HomePage {
       .slice(0, 3);
   });
 
-  /** Names of the collaborations flagged for the home page, in order. */
+  /** Organisations flagged for the home page, in content order. */
   protected readonly collaborators = computed(() =>
-    (this.allCollaborations() ?? [])
-      .filter((entry) => entry.home)
-      .flatMap((entry) => entry.names)
-      .map((name) => ({ name })),
+    (this.organisations() ?? []).filter((entry) => entry.home).map((entry) => entry.name),
   );
 }

@@ -68,6 +68,10 @@
   margin-inline: 0.7em;
 }
 
+:host(.logos) .dot {
+  margin-inline: 1em;
+}
+
 .link {
   display: inline-flex;
   align-items: center;

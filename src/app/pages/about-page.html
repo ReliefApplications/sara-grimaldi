@@ -1,0 +1,83 @@
+@if (page(); as page) {
+  <!-- 1. Head: the page name as a label, then the opening sentence. -->
+  <div class="container grid head">
+    <h1 class="section-label t-label" appPageHeading>{{ page.heading }}</h1>
+    <p class="opening t-display">{{ page.opening }}</p>
+  </div>
+
+  <!-- 2. Portrait and biography -->
+  <div class="container grid intro">
+    @if (page.portrait; as portrait) {
+      <div class="portrait">
+        <app-content-image [image]="portrait" [sizes]="portraitSizes" [priority]="true" />
+      </div>
+    }
+    <div class="biography prose" [class.alone]="!page.portrait">
+      @for (paragraph of page.biography; track $index) {
+        <p [class.t-lead]="$first"><app-inline-text [text]="paragraph" /></p>
+      }
+    </div>
+  </div>
+
+  <!-- 3. Career, with an optional credential badge under it -->
+  @if (career().length) {
+    <section class="container block" aria-labelledby="career-label">
+      <h2 class="section-label t-label" id="career-label">{{ page.careerHeading }}</h2>
+      <app-data-list [rows]="career()" />
+      @if (page.badge; as badge) {
+        <img
+          class="badge"
+          [src]="content.assetUrl(badge.src)"
+          [alt]="badge.alt"
+          [attr.width]="badge.size[0]"
+          [attr.height]="badge.size[1]"
+          loading="lazy"
+          decoding="async"
+        />
+      }
+    </section>
+  }
+
+  <!-- 4. Collaborations: every organisation as a grid, then roles on ink -->
+  @if (names().length) {
+    <section class="container block" aria-labelledby="collaborations-label">
+      <h2 class="section-label t-label" id="collaborations-label">
+        {{ page.collaborationsHeading }}
+      </h2>
+      <app-logo-grid [names]="names()" />
+    </section>
+  }
+  @if (collaborations().length) {
+    <div class="section surface-ink wall">
+      <div class="container">
+        <app-name-wall [rows]="collaborations()" />
+      </div>
+    </div>
+  }
+
+  <!-- 5. In development -->
+  @if (inDevelopment()?.length) {
+    <section class="container block" aria-labelledby="development-label">
+      <h2 class="section-label t-label" id="development-label">
+        {{ page.inDevelopmentHeading }}
+      </h2>
+      <ul class="projects">
+        @for (item of inDevelopment(); track item.slug) {
+          <li>
+            <h3 class="t-title" [attr.lang]="item.titleLang">{{ item.title }}</h3>
+            <p class="t-label t-muted"><app-dot-line [items]="item.format" /></p>
+            @if (item.description) {
+              <p class="t-body"><app-inline-text [text]="item.description" /></p>
+            }
+          </li>
+        }
+      </ul>
+    </section>
+  }
+
+  <!-- 6. Where next -->
+  <div class="container actions">
+    <a appBlockButton [routerLink]="route.link('films')">{{ page.filmsLink }}</a>
+    <a appBlockButton [routerLink]="route.link('contact')">{{ page.contactLink }}</a>
+  </div>
+}

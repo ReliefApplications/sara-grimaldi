@@ -39,7 +39,11 @@
   align-items: center;
   min-height: var(--target-size);
   margin-right: auto;
-  font-size: 1rem;
+  // 16 px where there is room. On a small screen the row also holds the
+  // language switcher and the Menu button (202 px with the side margins), so
+  // the name takes what is left: about 15 px at 360, 11 px at 320.
+  font-size: min(1rem, calc((100vw - 12.625rem) / 10.7));
+  white-space: nowrap;
   font-stretch: var(--wide);
   font-weight: 900;
   line-height: 1.1;
@@ -61,6 +65,7 @@
   padding: 0 var(--space-3);
   border: 2px solid var(--text);
   color: var(--text);
+  white-space: nowrap;
 }
 
 @include lg {
@@ -81,6 +86,7 @@
 
 .nav-link {
   display: inline-flex;
+  white-space: nowrap;
   align-items: center;
   min-height: var(--target-size);
   color: var(--text);

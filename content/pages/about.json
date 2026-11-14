@@ -80,6 +80,15 @@
       }
     }
   ],
+  "badge": {
+    "_source": "Source: the home page of saragrimaldi.com.",
+    "src": "images/logos/blackmagic-certified-trainer.webp",
+    "size": [640, 111],
+    "alt": {
+      "fr": "Blackmagic Design – formatrice certifiée DaVinci Resolve 20",
+      "en": "Blackmagic Design – Certified Trainer, DaVinci Resolve 20"
+    }
+  },
   "collaborationsHeading": {
     "fr": "Collaborations",
     "en": "Collaborations"

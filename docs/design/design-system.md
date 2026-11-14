@@ -1,6 +1,6 @@
 # Design system: Sara Grimaldi website
 
-Version 2.1, 2026-11-14. Owner: designer. Replaces every 1.x version: the
+Version 2.2, 2026-11-14. Owner: designer. Replaces every 1.x version: the
 look is new, the structure (routes, content, legal, accessibility) is kept.
 This file is the single source of truth for the build. If something is not
 specified here, ask the designer rather than guessing.
@@ -242,14 +242,13 @@ or the image is `poster`.
 4:3. Films index 16:9. Film page lead 16:9. Gallery 16:9. Portrait of Sara
 4:5. Open Graph 1200 × 630.
 
-7.3 **Hero image.** The clean 16:9 frame from *Endométriose – Parlons-en*
-(a woman in a hospital gown in a dark blue room), 1920 px wide, `fit:
-cover`. `focus`: `40% 35%` from md; at base, where the hero is taller than
-wide, `42% 35%` so her face and shoulders stay in frame. It is the most
-cinematic clean frame available and its cold blue sets off the vermilion.
-No video for now. Caption: the film's title. Alt text describes the frame
-in both languages. On screens wider than 1920 px the image is upscaled; the
-scrim and the type carry the screen.
+7.3 **Hero image.** The poster frame of Sara's showreel video: a dancer in a
+pale dress against black, 1920 × 1080, `fit: cover`, `focus: 55% 30%` at
+every breakpoint. Its black ground merges with the band beneath it, so the
+figure, the name and the red dots are the whole first screen. No video for
+now. Caption optional. Alt text describes the frame in both languages. On
+screens wider than 1920 px the image is upscaled, which the dark frame
+tolerates.
 
 7.3b **Frames with lettering.** A frame that carries printed text in part of
 the picture is exported as a crop that excludes all of it, then used as
@@ -420,8 +419,11 @@ A link wrapping the image tile and the title.
    `poster` (7.1), clipped.
 2. 16 px.
 3. Row: index number ("01", from display order) in `label`, muted; then the
-   title; then, right-aligned on md and lg (below the title at base), the
-   meta in `label`: family, dot, year, dot, duration.
+   title; then the meta in `label`: family, dot, year, dot, duration. The
+   meta sits to the right of the title, right-aligned, on full-width tiles
+   from md and on half-width tiles from lg; otherwise it sits under the
+   title, 8 px below, aligned with the title's left edge. A title must never
+   be squeezed into breaking inside a word.
 4. Title: `display` for the home lead film, `title` elsewhere.
 
 | State | Style |
@@ -491,9 +493,11 @@ and 32 px (lg).
    information">` ("Mentions légales", "Confidentialité" / "Legal notice",
    "Privacy"); social links as text ("Instagram", "Vimeo", new tab). Links:
    hover highlight (inverted). 44 px hit areas, 24 px between links.
-   Base and md: stacked in the order social, legal, copyright, 4 px apart.
-   lg: one line, copyright left, legal links 48 px after it, social links at
-   the right edge.
+   DOM order everywhere: legal links, social links, copyright. Base and md:
+   stacked in that order, 4 px apart. lg: one line, with the copyright
+   placed visually first at the left (it is not focusable, so keyboard order
+   is unaffected), legal links 48 px after it, social links at the right
+   edge.
 
 No phone number in the footer or the menu.
 
@@ -589,7 +593,7 @@ size) or one fallback name, centred both ways.
 ## 9. Home page (`/fr`, `/en`)
 
 Order: hero, band `roles`, statement, collaborations, films, band `press`,
-footer. Surfaces in that order: image, ink, ink, ground, ink, accent
+footer. Surfaces in that order: image, ink, ground, ground, ink, accent
 (then a ground row), accent. DOM order is the same at every breakpoint.
 
 ### 9.1 Hero and first screen
@@ -597,7 +601,7 @@ footer. Surfaces in that order: image, ink, ink, ground, ink, accent
 The first screen is the hero plus the `roles` band, exactly filling the
 viewport.
 
-- Hero height: `calc(100svh - {band height})`, min 480 px, max 920 px.
+- Hero height: `calc(100svh - {band height})`, min 480 px, max 1000 px.
   Full-bleed. Surface: image.
 - Image: 7.3, covering the hero.
 - **Scrim** (over the image, under the text), two layers:
@@ -638,11 +642,11 @@ Band `roles` (8.5) directly under the hero, full-bleed.
 
 ### 9.2 Statement
 
-Surface **ink** (it continues the band's black; a 1 px
-`--color-rule-on-ink` separates them). All text ground. Padding
-`--section-pad`.
+Surface ground: the first light field after the dark first screen. Padding
+`--section-pad` at the top, 48 px at the bottom (64 px lg), because the
+collaborations section follows on the same surface.
 
-- The statement in `display`, ground, as a `<p>` (not a heading). Draft: "Je
+- The statement in `display`, ink, as a `<p>` (not a heading). Draft: "Je
   travaille l'émotion, quel que soit le format." / "I work with emotion,
   whatever the format." The emphasised phrase ("l'émotion" / "emotion") is
   the accent word (3.2): Fraunces italic, not uppercase, highlight.
@@ -658,7 +662,8 @@ Surface **ink** (it continues the band's black; a 1 px
 
 ### 9.3 Collaborations
 
-Surface **ground**. Padding `--section-pad`.
+Surface **ground**. Padding 0 at the top (it continues the statement's
+field), `--section-pad` at the bottom.
 
 - Section label "Collaborations".
 - 32 px (48 px lg).
@@ -964,6 +969,10 @@ pause and play icons are CSS shapes.
 
 ## Change log
 
+- 2.2 (2026-11-14), after the first v2 build: hero is the showreel poster
+  frame (7.3); statement back on ground, collaborations continue its field
+  (9.2, 9.3); footer bottom row order (8.13); film tile caption rule (8.8);
+  hero max height 1000 px (9.1).
 - 2.1 (2026-11-14): logos for collaborators and press (8.15, 8.16, 8.5,
   8.10, 9.3, 10.4, 13); statement and films sections on ink (9.2, 9.4); hero
   image changed and rule for frames with lettering (7.3).

@@ -1,13 +1,15 @@
 {
   "name": "Le Monde",
   "kind": "press",
-  "order": 1,
+  "order": 101,
+  "home": false,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/le-monde.webp",
     "size": [292, 64],
     "alt": {
-      "fr": "Logo Le Monde",
-      "en": "Le Monde logo"
+      "fr": "Le Monde",
+      "en": "Le Monde"
     }
   }
 }

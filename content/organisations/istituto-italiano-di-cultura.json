@@ -1,13 +1,15 @@
 {
   "name": "Istituto Italiano di Cultura",
   "kind": "client",
-  "order": 11,
+  "order": 14,
+  "home": true,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/istituto-italiano-di-cultura.webp",
     "size": [214, 113],
     "alt": {
-      "fr": "Logo Istituto Italiano di Cultura",
-      "en": "Istituto Italiano di Cultura logo"
+      "fr": "Istituto Italiano di Cultura",
+      "en": "Istituto Italiano di Cultura"
     }
   }
 }

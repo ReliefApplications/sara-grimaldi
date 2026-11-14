@@ -7,14 +7,16 @@
   </span>
   <span class="caption">
     <span class="number t-label t-muted t-tabular" aria-hidden="true">{{ number() }}</span>
-    <span
-      class="title"
-      [class.t-display]="lead()"
-      [class.t-title]="!lead()"
-      role="heading"
-      [attr.aria-level]="level()"
-      ><span class="title-text" [attr.lang]="entry.titleLang">{{ entry.title }}</span></span
-    >
-    <span class="meta t-label t-tabular"><app-dot-line [items]="meta()" /></span>
+    <span class="words">
+      <span
+        class="title"
+        [class.t-display]="lead()"
+        [class.t-title]="!lead()"
+        role="heading"
+        [attr.aria-level]="level()"
+        ><span class="title-text" [attr.lang]="entry.titleLang">{{ entry.title }}</span></span
+      >
+      <span class="meta t-label t-muted t-tabular"><app-dot-line [items]="meta()" /></span>
+    </span>
   </span>
 </a>

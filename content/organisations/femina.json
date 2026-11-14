@@ -1,13 +1,15 @@
 {
   "name": "Femina",
   "kind": "press",
-  "order": 8,
+  "order": 108,
+  "home": false,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/femina.webp",
     "size": [64, 116],
     "alt": {
-      "fr": "Logo Femina",
-      "en": "Femina logo"
+      "fr": "Femina",
+      "en": "Femina"
     }
   }
 }

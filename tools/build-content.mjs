@@ -50,7 +50,6 @@ const byOrder = (a, b) =>
 const COLLECTIONS = [
   { name: 'films', sort: byYearThenOrder, keep: (entry) => entry.published === true },
   { name: 'press', sort: byYearThenOrder },
-  { name: 'collaborations', sort: byOrder },
   { name: 'in-development', sort: byOrder },
   { name: 'organisations', sort: byOrder },
 ];

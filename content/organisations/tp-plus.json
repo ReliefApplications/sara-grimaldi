@@ -1,13 +1,15 @@
 {
   "name": "TP+",
   "kind": "client",
-  "order": 10,
+  "order": 13,
+  "home": true,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/tp-plus.webp",
     "size": [269, 90],
     "alt": {
-      "fr": "Logo TP+",
-      "en": "TP+ logo"
+      "fr": "TP+",
+      "en": "TP+"
     }
   }
 }

@@ -2,7 +2,6 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
-import collaborations from '../../.generated/content/collections/collaborations.json';
 import films from '../../.generated/content/collections/films.json';
 import inDevelopment from '../../.generated/content/collections/in-development.json';
 import organisations from '../../.generated/content/collections/organisations.json';
@@ -33,7 +32,6 @@ const CONTENT: Record<string, object> = {
   'content/pages/privacy.json': privacy,
   'content/collections/films.json': films,
   'content/collections/press.json': press,
-  'content/collections/collaborations.json': collaborations,
   'content/collections/in-development.json': inDevelopment,
   'content/collections/organisations.json': organisations,
 };
@@ -105,7 +103,12 @@ describe('App', () => {
     expect(copy?.getAttribute('aria-hidden')).toBe('true');
     expect(copy?.querySelector('a')?.getAttribute('tabindex')).toBe('-1');
 
-    expect(page.querySelectorAll('app-name-wall li').length).toBe(8);
+    // Collaborators: a grid of logos, or names where there is no logo.
+    const cells = [...page.querySelectorAll('app-logo-grid li')];
+    expect(cells.length).toBe(18);
+    expect(cells[0].querySelector('img')?.getAttribute('alt')).toBe('Vogue');
+    expect(cells[5].querySelector('img')).toBeNull();
+    expect(cells[5].textContent?.trim()).toBe('Barilla');
     const tiles = [...page.querySelectorAll('app-film-tile')];
     expect(tiles.map((tile) => tile.querySelector('.title')?.textContent?.trim())).toEqual([
       'La Dolce Attesa',
@@ -116,9 +119,16 @@ describe('App', () => {
     expect(tiles[1].querySelector('a')?.getAttribute('href')).toBe('/en/films/immunity');
 
     // Press band: each publication once.
-    const names = [...page.querySelectorAll('.surface-accent app-band .items:not(.copy) .item')];
-    expect(names.length).toBe(new Set(names.map((item) => item.textContent)).size);
-    expect(names.length).toBeGreaterThan(5);
+    const outlets = [
+      ...page.querySelectorAll('.surface-accent app-band .items:not(.copy) app-logo'),
+    ].map((logo) => logo.querySelector('img')?.getAttribute('alt') ?? logo.textContent?.trim());
+    expect(outlets.length).toBe(new Set(outlets).size);
+    expect(outlets).toContain('Le Monde');
+    expect(outlets).toContain('france.tv');
+    // The repeated copy is silent.
+    expect(
+      page.querySelector('.surface-accent app-band .items.copy img')?.getAttribute('alt'),
+    ).toBe('');
   });
 
   it('pauses both bands with one button', async () => {
@@ -134,17 +144,32 @@ describe('App', () => {
   });
 
   it('adds the article language to a press row only when it differs from the page', async () => {
+    // Each meta line as its items, without the invisible joiner before the dots.
+    const metas = () =>
+      [...page.querySelectorAll('app-press-row .meta')].map((meta) =>
+        [...meta.querySelectorAll('[role="listitem"]')].map((item) =>
+          item.textContent?.replace('\u2060', ''),
+        ),
+      );
     await open('/fr/presse');
-    const metas = () => [...page.querySelectorAll('app-press-row .meta')].map((m) => m.textContent);
     expect(metas().slice(0, 4)).toEqual([
-      '2025\u00A0· France',
-      '2025\u00A0· France',
-      '2024\u00A0· France',
-      '2019\u00A0· Italie\u00A0· it – article en italien',
+      ['2025', 'France'],
+      ['2025', 'France'],
+      ['2024', 'France'],
+      ['2019', 'Italie', 'it'],
     ]);
+    expect(page.querySelectorAll('app-press-row .meta')[3].textContent).toContain(
+      ' – article en italien',
+    );
+    // Grouped by year: h1, then a heading per year, then the publications.
+    expect(
+      [...page.querySelectorAll('main h2')].map((h) => h.textContent?.trim()).slice(0, 2),
+    ).toEqual(['2025', '2024']);
+
     await open('/en/press');
-    expect(metas()[2]).toBe('2024\u00A0· France\u00A0· fr – article in French');
+    expect(metas()[2]).toEqual(['2024', 'France', 'fr']);
     const row = page.querySelectorAll('app-press-row')[2];
+    expect(row.querySelector('.meta')?.textContent).toContain(' – article in French');
     expect(row.querySelector('cite')?.textContent).toBe('Immunity');
     expect(row.querySelector('.description')?.textContent?.trim()).toBe(
       'Article about the documentary Immunity',
@@ -183,11 +208,12 @@ describe('App', () => {
 
   it('shows the not-found page for unknown URLs and unpublished films', async () => {
     await open('/en/nope');
-    expect(text('h1')).toBe('This page does not exist.');
+    expect(text('h1')).toBe('404');
+    expect(text('main .text')).toBe('This page does not exist.');
     expect(head('meta[name="robots"]', 'content')).toBe('noindex');
     expect(document.head.querySelector('link[rel="canonical"]')).toBeNull();
     await open('/fr/films/la-chose-qui-manque');
-    expect(text('h1')).toBe('Cette page n’existe pas.');
+    expect(text('main .text')).toBe('Cette page n’existe pas.');
   });
 
   it('shows the phone number on the Contact page only', async () => {

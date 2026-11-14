@@ -1,7 +1,7 @@
 @if (page(); as page) {
   @if (site(); as site) {
-    <div class="container grid">
-      <header class="head">
+    <header class="head">
+      <div class="container">
         <h1 class="t-display" appPageHeading>{{ page.heading }}</h1>
         <p class="updated t-label t-muted">
           {{ site.ui.lastUpdated }}
@@ -14,12 +14,14 @@
         @if (page.intro) {
           <p class="intro t-body"><app-inline-text [text]="page.intro" /></p>
         }
-      </header>
+      </div>
+    </header>
 
+    <div class="container grid">
       <div class="body">
         @for (section of page.sections; track section.id) {
           <section [attr.aria-labelledby]="section.id">
-            <h2 class="t-title" [id]="section.id">{{ section.heading }}</h2>
+            <h2 class="heading t-title" [id]="section.id">{{ section.heading }}</h2>
             @for (paragraph of section.paragraphs; track $index) {
               <p><app-inline-text [text]="paragraph" /></p>
             }

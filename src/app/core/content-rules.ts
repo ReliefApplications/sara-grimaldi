@@ -68,10 +68,12 @@ export const FILM_LABEL_KEYS = [
   'statement',
   'stills',
   'selections',
+  'moreSelections',
   'credits',
   'press',
   'previous',
   'next',
+  'near',
   'year',
   'duration',
   ...FILM_DATA_KEYS,
@@ -105,7 +107,7 @@ export const PROSE_FIELDS: Record<string, string[]> = {
   'pages/privacy': legalProse,
   films: ['synopsis', 'statement'],
   press: ['description'],
-  collaborations: ['role'],
+  organisations: ['role'],
   'in-development': ['description'],
 };
 
@@ -203,7 +205,6 @@ export const REQUIRED = {
     'selections[].festival',
   ],
   press: ['publication', 'year', 'description', 'country', 'articleLang'],
-  collaborations: ['names', 'role', 'order', 'home'],
   'in-development': ['title', 'titleLang', 'format', 'order', 'home'],
-  organisations: ['name', 'kind', 'order'],
+  organisations: ['name', 'kind', 'order', 'home'],
 };

@@ -2,11 +2,14 @@ import { Component, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ContentService } from '../core/content.service';
 import { BandState } from './band-state';
+import { Logo } from './logo';
 
 export interface BandItem {
   text: string;
   /** Narrow type instead of wide: the role labels of the `roles` band. */
   narrow?: boolean;
+  /** Shown as the organisation's logo when it has one (press band). */
+  logo?: boolean;
   /** Router link and fragment, for items that navigate. */
   link?: string[];
   fragment?: string;
@@ -19,11 +22,12 @@ export interface BandItem {
  */
 @Component({
   selector: 'app-band',
-  imports: [RouterLink],
+  imports: [RouterLink, Logo],
   templateUrl: './band.html',
   styleUrl: './band.scss',
   host: {
     '[class.reverse]': 'reverse()',
+    '[class.logos]': 'logos()',
     '[class.paused]': 'state.paused()',
   },
 })
@@ -34,6 +38,8 @@ export class Band {
   readonly items = input.required<BandItem[]>();
   /** Moves left to right instead of right to left. */
   readonly reverse = input(false);
+  /** Wider gaps around the dots, for a band of logos. */
+  readonly logos = input(false);
   /** Seconds for one loop. */
   readonly duration = input(36);
 }

@@ -1,13 +1,15 @@
 {
   "name": "Deutsche Welle",
   "kind": "client",
-  "order": 8,
+  "order": 11,
+  "home": true,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/deutsche-welle.webp",
     "size": [305, 83],
     "alt": {
-      "fr": "Logo Deutsche Welle",
-      "en": "Deutsche Welle logo"
+      "fr": "Deutsche Welle",
+      "en": "Deutsche Welle"
     }
   }
 }

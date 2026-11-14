@@ -1,0 +1,61 @@
+@use '../../styles/breakpoints' as *;
+
+.intro {
+  margin-top: var(--space-5);
+
+  @include lg {
+    grid-column: 1 / 8;
+  }
+}
+
+.body {
+  padding-block: var(--space-7) var(--section-pad);
+}
+
+.section-label {
+  margin-bottom: var(--space-3);
+}
+
+// The address: display size, wide and heavy, but in its own letter case.
+.email {
+  display: inline-block;
+  padding-block: var(--space-2);
+  font-weight: 800;
+  text-transform: none;
+  overflow-wrap: anywhere;
+  text-decoration: underline 3px;
+  text-underline-offset: 8px;
+}
+
+.plain-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+}
+
+.email:hover,
+.plain-link:hover {
+  text-decoration: none;
+
+  .value {
+    padding: 0 0.12em;
+    background: var(--highlight-bg);
+    color: var(--highlight-text);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+}
+
+.groups {
+  display: grid;
+  gap: var(--space-6) var(--gutter);
+  margin-top: var(--space-7);
+
+  @include md {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.secondary {
+  margin-top: var(--space-7);
+}

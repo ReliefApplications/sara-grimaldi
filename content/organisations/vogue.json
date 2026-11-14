@@ -2,12 +2,18 @@
   "name": "Vogue",
   "kind": "client",
   "order": 1,
+  "home": true,
+  "role": {
+    "fr": "Filmmaker pendant six ans",
+    "en": "Filmmaker for six years"
+  },
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/vogue.webp",
     "size": [269, 69],
     "alt": {
-      "fr": "Logo Vogue",
-      "en": "Vogue logo"
+      "fr": "Vogue",
+      "en": "Vogue"
     }
   }
 }

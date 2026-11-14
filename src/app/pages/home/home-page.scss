@@ -12,7 +12,7 @@
   height: calc(100vh - var(--band-height));
   height: calc(100svh - var(--band-height));
   min-height: 30rem;
-  max-height: 57.5rem;
+  max-height: 62.5rem; // 1000 px (9.1)
   overflow: hidden;
   background: var(--color-ink);
   color: var(--color-ground);
@@ -110,7 +110,15 @@
   }
 }
 
-// 2. Statement (9.2)
+// 2. Statement (9.2). Less room below: collaborations continue its field.
+.statement-section {
+  padding-block: var(--section-pad) var(--space-7);
+
+  @include lg {
+    padding-bottom: var(--space-8);
+  }
+}
+
 .intro {
   margin-top: var(--space-6);
 }
@@ -145,8 +153,11 @@
 }
 
 // 3. Collaborations (9.3)
-.wall {
-  display: block;
+.collaborations {
+  padding-bottom: var(--section-pad);
+}
+
+.logos {
   margin-top: var(--space-6);
 
   @include lg {

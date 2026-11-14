@@ -2,13 +2,15 @@
   "name": "IRIS",
   "aliases": ["Association IRIS"],
   "kind": "client",
-  "order": 12,
+  "order": 15,
+  "home": true,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/iris.webp",
     "size": [173, 111],
     "alt": {
-      "fr": "Logo IRIS",
-      "en": "IRIS logo"
+      "fr": "IRIS",
+      "en": "IRIS"
     }
   }
 }

@@ -1,0 +1,10 @@
+{
+  "name": "Barilla",
+  "kind": "client",
+  "order": 6,
+  "home": true,
+  "role": {
+    "fr": "Assistante réalisatrice",
+    "en": "Assistant director"
+  }
+}

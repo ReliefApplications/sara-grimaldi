@@ -1,13 +1,15 @@
 {
   "name": "eprimo",
   "kind": "client",
-  "order": 14,
+  "order": 17,
+  "home": true,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/eprimo.webp",
     "size": [288, 127],
     "alt": {
-      "fr": "Logo eprimo",
-      "en": "eprimo logo"
+      "fr": "eprimo",
+      "en": "eprimo"
     }
   }
 }

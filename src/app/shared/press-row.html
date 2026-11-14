@@ -1,7 +1,7 @@
 @let press = item();
 <ng-template #body>
   <h3 class="publication t-title">
-    {{ press.publication }}
+    <app-logo class="publication-mark" [name]="press.publication" size="row" />
     @if (link()) {
       <span class="t-arrow-out" aria-hidden="true">→</span>
       <span class="visually-hidden">{{ site()?.ui?.newWindow }}</span>
@@ -11,7 +11,7 @@
     <app-inline-text [text]="press.description" />
   </p>
   <!-- prettier-ignore -->
-  <p class="meta t-label t-muted t-tabular">{{ meta() }}@if (otherLanguage(); as language) {<span class="visually-hidden"> – {{ language }}</span>}</p>
+  <p class="meta t-label t-muted t-tabular"><app-dot-line [items]="meta()" />@if (otherLanguage(); as language) {<span class="visually-hidden"> – {{ language }}</span>}</p>
 </ng-template>
 
 @if (link(); as href) {

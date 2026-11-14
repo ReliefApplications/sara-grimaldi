@@ -1,13 +1,15 @@
 {
   "name": "VPRO",
   "kind": "client",
-  "order": 9,
+  "order": 12,
+  "home": true,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/vpro.webp",
     "size": [305, 89],
     "alt": {
-      "fr": "Logo VPRO",
-      "en": "VPRO logo"
+      "fr": "VPRO",
+      "en": "VPRO"
     }
   }
 }

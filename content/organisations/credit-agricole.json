@@ -1,13 +1,15 @@
 {
   "name": "Crédit Agricole",
   "kind": "client",
-  "order": 13,
+  "order": 16,
+  "home": true,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/credit-agricole.webp",
     "size": [301, 94],
     "alt": {
-      "fr": "Logo Crédit Agricole",
-      "en": "Crédit Agricole logo"
+      "fr": "Crédit Agricole",
+      "en": "Crédit Agricole"
     }
   }
 }

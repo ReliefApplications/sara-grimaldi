@@ -1,13 +1,15 @@
 {
   "name": "Condé Nast",
   "kind": "client",
-  "order": 6,
+  "order": 9,
+  "home": true,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/conde-nast.webp",
     "size": [352, 104],
     "alt": {
-      "fr": "Logo Condé Nast",
-      "en": "Condé Nast logo"
+      "fr": "Condé Nast",
+      "en": "Condé Nast"
     }
   }
 }

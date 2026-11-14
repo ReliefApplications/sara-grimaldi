@@ -1,0 +1,105 @@
+@use '../../styles/breakpoints' as *;
+
+.head {
+  padding-top: var(--space-7);
+
+  @include lg {
+    padding-top: var(--space-9);
+  }
+}
+
+.opening {
+  margin-top: var(--space-5);
+
+  @include lg {
+    grid-column: 1 / 12;
+  }
+}
+
+.intro {
+  row-gap: var(--space-6);
+  margin-top: var(--space-7);
+
+  @include lg {
+    margin-top: var(--space-8);
+  }
+}
+
+.portrait {
+  aspect-ratio: 4 / 5;
+}
+
+@include md {
+  .portrait {
+    grid-column: 1 / 5;
+  }
+
+  .biography {
+    grid-column: 5 / 9;
+
+    &.alone {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+@include lg {
+  .portrait {
+    grid-column: 1 / 6;
+  }
+
+  .biography {
+    grid-column: 7 / 13;
+  }
+}
+
+.block {
+  margin-top: var(--section-pad);
+}
+
+.wall {
+  margin-top: var(--space-8);
+}
+
+// Credential badge: small, greyed and blended into the ground like the logos.
+.badge {
+  width: auto;
+  max-width: min(20rem, 100%);
+  max-height: 3.5rem; // 320 × 56 px box (10.4)
+  margin-top: var(--space-6);
+  filter: grayscale(1);
+  mix-blend-mode: multiply;
+}
+
+.section-label {
+  margin-bottom: var(--space-6);
+}
+
+.head .section-label {
+  margin-bottom: 0;
+}
+
+.projects li {
+  padding-block: var(--space-4);
+  border-top: var(--rule-minor);
+
+  &:last-child {
+    border-bottom: var(--rule-minor);
+  }
+
+  > * + * {
+    margin-top: var(--space-2);
+  }
+}
+
+.actions {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--section-pad);
+  padding-bottom: var(--section-pad);
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gutter);
+  }
+}

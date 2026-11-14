@@ -24,6 +24,8 @@
   --highlight-text: var(--color-ink);
   --focus: var(--color-ground);
   --minor-rule: var(--rule-on-ink);
+  --button-hover-bg: var(--color-accent);
+  --button-hover-text: var(--color-ink);
 
   background: var(--surface);
   color: var(--text);
@@ -38,6 +40,8 @@
   --highlight-text: var(--color-accent);
   --focus: var(--color-ink);
   --minor-rule: var(--rule-minor);
+  --button-hover-bg: var(--color-ink);
+  --button-hover-text: var(--color-accent);
 
   background: var(--surface);
   color: var(--text);
@@ -138,5 +142,51 @@
 
   a {
     @extend .text-link;
+  }
+}
+
+// Page head (10): the page title in giant type over a full-width rule.
+.page-head {
+  padding-block: var(--space-7) var(--space-6);
+  border-bottom: var(--rule);
+
+  @include md {
+    padding-top: 4.5rem; // 72 px (10); not on the spacing scale
+  }
+
+  @include lg {
+    padding-block: var(--space-9) var(--space-7);
+  }
+}
+
+// Running text (synopsis, biography, legal text).
+.prose {
+  max-width: var(--measure);
+
+  > * + * {
+    margin-top: var(--space-4);
+  }
+}
+
+// A block of a page that starts with a rule and is one section pad from the
+// previous one (film page sections, about sections).
+.ruled-section {
+  margin-top: var(--section-pad);
+  padding-top: var(--space-6);
+  border-top: var(--rule);
+}
+
+// Boxed link or button, 44 px high (family navigation, notice button).
+.box-link {
+  display: inline-flex;
+  align-items: center;
+  height: var(--target-size);
+  padding: 0 var(--space-4);
+  border: 2px solid var(--text);
+  color: var(--text);
+
+  &:hover {
+    background: var(--text);
+    color: var(--surface);
   }
 }

@@ -3,12 +3,18 @@
   "aliases": ["Universal"],
   "kind": "client",
   "order": 4,
+  "home": true,
+  "role": {
+    "fr": "Production exécutive, clip tourné à Paris",
+    "en": "Executive production, music video shot in Paris"
+  },
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/universal-music.webp",
     "size": [195, 102],
     "alt": {
-      "fr": "Logo Universal Music",
-      "en": "Universal Music logo"
+      "fr": "Universal Music",
+      "en": "Universal Music"
     }
   }
 }

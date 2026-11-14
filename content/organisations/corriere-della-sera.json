@@ -1,13 +1,15 @@
 {
   "name": "Corriere della Sera",
   "kind": "press",
-  "order": 4,
+  "order": 104,
+  "home": false,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/corriere-della-sera.webp",
     "size": [580, 45],
     "alt": {
-      "fr": "Logo Corriere della Sera",
-      "en": "Corriere della Sera logo"
+      "fr": "Corriere della Sera",
+      "en": "Corriere della Sera"
     }
   }
 }

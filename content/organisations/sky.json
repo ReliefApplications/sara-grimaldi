@@ -1,9 +1,10 @@
 {
-  "names": ["Barilla", "Volkswagen", "Sky"],
+  "name": "Sky",
+  "kind": "client",
+  "order": 8,
+  "home": true,
   "role": {
     "fr": "Assistante réalisatrice",
     "en": "Assistant director"
-  },
-  "order": 5,
-  "home": true
+  }
 }

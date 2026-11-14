@@ -2,12 +2,18 @@
   "name": "GQ",
   "kind": "client",
   "order": 2,
+  "home": true,
+  "role": {
+    "fr": "Filmmaker pendant six ans",
+    "en": "Filmmaker for six years"
+  },
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/gq.webp",
     "size": [219, 105],
     "alt": {
-      "fr": "Logo GQ",
-      "en": "GQ logo"
+      "fr": "GQ",
+      "en": "GQ"
     }
   }
 }

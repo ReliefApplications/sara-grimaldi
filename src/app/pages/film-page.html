@@ -1,104 +1,207 @@
 @if (page(); as page) {
   @if (site(); as site) {
     @if (film(); as film) {
-      <article class="container plain-page">
-        <p>
-          <a [routerLink]="route.link('films')"
-            ><span aria-hidden="true">← </span>{{ page.labels.back }}</a
-          >
-        </p>
-        <h1 class="t-display t-film-title" appPageHeading [attr.lang]="film.titleLang">
-          {{ film.title }}
-        </h1>
-        <p>
-          {{ line([site.families[film.family], film.year, film.duration, film.roles.join(', ')]) }}
-        </p>
-
-        @if (film.statementQuote) {
-          <blockquote>
-            <p>{{ film.statementQuote }}</p>
-            <footer>{{ site.name }}</footer>
-          </blockquote>
-        }
-
-        @if (film.watch.externalUrl && film.watch.externalLabel) {
+      <article>
+        <!-- 1. Head -->
+        <header class="container head">
           <p>
-            <a [href]="film.watch.externalUrl" target="_blank" rel="noopener noreferrer"
-              >{{ film.watch.externalLabel }} <span class="t-arrow-out" aria-hidden="true">→</span>
-              <span class="visually-hidden">{{ site.ui.newWindow }}</span></a
+            <a class="back t-nav" [routerLink]="route.link('films')"
+              ><span aria-hidden="true">←&nbsp;</span
+              ><span class="back-text">{{ page.labels.back }}</span></a
             >
           </p>
-        }
-        @if (film.watch.mode === 'none') {
-          <p>
-            <a [routerLink]="route.link('contact')">{{ site.ui.onRequest }}</a>
-          </p>
-        }
+          <h1 class="title t-display" appPageHeading [attr.lang]="film.titleLang">
+            {{ film.title }}
+          </h1>
+          <p class="data-line t-label t-tabular"><app-dot-line [items]="dataLine()" /></p>
+        </header>
 
-        <p>{{ film.logline }}</p>
-
-        @if (film.synopsis; as synopsis) {
-          <h2 class="t-title">{{ page.labels.synopsis }}</h2>
-          @for (paragraph of synopsis; track $index) {
-            <p><app-inline-text [text]="paragraph" /></p>
-          }
+        <!-- 2. Lead image, edge to edge -->
+        @if (film.still; as still) {
+          <div class="lead">
+            <app-content-image [image]="still" [sizes]="sizes.bleed" [priority]="true" />
+          </div>
         }
 
-        @if (film.statement; as statement) {
-          <h2 class="t-title">{{ page.labels.statement }}</h2>
-          @for (paragraph of statement; track $index) {
-            <p><app-inline-text [text]="paragraph" /></p>
-          }
+        <!-- 3. Pull quote -->
+        @if (film.statementQuote) {
+          <div class="container">
+            <figure class="quote">
+              <blockquote class="t-quote">
+                <p>{{ film.statementQuote }}</p>
+              </blockquote>
+              <figcaption class="t-label">{{ site.name }}</figcaption>
+            </figure>
+          </div>
         }
 
-        <dl>
-          @for (row of data(); track row.label) {
-            <dt>{{ row.label }}</dt>
-            <dd>{{ row.value }}</dd>
-          }
-        </dl>
+        <!-- 4. Body: synopsis and statement, data beside them -->
+        <div class="container grid body" [class.after-image]="!film.statementQuote">
+          <div class="texts">
+            <p class="logline t-lead">{{ film.logline }}</p>
+            @if (film.synopsis; as synopsis) {
+              <section class="text-block" aria-labelledby="synopsis-label">
+                <h2 class="section-label t-label" id="synopsis-label">
+                  {{ page.labels.synopsis }}
+                </h2>
+                <div class="prose">
+                  @for (paragraph of synopsis; track $index) {
+                    <p><app-inline-text [text]="paragraph" /></p>
+                  }
+                </div>
+              </section>
+            }
+            @if (film.statement; as statement) {
+              <section class="text-block" aria-labelledby="statement-label">
+                <h2 class="section-label t-label" id="statement-label">
+                  {{ page.labels.statement }}
+                </h2>
+                <div class="prose">
+                  @for (paragraph of statement; track $index) {
+                    <p><app-inline-text [text]="paragraph" /></p>
+                  }
+                </div>
+              </section>
+            }
+          </div>
 
+          <div class="aside">
+            <app-data-list [rows]="data()" />
+            @if (film.watch.externalUrl && film.watch.externalLabel) {
+              <a
+                class="watch"
+                appBlockButton
+                [href]="film.watch.externalUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{ film.watch.externalLabel }}
+                <span class="visually-hidden">{{ site.ui.newWindow }}</span></a
+              >
+            }
+            @if (film.watch.mode === 'none') {
+              <p class="request t-small">
+                <a class="text-link" [routerLink]="route.link('contact')">{{
+                  site.ui.onRequest
+                }}</a>
+              </p>
+            }
+          </div>
+        </div>
+
+        <!-- 5. Stills -->
+        @if (film.stills && film.stills.length >= 2) {
+          <section class="container ruled-section" aria-labelledby="stills-label">
+            <h2 class="section-label t-label" id="stills-label">{{ page.labels.stills }}</h2>
+            <ul class="stills">
+              @for (still of film.stills; track still.src) {
+                <li><app-content-image [image]="still" [sizes]="sizes.half" /></li>
+              }
+            </ul>
+          </section>
+        }
+
+        <!-- 6. Selections and awards -->
         @if (film.selections || film.selectionsSummary) {
-          <h2 class="t-title">{{ page.labels.selections }}</h2>
-          @if (film.selectionsSummary) {
-            <p>{{ film.selectionsSummary }}</p>
-          }
-          <ul>
-            @for (selection of film.selections; track selection.festival) {
+          <section class="container ruled-section" aria-labelledby="selections-label">
+            <h2 class="section-label t-label" id="selections-label">
+              {{ page.labels.selections }}
+            </h2>
+            @if (film.selectionsSummary) {
+              <p class="summary t-title">{{ film.selectionsSummary }}</p>
+            }
+            <ng-template #row let-selection>
               <li>
-                {{ line([selection.festival, selection.place]) }}
+                {{ selection.festival }}
+                @if (selection.place) {
+                  <span class="t-muted">, {{ selection.place }}</span>
+                }
                 @if (selection.award) {
-                  — {{ selection.award }}
+                  <strong> – {{ selection.award }}</strong>
                 }
               </li>
-            }
-          </ul>
-        }
-
-        @if (film.credits; as credits) {
-          <h2 class="t-title">{{ page.labels.credits }}</h2>
-          @for (group of credits; track $index) {
-            <h3 class="t-label t-muted">{{ group.title }}</h3>
-            <dl>
-              @for (credit of group.items; track $index) {
-                @if (credit.role) {
-                  <dt>{{ credit.role }}</dt>
+            </ng-template>
+            @if (selections().shown.length) {
+              <ul class="selections">
+                @for (selection of selections().shown; track selection.festival) {
+                  <ng-container
+                    [ngTemplateOutlet]="row"
+                    [ngTemplateOutletContext]="{ $implicit: selection }"
+                  />
                 }
-                <dd>{{ credit.name }}</dd>
-              }
-            </dl>
-          }
+              </ul>
+            }
+            @if (selections().more.length) {
+              <details class="more">
+                <summary class="t-nav">
+                  {{ page.labels.moreSelections }} ({{ film.selections?.length }})
+                </summary>
+                <ul class="selections">
+                  @for (selection of selections().more; track selection.festival) {
+                    <ng-container
+                      [ngTemplateOutlet]="row"
+                      [ngTemplateOutletContext]="{ $implicit: selection }"
+                    />
+                  }
+                </ul>
+              </details>
+            }
+          </section>
         }
 
+        <!-- 7. Credits -->
+        @if (film.credits; as credits) {
+          <section class="container ruled-section" aria-labelledby="credits-label">
+            <h2 class="section-label t-label" id="credits-label">{{ page.labels.credits }}</h2>
+            <div class="credits">
+              @for (group of credits; track $index) {
+                <div class="credit-group">
+                  <h3 class="t-label t-muted">{{ group.title }}</h3>
+                  <dl>
+                    @for (credit of group.items; track $index) {
+                      <div class="credit">
+                        @if (credit.role) {
+                          <dt class="t-small t-muted">{{ credit.role }}</dt>
+                        }
+                        <dd class="t-body">{{ credit.name }}</dd>
+                      </div>
+                    }
+                  </dl>
+                </div>
+              }
+            </div>
+          </section>
+        }
+
+        <!-- 8. Press about this film -->
         @if (press().length) {
-          <h2 class="t-title">{{ page.labels.press }}</h2>
-          <ul>
-            @for (item of press(); track item.slug) {
-              <li><app-press-row [item]="item" /></li>
-            }
-          </ul>
+          <section class="container ruled-section press" aria-labelledby="press-label">
+            <h2 class="section-label t-label" id="press-label">{{ page.labels.press }}</h2>
+            <ul class="press-rows">
+              @for (item of press(); track item.slug) {
+                <li><app-press-row [item]="item" /></li>
+              }
+            </ul>
+          </section>
         }
       </article>
+
+      <!-- 9. Previous and next film -->
+      @if (neighbours(); as near) {
+        <nav class="near surface-ink" [attr.aria-label]="page.labels.near">
+          <a class="near-link" [routerLink]="route.link('films', near.previous.slug)">
+            <span class="t-label t-muted">{{ page.labels.previous }}</span>
+            <span class="near-title t-title" [attr.lang]="near.previous.titleLang">{{
+              near.previous.title
+            }}</span>
+          </a>
+          <a class="near-link" [routerLink]="route.link('films', near.next.slug)">
+            <span class="t-label t-muted">{{ page.labels.next }}</span>
+            <span class="near-title t-title" [attr.lang]="near.next.titleLang">{{
+              near.next.title
+            }}</span>
+          </a>
+        </nav>
+      }
     } @else if (films()) {
       <app-not-found-page />
     }

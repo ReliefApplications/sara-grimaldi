@@ -41,6 +41,12 @@ import { pageLink } from '../core/site-routes';
       display: flex;
       align-items: center;
       color: var(--text);
+      white-space: nowrap;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
     }
 
     li + li::before {

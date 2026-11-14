@@ -2,13 +2,15 @@
   "name": "france.tv",
   "aliases": ["France 3", "France 3 Pays de la Loire", "France TV"],
   "kind": "press",
-  "order": 6,
+  "order": 106,
+  "home": false,
   "logo": {
+    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/france-tv.webp",
     "size": [274, 48],
     "alt": {
-      "fr": "Logo france.tv",
-      "en": "france.tv logo"
+      "fr": "france.tv",
+      "en": "france.tv"
     }
   }
 }

@@ -41,12 +41,16 @@ export interface NameWallRow {
     }
 
     // A rule above each row and below the last of each column: every row has
-    // both, and overlaps the one before it by the rule's thickness.
+    // both, and overlaps the one before it by the rule's thickness. The role
+    // sits at the right of the name when both fit on one line, under it
+    // otherwise.
     li {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: var(--space-1);
+      flex-flow: row wrap;
+      align-items: center;
+      align-content: center;
+      justify-content: space-between;
+      gap: var(--space-1) var(--space-4);
       min-height: var(--space-8);
       margin-top: -1px;
       padding-block: var(--space-4);
@@ -54,21 +58,12 @@ export interface NameWallRow {
       break-inside: avoid;
 
       @media (min-width: 48rem) {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--space-4);
         min-height: 5rem; // 80 px row (8.9); not on the spacing scale
-        padding-block: var(--space-2);
       }
     }
 
-    .role {
-      text-align: left;
-
-      @media (min-width: 48rem) {
-        text-align: right;
-      }
+    .name {
+      overflow-wrap: break-word;
     }
   `,
 })

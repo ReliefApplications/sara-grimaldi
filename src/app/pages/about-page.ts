@@ -1,60 +1,58 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ContentService } from '../core/content.service';
 import { CurrentRouteService } from '../core/current-route';
 import { PageHeading } from '../core/page-heading';
-import { InDevelopmentList } from '../shared/in-development-list';
+import { BlockButton } from '../shared/block-button';
+import { ContentImage } from '../shared/content-image';
+import { DataList } from '../shared/data-list';
+import { DotLine } from '../shared/dot-line';
 import { InlineText } from '../shared/inline-text';
+import { LogoGrid } from '../shared/logo-grid';
+import { NameWall } from '../shared/name-wall';
 
-/** About. Content and structure only: not yet built to the design system (9.5). */
+/** About (design system, 10.4). */
 @Component({
   selector: 'app-about-page',
-  imports: [RouterLink, PageHeading, InDevelopmentList, InlineText],
-  template: `
-    @if (page(); as page) {
-      <div class="container plain-page">
-        <h1 class="t-label" appPageHeading>{{ page.heading }}</h1>
-        <p class="t-lead">{{ page.opening }}</p>
-        @for (paragraph of page.biography; track $index) {
-          <p><app-inline-text [text]="paragraph" /></p>
-        }
-
-        <h2 class="t-title">{{ page.careerHeading }}</h2>
-        <dl>
-          @for (row of page.career; track $index) {
-            <dt>{{ row.period }}</dt>
-            <dd><app-inline-text [text]="row.text" /></dd>
-          }
-        </dl>
-
-        <h2 class="t-title">{{ page.collaborationsHeading }}</h2>
-        <dl>
-          @for (entry of collaborations(); track entry.slug) {
-            <dt>{{ entry.names.join(', ') }}</dt>
-            <dd><app-inline-text [text]="entry.role" /></dd>
-          }
-        </dl>
-
-        @if (inDevelopment(); as items) {
-          <h2 class="t-title">{{ page.inDevelopmentHeading }}</h2>
-          <app-in-development-list [items]="items" />
-        }
-
-        <p>
-          <a [routerLink]="route.link('films')">{{ page.filmsLink }}</a>
-        </p>
-        <p>
-          <a [routerLink]="route.link('contact')">{{ page.contactLink }}</a>
-        </p>
-      </div>
-    }
-  `,
+  imports: [
+    RouterLink,
+    PageHeading,
+    BlockButton,
+    ContentImage,
+    DataList,
+    DotLine,
+    InlineText,
+    LogoGrid,
+    NameWall,
+  ],
+  templateUrl: './about-page.html',
+  styleUrl: './about-page.scss',
 })
 export class AboutPage {
-  private readonly content = inject(ContentService);
+  protected readonly content = inject(ContentService);
   protected readonly route = inject(CurrentRouteService);
 
   protected readonly page = this.content.page('about');
-  protected readonly collaborations = this.content.collaborations();
+  private readonly organisations = this.content.organisations();
   protected readonly inDevelopment = this.content.inDevelopment();
+
+  /** Portrait: full width below md, 4 of 8 columns at md, 5 of 12 at lg. */
+  protected readonly portraitSizes =
+    '(min-width: 90rem) 553px, (min-width: 80rem) 41vw, (min-width: 48rem) 50vw, calc(100vw - 40px)';
+
+  protected readonly career = computed(() =>
+    (this.page()?.career ?? []).map((row) => ({ label: row.period, value: row.text })),
+  );
+
+  /** Every organisation, in content order, for the logo grid. */
+  protected readonly names = computed(() =>
+    (this.organisations() ?? []).map((entry) => entry.name),
+  );
+
+  /** The organisations whose content says what Sara did for them. */
+  protected readonly collaborations = computed(() =>
+    (this.organisations() ?? [])
+      .filter((entry) => entry.role)
+      .map((entry) => ({ name: entry.name, role: entry.role })),
+  );
 }

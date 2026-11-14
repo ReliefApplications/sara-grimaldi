@@ -94,6 +94,14 @@
     "next": {
       "fr": "Film suivant",
       "en": "Next film"
+    },
+    "moreSelections": {
+      "fr": "Voir toutes les sélections",
+      "en": "Show all selections"
+    },
+    "near": {
+      "fr": "Autres films",
+      "en": "Other films"
     }
   }
 }

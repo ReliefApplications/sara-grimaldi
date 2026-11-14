@@ -23,7 +23,6 @@ You never need to touch the code to change wording. Everything is in
 | The small privacy notice ("cookie banner")      | `privacyNotice` in `content/site.json`     |
 | One film                                        | `content/films/<film>.json`                |
 | One press item                                  | `content/press/<year>-<outlet>.json`       |
-| One collaboration (brand, media…)               | `content/collaborations/<name>.json`       |
 | One project in development                      | `content/in-development/<name>.json`       |
 | One client or medium, with its logo             | `content/organisations/<name>.json`        |
 | Images                                          | `content/images/`                          |
@@ -88,15 +87,21 @@ Other content:
   optional. Items are listed most recent year first; for two items of the
   same year, add `"order": 1`, `"order": 2` to choose.
 - **Organisations** (clients and media): each file has a `"name"`, a
-  `"kind"` (`client` or `press`), an `"order"` and, when a logo exists, a
-  `"logo"` (file in `content/images/logos/`, its pixel `"size"`, and a
-  description in both languages). Wherever a collaboration or a press item
-  names an organisation, the site can show its logo; without a logo, or when
-  the name is written differently, it shows the name as text. List other
-  spellings under `"aliases"` (for example `"Universal"` for Universal
-  Music). The current logos come from Sara's own site and are small.
-- **Collaborations** and **projects in development**: `"order"` sets the
-  position, `"home": true` shows the entry on the home page.
+  `"kind"` (`client` or `press`), an `"order"`, and `"home": true` to show
+  it in the grid of the home page. `"role"` says what Sara did for it; the
+  About page lists the organisations that have one. When a logo exists,
+  `"logo"` gives its file in `content/images/logos/`, its pixel `"size"` and
+  its description (the name). `"scale"` (between 0.7 and 1.3) makes a logo
+  look a little smaller or larger beside the others. Without a logo the name
+  is shown in type. A press item shows the logo of the organisation with the
+  same name; list other spellings under `"aliases"` (for example
+  `"France 3"` for france.tv). The current logos come from Sara's own site
+  and are small.
+- **Projects in development**: `"order"` sets the position; `"format"` is a
+  list such as `["Long métrage", "scénario"]`.
+- **Credential badge** on the About page: `"badge"` in
+  `content/pages/about.json` (a logo file, its `"size"` and description);
+  remove the block to show none.
 - **Second contact** on the Contact page (for example an agent):
   `"secondaryContact": { "show": true, … }` in `content/pages/contact.json`, with its
   heading, name and e-mail. The name and e-mail are empty for now: fill them

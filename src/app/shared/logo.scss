@@ -1,0 +1,105 @@
+@use '../../styles/breakpoints' as *;
+
+// Box sizes (8.15): maximum width and height per context and breakpoint.
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:host(.grid) {
+  --box-w: 104px;
+  --box-h: 40px;
+
+  @include md {
+    --box-w: 132px;
+    --box-h: 48px;
+  }
+
+  @include lg {
+    --box-w: 156px;
+    --box-h: 56px;
+  }
+}
+
+:host(.band) {
+  --box-w: 180px;
+  --box-h: 30px;
+
+  @include md {
+    --box-w: 220px;
+    --box-h: 36px;
+  }
+
+  @include lg {
+    --box-w: 260px;
+    --box-h: 42px;
+  }
+}
+
+:host(.row) {
+  --box-w: 180px;
+  --box-h: 30px;
+  justify-content: flex-start;
+
+  @include md {
+    --box-w: 200px;
+    --box-h: 34px;
+  }
+
+  @include lg {
+    --box-w: 220px;
+    --box-h: 36px;
+  }
+}
+
+// Fitted inside the box, corrected by the logo's own scale, and never shown
+// larger than the file itself.
+img {
+  width: auto;
+  max-width: min(calc(var(--box-w) * var(--logo-scale, 1)), var(--logo-w));
+  height: auto;
+  max-height: min(calc(var(--box-h) * var(--logo-scale, 1)), var(--logo-h));
+  object-fit: contain;
+}
+
+// On the ground: grey, and blended so a white box around a logo disappears.
+:host(.grid) img {
+  filter: grayscale(1);
+  mix-blend-mode: multiply;
+}
+
+// Without a logo: the name, wide and heavy.
+.name {
+  font-stretch: var(--wide);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+:host(.grid) .name {
+  max-width: var(--box-w);
+  font-size: 0.8125rem;
+  line-height: 1.15;
+  text-align: center;
+
+  @include md {
+    font-size: 0.875rem;
+  }
+
+  @include lg {
+    font-size: 1rem;
+  }
+}
+
+:host(.band) .name {
+  font-size: var(--size-band);
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+:host(.row) .name {
+  font-size: var(--size-title);
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}

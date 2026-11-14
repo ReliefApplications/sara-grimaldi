@@ -3,7 +3,6 @@ import { computed, inject, Injectable, Injector, Signal, untracked } from '@angu
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   BuildInfo,
-  Collaboration,
   Film,
   InDevelopmentItem,
   Organisation,
@@ -49,11 +48,6 @@ export class ContentService {
   /** Entries of content/press, most recent first. */
   press(): Signal<Resolved<PressItem>[] | undefined> {
     return this.load<PressItem[]>('collections/press.json');
-  }
-
-  /** Entries of content/collaborations, in their set order. */
-  collaborations(): Signal<Resolved<Collaboration>[] | undefined> {
-    return this.load<Collaboration[]>('collections/collaborations.json');
   }
 
   /** Entries of content/in-development, in their set order. */
