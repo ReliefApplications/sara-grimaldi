@@ -1,5 +1,5 @@
 {
-  "_note": "Draft, not legal advice: written to describe what the site does, not reviewed by a lawyer. Every [à compléter …] / [to be completed …] marker must be replaced and the text validated before launch.",
+  "_note": "Draft, not legal advice: the publisher's identity comes from the company's own record; the rest was written to describe what the site does and has not been reviewed by a lawyer. Every [à compléter …] / [to be completed …] marker must be replaced and the text validated before launch.",
   "seo": {
     "title": {
       "fr": "Confidentialité – Sara Grimaldi",
@@ -14,7 +14,7 @@
     "fr": "Politique de confidentialité",
     "en": "Privacy policy"
   },
-  "updated": "",
+  "updated": "2026-11-14",
   "intro": {
     "fr": "Ce site est une vitrine professionnelle. Il a été conçu pour collecter le moins de données possible. Cette page explique précisément ce qui se passe quand vous le consultez.",
     "en": "This website is a professional showcase. It was designed to collect as little data as possible. This page explains exactly what happens when you visit it."
@@ -28,14 +28,30 @@
       },
       "paragraphs": {
         "fr": [
-          "Le responsable du traitement des données est [à compléter : nom et prénom, ou dénomination sociale], [à compléter : adresse professionnelle].",
-          "Pour toute question sur vos données : [à compléter : adresse e-mail de contact]."
+          "Le responsable du traitement des données est Sara Grimaldi. Pour toute question sur vos données, écrivez-lui à info@saragrimaldi.com.",
+          "Ce site est édité et réalisé par Relief Applications, qui en est le prestataire technique. Les demandes relatives aux données personnelles peuvent aussi être adressées à son délégué à la protection des données, à dpo@reliefapplications.org."
         ],
         "en": [
-          "The data controller is [to be completed: full name or company name], [to be completed: business address].",
-          "For any question about your data: [to be completed: contact email address]."
+          "The data controller is Sara Grimaldi. For any question about your data, write to her at info@saragrimaldi.com.",
+          "This website is published and built by Relief Applications, which is its technical provider. Requests about personal data can also be sent to its data protection officer at dpo@reliefapplications.org."
         ]
-      }
+      },
+      "links": [
+        {
+          "label": {
+            "fr": "info@saragrimaldi.com",
+            "en": "info@saragrimaldi.com"
+          },
+          "url": "mailto:info@saragrimaldi.com"
+        },
+        {
+          "label": {
+            "fr": "dpo@reliefapplications.org",
+            "en": "dpo@reliefapplications.org"
+          },
+          "url": "mailto:dpo@reliefapplications.org"
+        }
+      ]
     },
     {
       "id": "en-bref",
@@ -69,14 +85,14 @@
           "Le site est hébergé par GitHub Pages, un service de GitHub, Inc. (États-Unis). Comme tout hébergeur, GitHub reçoit l’adresse IP de votre appareil lorsque vous consultez une page. Selon sa documentation, GitHub enregistre et conserve cette adresse à des fins de sécurité.",
           "L’éditeur de ce site n’a pas accès à ces journaux et ne les utilise pas.",
           "Ces données sont traitées par GitHub aux États-Unis. GitHub déclare adhérer au cadre de protection des données UE–États-Unis (Data Privacy Framework) et s’appuyer sur les clauses contractuelles types de la Commission européenne.",
-          "Durée de conservation : elle est fixée par GitHub ([à compléter : durée, si elle est connue]).",
+          "Durée de conservation : elle est fixée par GitHub, qui n’en publie pas de durée précise.",
           "Fondement : l’intérêt légitime à assurer la sécurité et le bon fonctionnement du site."
         ],
         "en": [
           "The website is hosted on GitHub Pages, a service of GitHub, Inc. (United States). Like any host, GitHub receives your device’s IP address when you view a page. According to its documentation, GitHub logs and stores this address for security purposes.",
           "The publisher of this website has no access to these logs and does not use them.",
           "This data is processed by GitHub in the United States. GitHub states that it complies with the EU-U.S. Data Privacy Framework and relies on the European Commission’s standard contractual clauses.",
-          "Retention period: set by GitHub ([to be completed: period, if known]).",
+          "Retention period: set by GitHub, which does not publish a specific period.",
           "Legal basis: the legitimate interest in keeping the website secure and working."
         ]
       },
@@ -98,11 +114,11 @@
       },
       "paragraphs": {
         "fr": [
-          "Si vous me contactez par e-mail ou par téléphone, les informations que vous me transmettez (nom, coordonnées, contenu du message) servent uniquement à vous répondre et à donner suite à votre demande.",
+          "Si vous écrivez à Sara Grimaldi à l’adresse info@saragrimaldi.com ou si vous l’appelez, les informations que vous lui transmettez (nom, coordonnées, contenu du message) sont traitées par Sara Grimaldi, uniquement pour vous répondre et donner suite à votre demande.",
           "Elles ne sont ni vendues ni transmises à des tiers, sauf si votre demande le nécessite et avec votre accord."
         ],
         "en": [
-          "If you contact me by email or phone, the information you give me (name, contact details, the content of your message) is used only to reply and to follow up on your request.",
+          "If you write to Sara Grimaldi at info@saragrimaldi.com or call her, the information you give her (name, contact details, the content of your message) is handled by Sara Grimaldi, only to reply and to follow up on your request.",
           "It is not sold or passed on to third parties, unless your request requires it and you agree."
         ]
       },
@@ -190,13 +206,22 @@
       "paragraphs": {
         "fr": [
           "Ce site mentionne les noms de personnes ayant participé aux films (génériques, distribution, équipes techniques) ou citées dans la presse. Ces mentions ont pour but de créditer leur travail et d’informer sur les œuvres.",
-          "Si vous êtes cité sur ce site et souhaitez qu’une mention soit corrigée ou retirée, écrivez à [à compléter : adresse e-mail de contact]."
+          "Si vous êtes cité sur ce site et souhaitez qu’une mention soit corrigée ou retirée, écrivez à Sara Grimaldi :"
         ],
         "en": [
           "This website mentions the names of people who took part in the films (credits, cast, crew) or who are quoted in the press. These mentions are there to credit their work and to give information about the films.",
-          "If you are named on this website and would like a mention to be corrected or removed, write to [to be completed: contact email address]."
+          "If you are named on this website and would like a mention to be corrected or removed, write to Sara Grimaldi:"
         ]
-      }
+      },
+      "links": [
+        {
+          "label": {
+            "fr": "info@saragrimaldi.com",
+            "en": "info@saragrimaldi.com"
+          },
+          "url": "mailto:info@saragrimaldi.com"
+        }
+      ]
     },
     {
       "id": "droits",
@@ -232,15 +257,29 @@
       },
       "after": {
         "fr": [
-          "Pour les exercer, écrivez à [à compléter : adresse e-mail de contact]. Une réponse vous sera apportée dans un délai d’un mois.",
+          "Pour les exercer, écrivez à Sara Grimaldi à info@saragrimaldi.com, ou au délégué à la protection des données de Relief Applications à dpo@reliefapplications.org. Une réponse vous sera apportée dans un délai d’un mois.",
           "Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la Commission nationale de l’informatique et des libertés (CNIL)."
         ],
         "en": [
-          "To exercise them, write to [to be completed: contact email address]. You will receive a reply within one month.",
+          "To exercise them, write to Sara Grimaldi at info@saragrimaldi.com, or to the data protection officer of Relief Applications at dpo@reliefapplications.org. You will receive a reply within one month.",
           "If you believe your rights are not being respected, you can lodge a complaint with the French data protection authority, the Commission nationale de l’informatique et des libertés (CNIL)."
         ]
       },
       "links": [
+        {
+          "label": {
+            "fr": "info@saragrimaldi.com",
+            "en": "info@saragrimaldi.com"
+          },
+          "url": "mailto:info@saragrimaldi.com"
+        },
+        {
+          "label": {
+            "fr": "dpo@reliefapplications.org",
+            "en": "dpo@reliefapplications.org"
+          },
+          "url": "mailto:dpo@reliefapplications.org"
+        },
         {
           "label": {
             "fr": "CNIL",

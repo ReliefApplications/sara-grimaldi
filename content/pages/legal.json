@@ -1,5 +1,5 @@
 {
-  "_note": "Draft, not legal advice: written to describe what the site does, not reviewed by a lawyer. Every [à compléter …] / [to be completed …] marker must be replaced and the text validated before launch.",
+  "_note": "Draft, not legal advice: the publisher's identity comes from the company's own record; the rest was written to describe what the site does and has not been reviewed by a lawyer. Every [à compléter …] / [to be completed …] marker must be replaced and the text validated before launch.",
   "seo": {
     "title": {
       "fr": "Mentions légales – Sara Grimaldi",
@@ -14,7 +14,7 @@
     "fr": "Mentions légales",
     "en": "Legal notice"
   },
-  "updated": "",
+  "updated": "2026-11-14",
   "sections": [
     {
       "id": "editeur",
@@ -24,34 +24,41 @@
       },
       "list": {
         "fr": [
-          "Ce site est édité par [à compléter : nom et prénom, ou dénomination sociale].",
-          "Statut : [à compléter : forme juridique ou statut professionnel].",
-          "Adresse : [à compléter : adresse professionnelle ou siège social].",
-          "Téléphone : [à compléter : numéro de téléphone].",
-          "E-mail : [à compléter : adresse e-mail de contact].",
-          "SIREN / SIRET : [à compléter : numéro SIREN ou SIRET].",
-          "TVA intracommunautaire : [à compléter : numéro de TVA, le cas échéant]."
+          "Ce site est édité par Relief Applications, SAS (société par actions simplifiée) au capital de 5 000 €.",
+          "Siège social : 10 rue Guy de Maupassant, 31200 Toulouse, France.",
+          "RCS Toulouse 804 995 207.",
+          "SIRET 804 995 207 00029.",
+          "N° TVA intracommunautaire : FR10804995207.",
+          "E-mail : contact@reliefapplications.org."
         ],
         "en": [
-          "This website is published by [to be completed: full name or company name].",
-          "Status: [to be completed: legal form or professional status].",
-          "Address: [to be completed: business address or registered office].",
-          "Phone: [to be completed: phone number].",
-          "Email: [to be completed: contact email address].",
-          "SIREN / SIRET (French business registration): [to be completed: SIREN or SIRET number].",
-          "EU VAT number: [to be completed: VAT number, if any]."
+          "This website is published by Relief Applications, a French simplified joint-stock company (SAS, société par actions simplifiée) with a share capital of €5,000.",
+          "Registered office: 10 rue Guy de Maupassant, 31200 Toulouse, France.",
+          "Toulouse Trade and Companies Register (RCS Toulouse): 804 995 207.",
+          "SIRET: 804 995 207 00029.",
+          "EU VAT number: FR10804995207.",
+          "Email: contact@reliefapplications.org."
         ]
-      }
+      },
+      "links": [
+        {
+          "label": {
+            "fr": "contact@reliefapplications.org",
+            "en": "contact@reliefapplications.org"
+          },
+          "url": "mailto:contact@reliefapplications.org"
+        }
+      ]
     },
     {
       "id": "publication",
       "heading": {
-        "fr": "Directrice de la publication",
+        "fr": "Directeur de la publication",
         "en": "Director of publication"
       },
       "paragraphs": {
-        "fr": ["La directrice de la publication est [à compléter : nom et prénom]."],
-        "en": ["The director of publication is [to be completed: full name]."]
+        "fr": ["Le directeur de la publication est Raphaël Bonnaud."],
+        "en": ["The director of publication is Raphaël Bonnaud."]
       }
     },
     {
@@ -95,15 +102,24 @@
           "Les films, extraits, photographies, affiches, textes et autres contenus présentés sur ce site sont protégés par le droit d’auteur. Ils appartiennent à Sara Grimaldi ou à leurs auteurs, producteurs et ayants droit respectifs.",
           "Toute reproduction, diffusion ou réutilisation, totale ou partielle, sans autorisation écrite préalable est interdite, en dehors des exceptions prévues par la loi.",
           "Les noms de marques, de médias et de sociétés cités sur ce site appartiennent à leurs propriétaires respectifs. Ils sont mentionnés uniquement pour décrire des collaborations professionnelles.",
-          "Pour toute demande d’utilisation d’une image ou d’un extrait, écrivez à [à compléter : adresse e-mail de contact]."
+          "Pour toute demande d’utilisation d’une image ou d’un extrait, écrivez à Sara Grimaldi :"
         ],
         "en": [
           "The films, excerpts, photographs, posters, texts and other content shown on this website are protected by copyright. They belong to Sara Grimaldi or to their respective authors, producers and rights holders.",
           "Any reproduction, distribution or reuse, in whole or in part, without prior written permission is prohibited, apart from the exceptions provided by law.",
           "The names of brands, media and companies mentioned on this website belong to their respective owners. They are mentioned only to describe professional collaborations.",
-          "To ask for permission to use an image or an excerpt, write to [to be completed: contact email address]."
+          "To ask for permission to use an image or an excerpt, write to Sara Grimaldi:"
         ]
-      }
+      },
+      "links": [
+        {
+          "label": {
+            "fr": "info@saragrimaldi.com",
+            "en": "info@saragrimaldi.com"
+          },
+          "url": "mailto:info@saragrimaldi.com"
+        }
+      ]
     },
     {
       "id": "credits",
@@ -113,16 +129,18 @@
       },
       "list": {
         "fr": [
-          "Photographies et images de films : [à compléter : crédits photographiques].",
+          "Images extraites des films de Sara Grimaldi, © Sara Grimaldi et leurs ayants droit respectifs.",
           "Portrait : [à compléter : crédit du portrait].",
-          "Conception et réalisation du site : [à compléter : nom du ou des prestataires].",
-          "Typographies : Fraunces et Inter, distribuées sous licence SIL Open Font License 1.1."
+          "Les logos et marques cités appartiennent à leurs titulaires respectifs.",
+          "Site conçu et réalisé par Relief Applications.",
+          "Typographies : Archivo et Fraunces, distribuées sous licence SIL Open Font License 1.1."
         ],
         "en": [
-          "Photographs and film stills: [to be completed: photo credits].",
+          "Images taken from the films of Sara Grimaldi, © Sara Grimaldi and their respective rights holders.",
           "Portrait: [to be completed: portrait credit].",
-          "Website design and development: [to be completed: name of the people or companies].",
-          "Typefaces: Fraunces and Inter, distributed under the SIL Open Font License 1.1."
+          "The logos and trademarks shown belong to their respective owners.",
+          "Site designed and built by Relief Applications.",
+          "Typefaces: Archivo and Fraunces, distributed under the SIL Open Font License 1.1."
         ]
       }
     },
@@ -149,12 +167,21 @@
       },
       "paragraphs": {
         "fr": [
-          "Si un contenu de ce site vous concerne et vous semble inexact ou porter atteinte à vos droits, écrivez à [à compléter : adresse e-mail de contact]. Votre demande sera traitée dans les meilleurs délais."
+          "Si un contenu de ce site vous concerne et vous semble inexact ou porter atteinte à vos droits, écrivez à Sara Grimaldi. Votre demande sera traitée dans les meilleurs délais."
         ],
         "en": [
-          "If something on this website concerns you and seems inaccurate or infringes your rights, write to [to be completed: contact email address]. Your request will be handled as quickly as possible."
+          "If something on this website concerns you and seems inaccurate or infringes your rights, write to Sara Grimaldi. Your request will be handled as quickly as possible."
         ]
-      }
+      },
+      "links": [
+        {
+          "label": {
+            "fr": "info@saragrimaldi.com",
+            "en": "info@saragrimaldi.com"
+          },
+          "url": "mailto:info@saragrimaldi.com"
+        }
+      ]
     }
   ],
   "crossLink": {

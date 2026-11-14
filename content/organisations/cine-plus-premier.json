@@ -1,7 +1,7 @@
 {
   "name": "Ciné+ Premier",
   "kind": "client",
-  "order": 6,
+  "order": 7,
   "home": true,
   "logo": {
     "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",

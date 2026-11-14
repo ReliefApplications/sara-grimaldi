@@ -7,6 +7,9 @@ import { PageHeading } from '../core/page-heading';
 import { ArrowLink } from '../shared/arrow-link';
 import { InlineText } from '../shared/inline-text';
 
+/** British rather than American date order in English: "14 November 2026". */
+const DATE_LOCALES = { fr: 'fr-FR', en: 'en-GB' } as const;
+
 /** Legal notice and privacy policy: same layout, different content (design system, 9.8). */
 @Component({
   selector: 'app-legal-page',
@@ -32,8 +35,9 @@ export class LegalPage {
     const date = new Date(`${this.page()?.updated}T00:00:00Z`);
     return Number.isNaN(date.getTime())
       ? undefined
-      : new Intl.DateTimeFormat(this.route.lang(), { dateStyle: 'long', timeZone: 'UTC' }).format(
-          date,
-        );
+      : new Intl.DateTimeFormat(DATE_LOCALES[this.route.lang()], {
+          dateStyle: 'long',
+          timeZone: 'UTC',
+        }).format(date);
   });
 }

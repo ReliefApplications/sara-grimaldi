@@ -39,7 +39,9 @@
               <ul class="links">
                 @for (link of links; track $index) {
                   <li>
-                    @if (link.url) {
+                    @if (link.url?.startsWith('mailto:')) {
+                      <a class="text-link" [href]="link.url">{{ link.label }}</a>
+                    } @else if (link.url) {
                       <a
                         class="text-link"
                         [href]="link.url"

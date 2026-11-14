@@ -105,10 +105,15 @@ describe('App', () => {
 
     // Collaborators: a grid of logos, or names where there is no logo.
     const cells = [...page.querySelectorAll('app-logo-grid li')];
-    // Exactly fifteen on the home page, all with a logo.
+    // Exactly fifteen on the home page: logos first, then the names without one.
     expect(cells.length).toBe(15);
-    expect(cells[0].querySelector('img')?.getAttribute('alt')).toBe('Universal Music');
-    expect(cells.every((cell) => cell.querySelector('img'))).toBe(true);
+    expect(cells[0].querySelector('img')?.getAttribute('alt')).toBe('Vogue');
+    expect(cells.slice(0, 12).every((cell) => cell.querySelector('img'))).toBe(true);
+    expect(cells.slice(12).map((cell) => cell.textContent?.trim())).toEqual([
+      'Barilla',
+      'Volkswagen',
+      'Sky',
+    ]);
     const tiles = [...page.querySelectorAll('app-film-tile')];
     expect(tiles.map((tile) => tile.querySelector('.title')?.textContent?.trim())).toEqual([
       'La Dolce Attesa',
@@ -230,8 +235,16 @@ describe('App', () => {
     await open('/fr/mentions-legales');
     expect(text('h1')).toBe('Mentions légales');
     expect(head('meta[name="robots"]', 'content')).toBe('noindex');
-    expect(page.querySelectorAll('main mark').length).toBeGreaterThan(10);
+    expect(page.querySelector('#editeur + ul')?.textContent).toContain('Relief Applications');
+    expect(page.querySelector('#editeur + ul')?.textContent).toContain('RCS Toulouse 804 995 207');
+    expect(text('.updated')).toContain('14 novembre 2026');
+    // What is not known yet is still marked, never invented.
+    expect(page.querySelectorAll('main mark').length).toBe(2);
+    expect(
+      page.querySelector('main a[href="mailto:contact@reliefapplications.org"]'),
+    ).not.toBeNull();
     expect(text('main mark')).toMatch(/^\[à compléter/);
+    expect(page.querySelector('main a[href="mailto:info@saragrimaldi.com"]')).not.toBeNull();
     const links = [...page.querySelectorAll('footer nav a')].map((a) => a.getAttribute('href'));
     expect(links).toEqual(['/fr/mentions-legales', '/fr/confidentialite']);
     expect(page.querySelector('.cross a')?.getAttribute('href')).toBe('/fr/confidentialite');

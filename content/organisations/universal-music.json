@@ -2,7 +2,7 @@
   "name": "Universal Music",
   "aliases": ["Universal"],
   "kind": "client",
-  "order": 1,
+  "order": 4,
   "home": true,
   "role": {
     "fr": "Production exécutive, clip tourné à Paris",

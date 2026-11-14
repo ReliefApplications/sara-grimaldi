@@ -1,8 +1,8 @@
 {
   "name": "Biosme",
   "kind": "client",
-  "order": 10,
-  "home": true,
+  "order": 18,
+  "home": false,
   "logo": {
     "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
     "src": "images/logos/biosme.webp",

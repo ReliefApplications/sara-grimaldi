@@ -55,8 +55,18 @@
   gap: var(--space-6) var(--gutter);
   margin-top: var(--space-7);
 
+  // Three columns where each value fits on one line (from about 900 px);
+  // fewer columns before that, never a value broken inside a word.
   @include md {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  }
+
+  .t-title {
+    overflow-wrap: normal;
+  }
+
+  .plain-link {
+    white-space: nowrap;
   }
 }
 

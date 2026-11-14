@@ -29,10 +29,11 @@
   margin-top: var(--space-4);
 }
 
-// Title and meta: one under the other. Where the tile is wide enough (a
-// full-width tile from md, any tile from lg) the meta moves to the right of
-// the title, but only if the whole title fits beside it on one line: a title
-// is never squeezed into breaking inside a word.
+// Title and meta: one under the other. On a full-width tile from md the
+// meta moves to the right of the title, but only if the whole title fits
+// beside it on one line: a title is never squeezed into breaking inside a
+// word. Half-width tiles keep the meta under the title, so two tiles side by
+// side always look the same.
 .words {
   display: flex;
   flex-direction: column;
@@ -61,10 +62,6 @@
   :host(.lead) {
     @include meta-beside;
   }
-}
-
-@include lg {
-  @include meta-beside;
 }
 
 // Hover and focus: the image grows slightly, the title becomes a highlight.
