@@ -239,7 +239,7 @@ describe('App', () => {
     expect(page.querySelector('#editeur + ul')?.textContent).toContain('RCS Toulouse 804 995 207');
     expect(text('.updated')).toContain('14 novembre 2026');
     // What is not known yet is still marked, never invented.
-    expect(page.querySelectorAll('main mark').length).toBe(2);
+    expect(page.querySelectorAll('main mark').length).toBe(1);
     expect(
       page.querySelector('main a[href="mailto:contact@reliefapplications.org"]'),
     ).not.toBeNull();

@@ -65,9 +65,9 @@ img {
   object-fit: contain;
 }
 
-// On the ground: grey, and blended so a white box around a logo disappears.
+// On the ground: in their own colours, blended so that a white box around a
+// logo disappears into the field.
 :host(.grid) img {
-  filter: grayscale(1);
   mix-blend-mode: multiply;
 }
 

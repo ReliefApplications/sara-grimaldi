@@ -5,7 +5,7 @@ import { ContentService } from '../core/content.service';
  * An organisation shown as its logo, fitted in a box so that wide wordmarks
  * and tall emblems carry similar weight, or as its name in type when content
  * has no logo for it (design system, 8.15). `size` picks the box: "grid"
- * (logo grid, greyed and blended into the ground), "band" (press band) or
+ * (logo grid, in colour, blended into the ground), "band" (press band) or
  * "row" (press rows). Logos never go on the ink surface.
  */
 @Component({

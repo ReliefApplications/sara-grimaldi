@@ -72,13 +72,9 @@
         "en": ["This website is hosted on GitHub Pages, a service of GitHub, Inc."]
       },
       "list": {
-        "fr": [
-          "GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.",
-          "Téléphone : [à compléter : numéro de téléphone de l’hébergeur]."
-        ],
+        "fr": ["GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis."],
         "en": [
-          "GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States.",
-          "Phone: [to be completed: host’s phone number]."
+          "GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States."
         ]
       },
       "links": [

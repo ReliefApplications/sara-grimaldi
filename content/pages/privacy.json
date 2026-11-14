@@ -125,12 +125,12 @@
       "list": {
         "fr": [
           "Fournisseur de messagerie : [à compléter : fournisseur de messagerie et pays d’hébergement].",
-          "Durée de conservation : [à compléter : durée de conservation des échanges].",
+          "Durée de conservation : les échanges sont conservés le temps nécessaire au traitement de votre demande, puis au plus trois ans après le dernier contact.",
           "Fondement : l’intérêt légitime à répondre aux demandes reçues, ou les mesures précontractuelles prises à votre demande."
         ],
         "en": [
           "Email provider: [to be completed: email provider and hosting country].",
-          "Retention period: [to be completed: how long correspondence is kept].",
+          "Retention period: correspondence is kept for as long as needed to handle your request, and for no more than three years after the last contact.",
           "Legal basis: the legitimate interest in answering the requests received, or steps taken at your request before entering into a contract."
         ]
       }
