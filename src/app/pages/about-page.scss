@@ -61,13 +61,13 @@
   margin-top: var(--space-8);
 }
 
-// Credential badge: small, greyed and blended into the ground like the logos.
+// Credential badge: small, in its own colours, blended into the ground like
+// the logos.
 .badge {
   width: auto;
   max-width: min(20rem, 100%);
   max-height: 3.5rem; // 320 × 56 px box (10.4)
   margin-top: var(--space-6);
-  filter: grayscale(1);
   mix-blend-mode: multiply;
 }
 

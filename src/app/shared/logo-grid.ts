@@ -44,6 +44,15 @@ import { Logo } from './logo';
       background-size: calc(100% / var(--columns)) 100%;
     }
 
+    // In two columns, an odd last cell takes the whole row (and covers the
+    // vertical line that would otherwise run through it).
+    @media (max-width: 47.9375rem) {
+      li:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        background: var(--surface);
+      }
+    }
+
     .mark {
       max-width: 100%;
       max-height: 100%;

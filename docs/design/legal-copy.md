@@ -4,6 +4,11 @@ Version 1.1, 2026-11-14. Owner: designer. Companion to `design-system.md`
 (sections 8.26, 8.27 and 9.8), which defines routes, layout and the content
 structure. The developer copies this text into the content files.
 
+**Superseded (2026-11-14).** The publisher's facts and several decisions
+have since been supplied and written directly into the content files. The
+content files are now the reference for the legal text; this document is
+kept only as the original draft and no longer matches the site.
+
 **Status: draft, not legal advice.** This text was written by the design
 team to describe what the site actually does. It has not been reviewed by a
 lawyer. The publisher must check it, complete every placeholder and have it

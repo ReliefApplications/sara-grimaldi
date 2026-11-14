@@ -1,6 +1,6 @@
 # Design system: Sara Grimaldi website
 
-Version 2.3, 2026-11-14. Owner: designer. Replaces every 1.x version: the
+Version 2.4, 2026-11-14. Owner: designer. Replaces every 1.x version: the
 look is new, the structure (routes, content, legal, accessibility) is kept.
 This file is the single source of truth for the build. If something is not
 specified here, ask the designer rather than guessing.
@@ -559,11 +559,12 @@ versions. Rules that make them sit together:
   within the files' sizes; on high-density screens some will be slightly
   soft, which is accepted until better files are supplied.
 - **Colour treatment.**
-  - On the **ground** surface (logo grid): `filter: grayscale(1)` and
-    `mix-blend-mode: multiply`. Grayscale makes multi-coloured logos sit
-    together and next to the vermilion; multiply makes any white box around
-    a logo disappear into the ground, so transparent backgrounds are not
-    assumed. No hover effect.
+  - On the **ground** surface (logo grid): logos keep **their own colours**;
+    no grayscale or other filter. `mix-blend-mode: multiply` only, which
+    makes any white box around a logo disappear into the ground, so
+    transparent backgrounds are not assumed. A coloured box that belongs to a
+    mark stays. No hover effect. The grid's black rules and even cells are
+    what hold the different colours together.
   - On the **accent** surface (`press` band) and in press rows on ground:
     black artwork as supplied, no filter. A logo that is not black-only is
     not used on accent; show the name instead.
@@ -590,8 +591,10 @@ size) or one fallback name, centred both ways.
   8.15 shrinks if needed to keep that margin.
 - Order: organisations with a logo first, then those shown as names, so the
   names form the end of the grid and never sit among the logos.
-- Thin or pale marks that read too faintly after the grayscale treatment get
-  `scale` 1.3; heavy black marks stay at 1 or go down to 0.85.
+- Thin or pale marks that read too faintly get `scale` 1.3; heavy black
+  marks stay at 1 or go down to 0.85.
+- At base, when the number of items is odd, the last cell spans both
+  columns, so no empty cell is left.
 
 - 1 px ink rules between cells (inner lines only, none around the outside);
   2 px ink rule above and below the grid.
@@ -803,7 +806,7 @@ below, with a 2 px ink rule above the first row of the group.
 4. Collaborations: section label; logo grid (8.16) of all organisations;
    then, 64 px under it, a full-bleed ink section with the name wall (8.9)
    giving each collaborator's role. An optional credential badge (image from
-   content, max 320 × 56 px, grayscale and multiply as in 8.15, alt = its
+   content, max 320 × 56 px, own colours and multiply as in 8.15, alt = its
    wording) may sit under the career list.
 5. In development (only if items): section label "En développement" / "In
    development"; rows: title in `title`, format and status in `label` muted,
@@ -986,6 +989,9 @@ pause and play icons are CSS shapes.
 
 ## Change log
 
+- 2.4 (2026-11-14): client logos in their own colours, not grayscale; the
+  About badge follows (8.15, 10.4); last cell spans two columns at base when
+  the count is odd (8.16).
 - 2.3 (2026-11-14), after the full v2 build: `display` starts at 26 px so
   single long words fit at 360 px (3.2); wordmark fixed at 14 px at base
   (8.2); logo grid in 2 columns at base, logos before names, 16 px cell
