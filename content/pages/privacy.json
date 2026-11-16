@@ -144,15 +144,19 @@
       "paragraphs": {
         "fr": [
           "Ce site ne dépose aucun cookie.",
-          "Une seule information est enregistrée dans votre navigateur, et seulement si vous fermez le message d’information sur la confidentialité : le fait que vous l’avez fermé, afin de ne plus vous l’afficher. Elle est stockée dans le « stockage local » du navigateur sous le nom « sg-privacy-notice ». Elle ne contient aucun identifiant, n’est pas envoyée au site et ne permet pas de vous suivre.",
-          "Vous pouvez la supprimer à tout moment en effaçant les données de site dans les réglages de votre navigateur.",
-          "Cette information étant strictement nécessaire à un choix que vous avez exprimé, elle ne requiert pas de consentement."
+          "Deux informations au plus sont enregistrées dans votre navigateur. La première, seulement si vous fermez le message d’information sur la confidentialité : le fait que vous l’avez fermé, afin de ne plus vous l’afficher. Elle est stockée dans le « stockage local » du navigateur sous le nom « sg-privacy-notice ».",
+          "La seconde, seulement si vous cliquez sur « Arrêter la vidéo » sur la page d’accueil : le fait que vous avez arrêté la bande démo, afin qu’elle ne redémarre pas pendant votre visite. Elle est stockée dans le « stockage de session » du navigateur sous le nom « showreel-stopped » et s’efface à la fermeture de l’onglet.",
+          "Elles ne contiennent aucun identifiant, ne sont pas envoyées au site et ne permettent pas de vous suivre.",
+          "Vous pouvez les supprimer à tout moment en effaçant les données de site dans les réglages de votre navigateur.",
+          "Ces informations étant strictement nécessaires à un choix que vous avez exprimé, elles ne requièrent pas de consentement."
         ],
         "en": [
           "This website sets no cookies.",
-          "A single piece of information is saved in your browser, and only if you close the privacy notice: the fact that you closed it, so that it is not shown to you again. It is kept in the browser’s “local storage” under the name “sg-privacy-notice”. It contains no identifier, is not sent to the website and cannot be used to track you.",
-          "You can delete it at any time by clearing site data in your browser settings.",
-          "Because this information is strictly necessary to a choice you made, it does not require consent."
+          "At most two pieces of information are saved in your browser. The first, only if you close the privacy notice: the fact that you closed it, so that it is not shown to you again. It is kept in the browser’s “local storage” under the name “sg-privacy-notice”.",
+          "The second, only if you click “Stop the video” on the home page: the fact that you stopped the showreel, so that it does not start again during your visit. It is kept in the browser’s “session storage” under the name “showreel-stopped” and is erased when you close the tab.",
+          "They contain no identifier, are not sent to the website and cannot be used to track you.",
+          "You can delete them at any time by clearing site data in your browser settings.",
+          "Because this information is strictly necessary to choices you made, it does not require consent."
         ]
       }
     },
@@ -165,12 +169,12 @@
       "paragraphs": {
         "fr": [
           "Sur la page d’accueil, la bande démo de Sara Grimaldi, hébergée par Vimeo, démarre sans le son après quelques secondes. Elle ne démarre pas si votre appareil demande de réduire les animations ou d’économiser les données, et le bouton « Arrêter la vidéo » l’arrête pour le reste de votre visite.",
-          "Sur les autres pages, le lecteur vidéo n’est chargé que lorsque vous cliquez sur le bouton de lecture ; avant ce clic, aucune donnée n’est transmise à Vimeo.",
+          "Les autres pages ne chargent aucun lecteur vidéo : les vidéos y sont proposées par un lien vers Vimeo, qui s’ouvre dans une nouvelle fenêtre. Tant que vous ne cliquez pas sur ce lien, aucune donnée n’est transmise à Vimeo.",
           "Le lecteur Vimeo est toujours chargé avec l’option « ne pas suivre » (dnt) de Vimeo, qui l’empêche de déposer des cookies et d’enregistrer des données de session. Vimeo reçoit néanmoins votre adresse IP, nécessaire pour vous envoyer la vidéo."
         ],
         "en": [
           "On the home page, Sara Grimaldi’s showreel, hosted by Vimeo, starts without sound after a few seconds. It does not start if your device asks for reduced motion or reduced data use, and the “Stop the video” button stops it for the rest of your visit.",
-          "On other pages, the video player is loaded only when you click the play button; before that click, no data is sent to Vimeo.",
+          "Other pages load no video player: videos are offered there as a link to Vimeo, which opens in a new window. As long as you do not click that link, no data is sent to Vimeo.",
           "The Vimeo player is always loaded with Vimeo’s “do not track” option (dnt), which stops it from setting cookies or recording session data. Vimeo still receives your IP address, which it needs to send you the video."
         ]
       },

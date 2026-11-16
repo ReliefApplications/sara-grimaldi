@@ -99,6 +99,11 @@ Other content:
   and are small.
 - **Projects in development**: `"order"` sets the position; `"format"` is a
   list such as `["Long métrage", "scénario"]`.
+- **Visual Stories projects** (`"work"` in `content/pages/visual-stories.json`):
+  to send visitors to a video or an article on another site, add
+  `"link": { "label": { "fr": "Voir le reportage", "en": "Watch the report" }, "url": "https://…" }`
+  to the project. The link opens in a new window; remove the block to show
+  none. `"published": false` keeps a project off the site.
 - **Credential badge** on the About page: `"badge"` in
   `content/pages/about.json` (a logo file, its `"size"` and description);
   remove the block to show none.
@@ -200,8 +205,8 @@ deployment → Source: GitHub Actions**.
   canonical and sharing links), so it is not written anywhere in the code.
 - **Custom domain.** The domain is set in the GitHub repository, not in the
   project: **Settings → Pages → Custom domain: `saragrimaldi.com`**, with
-  **Enforce HTTPS** ticked (otherwise the sharing links are written with
-  `http://`). The domain's DNS records must point to GitHub Pages. After
+  **Enforce HTTPS** ticked (otherwise GitHub reports the address with
+  `http://` and the safety check below stops the deployment). The domain's DNS records must point to GitHub Pages. After
   changing either setting, run the workflow again (Actions → Deploy to
   GitHub Pages → Run workflow) so the site is rebuilt for the new address.
   Until the domain is set there, the workflow keeps building for
@@ -213,7 +218,8 @@ deployment → Source: GitHub Actions**.
 - **Safety check.** After each build `tools/check-dist.mjs` scans the files
   about to be published and stops the deployment if it finds anything from
   an unpublished film or a hidden block, a `_note`, a file that should not
-  be there, or a page without title, description or language links.
+  be there, a page without title, description or language links, or a site
+  address in `http://` instead of `https://`.
 - **Unknown addresses.** GitHub Pages serves `404.html` for anything that is
   not a real file. The build publishes the application shell under that name
   (`tools/spa-fallback.mjs`), so the site shows its own "page not found" in

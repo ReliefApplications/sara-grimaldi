@@ -10,7 +10,9 @@
 //   files, or an image no published content refers to;
 // - a page lacks a title of its own (within its language), a description,
 //   canonical and language links, contains the text "undefined", or (when
-//   SITE_NOINDEX is on) is indexable.
+//   SITE_NOINDEX is on) is indexable;
+// - the site address is http:// (allowed for localhost only): GitHub Pages
+//   reports http:// for a custom domain until "Enforce HTTPS" is ticked.
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { imageFiles, imagesIn } from './build-content.mjs';
@@ -146,6 +148,13 @@ const pages = walk(browser).filter(
 );
 const noindex = process.env.SITE_NOINDEX === 'true';
 const titles = new Map();
+/** The site address when it is http:// on a real host, else undefined. */
+const insecureOrigin = (address) => {
+  const { protocol, hostname, origin } = new URL(address);
+  const local = ['localhost', '127.0.0.1', '[::1]'].includes(hostname);
+  return protocol === 'http:' && !local ? origin : undefined;
+};
+const insecure = new Set();
 for (const path of pages) {
   const name = posix(relative(browser, path));
   const html = readFileSync(path, 'utf8');
@@ -162,7 +171,9 @@ for (const path of pages) {
   }
   titles.set(key, name);
   need(/<meta name="description" content="[^"]+"/.test(html), 'description');
-  need(/<link rel="canonical" href="https?:\/\/[^"]+\/"/.test(html), 'canonical link');
+  const canonical = html.match(/<link rel="canonical" href="(https?:\/\/[^"]+\/)"/)?.[1];
+  need(canonical, 'canonical link');
+  if (canonical) insecure.add(insecureOrigin(canonical));
   for (const lang of ['fr', 'en', 'x-default']) {
     need(html.includes(`hreflang="${lang}"`), `"${lang}" language link`);
   }
@@ -173,6 +184,14 @@ for (const path of pages) {
   if (noindex !== robots) {
     problems.push(`${name} ${noindex ? 'is missing' : 'has'} the noindex tag`);
   }
+}
+insecure.delete(undefined);
+for (const origin of insecure) {
+  problems.push(
+    `the site address is ${origin}: canonical and sharing links would be written with http://. ` +
+      'Tick "Enforce HTTPS" in the GitHub repository (Settings → Pages), then re-run the ' +
+      'deployment (or set SITE_URL to the https:// address)',
+  );
 }
 if (pages.length === 0) {
   problems.push('no prerendered page found');

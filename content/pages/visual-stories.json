@@ -270,6 +270,13 @@
       "result": {
         "fr": "Diffusé sur TP+.",
         "en": "Broadcast on TP+."
+      },
+      "link": {
+        "label": {
+          "fr": "Voir le reportage",
+          "en": "Watch the report"
+        },
+        "url": "https://vimeo.com/1221083779"
       }
     }
   ],

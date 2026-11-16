@@ -55,6 +55,13 @@
             }}</a>
           </p>
         }
+        @if (project.link; as link) {
+          <p class="film-link">
+            <a appArrowLink [href]="link.url" target="_blank" rel="noopener noreferrer"
+              >{{ link.label }} <span class="visually-hidden">{{ site()?.ui?.newWindow }}</span></a
+            >
+          </p>
+        }
       </article>
     }
     <a appBlockButton class="repeat-button" href="#contact">{{ page.workWithUs }}</a>

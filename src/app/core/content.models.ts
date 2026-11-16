@@ -227,6 +227,8 @@ export interface VisualStoriesProject {
   image?: ImageRef;
   /** File name of a published film, linked from the project. */
   film?: string;
+  /** A link to another site, e.g. the report on Vimeo; opens in a new window. */
+  link?: { label: Text; url: string };
   published?: boolean;
 }
 
