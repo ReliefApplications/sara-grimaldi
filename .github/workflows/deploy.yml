@@ -38,9 +38,10 @@ jobs:
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
           SITE_URL: ${{ steps.pages.outputs.base_url }}
-          # "true" keeps the whole site out of search engines (noindex on
-          # every page). Set to "false" on launch day.
-          SITE_NOINDEX: 'true'
+          # "false" since the launch: search engines may list the site.
+          # "true" would keep the whole site out of them (noindex on every
+          # page).
+          SITE_NOINDEX: 'false'
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist/sara-grimaldi/browser

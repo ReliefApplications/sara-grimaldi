@@ -6,15 +6,15 @@
       "en": "Privacy – Sara Grimaldi"
     },
     "description": {
-      "fr": "Comment le site de Sara Grimaldi traite vos données : pas de cookies de suivi, pas de mesure d’audience, pas de formulaire.",
-      "en": "How Sara Grimaldi’s website handles your data: no tracking cookies, no analytics, no forms."
+      "fr": "Comment le site de Sara Grimaldi traite vos données : aucun cookie déposé par le site, pas de mesure d’audience, pas de formulaire.",
+      "en": "How Sara Grimaldi’s website handles your data: no cookies set by the site, no analytics, no forms."
     }
   },
   "heading": {
     "fr": "Politique de confidentialité",
     "en": "Privacy policy"
   },
-  "updated": "2026-11-14",
+  "updated": "2026-11-16",
   "intro": {
     "fr": "Ce site est une vitrine professionnelle. Il a été conçu pour collecter le moins de données possible. Cette page explique précisément ce qui se passe quand vous le consultez.",
     "en": "This website is a professional showcase. It was designed to collect as little data as possible. This page explains exactly what happens when you visit it."
@@ -61,16 +61,16 @@
       },
       "list": {
         "fr": [
-          "Ce site ne dépose aucun cookie.",
+          "Ce site ne dépose lui-même aucun cookie.",
           "Il n’utilise aucun outil de mesure d’audience ni de publicité.",
           "Il ne contient aucun formulaire et ne propose aucun compte.",
-          "Les polices de caractères et les images sont servies par le site lui-même. Seule exception : la bande démo de la page d’accueil, hébergée par Vimeo (voir « Vidéos »)."
+          "Les polices de caractères et les images sont servies par le site lui-même. Seule exception : la bande démo de la page d’accueil, hébergée par Vimeo, qui dépose ses propres cookies techniques (voir « Vidéos »)."
         ],
         "en": [
-          "This website sets no cookies.",
+          "This website itself sets no cookies.",
           "It uses no analytics or advertising tools.",
           "It has no forms and no user accounts.",
-          "Fonts and images are served by the website itself. The one exception is the showreel on the home page, hosted by Vimeo (see “Videos”)."
+          "Fonts and images are served by the website itself. The one exception is the showreel on the home page, hosted by Vimeo, which sets technical cookies of its own (see “Videos”)."
         ]
       }
     },
@@ -143,15 +143,15 @@
       },
       "paragraphs": {
         "fr": [
-          "Ce site ne dépose aucun cookie.",
+          "Ce site ne dépose lui-même aucun cookie. Sur la page d’accueil, le lecteur vidéo de Vimeo dépose en revanche ses propres cookies techniques (voir « Vidéos »).",
           "Deux informations au plus sont enregistrées dans votre navigateur. La première, seulement si vous fermez le message d’information sur la confidentialité : le fait que vous l’avez fermé, afin de ne plus vous l’afficher. Elle est stockée dans le « stockage local » du navigateur sous le nom « sg-privacy-notice ».",
           "La seconde, seulement si vous cliquez sur « Arrêter la vidéo » sur la page d’accueil : le fait que vous avez arrêté la bande démo, afin qu’elle ne redémarre pas pendant votre visite. Elle est stockée dans le « stockage de session » du navigateur sous le nom « showreel-stopped » et s’efface à la fermeture de l’onglet.",
           "Elles ne contiennent aucun identifiant, ne sont pas envoyées au site et ne permettent pas de vous suivre.",
           "Vous pouvez les supprimer à tout moment en effaçant les données de site dans les réglages de votre navigateur.",
-          "Ces informations étant strictement nécessaires à un choix que vous avez exprimé, elles ne requièrent pas de consentement."
+          "Ces informations étant strictement nécessaires à des choix que vous avez exprimés, elles ne requièrent pas de consentement."
         ],
         "en": [
-          "This website sets no cookies.",
+          "This website itself sets no cookies. On the home page, however, the Vimeo video player sets technical cookies of its own (see “Videos”).",
           "At most two pieces of information are saved in your browser. The first, only if you close the privacy notice: the fact that you closed it, so that it is not shown to you again. It is kept in the browser’s “local storage” under the name “sg-privacy-notice”.",
           "The second, only if you click “Stop the video” on the home page: the fact that you stopped the showreel, so that it does not start again during your visit. It is kept in the browser’s “session storage” under the name “showreel-stopped” and is erased when you close the tab.",
           "They contain no identifier, are not sent to the website and cannot be used to track you.",
@@ -168,14 +168,14 @@
       },
       "paragraphs": {
         "fr": [
-          "Sur la page d’accueil, la bande démo de Sara Grimaldi, hébergée par Vimeo, démarre sans le son après quelques secondes. Elle ne démarre pas si votre appareil demande de réduire les animations ou d’économiser les données, et le bouton « Arrêter la vidéo » l’arrête pour le reste de votre visite.",
-          "Les autres pages ne chargent aucun lecteur vidéo : les vidéos y sont proposées par un lien vers Vimeo, qui s’ouvre dans une nouvelle fenêtre. Tant que vous ne cliquez pas sur ce lien, aucune donnée n’est transmise à Vimeo.",
-          "Le lecteur Vimeo est toujours chargé avec l’option « ne pas suivre » (dnt) de Vimeo, qui l’empêche de déposer des cookies et d’enregistrer des données de session. Vimeo reçoit néanmoins votre adresse IP, nécessaire pour vous envoyer la vidéo."
+          "Sur la page d’accueil, la bande démo de Sara Grimaldi, hébergée par Vimeo, démarre sans le son environ une seconde après votre arrivée. Elle ne démarre pas si votre appareil demande de réduire les animations ou d’économiser les données, et le bouton « Arrêter la vidéo » l’arrête pour le reste de votre visite.",
+          "Les autres pages ne chargent aucun lecteur vidéo : les vidéos y sont proposées par un lien vers Vimeo ou un autre site, qui s’ouvre dans une nouvelle fenêtre. Tant que vous ne cliquez pas sur ce lien, aucune donnée n’est transmise à ce site.",
+          "Le lecteur Vimeo est toujours chargé avec l’option « ne pas suivre » (dnt) de Vimeo, qui désactive son suivi d’audience. Vimeo dépose néanmoins, sous son propre nom de domaine, des cookies techniques nécessaires pour servir et protéger la vidéo (par exemple « __cf_bm », un cookie de sécurité), et reçoit votre adresse IP, nécessaire pour vous envoyer la vidéo."
         ],
         "en": [
-          "On the home page, Sara Grimaldi’s showreel, hosted by Vimeo, starts without sound after a few seconds. It does not start if your device asks for reduced motion or reduced data use, and the “Stop the video” button stops it for the rest of your visit.",
-          "Other pages load no video player: videos are offered there as a link to Vimeo, which opens in a new window. As long as you do not click that link, no data is sent to Vimeo.",
-          "The Vimeo player is always loaded with Vimeo’s “do not track” option (dnt), which stops it from setting cookies or recording session data. Vimeo still receives your IP address, which it needs to send you the video."
+          "On the home page, Sara Grimaldi’s showreel, hosted by Vimeo, starts without sound about a second after you arrive. It does not start if your device asks for reduced motion or reduced data use, and the “Stop the video” button stops it for the rest of your visit.",
+          "Other pages load no video player: videos are offered there as a link to Vimeo or another site, which opens in a new window. As long as you do not click that link, no data is sent to that site.",
+          "The Vimeo player is always loaded with Vimeo’s “do not track” option (dnt), which switches off its audience tracking. Vimeo still sets, under its own domain, technical cookies needed to serve and protect the video (for example “__cf_bm”, a security cookie), and receives your IP address, which it needs to send you the video."
         ]
       },
       "links": [

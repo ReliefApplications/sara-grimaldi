@@ -75,7 +75,7 @@ export class HomePage {
 
   /** The full player, with sound, opened by the button. */
   protected readonly playing = signal(false);
-  /** The muted showreel behind the name, started after a few seconds on the page. */
+  /** The muted showreel behind the name, started shortly after arrival (ambientDelay in home.json). */
   protected readonly ambient = signal(false);
 
   protected readonly reel = computed<ShowreelVideo | null>(() => {

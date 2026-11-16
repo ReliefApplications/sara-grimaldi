@@ -194,10 +194,10 @@
   },
   "privacyNotice": {
     "enabled": true,
-    "version": "1",
+    "version": "2",
     "text": {
-      "fr": "Ce site n’utilise ni cookies ni outil de suivi.",
-      "en": "This site uses no cookies and no tracking tools."
+      "fr": "Ce site ne dépose aucun cookie et n’utilise aucun outil de suivi. La vidéo de la page d’accueil est servie par Vimeo, qui dépose ses propres cookies techniques.",
+      "en": "This site sets no cookies and uses no tracking tools. The home page video is served by Vimeo, which sets technical cookies of its own."
     },
     "linkLabel": {
       "fr": "Confidentialité",

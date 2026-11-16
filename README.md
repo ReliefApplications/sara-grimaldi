@@ -127,8 +127,10 @@ Other content:
 - **Privacy notice**: `"privacyNotice"` in `content/site.json`.
   `"enabled": false` removes it entirely. If its text changes, also change
   `"version"` (for example `"1"` to `"2"`): everyone then sees the notice
-  again. The text must stay true: today the site sets no cookies and loads
-  nothing from other services.
+  again. The text must stay true: today the site itself sets no cookies and
+  uses no tracking tool, and the only thing loaded from another service is
+  the home page video, served by Vimeo, which sets technical cookies of its
+  own. If that changes, change the notice and `privacy.json` too.
 - A required text left empty, a missing French version, or an asterisk in
   the wrong place stops the build with a message naming the file and the
   field.
@@ -212,9 +214,12 @@ deployment → Source: GitHub Actions**.
   Until the domain is set there, the workflow keeps building for
   `https://reliefapplications.github.io/sara-grimaldi/`; once it is set,
   that old address redirects to the domain.
-- **Search engines.** Until launch the site asks search engines not to list
-  it: the line `SITE_NOINDEX: 'true'` in `.github/workflows/deploy.yml` puts
-  a "noindex" tag on every page. On launch day, change it to `'false'`.
+- **Search engines.** The site is launched, so search engines may list it:
+  the line `SITE_NOINDEX: 'false'` in `.github/workflows/deploy.yml`. The
+  legal notice, the privacy policy and the "page not found" page still ask
+  not to be listed. To hide the whole site again (for example during a
+  redesign), change that line to `'true'`: every page then carries a
+  "noindex" tag.
 - **Safety check.** After each build `tools/check-dist.mjs` scans the files
   about to be published and stops the deployment if it finds anything from
   an unpublished film or a hidden block, a `_note`, a file that should not
@@ -230,7 +235,7 @@ production build: it is the address written into canonical and sharing
 links):
 
 ```bash
-SITE_URL=https://saragrimaldi.com SITE_NOINDEX=true npm run build -- --base-href /
+SITE_URL=https://saragrimaldi.com SITE_NOINDEX=false npm run build -- --base-href /
 ```
 
 ## For developers
