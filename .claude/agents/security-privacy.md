@@ -1,5 +1,6 @@
 ---
 name: security-privacy
+model: opus
 description: Use once before the site goes public, and again before any launch on a custom domain, to audit security and data protection (GDPR). Read-only.
 tools: Read, Glob, Grep, Bash, WebFetch
 ---

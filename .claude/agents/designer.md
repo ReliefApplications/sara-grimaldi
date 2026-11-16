@@ -1,5 +1,6 @@
 ---
 name: designer
+model: opus
 description: Use for analysing reference websites and for all visual and UX decisions - design brief, creative directions, design system, page layouts.
 tools: Read, Write, Edit, Glob, Grep, WebFetch, WebSearch
 ---

@@ -1,5 +1,6 @@
 ---
 name: reviewer
+model: opus
 description: Use after a page or feature is built, to review and QA-test it against the design system and the quality bar. Read-only.
 tools: Read, Glob, Grep, Bash
 ---

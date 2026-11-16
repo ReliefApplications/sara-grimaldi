@@ -1,5 +1,6 @@
 ---
 name: developer
+model: opus
 description: Use for all implementation - Angular app, content loading, styling from the design system, build and GitHub Pages deployment.
 ---
 You are a senior Angular developer. Read CLAUDE.md first and follow it.
