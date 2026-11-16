@@ -6,7 +6,7 @@ files in the `content/` folder, and the site is published on GitHub Pages as
 static pages.
 
 - Repository: https://github.com/ReliefApplications/sara-grimaldi
-- Live site: https://reliefapplications.github.io/sara-grimaldi/
+- Live site: https://saragrimaldi.com/
 
 The site exists in French (main language) and English. Every page has both.
 
@@ -194,14 +194,19 @@ deployment → Source: GitHub Actions**.
 - **Static pages.** At build time every page, in both languages, and every
   published film is written as a real HTML file (prerendering), with its own
   title, description and sharing tags. There is no server to run.
-- **Address of the site.** The site currently lives under
-  `https://reliefapplications.github.io/sara-grimaldi/`. The workflow asks
-  GitHub Pages for that address and passes it to the build (`--base-href` for
-  the path, `SITE_URL` for the full address used in canonical and sharing
-  links), so it is not written anywhere in the code.
-- **Custom domain later.** Set the domain in Settings → Pages. GitHub then
-  reports the new address and the same workflow builds the site for it.
-  Nothing to change in the project.
+- **Address of the site.** The site lives at `https://saragrimaldi.com/`.
+  The workflow asks GitHub Pages for that address and passes it to the build
+  (`--base-href` for the path, `SITE_URL` for the full address used in
+  canonical and sharing links), so it is not written anywhere in the code.
+- **Custom domain.** The domain is set in the GitHub repository, not in the
+  project: **Settings → Pages → Custom domain: `saragrimaldi.com`**, with
+  **Enforce HTTPS** ticked (otherwise the sharing links are written with
+  `http://`). The domain's DNS records must point to GitHub Pages. After
+  changing either setting, run the workflow again (Actions → Deploy to
+  GitHub Pages → Run workflow) so the site is rebuilt for the new address.
+  Until the domain is set there, the workflow keeps building for
+  `https://reliefapplications.github.io/sara-grimaldi/`; once it is set,
+  that old address redirects to the domain.
 - **Search engines.** Until launch the site asks search engines not to list
   it: the line `SITE_NOINDEX: 'true'` in `.github/workflows/deploy.yml` puts
   a "noindex" tag on every page. On launch day, change it to `'false'`.
@@ -219,7 +224,7 @@ production build: it is the address written into canonical and sharing
 links):
 
 ```bash
-SITE_URL=https://reliefapplications.github.io/sara-grimaldi SITE_NOINDEX=true npm run build -- --base-href /sara-grimaldi/
+SITE_URL=https://saragrimaldi.com SITE_NOINDEX=true npm run build -- --base-href /
 ```
 
 ## For developers
