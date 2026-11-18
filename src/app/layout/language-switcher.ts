@@ -66,7 +66,15 @@ import { pageLink } from '../core/site-routes';
     }
 
     a.item {
+      position: relative;
       font-weight: 400;
+
+      // At least 44 px wide to touch (6.6) without moving the letters.
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0 min(0px, (100% - var(--target-size)) / 2);
+      }
 
       &:hover .code {
         padding: 0 0.12em;

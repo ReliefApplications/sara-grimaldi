@@ -1,4 +1,4 @@
-<div class="viewport">
+<div class="viewport" (focusout)="resetScroll($event)">
   <div class="track t-band" [style.animation-duration.s]="duration()">
     <!-- The list is there twice so the loop has no seam; only the first copy
          is exposed to assistive technology and to the keyboard. -->

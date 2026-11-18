@@ -12,9 +12,13 @@
         <ul class="family-nav">
           @for (family of families(); track family.id) {
             <li>
-              <a class="box-link t-nav" [routerLink]="route.link('films')" [fragment]="family.id">{{
-                site.families[family.id]
-              }}</a>
+              <a
+                class="box-link t-nav"
+                [routerLink]="route.link('films')"
+                [fragment]="family.id"
+                (click)="focusFamily(family.id)"
+                >{{ site.families[family.id] }}</a
+              >
             </li>
           }
         </ul>
@@ -23,7 +27,9 @@
       @for (family of families(); track family.id) {
         <section class="family" [id]="family.id" [attr.aria-labelledby]="family.id + '-heading'">
           <div class="family-head">
-            <h2 class="t-display" [id]="family.id + '-heading'">{{ site.families[family.id] }}</h2>
+            <h2 class="t-display" [id]="family.id + '-heading'" tabindex="-1">
+              {{ site.families[family.id] }}
+            </h2>
             <p class="count t-label t-muted t-tabular">
               {{ family.films.length }}
               {{ family.films.length === 1 ? site.ui.filmCountOne : site.ui.filmCountOther }}

@@ -1,4 +1,14 @@
-import { Component, computed, inject, input, output, signal } from '@angular/core';
+import {
+  afterNextRender,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  input,
+  output,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 export interface ShowreelVideo {
@@ -13,7 +23,8 @@ export interface ShowreelVideo {
  * - "ambient": muted, looping, no controls, behind the name; fades in once
  *   loaded so the photo shows until the video really plays.
  * - "full": the provider's player with sound and controls, covering the hero,
- *   with a close button.
+ *   with a close button, which receives focus when the player opens (the page
+ *   gives focus back to its own button when it closes).
  * The host covers its positioned parent; the page decides when to add it.
  */
 @Component({
@@ -32,7 +43,7 @@ export interface ShowreelVideo {
       ></iframe>
     }
     @if (mode() === 'full') {
-      <button class="close t-nav" type="button" (click)="closed.emit()">
+      <button #close class="close t-nav" type="button" (click)="closed.emit()">
         {{ video().closeLabel }}
       </button>
     }
@@ -85,6 +96,13 @@ export interface ShowreelVideo {
       background: rgb(0 0 0 / 60%);
       color: var(--color-ground);
       cursor: pointer;
+
+      // At least 44 px high to touch (6.6) without changing how it looks.
+      &::before {
+        content: '';
+        position: absolute;
+        inset: min(0px, (100% - var(--target-size)) / 2) 0;
+      }
     }
   `,
 })
@@ -96,6 +114,15 @@ export class Showreel {
   readonly closed = output<void>();
 
   protected readonly ready = signal(false);
+  private readonly closeButton = viewChild<ElementRef<HTMLButtonElement>>('close');
+
+  constructor() {
+    afterNextRender(() => {
+      if (this.mode() === 'full') {
+        this.closeButton()?.nativeElement.focus();
+      }
+    });
+  }
 
   /** Player address, built only from a validated id. */
   protected readonly url = computed<SafeResourceUrl | null>(() => {

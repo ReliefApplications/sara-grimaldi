@@ -1,4 +1,4 @@
-import { ViewportScroller } from '@angular/common';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
 import {
   afterNextRender,
   Component,
@@ -31,6 +31,7 @@ export class FilmsPage {
   protected readonly page = this.content.page('films');
   private readonly films = this.content.films();
   protected readonly sizes = IMAGE_SIZES.half;
+  private readonly document = inject(DOCUMENT);
 
   constructor() {
     // Arriving from another page with "#family" (e.g. from the home page): the
@@ -42,9 +43,25 @@ export class FilmsPage {
     effect(() => {
       if (fragment && !done && this.page() && this.site() && this.families().length) {
         done = true;
-        untracked(() => afterNextRender(() => scroller.scrollToAnchor(fragment), { injector }));
+        untracked(() =>
+          afterNextRender(
+            () => {
+              scroller.scrollToAnchor(fragment);
+              this.focusFamily(fragment);
+            },
+            { injector },
+          ),
+        );
       }
     });
+  }
+
+  /**
+   * After a family link, keyboard and screen reader users continue from that
+   * family's heading; the router (or the constructor) does the scrolling.
+   */
+  protected focusFamily(id: string): void {
+    this.document.getElementById(`${id}-heading`)?.focus({ preventScroll: true });
   }
 
   /** Families that have films, in their fixed order, each film with its index number. */

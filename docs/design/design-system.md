@@ -1,6 +1,6 @@
 # Design system: Sara Grimaldi website
 
-Version 2.4, 2026-11-14. Owner: designer. Replaces every 1.x version: the
+Version 2.5, 2026-11-17. Owner: designer. Replaces every 1.x version: the
 look is new, the structure (routes, content, legal, accessibility) is kept.
 This file is the single source of truth for the build. If something is not
 specified here, ask the designer rather than guessing.
@@ -211,8 +211,18 @@ var(--color-accent)`.
 surfaces and over the hero. Never removed, except the route-change `h1`
 (section 11).
 
-6.6 **Targets.** 44 × 44 px minimum for every link or button outside a
-paragraph.
+6.6 **Targets.** Confirmed: 44 × 44 px minimum hit area for every link or
+button outside a sentence (stricter than the 24 px of WCAG 2.2 AA, on
+purpose). Links inside a sentence or paragraph are exempt. The hit area may
+be larger than the visible text (`min-height`, `min-width`, padding); hit
+areas of neighbouring controls never overlap. Small text controls:
+
+| Control | Visible look (unchanged) | Hit area |
+|---|---|---|
+| "Arrêter la vidéo" / "Stop the video" (7.5) | `small`, ground, underlined, no box | `display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; padding: 0` |
+| Player close "Fermer la vidéo" / "Close the video" (7.5) | Becomes a box like the Menu button: `nav` style, 2 px ground border, background `--color-ink`, ground text, padding 0 16 px | Height 44 px. Hover and focus: background accent, text ink, border accent. Focus ring ground (6.5) |
+| Language switcher (8.3) | Unchanged | The other-language link: `min-width: 44px; min-height: 44px`, text centred. The current language is plain text, not a target: natural width, `min-height: 44px` only for alignment. The `/` sits between them, outside both |
+| Footer and legal links, band pause, Menu, Fermer | Unchanged | Already 44 px (8.4, 8.5, 8.13) |
 
 6.7 **Motion.**
 - Transitions: 150 ms ease-out on `color`, `background-color`,
@@ -243,7 +253,8 @@ or the image is `poster`.
 
 7.2 **Tile ratios.** Home lead film 16:9 (4:3 at base). Home secondary films
 4:3. Films index 16:9. Film page lead 16:9. Gallery 16:9. Portrait of Sara
-4:5. Open Graph 1200 × 630.
+4:5. Visual Stories: hero fills its box (10.8), offers 4:5, projects 16:9.
+Open Graph 1200 × 630.
 
 7.3 **Hero image.** The poster frame of Sara's showreel video: a dancer in a
 pale dress against black, 1920 × 1080, `fit: cover`, `focus: 55% 30%` at
@@ -266,21 +277,48 @@ except the hero and a film page's lead image (`loading="eager"`,
 `--color-placeholder` (ink for `poster` tiles). Every image has alt text in
 both languages.
 
-7.5 **Video.** Home showreel (since 2026-11-14): the photo first; after
-`ambientDelay` seconds (4) on the first screen, the showreel plays muted,
-looping and without controls behind the scrim and the name (Vimeo
-`background=1&dnt=1`, cropped to fill, fading in once loaded). Not started
-with `prefers-reduced-motion`, Save-Data, or after "Arrêter la vidéo" in
-this visit. Controls in the hero (bottom left on small screens, above the
-name on the right from lg): a ground play circle, "Voir la bande démo · 1:50"
-(then "Voir avec le son" while the muted reel plays) opening the full player
-with sound over the hero, and "Arrêter la vidéo" (WCAG 2.2.2). Film pages: click-to-load facade (a `<button>`
-over the lead image with a centred 96 px ink circle and a ground triangle;
-hover: circle accent, triangle ink), provider iframe inserted only on click
-(`player.vimeo.com/video/{id}?dnt=1&autoplay=1` or
-`youtube-nocookie.com/embed/{id}?autoplay=1`). Watch modes per film: `full`,
-`trailer`, `external` (button linking out), `none` (line "Film disponible
-sur demande" / "Available on request" linking to Contact).
+7.5 **Video.**
+
+**Home showreel: UNDER REVIEW (2026-11-17).** As built: the photo first;
+after `ambientDelay` seconds on the first screen (content now says **1**;
+this spec said 4), the showreel plays muted, looping and without controls
+behind the scrim and the name (Vimeo `background=1&dnt=1`, cropped to fill,
+fading in once loaded). Not started with `prefers-reduced-motion`,
+Save-Data, or after "Arrêter la vidéo" in this visit. Controls in the hero
+(bottom left below lg, above the name on the right from lg): a ground play
+circle (56 px, 96 px from lg), "Voir la bande démo · 1:50" (then "Voir avec
+le son" while the muted reel plays) opening the full Vimeo player with sound
+over the hero, with a close button; and "Arrêter la vidéo" (WCAG 2.2.2).
+Target sizes for these controls: 6.6.
+
+The security audit found that the ambient reel loads Vimeo (IP address,
+Vimeo's own cookies) before the visitor does anything. The user is choosing
+between three options; this document does not pick one:
+
+- **(a) Self-hosted muted loop, Vimeo on click.** A short silent excerpt of
+  the reel, exported by us and served by the site itself, plays behind the
+  name exactly as now (same delay, same stop rules, same "Arrêter la vidéo").
+  Vimeo is loaded only when the visitor presses "Voir la bande démo". The
+  hero looks the same; it costs one video file to produce and some page
+  weight on the first screen.
+- **(b) Photo only, Vimeo on click.** The hero is the still image (7.3);
+  nothing moves in it. The play circle and "Voir la bande démo · 1:50" stay;
+  "Voir avec le son" and "Arrêter la vidéo" disappear. Lightest and simplest;
+  the first screen loses its motion, the `roles` band remains the only
+  movement.
+- **(c) Keep as built.** No visual change. Vimeo is contacted on arrival;
+  the privacy notice must keep saying so (8.14, text for option c), and the audit
+  finding stays open for the user to accept.
+
+Once the user decides, this section will be rewritten as a plain spec.
+
+**Film pages (as built).** No player is embedded. A film with a watch link
+shows it as a block button opening the provider's page in a new window
+(10.2); mode `none` shows the line "Film disponible sur demande" /
+"Available on request" linking to Contact. A click-to-load facade (a
+`<button>` over the lead image with a centred 96 px ink circle and a ground
+triangle, iframe inserted only on click) is kept as a possible later
+addition and is not to be built without a new decision.
 
 ---
 
@@ -303,9 +341,13 @@ Two variants.
   12 px clear of the language switcher. Below a 340 px viewport it breaks
   into two lines, "Sara" / "Grimaldi". Link to home, accessible name "Sara Grimaldi – Accueil" /
   "– Home".
-- Right, lg: nav links in `nav` style, 28 px apart: Films, Presse, À propos,
-  Contact (EN Films, Press, About, Contact); then 28 px; then the language
-  switcher.
+- Right, lg: five nav links in `nav` style, 28 px apart, in this order:
+  Films, Visual Stories, Presse, À propos, Contact (EN Films, Visual Stories,
+  Press, About, Contact); then 28 px; then the language switcher. "Visual
+  Stories" is a proper name and is not translated. Labels come from
+  `site.nav`. Everything stays on one line at 1280 px; if a real measurement
+  shows it does not, the gap between links drops to 24 px (not the font
+  size).
 - Right, below lg: language switcher, 12 px, Menu button.
 
 **Home.** Same content and positions, but: `position: absolute` over the top
@@ -328,8 +370,8 @@ text, weight 800, `aria-current="true"`, plus visually hidden " – langue
 actuelle" / " – current language". Other language: link to the same page in
 the other language, `lang` and `hreflang`, visible code followed by visually
 hidden " – English version" / " – version française" (no `aria-label`).
-Hover: highlight. Wrapped in `<nav aria-label="Langue / Language">`. 44 px
-hit areas.
+Hover: highlight. Wrapped in `<nav aria-label="Langue / Language">`. Hit
+area of the link: 44 × 44 px; the current language is not a target (6.6).
 
 ### 8.4 Mobile menu (below lg)
 
@@ -339,9 +381,13 @@ hit areas.
   viewport, transparent `::backdrop`. Surface **ink**. Top row: wordmark
   (ground), language switcher, "Fermer" / "Close" button (same box style,
   ground), `autofocus`.
-- Links: the four nav items stacked, `display` style, ground, each row
-  min-height 72 px, 1 px `--color-rule-on-ink` between rows, starting 24 px
-  under the top row. Hover and current: highlight.
+- Links: the five nav items of 8.2, same order, stacked, `display` style,
+  ground, each row min-height 72 px, 1 px `--color-rule-on-ink` between
+  rows, starting 24 px under the top row. Hover and current: highlight.
+  "Visual Stories" may wrap to two lines at 360 px (break between the words
+  only); its row grows, the others do not. If the panel is taller than the
+  viewport (landscape phones), the panel scrolls (`overflow-y: auto`) and the
+  email follows the last link 24 px below instead of being pinned.
 - Bottom, pinned 24 px from the bottom edge: email as a link, `small`,
   ground.
 - Behaviour: focus trapped by the dialog; `Esc` closes; focus returns to the
@@ -494,11 +540,19 @@ at base; from md, `dt` in a 160 px column, `dd` beside it.
 ### 8.13 Footer
 
 Surface **accent**, ink text. Padding 64 px top, 24 px bottom (base); 128 px
-and 32 px (lg).
+and 32 px (lg). The `<footer>` carries `id="contact"` on every page, so
+in-page "contact" buttons (Visual Stories, 10.8) can point to `#contact`.
+It is the site's only contact block on every page except the Contact page.
 
 1. Section label "Contact" (dot in ink).
 2. 24 px. Invitation in `giant` (draft: "Un projet ? Parlons-en." / "A
    project? Let's talk."). Omitted on the Contact page.
+2b. **Page line (optional).** When the current page's content has a
+   `contactLine`, it is shown 24 px (32 px lg) under the invitation, in
+   `lead`, ink, max width cols 1–8 at lg, full width below. Today only
+   Visual Stories has one ("Équipe de tournage 100 % féminine. Basée à
+   Paris, disponible partout." / "All-women film crew. Based in Paris,
+   available worldwide.").
 3. 32 px (48 px lg). Email link in `title` style but **not uppercase**
    (`text-transform: none`), underline 3 px, offset 6 px,
    `overflow-wrap: anywhere`. Hover: highlight (inverted, 6.4).
@@ -514,25 +568,55 @@ and 32 px (lg).
    is unaffected), legal links 48 px after it, social links at the right
    edge.
 
-No phone number in the footer or the menu.
+**Phone: not in the footer and not in the menu**, now or later. The phone
+belongs on the Contact page only (10.5). Reason: the footer keeps one action
+(the email), and on a phone Contact is two taps away (menu, Contact). This
+supersedes the brief's earlier "Contact and footer" (brief, section 11).
 
 ### 8.14 Privacy notice
 
 Behaviour unchanged from the built version; only the look changes.
 
 - Content: `enabled`, `version`, `text`, `linkLabel`, `dismissLabel`,
-  `regionLabel`. Copy: "Ce site n'utilise ni cookies ni outil de suivi." /
-  "This site uses no cookies and no tracking tools."; link "Confidentialité"
-  / "Privacy"; button "J'ai compris" / "Got it".
+  `regionLabel`. Link "Confidentialité" / "Privacy"; button "J’ai compris" /
+  "Got it"; region "Cookies et confidentialité" / "Cookies and privacy".
+- **Text (2026-11-17).** The built text (160 and 134 characters) runs to
+  four lines at 360 px. Replacement, max **110 characters** including
+  spaces in each language; it depends on the showreel decision (7.5):
+
+  | Showreel option | FR | EN |
+  |---|---|---|
+  | (c) keep Vimeo ambient | "Ce site ne dépose aucun cookie et ne fait aucun suivi. Seul Vimeo en dépose, pour la vidéo d’accueil." (101) | "This site sets no cookies and does no tracking. Only Vimeo sets some, for the home page video." (94) |
+  | (a) or (b), Vimeo on click | "Ce site ne dépose aucun cookie et ne fait aucun suivi. Vimeo n’est chargé que si vous lancez la bande démo." (107) | "This site sets no cookies and does no tracking. Vimeo loads only if you play the showreel." (90) |
+
+  Use the row that matches the decision; until it is taken, the (c) row,
+  since (c) is what is live. Typographic apostrophe `’`. When the text
+  changes, raise `version` (to "3"), so visitors who dismissed the old text
+  see the new one once. The privacy policy page must say the same thing as
+  the row in use.
 - `<aside aria-label>`; not a dialog; no focus trap, no focus move, no
-  `aria-live`. In the DOM directly after the skip link.
-- Fixed at the bottom: base 12 px from left, right and bottom; md and lg
-  bottom-left, 24 px inset, 420 px wide.
-- Look: surface ground, 2 px ink border, padding 16 px (20 px from md). Text
-  `small`. One row under it, 12 px gap: text link (8.7) left, button right.
-  Button: height 44 px, 2 px ink border, `nav` style, padding 0 16 px; hover:
-  background ink, text ground. At 360 px in both languages: max 160 px tall,
-  text max two lines, link and button on one row.
+  `aria-live`. In the DOM directly after the skip link. DOM order inside:
+  text, link, button.
+- **Base (below 768).** Fixed, 12 px from left, right and bottom. Surface
+  ground, 2 px ink border, padding 16 px. Text `small` (15/22.5 px). Under
+  it, 12 px gap, one row: text link (8.7, min-height 44 px) left, button
+  right. **Max 160 px tall at 360 px in both languages**: text max three
+  lines (3 × 22.5 + 12 + 44 + 32 + 4 = 159.5 px).
+- **md and lg: one row**, so the box stays below Sara's name on Home. Fixed,
+  left 24 px, right 68 px (the 44 px band pause button at the right edge,
+  8.5, plus 24 px stays free), bottom 16 px at md and 24 px at lg; max
+  width 1040 px (from lg the box ends at whichever comes first). Padding
+  12 px 16 px. Flex row, `align-items: center`, 24 px gap: text (`flex: 1`,
+  `small`), then link and button side by side (12 px gap, `flex: none`).
+  Heights: max 96 px at 768 (text up to three lines), max 76 px at 1280
+  (text one or two lines). Check on Home: at 1280 the box top is at most
+  100 px above the viewport bottom, under the name (which starts 120 px up:
+  88 px band + 32 px padding); at 768 it clears the play button.
+- Button: height 44 px, 2 px ink border, `nav` style, padding 0 16 px; hover:
+  background ink, text ground.
+- The developer measures the real heights at 360, 768 and 1280 in both
+  languages. If a text exceeds its line budget, tell the designer; do not
+  shrink the type.
 - While visible: `scroll-padding-bottom` on the root and extra bottom padding
   on the footer, both = notice height + 24 px.
 - Dismissal: `localStorage` key `sg-privacy-notice` = `version`; nothing else
@@ -618,7 +702,7 @@ size) or one fallback name, centred both ways.
 ## 9. Home page (`/fr`, `/en`)
 
 Order: hero, band `roles`, statement, collaborations, films, band `press`,
-footer. Surfaces in that order: image, ink, ground, ground, ink, accent
+footer. Surfaces in that order: image, ink, ground, ground, ground, accent
 (then a ground row), accent. DOM order is the same at every breakpoint.
 
 ### 9.1 Hero and first screen
@@ -702,9 +786,12 @@ field), `--section-pad` at the bottom.
 
 ### 9.4 Films
 
-Surface **ink**: the films are shown in a dark room. Titles ground, index
-numbers and meta muted-on-ink, block button in its ink variant. Padding
-`--section-pad`.
+Surface **ground** (palette A, section 2; it was ink until 2026-11-14).
+Titles ink, index numbers and meta `--color-muted`, block button in its
+ground variant (8.7). `poster` tiles keep their ink field (7.1). Padding
+`--section-pad`; it follows the collaborations section on the same field,
+with no rule between them (the logo grid's 2 px bottom rule and the context
+sentence close that section).
 
 - Section label "Films choisis" / "Selected films". 32 px (48 px lg).
 - Up to three film tiles (8.8), in the order of the home content list.
@@ -835,11 +922,22 @@ Sections separated by `--section-pad`.
    from 1280), so the address stays on one line at 360 px, **not
    uppercase**, Wide 800, underline 3 px, offset 8 px,
    `overflow-wrap: anywhere`; hover: highlight.
-3. 48 px. Three groups, each a section label then the value in `title`
-   style: "Téléphone" / "Phone" (`tel:` link, international format; the only
-   place the number appears; not rendered when empty), "Basée à" / "Based
-   in", "Réseaux" / "Social" (text links, new tab). Base: stacked, 32 px
-   apart. md and lg: three columns.
+3. 48 px. Groups, each a section label then the value in `title` style:
+   "Téléphone" / "Phone", "Basée à" / "Based in", "Réseaux" / "Social"
+   (text links, new tab). Base: stacked, 32 px apart. md and lg: one column
+   per group (three with the phone, two without, each 4 of 12 columns at
+   lg, left-aligned; no stretching).
+   - **Phone, current state (2026-11-17): not shown anywhere.** The number
+     that was published was a fictional placeholder; `phone.number` and
+     `phone.display` are empty and the group is not rendered. Nothing on the
+     site may say "téléphone" / "phone" as a way to reach Sara while it is
+     empty (check the Contact meta description, 12).
+   - **Once Sara gives the real number:** this group, first of the row,
+     and nowhere else (not in the footer, not in the menu, 8.13). `tel:`
+     link with the number in E.164 (`+33…`); visible text in international
+     format with spaces (`+33 6 12 34 56 78`), `tabular-nums`, `nowrap`;
+     hover highlight; 44 px hit area. Never a fictional number on the
+     public site.
 4. Optional secondary contact (content flag, off by default): section
    label from content, name and email in `body`.
 5. Footer without its invitation line.
@@ -873,6 +971,82 @@ Surface ground, `--section-pad` twice. `h1` "404" in `giant`; 16 px; "Cette
 page n'existe pas." / "This page does not exist." in `lead`; 32 px; block
 button "Retour à l'accueil" / "Back to home", max width 6 cols at lg.
 
+### 10.8 Visual Stories (`/fr/visual-stories`, `/en/visual-stories`)
+
+**Purpose.** Sara's offer for commissioned work with her all-women crew:
+documentary, impact and brand films, for brands, institutions and media
+(the priority audience of brief section 11). It is the one page written in
+"nous" / "we" and the one page that sells; everything else on the site
+presents the author. Order and copy are Sara's (2026-11-14). Second item in
+the navigation (8.2). Same slug in both languages; "Visual Stories" is a
+proper name and is not translated.
+
+Shell: standard header (8.2, with its 2 px rule), then the hero directly
+under it. All sections after the hero sit on **ground**; the footer
+(accent) closes the page and is its contact block.
+
+1. **Hero.** Full-bleed, surface image on an ink field.
+   - Height `85svh` (fallback `85vh`), min 544 px, max 896 px.
+   - Image: `hero` from content, `cover`, `focus` from content
+     (`50% 45%`), eager with `fetchpriority="high"` (7.4), full-bleed
+     `sizes`.
+   - Scrim: one layer, `linear-gradient(to top, rgba(0,0,0,0.85) 0%,
+     rgba(0,0,0,0.45) 40%, rgba(0,0,0,0) 75%)`. No top layer (the header
+     is not over this hero; remove the one that is built).
+   - Bottom block in the container, ground text, bottom padding 48 px,
+     24 px between items: `h1` "Visual Stories" in `giant` (expected on two
+     lines at every width, breaking between the words); positioning line in
+     `lead`, max width 544 px; block button "Travaillons ensemble" / "Work
+     with us" in its **ink** variant (8.7), width fit to its text (not full
+     column), max 100%, `href="#contact"` (the footer, 8.13).
+   - Contrast: as 11, checked over the lightest part of the image under
+     the text: 4.5:1 for the positioning line, 3:1 for the `h1`.
+2. **Ce que nous faisons / What we do.** `--section-pad` above. Section
+   label (`h2`), 32 px, then a `<ul>` of the three offers. Each: image 4:5,
+   `cover`, `focus` from content, lazy; 16 px; title in `title` (`h3`);
+   12 px; one line in `body`. Base: one column, 48 px apart. md and lg:
+   three equal columns, gutter between, aligned at the top. Captions in
+   content are not shown here (the alt text carries the description).
+3. **Projets choisis / Selected work.** `--section-pad` above. Section
+   label (`h2`), 32 px. One `<article>` per published project
+   (`"published": false` is not rendered), strongest first, all identical:
+   - 2 px ink rule on top; padding 48 px top and bottom; items 12 px apart
+     unless stated.
+   - Image (optional) 16:9, full container width, `cover`, lazy; 24 px
+     under it.
+   - Category in `label`, muted. Title in `display` (`h3`), max width 24ch,
+     with its `lang`. Meta in `label`, muted, items separated by record
+     dots (6.3). Credits in `small`, 24 px under them.
+   - Data list (8.12): "Le défi", "Ce que nous avons fait", "Le résultat" /
+     "The challenge", "What we did", "The result".
+   - 24 px, then the links that exist: arrow link "Voir la fiche du film" /
+     "See the film page" (to the film page); arrow link to an external page
+     (e.g. "Voir le reportage"), new tab, the arrow rotated as the social
+     links (`t-arrow-out`), visually hidden "(nouvelle fenêtre)".
+   - After the last project: 16 px, block button "Travaillons ensemble"
+     again, **ground** variant, fit to its text, `href="#contact"`.
+   - Same layout at every breakpoint; only the type sizes change.
+4. **Ils nous font confiance / Trusted by.** `--section-pad` above. Section
+   label, 32 px, logo grid (8.15, 8.16) of the names listed in content (six
+   today): 2 columns at base (3 rows), 3 at md (2 rows), 6 at lg (one row).
+5. **Les personnes derrière la caméra / The people behind the camera.**
+   `--section-pad` above. Section label, 32 px, one paragraph in `lead`.
+   Rendered only when the `team` field exists. When Sara supplies the
+   portraits, names and roles, the designer will specify the team grid.
+6. **Contact: no section in the page.** The last section ends with
+   `--section-pad`, then the footer (8.13), which carries `id="contact"`
+   and, on this page, the crew line (8.13 item 2b). The page's own contact
+   section (built: `h2` "Contact", name, email, "Écrire" button, crew line)
+   is removed, because it repeated the footer immediately: two "Contact"
+   headings and two mailto links to the same address in a row. Content
+   fields `contactHeading`, `contactName` and `contactButton` are then
+   unused and can be removed; `contactLine` stays and moves to the footer.
+
+Headings: one `h1` (hero), an `h2` per section label, `h3` for offer and
+project titles; the footer's "Contact" is the last `h2`.
+
+SEO: see 12.
+
 ---
 
 ## 11. Accessibility (WCAG 2.1 AA)
@@ -901,22 +1075,40 @@ button "Retour à l'accueil" / "Back to home", max width 6 cols at lg.
 
 ## 12. SEO and sharing
 
-| Page | `<title>` |
-|---|---|
-| Home | "Sara Grimaldi – Réalisatrice et scénariste" / "Sara Grimaldi – Director and screenwriter" |
-| Films | "Films – Sara Grimaldi" |
-| Film | "{Titre} ({année}) – Sara Grimaldi" |
-| Press | "Presse – Sara Grimaldi" / "Press – Sara Grimaldi" |
-| About | "À propos – Sara Grimaldi" / "About – Sara Grimaldi" |
-| Contact | "Contact – Sara Grimaldi" |
-| Legal notice | "Mentions légales – Sara Grimaldi" / "Legal notice – Sara Grimaldi" (`noindex`) |
-| Privacy policy | "Confidentialité – Sara Grimaldi" / "Privacy – Sara Grimaldi" (`noindex`) |
+| Page | `<title>` | Share image |
+|---|---|---|
+| Home | "Sara Grimaldi – Réalisatrice et scénariste" / "Sara Grimaldi – Director and screenwriter" | Default |
+| Films | "Films – Sara Grimaldi" | Default |
+| Film | "{Titre} ({année}) – Sara Grimaldi" | The film's `shareImage`, else default |
+| Visual Stories | "Visual Stories – Sara Grimaldi" (both languages) | Default |
+| Press | "Presse – Sara Grimaldi" / "Press – Sara Grimaldi" | Default |
+| About | "À propos – Sara Grimaldi" / "About – Sara Grimaldi" | Default |
+| Contact | "Contact – Sara Grimaldi" | Default |
+| Legal notice | "Mentions légales – Sara Grimaldi" / "Legal notice – Sara Grimaldi" (`noindex`) | Default |
+| Privacy policy | "Confidentialité – Sara Grimaldi" / "Privacy – Sara Grimaldi" (`noindex`) | Default |
 
-Meta descriptions from content. Open Graph and Twitter card on every page
-(`og:title`, `og:description`, `og:image` 1200 × 630 with `og:image:alt`,
-`og:locale`, `og:type`). `hreflang` alternates (`fr`, `en`, `x-default` to
-French) and canonical from one configurable base URL. Default Open Graph
-image: a still from *Immunity*; tag omitted until the file exists.
+Meta descriptions from content, 120 to 160 characters. Two to adjust:
+- **Visual Stories** (the built FR text is 166 characters and repeats the
+  title): FR "Documentaire, films à impact, campagnes de marque : de vraies
+  histoires, une exigence de cinéma. Une équipe de tournage 100 % féminine,
+  basée à Paris." EN "Documentary, impact and brand films: real stories,
+  cinematic craft. An all-women film crew based in Paris." (EN is under 120;
+  acceptable, nothing to pad.)
+- **Contact**: while no phone is published, the description must not end
+  with "e-mail et téléphone" / "email and phone"; end with "par e-mail." /
+  "by email." instead.
+
+Open Graph and Twitter card on every page (`og:title`, `og:description`,
+`og:image` 1200 × 630 with `og:image:alt`, `og:locale`, `og:type`).
+`hreflang` alternates (`fr`, `en`, `x-default` to French) and canonical
+from one configurable base URL.
+
+**Default share image:** `content/images/share.jpg`, 1200 × 630 px, JPEG
+(the format every sharing service reads), under 300 KB, cut from the
+*Immunity* still used on the site (cyclist by the canal), without
+lettering. Referenced from `site.seo.image` (`src`, `width`, `height`,
+`alt` in both languages describing the frame). Tag omitted until the file
+exists.
 
 Theme colour: `#2A2623`.
 
@@ -937,11 +1129,22 @@ Unchanged from the built model except the additions marked **new**. Every
 text field is bilingual.
 
 - **Site:** name; role labels (list); statement; statement emphasis; intro;
-  email; phone (Contact only; may be empty); location; socials; secondary
+  email; phone (held in the Contact page content, shown there only; empty
+  until Sara gives the real number); location; socials; secondary
   contact (heading, name, email, `show`, default off); footer invitation;
-  legal link labels; default meta description; default OG image; navigation
-  labels; UI strings, including **new**: band pause and resume labels, film
-  index number is generated (no field).
+  legal link labels; default meta description; default OG image
+  (`seo.image`: `images/share.jpg`, 1200, 630, bilingual alt); navigation
+  labels (five, 8.2); UI strings, including band pause and resume labels;
+  film index number is generated (no field).
+- **Any page (2.5):** optional `contactLine`, shown in the footer (8.13 2b).
+- **Visual Stories (2.5):** seo; heading; positioning; hero image;
+  `workWithUs` (button label); offers heading and three offers (title, text,
+  image); work heading; work labels (challenge, done, result, film); work
+  projects (category, title, title language, meta list, credits, challenge,
+  done, result, optional image, optional film slug, optional external link
+  with label and URL, `published`); trusted heading and organisation names;
+  team heading and optional team text; `contactLine`. No longer used:
+  `contactHeading`, `contactName`, `contactButton`.
 - **Home:** featured films (ordered list of references, up to 3). **New:**
   hero image (`src`, `width`, `height`, `alt`, `focus`, optional `caption`).
 - **Image (everywhere an image is referenced). New fields:** `fit`
@@ -985,7 +1188,7 @@ pause and play icons are CSS shapes.
 | The hero image | An ink field; the name and band still fill the screen |
 | A film's watch link | Mode `none` |
 | Default Open Graph image | No `og:image` tag |
-| Phone number | Fictional placeholder, or empty (not rendered) |
+| Phone number | Empty, not rendered (10.5); never a fictional number |
 | Any legal fact | A visible placeholder marker; never an invented value |
 | Optional blocks | Not rendered |
 
@@ -1000,6 +1203,16 @@ pause and play icons are CSS shapes.
 
 ## Change log
 
+- 2.5 (2026-11-17), after the QA review of the live site: Visual Stories
+  page specified (10.8, 7.2, 12, 13); navigation has five items (8.2, 8.4);
+  home showreel marked under review with options a, b, c (7.5), film pages
+  link out instead of embedding (7.5); home Films section on ground (9,
+  9.4); phone: none shown until Sara gives the real number, then Contact
+  page only (8.13, 10.5, 14); privacy notice: shorter text, one-row layout
+  from md so it stays under the name (8.14); Visual Stories contact
+  resolved in the footer, footer `id="contact"` and optional page line
+  (8.13, 10.8); target sizes confirmed and applied to small text controls
+  (6.6, 8.3); default share image `images/share.jpg` (12).
 - 2.4 (2026-11-14): client logos in their own colours, not grayscale; the
   About badge follows (8.15, 10.4); last cell spans two columns at base when
   the count is odd (8.16).

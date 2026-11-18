@@ -14,7 +14,7 @@
     "fr": "Politique de confidentialité",
     "en": "Privacy policy"
   },
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "intro": {
     "fr": "Ce site est une vitrine professionnelle. Il a été conçu pour collecter le moins de données possible. Cette page explique précisément ce qui se passe quand vous le consultez.",
     "en": "This website is a professional showcase. It was designed to collect as little data as possible. This page explains exactly what happens when you visit it."
@@ -64,7 +64,7 @@
           "Ce site ne dépose lui-même aucun cookie.",
           "Il n’utilise aucun outil de mesure d’audience ni de publicité.",
           "Il ne contient aucun formulaire et ne propose aucun compte.",
-          "Les polices de caractères et les images sont servies par le site lui-même. Seule exception : la bande démo de la page d’accueil, hébergée par Vimeo, qui dépose ses propres cookies techniques (voir « Vidéos »)."
+          "Les polices de caractères et les images sont servies par le site lui-même. Seule exception : la bande démo de la page d’accueil, hébergée par Vimeo, qui dépose ses propres cookies techniques (voir « Vidéos »)."
         ],
         "en": [
           "This website itself sets no cookies.",
@@ -109,16 +109,16 @@
     {
       "id": "contact",
       "heading": {
-        "fr": "Quand vous m’écrivez ou m’appelez",
-        "en": "When you write or call"
+        "fr": "Quand vous écrivez à Sara Grimaldi",
+        "en": "When you write to Sara Grimaldi"
       },
       "paragraphs": {
         "fr": [
-          "Si vous écrivez à Sara Grimaldi à l’adresse info@saragrimaldi.com ou si vous l’appelez, les informations que vous lui transmettez (nom, coordonnées, contenu du message) sont traitées par Sara Grimaldi, uniquement pour vous répondre et donner suite à votre demande.",
+          "Si vous écrivez à Sara Grimaldi à l’adresse info@saragrimaldi.com, les informations que vous lui transmettez (nom, coordonnées, contenu du message) sont traitées par Sara Grimaldi, uniquement pour vous répondre et donner suite à votre demande.",
           "Elles ne sont ni vendues ni transmises à des tiers, sauf si votre demande le nécessite et avec votre accord."
         ],
         "en": [
-          "If you write to Sara Grimaldi at info@saragrimaldi.com or call her, the information you give her (name, contact details, the content of your message) is handled by Sara Grimaldi, only to reply and to follow up on your request.",
+          "If you write to Sara Grimaldi at info@saragrimaldi.com, the information you give her (name, contact details, the content of your message) is handled by Sara Grimaldi, only to reply and to follow up on your request.",
           "It is not sold or passed on to third parties, unless your request requires it and you agree."
         ]
       },
@@ -196,10 +196,10 @@
       },
       "paragraphs": {
         "fr": [
-          "Ce site contient des liens vers Instagram, Vimeo, OpenDDB et des sites de presse. Tant que vous ne cliquez pas sur ces liens, aucune donnée n’est transmise à ces sites. Si vous les suivez, leurs propres politiques de confidentialité s’appliquent."
+          "Ce site contient des liens vers d’autres sites : Instagram, Vimeo, OpenDDB, GitHub et la CNIL. Tant que vous ne cliquez pas sur ces liens, aucune donnée n’est transmise à ces sites. Si vous les suivez, leurs propres politiques de confidentialité s’appliquent."
         ],
         "en": [
-          "This website links to Instagram, Vimeo, OpenDDB and press websites. As long as you do not click these links, no data is sent to those sites. If you follow them, their own privacy policies apply."
+          "This website links to other sites: Instagram, Vimeo, OpenDDB, GitHub and the CNIL. As long as you do not click these links, no data is sent to those sites. If you follow them, their own privacy policies apply."
         ]
       }
     },

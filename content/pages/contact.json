@@ -6,8 +6,8 @@
       "en": "Contact – Sara Grimaldi"
     },
     "description": {
-      "fr": "Contacter Sara Grimaldi, réalisatrice et scénariste à Paris, pour un film, une campagne à impact, une collaboration ou une projection : e-mail et téléphone.",
-      "en": "Contact Sara Grimaldi, director and screenwriter in Paris, about a film, an impact campaign, a collaboration or a screening: email and phone."
+      "fr": "Contacter Sara Grimaldi, réalisatrice et scénariste à Paris, pour un film, une campagne à impact, une collaboration ou une projection, par e-mail.",
+      "en": "Contact Sara Grimaldi, director and screenwriter in Paris, about a film, an impact campaign, a collaboration or a screening, by email."
     }
   },
   "heading": {
@@ -33,9 +33,9 @@
     }
   },
   "phone": {
-    "_note": "PLACEHOLDER phone number: 06 39 98 is a range reserved for fiction and reaches nobody. Replace both lines with the real number once it may be public.",
-    "number": "+33639980000",
-    "display": "+33 6 39 98 00 00"
+    "_note": "No phone is shown while both lines are empty. Fill them in with the real number only once Sara agrees to publish it.",
+    "number": "",
+    "display": ""
   },
   "location": {
     "fr": "Paris, France",

@@ -16,8 +16,8 @@
     "en": "Featured in Le Monde, Elle, la Repubblica, France TV and Femina"
   },
   "watch": {
-    "mode": "full",
-    "provider": "youtube"
+    "_note": "The film is on YouTube but its address is not known yet. To link it, set \"mode\" to \"full\" and add \"externalLabel\" and \"externalUrl\".",
+    "mode": "none"
   },
   "still": {
     "_source": "Source: poster frame of “Endométriose : parlons-en / Real Disease True Hope” on Sara's Vimeo channel (video 119327225). Placeholder: Sara can replace or veto it.",

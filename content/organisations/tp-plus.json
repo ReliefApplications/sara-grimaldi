@@ -4,12 +4,13 @@
   "order": 16,
   "home": false,
   "logo": {
-    "_source": "Source: the logo strips on saragrimaldi.com, cut into one file per organisation.",
+    "_source": "Source: the TP+ logo file Sara sent on 2026-11-18 (JPEG, 500 px, on white). Its white background was made transparent (edges unmixed from white, nothing redrawn or recoloured) and it was reduced to 400 px.",
     "src": "images/logos/tp-plus.webp",
-    "size": [269, 90],
+    "size": [400, 134],
     "alt": {
       "fr": "TP+",
       "en": "TP+"
-    }
+    },
+    "scale": 0.85
   }
 }

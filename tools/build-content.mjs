@@ -7,6 +7,9 @@
 //   block or list item with "show": false (e.g. the second contact), list items with
 //   "published": false (e.g. a section of a legal page), "_note" keys,
 //   and the images that only those refer to.
+// - Puts a non-breaking space where French typography wants one (before
+//   : ; ! ? % » and after «), so a plain space typed in a French text never
+//   leaves a colon alone at the start of a line.
 // - Bundles each collection (one file per entry) into one JSON array, because
 //   a static site cannot list a folder. The file name becomes the "slug".
 // - Writes build.json: public address of the site (SITE_URL) and whether
@@ -26,6 +29,7 @@ import {
   FAMILIES,
   IMAGE_FITS,
   IMAGE_WIDTHS,
+  LEGAL_PAGE_IDS,
   ORGANISATION_KINDS,
   PLACEHOLDER_PATTERN,
   PROSE_FIELDS,
@@ -92,6 +96,21 @@ export function publicCopy(value) {
     Object.entries(value)
       .filter(([key, child]) => !key.startsWith('_') && !isHidden(child))
       .map(([key, child]) => [key, publicCopy(child)]),
+  );
+}
+
+/** French text with non-breaking spaces before : ; ! ? % » and after «. */
+export function frenchSpacing(text) {
+  return text.replace(/ +([:;!?%»])/g, '\u00A0$1').replace(/« +/g, '«\u00A0');
+}
+
+/** Applies frenchSpacing to every French text (the "fr" side of a translated value). */
+export function typeset(value, french = false) {
+  if (typeof value === 'string') return french ? frenchSpacing(value) : value;
+  if (Array.isArray(value)) return value.map((item) => typeset(item, french));
+  if (!isObject(value)) return value;
+  return Object.fromEntries(
+    Object.entries(value).map(([key, child]) => [key, typeset(child, french || key === 'fr')]),
   );
 }
 
@@ -171,7 +190,9 @@ export function buildContent({ production = false } = {}) {
   };
 
   const checkImage = (image, file, path) => {
-    if (!(image.alt?.fr && image.alt?.en)) {
+    // A "portrait" crop shares the description of the image it belongs to.
+    const isCrop = path.endsWith('.portrait');
+    if (!isCrop && !(image.alt?.fr && image.alt?.en)) {
       problem(`content/${file}: image "${path}" needs an "alt" text in French and English`);
     }
     // A still (it has a width) is exported in several widths; see README.
@@ -193,7 +214,7 @@ export function buildContent({ production = false } = {}) {
 
   const write = (file, value) => {
     mkdirSync(join(outDir, file, '..'), { recursive: true });
-    writeFileSync(join(outDir, file), JSON.stringify(publicCopy(value)));
+    writeFileSync(join(outDir, file), JSON.stringify(typeset(publicCopy(value))));
   };
 
   // Start clean so nothing from an earlier build is published by accident.
@@ -240,6 +261,15 @@ export function buildContent({ production = false } = {}) {
     if (!WATCH_MODES.includes(film.watch?.mode)) {
       problem(`content/${file}: "watch.mode" must be one of ${WATCH_MODES.join(', ')}`);
     }
+    // The film page shows a way to watch only through "externalUrl"; any mode
+    // but "none" without it would promise a film the visitor cannot reach.
+    const { mode, externalUrl, externalLabel } = film.watch ?? {};
+    if (mode && mode !== 'none' && !(externalUrl && externalLabel?.fr)) {
+      problem(
+        `content/${file}: "watch.mode" is "${mode}" but there is no "externalUrl" and ` +
+          '"externalLabel" to watch it; add them, or set "mode" to "none" (available on request)',
+      );
+    }
   }
   for (const organisation of collections.organisations) {
     if (!ORGANISATION_KINDS.includes(organisation.kind)) {
@@ -268,14 +298,33 @@ export function buildContent({ production = false } = {}) {
     }
   }
 
-  // Facts still to be supplied: shown highlighted on the site, and listed here.
-  const pending = JSON.stringify(publicCopy([site, pages, collections])).match(
-    new RegExp(PLACEHOLDER_PATTERN.source, 'g'),
-  );
+  // Facts still to be supplied: shown highlighted on the site, and listed here
+  // with the files they are in. "ui.dateMissing" of site.json is the marker a
+  // legal page shows while its "updated" date is empty: counted for that page.
+  const shownFiles = [
+    ['site.json', { ...site, ui: { ...site?.ui, dateMissing: undefined } }],
+    ...Object.entries(pages).map(([id, page]) => [
+      `pages/${id}.json`,
+      LEGAL_PAGE_IDS.includes(id) && !page.updated ? [page, site?.ui?.dateMissing] : page,
+    ]),
+    ...Object.entries(collections).flatMap(([name, entries]) =>
+      entries.map((entry) => [`${name}/${entry.slug}.json`, entry]),
+    ),
+  ];
+  const pendingByFile = shownFiles
+    .map(([file, value]) => [
+      file,
+      JSON.stringify(publicCopy(value)).match(new RegExp(PLACEHOLDER_PATTERN.source, 'g'))
+        ?.length ?? 0,
+    ])
+    .filter(([, count]) => count > 0);
+  const pending = pendingByFile.reduce((total, [, count]) => total + count, 0);
   if (pending) {
     console.warn(
-      `content: WARNING, ${pending.length} placeholder(s) "[à compléter …]" / "[to be completed …]" ` +
-        'are still shown on the site (legal pages). Complete them before launch.',
+      `content: WARNING, ${pending} placeholder(s) "[à compléter …]" / "[to be completed …]" ` +
+        `are still shown on the site, in ${pendingByFile
+          .map(([file, count]) => `content/${file} (${count})`)
+          .join(', ')}. Complete them before launch.`,
     );
   }
 

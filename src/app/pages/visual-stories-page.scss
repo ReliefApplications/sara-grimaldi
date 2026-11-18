@@ -119,9 +119,13 @@
   }
 }
 
-// 6. Contact
+// 6. Contact. It receives focus from "Work with us"; it is not a control.
 .contact {
   padding-bottom: var(--section-pad);
+
+  &:focus {
+    outline: none;
+  }
 
   > * + * {
     margin-top: var(--space-5);

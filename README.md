@@ -95,15 +95,20 @@ Other content:
   look a little smaller or larger beside the others. Without a logo the name
   is shown in type. A press item shows the logo of the organisation with the
   same name; list other spellings under `"aliases"` (for example
-  `"France 3"` for france.tv). The current logos come from Sara's own site
-  and are small.
+  `"France 3"` for france.tv). Most of the current logos come from Sara's own
+  site and are small; the TP+ logo is the file Sara sent. The "Trusted by"
+  row of the Visual Stories page lists organisations by name under
+  `"trusted"` in `content/pages/visual-stories.json`.
 - **Projects in development**: `"order"` sets the position; `"format"` is a
   list such as `["Long métrage", "scénario"]`.
 - **Visual Stories projects** (`"work"` in `content/pages/visual-stories.json`):
   to send visitors to a video or an article on another site, add
   `"link": { "label": { "fr": "Voir le reportage", "en": "Watch the report" }, "url": "https://…" }`
   to the project. The link opens in a new window; remove the block to show
-  none. `"published": false` keeps a project off the site.
+  none. `"published": false` keeps a project off the site. The team section
+  ("The people behind the camera") is off for now: its text, `"team"`, has
+  `"show": false`; remove that line once the text is written to show it again
+  under its heading, `"teamHeading"`.
 - **Credential badge** on the About page: `"badge"` in
   `content/pages/about.json` (a logo file, its `"size"` and description);
   remove the block to show none.

@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, ElementRef, inject, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ContentService } from '../core/content.service';
 import { CurrentRouteService } from '../core/current-route';
@@ -41,7 +41,9 @@ export class VisualStoriesPage {
   /** Offers: one per row below md, three per row above. */
   protected readonly offerSizes = '(min-width: 48rem) 33vw, calc(100vw - 40px)';
 
-  /** Each project with its three lines as label / value rows. */
+  private readonly contact = viewChild<ElementRef<HTMLElement>>('contact');
+
+  /** Each project with its three lines as label / value rows; a hidden line is left out. */
   protected readonly work = computed(() => {
     const page = this.page();
     if (!page) {
@@ -54,7 +56,15 @@ export class VisualStoriesPage {
         { label: labels.challenge, value: project.challenge },
         { label: labels.done, value: project.done },
         { label: labels.result, value: project.result },
-      ],
+      ].filter((row): row is { label: string; value: string } => !!row.value),
     }));
   });
+
+  /**
+   * "Work with us" leads to the contact block of this page: the router
+   * scrolls to it; keyboard and screen reader users continue from there.
+   */
+  protected focusContact(): void {
+    this.contact()?.nativeElement.focus({ preventScroll: true });
+  }
 }

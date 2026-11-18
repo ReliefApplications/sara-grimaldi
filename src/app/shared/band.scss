@@ -7,8 +7,11 @@
   color: var(--text);
 }
 
+// The viewport clips the strip, so that it, not the host, scrolls to a
+// focused item and the pause button stays in place.
 .viewport {
   height: 100%;
+  overflow: hidden;
 }
 
 .track {
@@ -27,6 +30,13 @@
 :host(:focus-within) .track,
 :host(.paused) .track {
   animation-play-state: paused;
+}
+
+// Keyboard focus on an item: the strip stops at its start, so the browser can
+// scroll the focused item into view (it cannot follow a moving transform).
+// Only for keyboard focus: a click must not move the item under the pointer.
+.viewport:has(:focus-visible) .track {
+  animation: none;
 }
 
 @keyframes band-scroll {
@@ -130,9 +140,19 @@
     animation: none;
   }
 
+  // Every item visible at any width: the list takes the strip's width and
+  // wraps, and a long item may break between its words.
   .items {
+    flex: 1 1 auto;
     flex-wrap: wrap;
     row-gap: var(--space-2);
+    min-width: 0;
+  }
+
+  .item {
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: normal;
   }
 
   .copy,

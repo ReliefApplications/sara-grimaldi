@@ -148,7 +148,15 @@
 }
 
 .reel-stop {
+  position: relative;
   text-decoration: underline;
+
+  // At least 44 px high to touch (6.6) without changing how it looks.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: min(0px, (100% - var(--target-size)) / 2) 0;
+  }
 }
 
 .play-circle {

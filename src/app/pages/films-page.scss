@@ -41,6 +41,11 @@
   }
 }
 
+// The heading receives focus from the family links; it is not a control.
+.family-head h2:focus {
+  outline: none;
+}
+
 .count {
   margin-top: var(--space-2);
   white-space: nowrap;

@@ -63,6 +63,11 @@ export interface ImageRef {
   focus?: string;
   /** Credit line shown with the image where the design has one (the home hero). */
   caption?: Text;
+  /**
+   * The same picture cropped for screens held upright (phones), used instead
+   * of the main set there; it shares the description of the main image.
+   */
+  portrait?: Pick<ImageRef, 'src' | 'width' | 'height' | 'widths' | 'focus'>;
 }
 
 /** One file used as is, e.g. the 1200 × 630 sharing image "images/share.jpg". */
@@ -221,7 +226,8 @@ export interface VisualStoriesProject {
   titleLang: string;
   meta: Localized<string[]>;
   credits: Text;
-  challenge: Text;
+  /** Hidden with `"show": false` until Sara supplies it. */
+  challenge?: Text;
   done: Text;
   result: Text;
   image?: ImageRef;

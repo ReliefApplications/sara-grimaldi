@@ -26,7 +26,7 @@
         }
         @if (page.reel && reel() && !playing()) {
           <div class="reel-controls">
-            <button class="reel-play" type="button" (click)="play()">
+            <button #playButton class="reel-play" type="button" (click)="play()">
               <span class="play-circle" aria-hidden="true"></span>
               <span class="t-label"
                 >{{ ambient() ? page.reel.soundLabel : page.reel.label }}
@@ -45,7 +45,7 @@
       </div>
       @if (reel(); as reel) {
         @if (playing()) {
-          <app-showreel [video]="reel" (closed)="playing.set(false)" />
+          <app-showreel [video]="reel" (closed)="closePlayer()" />
         }
       }
     </section>

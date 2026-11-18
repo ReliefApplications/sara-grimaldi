@@ -1,12 +1,16 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
+  afterNextRender,
   Component,
   computed,
   DestroyRef,
   effect,
+  ElementRef,
   inject,
+  Injector,
   PLATFORM_ID,
   signal,
+  viewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FAMILIES } from '../../core/content.models';
@@ -109,9 +113,19 @@ export class HomePage {
     inject(DestroyRef).onDestroy(() => clearTimeout(timer));
   }
 
+  private readonly injector = inject(Injector);
+  private readonly playButton = viewChild<ElementRef<HTMLButtonElement>>('playButton');
+
+  /** Opens the player; the player moves focus to its Close button. */
   protected play(): void {
     this.ambient.set(false);
     this.playing.set(true);
+  }
+
+  /** Closes the player and gives focus back to the button that opened it. */
+  protected closePlayer(): void {
+    this.playing.set(false);
+    this.focusPlayButton();
   }
 
   protected stopAmbient(): void {
@@ -121,6 +135,13 @@ export class HomePage {
     } catch {
       // Storage blocked: the showreel may start again on the next visit to the page.
     }
+    // The Stop button disappears with the muted video; focus goes to its neighbour.
+    this.focusPlayButton();
+  }
+
+  /** Once the controls are back on the page, focus the play button. */
+  private focusPlayButton(): void {
+    afterNextRender(() => this.playButton()?.nativeElement.focus(), { injector: this.injector });
   }
 
   /** The name on two lines below md: first name, then the rest. */

@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
 import { IMAGE_WIDTHS, ImageRef, Resolved } from '../core/content.models';
 import { ContentService } from '../core/content.service';
@@ -25,28 +26,52 @@ export function imageSources(
   };
 }
 
+/** Screens on which an image's `portrait` crop replaces the main set. */
+const PORTRAIT_MEDIA = '(orientation: portrait)';
+
 /**
  * An image from /content with its responsive sources, filling whatever box
  * its parent gives it (design system, 7). "cover" images are cropped around
- * their focus point; "poster" images are shown whole on an ink field.
+ * their focus point; "poster" images are shown whole on an ink field. An
+ * image with a `portrait` crop shows that crop on screens held upright.
  * Lazy by default; `priority` is for the hero and a film page's lead image.
  */
 @Component({
   selector: 'app-content-image',
-  host: { '[class.poster]': "image().fit === 'poster'" },
+  imports: [NgTemplateOutlet],
+  host: {
+    '[class.poster]': "image().fit === 'poster'",
+    '[style.--focus]': 'image().focus ?? null',
+    '[style.--focus-portrait]': 'image().portrait?.focus ?? null',
+  },
   template: `
-    <img
-      [src]="sources().src"
-      [attr.srcset]="sources().srcset"
-      [attr.sizes]="sizes()"
-      [alt]="image().alt"
-      [width]="image().width"
-      [height]="image().height"
-      [style.object-position]="image().focus ?? null"
-      [attr.loading]="priority() ? 'eager' : 'lazy'"
-      [attr.fetchpriority]="priority() ? 'high' : null"
-      decoding="async"
-    />
+    @if (portrait(); as portrait) {
+      <picture>
+        <source
+          [attr.media]="portraitMedia"
+          [attr.srcset]="portrait.srcset"
+          [attr.sizes]="sizes()"
+          [attr.width]="image().portrait?.width"
+          [attr.height]="image().portrait?.height"
+        />
+        <ng-container *ngTemplateOutlet="img" />
+      </picture>
+    } @else {
+      <ng-container *ngTemplateOutlet="img" />
+    }
+    <ng-template #img>
+      <img
+        [src]="sources().src"
+        [attr.srcset]="sources().srcset"
+        [attr.sizes]="sizes()"
+        [alt]="image().alt"
+        [width]="image().width"
+        [height]="image().height"
+        [attr.loading]="priority() ? 'eager' : 'lazy'"
+        [attr.fetchpriority]="priority() ? 'high' : null"
+        decoding="async"
+      />
+    </ng-template>
   `,
   styles: `
     :host {
@@ -57,10 +82,22 @@ export function imageSources(
       background: var(--color-placeholder);
     }
 
+    picture {
+      display: contents;
+    }
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: var(--focus, 50% 50%);
+    }
+
+    // The same query as PORTRAIT_MEDIA.
+    @media (orientation: portrait) {
+      picture img {
+        object-position: var(--focus-portrait, 50% 50%);
+      }
     }
 
     :host(.poster) {
@@ -84,7 +121,14 @@ export class ContentImage {
   readonly sizes = input.required<string>();
   readonly priority = input(false);
 
+  protected readonly portraitMedia = PORTRAIT_MEDIA;
+
   protected readonly sources = computed(() =>
     imageSources(this.image(), (path) => this.content.assetUrl(path)),
   );
+
+  protected readonly portrait = computed(() => {
+    const portrait = this.image().portrait;
+    return portrait && imageSources(portrait, (path) => this.content.assetUrl(path));
+  });
 }

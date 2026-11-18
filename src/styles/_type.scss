@@ -1,4 +1,8 @@
 // Type styles (design system, 3.2), as classes usable in any template.
+@use 'sass:math';
+
+// Line height of the display text, shared with its accent word below.
+$display-line: 0.98;
 
 %wide-caps {
   font-family: var(--font-sans);
@@ -20,7 +24,7 @@
   @extend %wide-caps;
   font-size: var(--size-display);
   font-weight: 900;
-  line-height: 0.98;
+  line-height: $display-line;
   letter-spacing: -0.005em;
 }
 
@@ -81,15 +85,39 @@
 }
 
 // The accent word inside a display text: serif italic, not uppercase, highlighted.
+//
+// The highlight is a band, not the whole height of the serif (which is taller
+// than a display line and ran into the lines above and below). On every line
+// it fills, the band runs from just under the baseline of the line above to
+// just over the cap height of the line below, with the same small gap at both
+// ends, whether or not those lines exist. Measured from the font files:
+// Archivo cap height 686/1000, Fraunces ascent 1956/2000 (the top of the
+// word's box). Lengths are in em of the display text, converted to the em of
+// the accent word, which is $accent-size larger.
+$accent-size: 1.08;
+$accent-gap: 0.04; // between the band and the letters of the next lines
+$archivo-cap: 0.686;
+$fraunces-ascent: 0.978;
+// Band height: two line steps, less one cap height, less both gaps.
+$accent-band: math.div(2 * $display-line - $archivo-cap - 2 * $accent-gap, $accent-size);
+// Band top, below the top of the word's box: the ascent above the baseline,
+// less one line step plus the gap.
+$accent-band-top: $fraunces-ascent - math.div($display-line - $accent-gap, $accent-size);
+
 .t-accent-word {
   padding: 0 0.12em;
-  background: var(--highlight-bg);
+  background: linear-gradient(var(--highlight-bg), var(--highlight-bg)) 0 #{$accent-band-top}em /
+    100% #{$accent-band}em no-repeat;
   color: var(--highlight-text);
   font-family: var(--font-serif);
-  font-size: 1.08em;
+  font-size: $accent-size * 1em;
   font-stretch: 100%;
   font-style: italic;
   font-weight: 400;
+  // The larger serif word must not make its own line taller than the others:
+  // with a line height of 0 the line keeps the display step. The band does
+  // not move, as the background is painted from the font box, not the line.
+  line-height: 0;
   letter-spacing: 0;
   text-transform: none;
   box-decoration-break: clone;

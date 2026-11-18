@@ -6,7 +6,7 @@
       "en": "Visual Stories – Sara Grimaldi"
     },
     "description": {
-      "fr": "Visual Stories : documentaire, films à impact, campagnes de marque. De vraies histoires, une exigence de cinéma. Une équipe de tournage 100 % féminine, basée à Paris.",
+      "fr": "Visual Stories : documentaire, films à impact, campagnes de marque. De vraies histoires, une exigence de cinéma. Une équipe de tournage 100 % féminine, basée à Paris.",
       "en": "Visual Stories: documentary, impact and brand films. Real stories, cinematic craft. An all-women film crew based in Paris."
     }
   },
@@ -19,16 +19,22 @@
     "en": "Documentary, impact and brand films. Real stories, cinematic craft."
   },
   "hero": {
-    "_source": "Source: the Visual Stories page of saragrimaldi.com. Placeholder: Sara can replace or veto it.",
-    "src": "images/visual-stories/tournage.webp",
+    "_source": "Source: the Visual Stories page of saragrimaldi.com. Placeholder: Sara can replace or veto it. tournage-1920.webp is the full portrait original (not published): the wide set is its 1920 × 1080 crop from 660 px down, the portrait set its smaller sizes.",
+    "src": "images/visual-stories/tournage-wide.webp",
     "width": 1920,
-    "height": 2560,
-    "focus": "50% 45%",
-    "alt": {
-      "fr": "Tournage d’une interview dans un salon ancien : une caméra au premier plan, son écran de contrôle montre la femme interviewée assise dans un fauteuil en cuir.",
-      "en": "An interview being filmed in an old drawing room: a camera in the foreground, its monitor showing the woman being interviewed in a leather armchair."
+    "height": 1080,
+    "widths": [480, 768, 1280, 1920],
+    "portrait": {
+      "src": "images/visual-stories/tournage.webp",
+      "width": 1152,
+      "height": 1536,
+      "widths": [480, 768, 1152],
+      "focus": "50% 45%"
     },
-    "widths": [480, 768, 1152, 1920]
+    "alt": {
+      "fr": "Tournage d’une interview dans un salon ancien : une caméra au premier plan, son écran de contrôle montre la femme interviewée assise dans un fauteuil en cuir.",
+      "en": "An interview being filmed in an old drawing room: a camera in the foreground, its monitor showing the woman being interviewed in a leather armchair."
+    }
   },
   "workWithUs": {
     "fr": "Travaillons ensemble",
@@ -145,7 +151,7 @@
         "en": ["Association IRIS", "Établissement français du sang", "2020"]
       },
       "credits": {
-        "fr": "Réalisation : Sara Grimaldi",
+        "fr": "Réalisation : Sara Grimaldi",
         "en": "Direction: Sara Grimaldi"
       },
       "challenge": {
@@ -186,15 +192,16 @@
         "en": ["Leroy Merlin", "2013"]
       },
       "credits": {
-        "fr": "Réalisation : Sara Grimaldi",
+        "fr": "Réalisation : Sara Grimaldi",
         "en": "Direction: Sara Grimaldi"
       },
       "challenge": {
-        "fr": "[à compléter : ce que Leroy Merlin voulait atteindre, en une phrase]",
+        "show": false,
+        "fr": "[à compléter : ce que Leroy Merlin voulait atteindre, en une phrase]",
         "en": "[to be completed: what Leroy Merlin wanted to achieve, in one sentence]"
       },
       "done": {
-        "fr": "Un documentaire tourné en prison en Italie : autour d’un atelier de peinture, des détenues retrouvent un lien avec la nature.",
+        "fr": "Un documentaire tourné en prison en Italie : autour d’un atelier de peinture, des détenues retrouvent un lien avec la nature.",
         "en": "A documentary shot in a prison in Italy: through a painting workshop, women inmates rediscover a connection with nature."
       },
       "result": {
@@ -224,23 +231,23 @@
       "title": "[à compléter : titre du film]",
       "titleLang": "fr",
       "meta": {
-        "fr": ["Adobe MAX avec Woodkid", "[à compléter : année]"],
+        "fr": ["Adobe MAX avec Woodkid", "[à compléter : année]"],
         "en": ["Adobe MAX with Woodkid", "[to be completed: year]"]
       },
       "credits": {
-        "fr": "[à compléter : rôle de Sara, autres crédits]",
+        "fr": "[à compléter : rôle de Sara, autres crédits]",
         "en": "[to be completed: Sara's role, other credits]"
       },
       "challenge": {
-        "fr": "[à compléter : une phrase]",
+        "fr": "[à compléter : une phrase]",
         "en": "[to be completed: one sentence]"
       },
       "done": {
-        "fr": "[à compléter : une phrase]",
+        "fr": "[à compléter : une phrase]",
         "en": "[to be completed: one sentence]"
       },
       "result": {
-        "fr": "[à compléter : une phrase]",
+        "fr": "[à compléter : une phrase]",
         "en": "[to be completed: one sentence]"
       }
     },
@@ -256,7 +263,7 @@
         "en": ["TP+", "Racing 92", "Shot May 2026"]
       },
       "credits": {
-        "fr": "Image : Sara Grimaldi · Journaliste et réalisatrice : Soana Aholelei · Productrice : Ngaire Fuata",
+        "fr": "Image : Sara Grimaldi · Journaliste et réalisatrice : Soana Aholelei · Productrice : Ngaire Fuata",
         "en": "Cinematography: Sara Grimaldi · Reporter/Director: Soana Aholelei · Producer: Ngaire Fuata"
       },
       "challenge": {
@@ -288,7 +295,7 @@
     "Istituto Italiano di Cultura",
     "Deutsche Welle",
     "VPRO",
-    "france.tv",
+    "TP+",
     "Leroy Merlin",
     "Adobe"
   ],
@@ -297,7 +304,8 @@
     "en": "The people behind the camera"
   },
   "team": {
-    "fr": "[à compléter : cinq ou six femmes qui ont accepté d’être nommées : portrait, nom, rôle]",
+    "show": false,
+    "fr": "[à compléter : cinq ou six femmes qui ont accepté d’être nommées : portrait, nom, rôle]",
     "en": "[to be completed: five or six women who agreed to be named: portrait, name, role]"
   },
   "contactHeading": {
@@ -310,7 +318,7 @@
     "en": "Write to us"
   },
   "contactLine": {
-    "fr": "Équipe de tournage 100 % féminine. Basée à Paris, disponible partout.",
+    "fr": "Équipe de tournage 100 % féminine. Basée à Paris, disponible partout.",
     "en": "All-women film crew. Based in Paris, available worldwide."
   }
 }

@@ -11,7 +11,14 @@
     <div class="container hero-block">
       <h1 class="t-giant" appPageHeading>{{ page.heading }}</h1>
       <p class="positioning t-lead">{{ page.positioning }}</p>
-      <a appBlockButton class="hero-button" href="#contact">{{ page.workWithUs }}</a>
+      <a
+        appBlockButton
+        class="hero-button"
+        [routerLink]="route.link('visual-stories')"
+        fragment="contact"
+        (click)="focusContact()"
+        >{{ page.workWithUs }}</a
+      >
     </div>
   </section>
 
@@ -64,7 +71,14 @@
         }
       </article>
     }
-    <a appBlockButton class="repeat-button" href="#contact">{{ page.workWithUs }}</a>
+    <a
+      appBlockButton
+      class="repeat-button"
+      [routerLink]="route.link('visual-stories')"
+      fragment="contact"
+      (click)="focusContact()"
+      >{{ page.workWithUs }}</a
+    >
   </section>
 
   <!-- 4. Trusted by: one row of logos. -->
@@ -83,7 +97,13 @@
 
   <!-- 6. Contact: one person, one address. The footer below repeats the invitation. -->
   @if (site(); as site) {
-    <section class="container block contact" id="contact" aria-labelledby="contact-label">
+    <section
+      class="container block contact"
+      id="contact"
+      #contact
+      tabindex="-1"
+      aria-labelledby="contact-label"
+    >
       <h2 class="section-label t-label" id="contact-label">{{ page.contactHeading }}</h2>
       <p class="t-lead">
         {{ page.contactName }} ·

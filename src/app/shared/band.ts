@@ -42,4 +42,12 @@ export class Band {
   readonly logos = input(false);
   /** Seconds for one loop. */
   readonly duration = input(36);
+
+  /** Focus left the strip: back to the start, so the loop shows no gap when it resumes. */
+  protected resetScroll(event: FocusEvent): void {
+    const viewport = event.currentTarget as HTMLElement;
+    if (!viewport.contains(event.relatedTarget as Node | null)) {
+      viewport.scrollLeft = 0;
+    }
+  }
 }

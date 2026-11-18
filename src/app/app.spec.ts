@@ -221,14 +221,40 @@ describe('App', () => {
     expect(text('main .text')).toBe('Cette page n’existe pas.');
   });
 
-  it('shows the phone number on the Contact page only', async () => {
-    const phone = contact.phone.display;
-    await open('/fr');
-    expect(page.textContent).not.toContain(phone);
-    expect(page.querySelector('a[href^="tel:"]')).toBeNull();
-    await open('/fr/contact');
-    expect(page.querySelector('main a[href^="tel:"]')?.textContent).toBe(phone);
-    expect(page.querySelector('footer')?.textContent).not.toContain(phone);
+  it('shows no phone while the content has none', async () => {
+    const label = contact.labels.phone.fr;
+    for (const url of ['/fr', '/fr/contact']) {
+      await open(url);
+      expect(page.querySelector('a[href^="tel:"]')).toBeNull();
+      expect(page.querySelector('#phone-label')).toBeNull();
+      expect(page.textContent).not.toContain(label);
+    }
+  });
+
+  it('shows a phone number on the Contact page only', async () => {
+    const url = 'content/pages/contact.json';
+    const withPhone = {
+      ...contact,
+      phone: { number: '+33612345678', display: '+33 6 12 34 56 78' },
+    };
+    const phone = withPhone.phone.display;
+    // Guards against a test that passes on an empty string.
+    expect(phone).toBeTruthy();
+    CONTENT[url] = withPhone;
+    try {
+      await open('/fr');
+      expect(page.textContent).not.toContain(phone);
+      expect(page.querySelector('a[href^="tel:"]')).toBeNull();
+      await open('/fr/contact');
+      expect(page.querySelector('main a[href="tel:+33612345678"]')?.textContent?.trim()).toBe(
+        phone,
+      );
+      expect(page.querySelectorAll('a[href^="tel:"]').length).toBe(1);
+      expect(page.querySelector('footer')?.textContent).not.toContain(phone);
+      expect(page.querySelector('footer a[href^="tel:"]')).toBeNull();
+    } finally {
+      CONTENT[url] = contact;
+    }
   });
 
   it('renders the legal pages with highlighted placeholders and footer links', async () => {
